@@ -1,7 +1,7 @@
 #!/bin/bash
 
 NODE_PORT=${NODE_PORT:-4444}
-CHROMEDRIVER_PATH="/usr/lib/selenium/chromedriver "
+CHROMEDRIVER_PATH="/usr/bin/chromedriver "
 CHROMEDRIVER_ARGS="--port=$NODE_PORT --whitelisted-ips=""  --url-base=wd/hub --verbose"
 
 echo "Starting Chromedriver on port $NODE_PORT..."
