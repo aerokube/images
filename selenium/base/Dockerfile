@@ -22,4 +22,4 @@ RUN apt-get update && apt-get install -y --force-yes ttf-mscorefonts-installer \
     xvfb
 
 RUN echo 'Europe/Moscow' | sudo tee /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
-RUN echo "gtk-cursor-blink=0" > /home/selenium/.gtkrc-2.0
+RUN echo "gtk-cursor-blink=0" > /root/.gtkrc-2.0
