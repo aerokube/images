@@ -1,5 +1,6 @@
 FROM ubuntu:14.04.1
 
+COPY sources.list /etc/apt/
 RUN echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections
 
 RUN apt-get update && apt-get install -y --force-yes ttf-mscorefonts-installer \
