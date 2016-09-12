@@ -5,6 +5,8 @@ RUN wget -O geckodriver-v0.10.0-linux64.tar.gz https://github.com/mozilla/geckod
         apt-key adv --recv-keys --keyserver keyserver.ubuntu.com C1289A29 && \
         echo 'deb http://downloads.sourceforge.net/project/ubuntuzilla/mozilla/apt all main' > /etc/apt/sources.list.d/ubuntuzilla.list && \
         apt-get update && \
+        apt-get -y install firefox && \
+        apt-get -y purge firefox && \
         apt-get -y --force-yes install firefox-mozilla-build=48.0.1-0ubuntu1 && \
         apt-get clean && \
         rm -Rf /tmp/*
