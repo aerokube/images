@@ -1,6 +1,6 @@
 FROM ubuntu:14.04.1
 
-RUN apt-get update && apt-get install -y apt-transport-https
+RUN apt-get update && apt-get install -y --force-yes  apt-transport-https
 COPY sources.list /etc/apt/
 RUN echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections
 
