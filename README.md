@@ -1,4 +1,4 @@
-## Selenoid Docker Containers
+# Selenoid Docker Containers
 This repository contains example [Docker](http://docker.com/) build files to be used for [Selenoid](http://github.com/aandryashin/selenoid) project.
 
 ## Firefox Compatibility Table
@@ -95,7 +95,7 @@ This repository contains example [Docker](http://docker.com/) build files to be 
 
 ## Opera Compatilibity Table
 
-| Opera Prestop version | Selenium version |
+| Opera Presto version | Selenium version |
 | --------------------- | ---------------- |
 | 12.16 | 2.34.0 |
 
