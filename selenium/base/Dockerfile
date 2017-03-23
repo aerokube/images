@@ -1,6 +1,6 @@
 FROM ubuntu:14.04.1
 
-RUN apt-get update && apt-get install -y --force-yes apt-transport-https
+RUN apt-get update && apt-get install -y --force-yes apt-transport-https && apt-get clean && rm -Rf /tmp/*
 COPY sources.list /etc/apt/
 RUN echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections
 
@@ -20,7 +20,9 @@ RUN apt-get update && apt-get install -y --force-yes ttf-mscorefonts-installer \
     xfonts-encodings \
     xfonts-utils \
     flashplugin-installer \
-    xvfb
+    xvfb && \
+    apt-get clean && \
+    rm -Rf /tmp/*
 
 RUN echo 'UTC' | sudo tee /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
 RUN echo "gtk-cursor-blink=0" > /root/.gtkrc-2.0

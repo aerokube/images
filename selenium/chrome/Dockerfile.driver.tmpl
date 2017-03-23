@@ -1,0 +1,11 @@
+FROM selenoid/dev:chrome_@@VERSION@@
+
+ARG DRIVER_VERSION
+ARG SCREEN_RESOLUTION
+
+RUN \
+        wget -O chromedriver.zip http://chromedriver.storage.googleapis.com/$DRIVER_VERSION/chromedriver_linux64.zip && \
+        unzip chromedriver.zip -d /usr/bin && \
+        rm chromedriver.zip
+
+CMD ["/usr/bin/xvfb-run", "-a", "-s", "'-screen 0 $SCREEN_RESOLUTION -noreset'", "/usr/bin/chromedriver", "--port=4444", "--whitelisted-ips=''", "--verbose"]
