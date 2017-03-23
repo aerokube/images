@@ -1,0 +1,16 @@
+FROM selenoid/dev:firefox_@@VERSION@@
+
+ARG SCREEN_RESOLUTION
+
+# Installing Java
+RUN \
+        add-apt-repository -y ppa:webupd8team/java && \
+        apt-get update && \
+        echo debconf shared/accepted-oracle-license-v1-1 select true |  debconf-set-selections && \
+        apt-get -y install oracle-java8-installer && \
+        apt-get clean && \
+        rm -Rf /tmp/*
+
+ADD selenium-server-standalone.jar /usr/share/selenium
+
+CMD ["/usr/bin/xvfb-run", "-a", "-s", "'-screen 0 $SCREEN_RESOLUTION -noreset'", "/usr/bin/java", "-jar", "/usr/share/selenium/selenium-server-standalone.jar", "-port", "4444", "-timeout", "60", "-browserTimeout", "120", "-newSessionWaitTimeout", "10000"]

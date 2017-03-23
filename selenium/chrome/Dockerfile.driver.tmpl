@@ -1,6 +1,7 @@
 FROM selenoid/dev:chrome_@@VERSION@@
 
 ARG DRIVER_VERSION
+ARG DRIVER_PORT=4444
 ARG SCREEN_RESOLUTION
 
 RUN \
@@ -8,4 +9,5 @@ RUN \
         unzip chromedriver.zip -d /usr/bin && \
         rm chromedriver.zip
 
-CMD ["/usr/bin/xvfb-run", "-a", "-s", "'-screen 0 $SCREEN_RESOLUTION -noreset'", "/usr/bin/chromedriver", "--port=4444", "--whitelisted-ips=''", "--verbose"]
+EXPOSE $DRIVER_PORT
+CMD ["/usr/bin/xvfb-run", "-a", "-s", "'-screen 0 $SCREEN_RESOLUTION -noreset'", "/usr/bin/chromedriver", "--port=$DRIVER_PORT", "--whitelisted-ips=''", "--verbose"]
