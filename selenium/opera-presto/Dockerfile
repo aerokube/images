@@ -1,6 +1,6 @@
 FROM selenoid/base:1.0
 
-ARG VERSION
+ARG VERSION=12.16.1860
 ARG CLEANUP=false
 
 RUN  \

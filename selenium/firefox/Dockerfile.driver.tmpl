@@ -1,13 +1,9 @@
 FROM selenoid/dev:firefox_@@VERSION@@
 
-ARG DRIVER_VERSION
-ARG DRIVER_PORT=4444
+ARG PORT
 ARG SCREEN_RESOLUTION
 
-RUN \
-        wget -O geckodriver.tar.gz https://github.com/mozilla/geckodriver/releases/download/v$DRIVER_VERSION/geckodriver-v$DRIVER_VERSION-linux64.tar.gz && \
-        tar xvzf geckodriver.tar.gz -C /usr/bin && \
-        rm -Rf /tmp/* geckodriver.tar.gz
+ADD geckodriver /usr/bin
 
-EXPOSE $DRIVER_PORT
-CMD ["/usr/bin/xvfb-run", "-a", "-s", "'-screen 0 $SCREEN_RESOLUTION -noreset'", "/usr/bin/geckodriver", "--host", "::", "--port", "$DRIVER_PORT", "--log", "debug"]
+EXPOSE $PORT
+CMD ["/usr/bin/xvfb-run", "-a", "-s", "'-screen 0 $SCREEN_RESOLUTION -noreset'", "/usr/bin/geckodriver", "--host", "::", "--port", "$PORT", "--log", "debug"]

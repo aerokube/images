@@ -1,5 +1,6 @@
 FROM selenoid/dev:firefox_@@VERSION@@
 
+ARG PORT
 ARG SCREEN_RESOLUTION
 
 # Installing Java
@@ -13,4 +14,5 @@ RUN \
 
 ADD selenium-server-standalone.jar /usr/share/selenium
 
-CMD ["/usr/bin/xvfb-run", "-a", "-s", "'-screen 0 $SCREEN_RESOLUTION -noreset'", "/usr/bin/java", "-jar", "/usr/share/selenium/selenium-server-standalone.jar", "-port", "4444", "-timeout", "60", "-browserTimeout", "120", "-newSessionWaitTimeout", "10000"]
+EXPOSE $PORT
+CMD ["/usr/bin/xvfb-run", "-a", "-s", "'-screen 0 $SCREEN_RESOLUTION -noreset'", "/usr/bin/java", "-jar", "/usr/share/selenium/selenium-server-standalone.jar", "-port", "$PORT", "-timeout", "60", "-browserTimeout", "120", "-newSessionWaitTimeout", "10000"]
