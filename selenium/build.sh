@@ -68,7 +68,9 @@ else
     echo "Unsupported mode: will do nothing. Exiting."
     exit 1
 fi
+popd
 cat "$template_file" | sed -e "s|@@VERSION@@|$version|g" > "$dir_name/Dockerfile"
+pushd "$dir_name"
 docker build --build-arg SCREEN_RESOLUTION="$screen_resolution" --build-arg PORT="$port" -t "$tag" .
 popd
 rm -Rf "$dir_name"
