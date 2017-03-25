@@ -14,5 +14,5 @@ RUN \
             ) \
         ) && \
         dpkg -i firefox-mozilla-build.deb && \
-        firefox --version && \ # Just to test it launches successfully
+        firefox --version && \
         ($CLEANUP && apt-get clean && rm -Rf /tmp/*)
