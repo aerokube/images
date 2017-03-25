@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-set -o verbose
+set -x
 
 if [ -z $1 -o -z $2 ]; then
     echo 'Usage: build-dev.sh {firefox/official|firefox/ubuntuzilla|chrome|opera/presto|opera/blink} <browser_version> [<cleanup={true|false}>]'
