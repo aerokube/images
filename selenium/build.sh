@@ -4,14 +4,14 @@ set -e
 download_selenium() {
     selenium_version=$1
     url=""
-    case selenium_version in
-        2.21.0|2.32.0|2.35.0|2.39.0|2.40.0|2.41.0|2.43.1|2.44.0|2.45.0)
+    case "$selenium_version" in
+        "2.21.0" | "2.32.0" | "2.35.0" | "2.39.0" | "2.40.0" | "2.41.0" | "2.43.1" | "2.44.0" | "2.45.0")
             url="https://repo.jenkins-ci.org/releases/org/seleniumhq/selenium/selenium-server-standalone/$selenium_version/selenium-server-standalone-$selenium_version.jar"
             ;;
-        2.47.1)
+        "2.47.1")
             url="http://selenium-release.storage.googleapis.com/2.47/selenium-server-standalone-2.47.1.jar"
             ;;
-        2.53.1)
+        "2.53.1")
             url="http://selenium-release.storage.googleapis.com/2.53/selenium-server-standalone-2.53.1.jar"
             ;;
         *)
@@ -54,7 +54,7 @@ port=${5-"4444"}
 dir_name="/tmp/$(uuidgen | sed -e 's|-||g')"
 mkdir -p "$dir_name"
 pushd "$dir_name"
-template_file="Docker.driver.tmpl"
+template_file="Dockerfile.driver.tmpl"
 if [ "$mode" == "chromedriver" ]; then
     download_chromedriver "$3"
 elif [ "$mode" == "operadriver" ]; then
@@ -63,7 +63,7 @@ elif [ "$mode" == "geckodriver" ]; then
     download_geckodriver "$3"
 elif [ "$mode" == "selenium" ]; then
     download_selenium "$3"
-    template_file="Docker.server.tmpl"
+    template_file="Dockerfile.server.tmpl"
 else
     echo "Unsupported mode: will do nothing. Exiting."
     exit 1
