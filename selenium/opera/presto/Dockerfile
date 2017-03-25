@@ -7,5 +7,5 @@ RUN  \
         wget -O- http://deb.opera.com/archive.key | apt-key add -A && \
         echo 'deb http://deb.opera.com/opera/ stable non-free' >> /etc/apt/sources.list.d/opera.list && \
         apt-get update && \
-        apt-get -y --force-yes install opera=$VERSION && \
+        apt-get -y install opera=$VERSION && \
         ($CLEANUP && apt-get clean && rm -Rf /tmp/*) || true

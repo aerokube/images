@@ -5,5 +5,5 @@ ARG CLEANUP
 
 RUN  \
         apt-get update && \
-        apt-get -y --force-yes install firefox=$VERSION && \
+        apt-get -y install firefox=$VERSION && \
         ($CLEANUP && apt-get clean && rm -Rf /tmp/*) || true
