@@ -1,6 +1,5 @@
 #!/bin/bash
 set -e
-set -x
 
 download_selenium() {
     selenium_version=$1
@@ -45,6 +44,7 @@ if [ -z $1 -o -z $2 -o -z $3 -o -z $4 ]; then
     echo 'Usage: build.sh {chromedriver|operadriver|selenium} <browser_version> <driver_or_selenium_version> <tag> [<screen_resolution in form 1280x1600x24>] [<port>]'
     exit 1
 fi
+set -x
 
 mode=$1
 version=$2
