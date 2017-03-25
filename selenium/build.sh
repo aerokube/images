@@ -57,11 +57,11 @@ cat Docker.driver.tmpl | sed -e "s|@@VERSION@@|$version|g" > "$dir_name/Dockerfi
 pushd "$dir_name"
 if [ "$mode" == "chromedriver" ]; then
     download_chromedriver "$3"
-else if [ "$mode" == "operadriver" ]; then
+elif [ "$mode" == "operadriver" ]; then
     download_operadriver "$3"
-else if [ "$mode" == "geckodriver" ]; then
+elif [ "$mode" == "geckodriver" ]; then
     download_geckodriver "$3"
-else if [ "$mode" == "selenium" ]; then
+elif [ "$mode" == "selenium" ]; then
     download_selenium "$3"
 else
     echo "Unsupported mode: will do nothing. Exiting."
