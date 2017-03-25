@@ -8,7 +8,7 @@ RUN \
     
 RUN \
     echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections && \
-    echo 'UTC' | sudo tee /etc/timezone && \
+    echo 'UTC' | tee /etc/timezone && \
     dpkg-reconfigure -f noninteractive tzdata && \
     echo "gtk-cursor-blink=0" > /root/.gtkrc-2.0
 
