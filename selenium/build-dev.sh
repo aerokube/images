@@ -10,7 +10,10 @@ browser=$1
 version=$2
 cleanup=${3:-"false"}
 browser_name=$(echo "$browser" | sed -e 's/\(..*\)\/..*/\1/g')
-tag="selenoid/$browser_name:$version"
+tag="selenoid/dev:"$browser_name"_"$version
+if [ "$cleanup" == "false" ]; then
+    tag=$tag"_full"
+fi
 pushd "$browser"
 echo "Creating image $tag..."
 docker build --build-arg VERSION="$version" --build-arg CLEANUP="$cleanup" -t "$tag" .

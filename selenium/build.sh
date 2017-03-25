@@ -40,14 +40,15 @@ download_operadriver() {
     rm operadriver.zip
 }
 
-if [ -z $1 -o -z $2 -o $3 ]; then
-    echo 'Usage: build.sh {chromedriver|operadriver|selenium} <browser_version> <driver_or_selenium_version> [<screen_resolution in form 1280x1600x24>] [<port>]'
+if [ -z $1 -o -z $2 -o -z $3 -o -z $4 ]; then
+    echo 'Usage: build.sh {chromedriver|operadriver|selenium} <browser_version> <driver_or_selenium_version> <tag> [<screen_resolution in form 1280x1600x24>] [<port>]'
     exit 1
 fi
 
 mode=$1
 version=$2
-screen_resolution=${4-"1280x1600x24"}
+tag=$4
+screen_resolution=${5-"1280x1600x24"}
 port=${5-"4444"}
 dir_name="/tmp/$(uuidgen | sed -e 's|-||g')"
 mkdir -p "$dir_name"
@@ -65,7 +66,7 @@ else
     echo "Unsupported mode: will do nothing. Exiting."
     exit 1
 fi
-docker build --build-arg SCREEN_RESOLUTION="$screen_resolution" --build-arg PORT="$port" .
+docker build --build-arg SCREEN_RESOLUTION="$screen_resolution" --build-arg PORT="$port" -t "$tag" .
 popd
 rm -Rf "$dir_name"
 exit 0
