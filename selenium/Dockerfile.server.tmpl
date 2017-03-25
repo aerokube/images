@@ -5,7 +5,8 @@ ARG SCREEN_RESOLUTION
 
 # Installing Java
 RUN \
-        add-apt-repository -y ppa:webupd8team/java && \
+        apt-key adv --recv-keys --keyserver keyserver.ubuntu.com EEA14886 && \
+        echo 'deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main' > /etc/apt/sources.list.d/webupd8.list && \
         apt-get update && \
         echo debconf shared/accepted-oracle-license-v1-1 select true |  debconf-set-selections && \
         apt-get -y install oracle-java8-installer && \
