@@ -40,7 +40,7 @@ download_operadriver() {
     rm operadriver.zip
 }
 
-if [ -z $1 -o -z $2 -o -z $3 -o -z $4 ]; then
+if [ -z "$1" -o -z "$2" -o -z "$3" -o -z "$4" ]; then
     echo 'Usage: build.sh {chromedriver|operadriver|selenium} <browser_version> <driver_or_selenium_version> <tag> [<screen_resolution in form 1280x1600x24>] [<port>]'
     exit 1
 fi
