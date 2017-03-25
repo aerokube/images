@@ -15,4 +15,4 @@ RUN \
         ) && \
         dpkg -i firefox-mozilla-build.deb && \
         firefox --version && \
-        ($CLEANUP && apt-get clean && rm -Rf /tmp/*)
+        ($CLEANUP && apt-get clean && rm -Rf /tmp/*) || true
