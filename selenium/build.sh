@@ -3,7 +3,23 @@ set -e
 
 download_selenium() {
     selenium_version=$1
-    #TODO: implement it!
+    url=""
+    case selenium_version in
+        2.21.0|2.32.0|2.35.0|2.39.0|2.40.0|2.41.0|2.43.1|2.44.0|2.45.0)
+            url="https://repo.jenkins-ci.org/releases/org/seleniumhq/selenium/selenium-server-standalone/$selenium_version/selenium-server-standalone-$selenium_version.jar"
+            ;;
+        2.47.1)
+            url="http://selenium-release.storage.googleapis.com/2.47/selenium-server-standalone-2.47.1.jar"
+            ;;
+        2.53.1)
+            url="http://selenium-release.storage.googleapis.com/2.53/selenium-server-standalone-2.53.1.jar"
+            ;;
+        *)
+            echo "Unsupported Selenium version: $selenium_version"
+            exit 1
+            ;;
+    esac
+    wget -O selenium-server-standalone.jar "$url"
 }
 
 download_geckodriver() {
@@ -25,7 +41,7 @@ download_operadriver() {
 }
 
 if [ -z $1 -o -z $2 -o $3 ]; then
-    echo 'Usage: build.sh {chromedriver|operadriver|selenium} <browser_version> <driver_or_version> [<screen_resolution in form 1280x1600x24>] [<port>]'
+    echo 'Usage: build.sh {chromedriver|operadriver|selenium} <browser_version> <driver_or_selenium_version> [<screen_resolution in form 1280x1600x24>] [<port>]'
     exit 1
 fi
 
