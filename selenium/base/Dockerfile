@@ -1,10 +1,18 @@
-FROM ubuntu:14.04.1
+FROM ubuntu:16.04
 
-RUN apt-get update && apt-get install -y --force-yes apt-transport-https && apt-get clean && rm -Rf /tmp/*
-COPY sources.list /etc/apt/
-RUN echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections
+RUN \
+    apt-get update && \
+    apt-get install -y apt-transport-https ca-certificates && \
+    apt-get clean && \
+    rm -Rf /tmp/*
+    
+RUN \
+    echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections && \
+    echo 'UTC' | sudo tee /etc/timezone && \
+    dpkg-reconfigure -f noninteractive tzdata && \
+    echo "gtk-cursor-blink=0" > /root/.gtkrc-2.0
 
-RUN apt-get update && apt-get install -y --force-yes ttf-mscorefonts-installer \
+RUN apt-get update && apt-get install -y ttf-mscorefonts-installer \
     ttf-dejavu-core \
     fontconfig \
     fontconfig-config \
@@ -23,6 +31,3 @@ RUN apt-get update && apt-get install -y --force-yes ttf-mscorefonts-installer \
     xvfb && \
     apt-get clean && \
     rm -Rf /tmp/*
-
-RUN echo 'UTC' | sudo tee /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
-RUN echo "gtk-cursor-blink=0" > /root/.gtkrc-2.0
