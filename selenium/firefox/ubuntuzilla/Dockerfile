@@ -4,6 +4,7 @@ ARG VERSION
 ARG CLEANUP
 
 RUN \
+        ( [ "$CLEANUP" != "true" ] && rm -f /etc/apt/apt.conf.d/docker-clean ) || true && \
         ( \
             wget -O firefox-mozilla-build.deb https://master.dl.sourceforge.net/project/ubuntuzilla/mozilla/apt/pool/main/f/firefox-mozilla-build/firefox-mozilla-build_$VERSION-0ubuntu1_amd64.deb || \
             ( \ 
@@ -15,4 +16,4 @@ RUN \
         ) && \
         dpkg -i firefox-mozilla-build.deb && \
         firefox --version && \
-        ($CLEANUP && apt-get clean && rm -Rf /tmp/*) || true
+        ($CLEANUP && rm -Rf /tmp/*) || true

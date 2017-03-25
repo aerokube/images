@@ -4,6 +4,7 @@ ARG VERSION
 ARG CLEANUP
 
 RUN  \
+        ( [ "$CLEANUP" != "true" ] && rm -f /etc/apt/apt.conf.d/docker-clean ) || true && \
         apt-get update && \
         apt-get -y install firefox=$VERSION && \
-        ($CLEANUP && apt-get clean && rm -Rf /tmp/*) || true
+        ($CLEANUP && rm -Rf /tmp/*) || true
