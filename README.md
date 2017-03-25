@@ -1,5 +1,5 @@
 # Selenoid Docker Containers
-This repository contains example [Docker](http://docker.com/) build files to be used for [Selenoid](http://github.com/aandryashin/selenoid) project.
+This repository contains [Docker](http://docker.com/) build files to be used for [Selenoid](http://github.com/aandryashin/selenoid) project. You can find prebuilt containers [here](https://hub.docker.com/u/selenoid/dashboard/).
 
 ## Firefox Compatibility Table
 
