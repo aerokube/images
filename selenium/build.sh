@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+set -o verbose
 
 download_selenium() {
     selenium_version=$1

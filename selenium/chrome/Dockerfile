@@ -1,7 +1,7 @@
 FROM selenoid/base:1.0
 
 ARG VERSION
-ARG CLEANUP=false
+ARG CLEANUP
 
 RUN \
         wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
@@ -10,4 +10,4 @@ RUN \
         apt-get -y --force-yes install google-chrome-stable=$VERSION && \
         chown root:root /opt/google/chrome/chrome-sandbox && \
         chmod 4755 /opt/google/chrome/chrome-sandbox && \
-        ($CLEANUP && apt-get clean && rm -Rf /tmp/*)
+        ($CLEANUP && apt-get clean && rm -Rf /tmp/*) || true

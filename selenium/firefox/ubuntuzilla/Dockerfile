@@ -1,7 +1,7 @@
 FROM selenoid/base:1.0
 
 ARG VERSION
-ARG CLEANUP=false
+ARG CLEANUP
 
 RUN \
         ( \
