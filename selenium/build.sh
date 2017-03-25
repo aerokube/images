@@ -53,8 +53,8 @@ screen_resolution=${5-"1280x1600x24"}
 port=${5-"4444"}
 dir_name="/tmp/$(uuidgen | sed -e 's|-||g')"
 mkdir -p "$dir_name"
-cat Docker.driver.tmpl | sed -e "s|@@VERSION@@|$version|g" > "$dir_name/Dockerfile"
 pushd "$dir_name"
+template_file="Docker.driver.tmpl"
 if [ "$mode" == "chromedriver" ]; then
     download_chromedriver "$3"
 elif [ "$mode" == "operadriver" ]; then
@@ -63,10 +63,12 @@ elif [ "$mode" == "geckodriver" ]; then
     download_geckodriver "$3"
 elif [ "$mode" == "selenium" ]; then
     download_selenium "$3"
+    template_file="Docker.server.tmpl"
 else
     echo "Unsupported mode: will do nothing. Exiting."
     exit 1
 fi
+cat "$template_file" | sed -e "s|@@VERSION@@|$version|g" > "$dir_name/Dockerfile"
 docker build --build-arg SCREEN_RESOLUTION="$screen_resolution" --build-arg PORT="$port" -t "$tag" .
 popd
 rm -Rf "$dir_name"
