@@ -6,6 +6,8 @@ RUN \
     apt-get clean && \
     rm -Rf /tmp/*
     
+COPY sources.list /etc/apt/
+
 RUN \
     echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections && \
     echo 'UTC' | tee /etc/timezone && \
