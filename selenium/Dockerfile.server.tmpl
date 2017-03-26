@@ -3,16 +3,6 @@ FROM selenoid/dev:firefox_@@VERSION@@
 ARG PORT
 ARG SCREEN_RESOLUTION
 
-# Installing Java
-RUN \
-        apt-key adv --recv-keys --keyserver keyserver.ubuntu.com EEA14886 && \
-        echo 'deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main' > /etc/apt/sources.list.d/webupd8.list && \
-        apt-get update && \
-        echo debconf shared/accepted-oracle-license-v1-1 select true |  debconf-set-selections && \
-        apt-get -y install oracle-java8-installer && \
-        apt-get clean && \
-        rm -Rf /tmp/*
-
 ADD selenium-server-standalone.jar /usr/share/selenium
 
 EXPOSE $PORT
