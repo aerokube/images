@@ -31,4 +31,5 @@ pushd "$dir_name"
 echo "Creating image $tag with cleanup=$cleanup..."
 docker build --build-arg VERSION="$version" --build-arg CLEANUP="$cleanup" -t "$tag" .
 popd
+rm -Rf "$dir_name"
 exit 0
