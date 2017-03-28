@@ -3,7 +3,7 @@ FROM selenoid/dev:chrome_@@VERSION@@
 ARG PORT=4444
 ARG SCREEN_RESOLUTION
 
-ADD chromedriver /usr/bin
+COPY chromedriver /usr/bin/
 
 EXPOSE $PORT
 CMD ["/usr/bin/xvfb-run", "-a", "-s", "'-screen 0 $SCREEN_RESOLUTION -noreset'", "/usr/bin/chromedriver", "--port=$PORT", "--whitelisted-ips=''", "--verbose"]

@@ -3,7 +3,7 @@ FROM selenoid/dev:opera_@@VERSION@@
 ARG PORT
 ARG SCREEN_RESOLUTION
 
-ADD selenium-server-standalone.jar /usr/share/selenium
+COPY selenium-server-standalone.jar /usr/share/selenium/
 
 EXPOSE $PORT
 CMD ["/usr/bin/xvfb-run", "-a", "-s", "'-screen 0 $SCREEN_RESOLUTION -noreset'", "/usr/bin/java", "-jar", "/usr/share/selenium/selenium-server-standalone.jar", "-port", "$PORT", "-timeout", "60", "-browserTimeout", "120", "-newSessionWaitTimeout", "10000"]

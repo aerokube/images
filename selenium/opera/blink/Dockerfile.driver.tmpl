@@ -3,7 +3,7 @@ FROM selenoid/dev:opera_@@VERSION@@
 ARG PORT
 ARG SCREEN_RESOLUTION
 
-ADD operadriver /usr/bin
+COPY operadriver /usr/bin/
 
 EXPOSE $PORT
 CMD ["/usr/bin/xvfb-run", "-a", "-s", "'-screen 0 $SCREEN_RESOLUTION -noreset'", "/usr/bin/operadriver", "--port=$PORT", "--whitelisted-ips=''", "--verbose"]
