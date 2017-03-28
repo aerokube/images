@@ -3,7 +3,7 @@ This repository contains [Docker](http://docker.com/) build files to be used for
 
 ## How containers are built
 
-[[/layers.png]]
+![layers](layers.png)
 
 Each container consists of 3 or 4 layers:
 1) **Base layer** - contains stuff needed in every container: Xvfb, fonts, cursor blinking fix, timezone definition and so on. This layer is always built manually.
