@@ -1,9 +1,6 @@
 FROM selenoid/dev:firefox_@@VERSION@@
 
-ARG PORT
-ARG SCREEN_RESOLUTION
-
 COPY geckodriver /usr/bin/
 
-EXPOSE $PORT
-CMD ["/usr/bin/xvfb-run", "-a", "-s", "'-screen 0 $SCREEN_RESOLUTION -noreset'", "/usr/bin/geckodriver", "--host", "::", "--port", "$PORT", "--log", "debug"]
+EXPOSE 4444
+CMD ["/usr/bin/xvfb-run", "-a", "-s", "'-screen 0 1920x1080x24 -noreset'", "/usr/bin/geckodriver", "--host", "::", "--port", "4444", "--log", "debug"]
