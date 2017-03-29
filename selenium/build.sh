@@ -69,6 +69,9 @@ else
 fi
 popd
 cat "$template_file" | sed -e "s|@@VERSION@@|$version|g" > "$dir_name/Dockerfile"
+if [ -f "entrypoint.sh" ]; then
+    cp entrypoint.sh "$dir_name/entrypoint.sh"
+fi
 pushd "$dir_name"
 docker build -t "$tag" .
 popd
