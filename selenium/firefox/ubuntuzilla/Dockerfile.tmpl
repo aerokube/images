@@ -11,9 +11,15 @@ RUN \
                 wget -O firefox-mozilla-build.deb https://master.dl.sourceforge.net/project/ubuntuzilla/mozilla/apt/pool/main/f/firefox-mozilla-build/firefox-mozilla-build_$VERSION-0ubuntu1_i386.deb && \
                 dpkg --add-architecture i386 && \
                 apt-get update && \
-                apt-get -y install libc6:i386 libncurses5:i386 libstdc++6:i386 libgtk2.0-0:i386 libasound2:i386 libdbus-glib-1-2:i386 libxt6:i386 \                
+                apt-get -y install libc6:i386 libncurses5:i386 libstdc++6:i386 libgtk2.0-0:i386 libasound2:i386 libdbus-glib-1-2:i386 libxt6:i386 && \
+                mkdir flashplayer && \
+                wget -O flashplayer.tar.gz https://fpdownload.adobe.com/pub/flashplayer/pdc/25.0.0.127/flash_player_ppapi_linux.i386.tar.gz && \
+                tar xvzf -C flashplayer flashplayer.tar.gz && \
+                cp flashplayer/libpepflashplayer.so /usr/lib/flashplugin-installer/libflashplayer.so && \
+                rm -Rf flashplayer
             ) \
         ) && \
         dpkg -i firefox-mozilla-build.deb && \
+        rm firefox-mozilla-build.deb && \
         firefox --version && \
         ($CLEANUP && rm -Rf /tmp/*) || true
