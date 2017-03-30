@@ -29,6 +29,7 @@ RUN apt-get update && apt-get install -y ttf-mscorefonts-installer \
     xfonts-base \
     xfonts-encodings \
     xfonts-utils \
+    fonts-noto-hinted \
     flashplugin-installer \
     xvfb && \
     apt-get clean && \
