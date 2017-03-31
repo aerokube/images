@@ -16,7 +16,7 @@ RUN \
                 wget -O flashplayer.tar.gz https://fpdownload.adobe.com/pub/flashplayer/pdc/25.0.0.127/flash_player_ppapi_linux.i386.tar.gz && \
                 tar xvzf -C flashplayer flashplayer.tar.gz && \
                 cp flashplayer/libpepflashplayer.so /usr/lib/flashplugin-installer/libflashplayer.so && \
-                rm -Rf flashplayer
+                rm -Rf flashplayer \
             ) \
         ) && \
         dpkg -i firefox-mozilla-build.deb && \
