@@ -31,5 +31,6 @@ RUN apt-get update && apt-get install -y ttf-mscorefonts-installer \
     xfonts-utils \
     flashplugin-installer \
     xvfb && \
+    fc-cache -f -v && \
     apt-get clean && \
     rm -Rf /tmp/*
