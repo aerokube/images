@@ -6,7 +6,11 @@ ARG CLEANUP
 RUN \
         ( [ "$CLEANUP" != "true" ] && rm -f /etc/apt/apt.conf.d/docker-clean ) || true && \
         ( \
-            wget -O firefox-mozilla-build.deb https://master.dl.sourceforge.net/project/ubuntuzilla/mozilla/apt/pool/main/f/firefox-mozilla-build/firefox-mozilla-build_$VERSION-0ubuntu1_amd64.deb || \
+            ( \
+                wget -O firefox-mozilla-build.deb https://master.dl.sourceforge.net/project/ubuntuzilla/mozilla/apt/pool/main/f/firefox-mozilla-build/firefox-mozilla-build_$VERSION-0ubuntu1_amd64.deb &&
+                 apt-get update && \
+                 apt-get install libgtk-3-0 \
+            ) || \
             ( \ 
                 wget -O firefox-mozilla-build.deb https://master.dl.sourceforge.net/project/ubuntuzilla/mozilla/apt/pool/main/f/firefox-mozilla-build/firefox-mozilla-build_$VERSION-0ubuntu1_i386.deb && \
                 dpkg --add-architecture i386 && \
