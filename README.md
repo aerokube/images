@@ -18,60 +18,57 @@ Building procedure is automated with shell scripts ```selenium/build-dev.sh``` a
 
 | Container | Selenium version | Notes |
 | --------------- | ---------------- | ---------------- |
-| selenoid/firefox:3.6 | 2.20.0 | FF 3.6.16. Dialogs may not work. |
-| selenoid/firefox:4.0 | 2.20.0 | FF 4.0.1 |
-| selenoid/firefox:5.0 | 2.20.0 | FF 5.0.1 |
-| selenoid/firefox:6.0 | 2.20.0 | FF 6.0.2 |
-| selenoid/firefox:7.0 | 2.20.0 | FF 7.0.1 |
-| selenoid/firefox:8.0 | 2.20.0 | FF 8.0.1 |
+| selenoid/firefox:3.6 | 2.20.0 | FF 3.6.16 i386. Dialogs may not work. |
+| selenoid/firefox:4.0 | 2.20.0 | FF 4.0.1 i386 |
+| selenoid/firefox:5.0 | 2.20.0 | FF 5.0.1 i386 |
+| selenoid/firefox:6.0 | 2.20.0 | FF 6.0.2 i386 |
+| selenoid/firefox:7.0 | 2.20.0 | FF 7.0.1 i386 |
+| selenoid/firefox:8.0 | 2.20.0 | FF 8.0.1 i386 |
 | selenoid/firefox:9.0 | 2.20.0 | FF 9.0.1 |
 | selenoid/firefox:10.0 | 2.32.0 | FF 10.0.2 |
-| 11 | 2.32.0 |  |
-| 12 | 2.32.0 |  |
-| 13 | 2.32.0 |  |
-| 14 | 2.32.0 |  |
-| 15 | 2.32.0 |  |
-| 16 | 2.32.0 |  |
-| 17 | 2.32.0 |  |
-| 18 | 2.32.0 |  |
-| 19 | 2.32.0 |  |
-| 20 | 2.32.0 |  |
-| 21 | 2.32.0 |  |
-| 22 | 2.32.0 |  |
-| 23 | 2.35.0 |  |
-| 24 | 2.39.0 |  |
-| 25 | 2.39.0 |  |
-| 26 | 2.39.0 |  |
-| 27 | 2.40.0 |  |
-| 28 | 2.41.0 |  |
-| 29 | 2.43.1 |  |
-| 30 | 2.43.1 |  |
-| 31 | 2.44.0 |  |
-| 32 | 2.44.0 |  |
-| 33 | 2.44.0 |  |
-| 34 | 2.45.0 |  |
-| 35 | 2.45.0 |  |
-| 36 | 2.45.0 |  |
-| 37 | 2.45.0 |  |
-| 38 | 2.45.0 |  |
-| 39 | 2.45.0 |  |
-| 40 | 2.45.0 |  |
-| 41 | 2.45.0 |  |
-| 42 | 2.47.1 |  |
-| 43 | 2.47.1 |  |
-| 44 | 2.53.1 |  |
-| 45 | 2.53.1 |  |
-| 46 | 2.53.1 |  |
-| 47 | 2.53.1 |  |
-
-| Firefox version | Geckodriver version |
-| --------------- | ------------------- |
-| 48 | 0.15.0 |
-| 49 | 0.15.0 |
-| 50 | 0.15.0 |
-| 51 | 0.15.0 |
-| 52 | 0.15.0 |
-
+| selenoid/firefox:11.0 | 2.32.0 | FF 11.0 |
+| selenoid/firefox:12.0 | 2.32.0 | FF 12.0 |
+| selenoid/firefox:13.0 | 2.32.0 | FF 13.0 |
+| selenoid/firefox:14.0 | 2.32.0 | FF 14.0.1 |
+| selenoid/firefox:15.0 | 2.32.0 | FF 15.0.1 |
+| selenoid/firefox:16.0 | 2.32.0 | FF 16.0.2 |
+| selenoid/firefox:17.0 | 2.32.0 | FF 17.0.1 |
+| selenoid/firefox:18.0 | 2.32.0 | FF 18.0.2 |
+| selenoid/firefox:19.0 | 2.32.0 | FF 19.0.2 |
+| selenoid/firefox:20.0 | 2.32.0 | FF 20.0 |
+| selenoid/firefox:21.0 | 2.32.0 | FF 21.0 |
+| selenoid/firefox:22.0 | 2.32.0 | FF 22.0 |
+| selenoid/firefox:23.0 | 2.35.0 |  |
+| selenoid/firefox:24.0 | 2.39.0 |  |
+| selenoid/firefox:25.0 | 2.39.0 |  |
+| selenoid/firefox:26.0 | 2.39.0 |  |
+| selenoid/firefox:27.0 | 2.40.0 |  |
+| selenoid/firefox:28.0 | 2.41.0 |  |
+| selenoid/firefox:29.0 | 2.43.1 |  |
+| selenoid/firefox:30.0 | 2.43.1 |  |
+| selenoid/firefox:31.0 | 2.44.0 |  |
+| selenoid/firefox:32.0 | 2.44.0 |  |
+| selenoid/firefox:33.0 | 2.44.0 |  |
+| selenoid/firefox:34.0 | 2.45.0 |  |
+| selenoid/firefox:35.0 | 2.45.0 |  |
+| selenoid/firefox:36.0 | 2.45.0 |  |
+| selenoid/firefox:37.0 | 2.45.0 |  |
+| selenoid/firefox:38.0 | 2.45.0 |  |
+| selenoid/firefox:39.0 | 2.45.0 |  |
+| selenoid/firefox:40.0 | 2.45.0 |  |
+| selenoid/firefox:41.0 | 2.45.0 |  |
+| selenoid/firefox:42.0 | 2.47.1 |  |
+| selenoid/firefox:43.0 | 2.47.1 |  |
+| selenoid/firefox:44.0 | 2.53.1 |  |
+| selenoid/firefox:45.0 | 2.53.1 |  |
+| selenoid/firefox:46.0 | 2.53.1 |  |
+| selenoid/firefox:47.0 | 2.53.1 |  |
+| 48 | 3.3.1 + GD 0.15.0 |  |
+| 49 | 3.3.1 + GD 0.15.0 |  |
+| 50 | 3.3.1 + GD 0.15.0 |  |
+| 51 | 3.3.1 + GD 0.15.0 |  |
+| 52 | 3.3.1 + GD 0.15.0 |  |
+  |
 ### Chrome
 
 | Chrome version | Chromedriver version |
