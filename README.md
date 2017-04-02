@@ -46,12 +46,12 @@ Building procedure is automated with shell scripts ```selenium/build-dev.sh``` a
 | selenoid/firefox:28.0 | 2.41.0 | 28.0 |
 | selenoid/firefox:29.0 | 2.43.1 | 29.0.1 |
 | selenoid/firefox:30.0 | 2.43.1 | 30.0 |
-| selenoid/firefox:31.0 | 2.44.0 |  |
-| selenoid/firefox:32.0 | 2.44.0 |  |
-| selenoid/firefox:33.0 | 2.44.0 |  |
-| selenoid/firefox:34.0 | 2.45.0 |  |
-| selenoid/firefox:35.0 | 2.45.0 |  |
-| selenoid/firefox:36.0 | 2.45.0 |  |
+| selenoid/firefox:31.0 | 2.44.0 | 31.0 |
+| selenoid/firefox:32.0 | 2.44.0 | 32.0.3 |
+| selenoid/firefox:33.0 | 2.44.0 | 33.0.3 |
+| selenoid/firefox:34.0 | 2.45.0 | 34.0.5 |
+| selenoid/firefox:35.0 | 2.45.0 | 35.0.1 |
+| selenoid/firefox:36.0 | 2.45.0 | 36.0.1 |
 | selenoid/firefox:37.0 | 2.45.0 |  |
 | selenoid/firefox:38.0 | 2.45.0 |  |
 | selenoid/firefox:39.0 | 2.45.0 |  |
