@@ -11,21 +11,21 @@ Each container consists of 3 or 4 layers:
 3) **Browser layer** - contains browser binary. We create two versions: with APT cache and without it. The latter is then used to add driver layer.
 4) **Driver layer** - container either respective web driver binary or corresponding Selenium server version.
 
-Building procedure is automated with shell scripts ```selenium/build-dev.sh``` and ```selenium/build.sh``` that generate Dockerfile and then create browser and driver layers respectively.
+Building procedure is automated with shell scripts ```selenium/build-dev.sh``` and ```selenium/build.sh``` that generate Dockerfile and then create browser and driver layers respectively. Before push each container is tested with these [tests](https://github.com/aerokube/selenoid-container-tests).
 
 ## Container information
 ### Firefox
 
-| Firefox version | Selenium version | Notes |
+| Container | Selenium version | Notes |
 | --------------- | ---------------- | ---------------- |
-| 3.6 | 2.21.0 | FF 3.6.16. Drag&drop, dialogs may not work. |
-| 4 | 2.32.0 |  |
-| 5 | 2.32.0 |  |
-| 6 | 2.32.0 |  |
-| 7 | 2.32.0 |  |
-| 8 | 2.32.0 |  |
-| 9 | 2.32.0 |  |
-| 10 | 2.32.0 |  |
+| selenoid/firefox:3.6 | 2.20.0 | FF 3.6.16. Dialogs may not work. |
+| selenoid/firefox:4.0 | 2.20.0 | FF 4.0.1 |
+| selenoid/firefox:5.0 | 2.20.0 | FF 5.0.1 |
+| selenoid/firefox:6.0 | 2.20.0 | FF 6.0.2 |
+| selenoid/firefox:7.0 | 2.20.0 | FF 7.0.1 |
+| selenoid/firefox:8.0 | 2.20.0 | FF 8.0.1 |
+| selenoid/firefox:9.0 | 2.20.0 | FF 9.0.1 |
+| selenoid/firefox:10.0 | 2.32.0 | FF 10.0.2 |
 | 11 | 2.32.0 |  |
 | 12 | 2.32.0 |  |
 | 13 | 2.32.0 |  |
