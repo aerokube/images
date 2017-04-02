@@ -52,10 +52,10 @@ Building procedure is automated with shell scripts ```selenium/build-dev.sh``` a
 | selenoid/firefox:34.0 | 2.45.0 | 34.0.5 |
 | selenoid/firefox:35.0 | 2.45.0 | 35.0.1 |
 | selenoid/firefox:36.0 | 2.45.0 | 36.0.1 |
-| selenoid/firefox:37.0 | 2.45.0 |  |
-| selenoid/firefox:38.0 | 2.45.0 |  |
-| selenoid/firefox:39.0 | 2.45.0 |  |
-| selenoid/firefox:40.0 | 2.45.0 |  |
+| selenoid/firefox:37.0 | 2.45.0 | 37.0.2 |
+| selenoid/firefox:38.0 | 2.45.0 | 38.0.5 |
+| selenoid/firefox:39.0 | 2.45.0 | 39.0.3 |
+| selenoid/firefox:40.0 | 2.45.0 | 40.0.3 |
 | selenoid/firefox:41.0 | 2.45.0 |  |
 | selenoid/firefox:42.0 | 2.47.1 |  |
 | selenoid/firefox:43.0 | 2.47.1 |  |
