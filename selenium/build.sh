@@ -5,7 +5,7 @@ download_selenium() {
     selenium_version=$1
     url=""
     case "$selenium_version" in
-        "2.15.0" | "2.19.0" | "2.20.0" | "2.21.0" | "2.25.0" | "2.32.0" | "2.35.0" | "2.39.0" | "2.40.0" | "2.41.0" | "2.43.1" | "2.44.0" | "2.45.0" | "")
+        "2.15.0" | "2.19.0" | "2.20.0" | "2.21.0" | "2.25.0" | "2.32.0" | "2.35.0" | "2.39.0" | "2.40.0" | "2.41.0" | "2.43.1" | "2.44.0" | "2.45.0" | "2.48.2")
             url="https://repo.jenkins-ci.org/releases/org/seleniumhq/selenium/selenium-server-standalone/$selenium_version/selenium-server-standalone-$selenium_version.jar"
             ;;
         "2.47.1")
