@@ -1,5 +1,6 @@
 FROM selenoid/dev:firefox_@@VERSION@@
 
+COPY selenium-server-standalone.jar /usr/share/selenium/
 COPY geckodriver /usr/bin/
 COPY entrypoint.sh /
 

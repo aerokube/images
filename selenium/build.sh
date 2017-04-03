@@ -52,7 +52,7 @@ set -x
 mode=$1
 version=$2
 tag=$4
-port=${5-"4444"}
+driver_version=${5:-""}
 dir_name="/tmp/$(uuidgen | sed -e 's|-||g')"
 mkdir -p "$dir_name"
 pushd "$dir_name"
@@ -61,8 +61,9 @@ if [ "$mode" == "chromedriver" ]; then
     download_chromedriver "$3"
 elif [ "$mode" == "operadriver" ]; then
     download_operadriver "$3"
-elif [ "$mode" == "geckodriver" -o "$mode" == "server_driver" ]; then
-    download_geckodriver "$3"
+elif [ "$mode" == "geckodriver" -o "$mode" == "gecko+selenium" ]; then
+    download_selenium "$3"
+    download_geckodriver "$5"
 elif [ "$mode" == "selenium" ]; then
     download_selenium "$3"
     template_file="Dockerfile.server.tmpl"
