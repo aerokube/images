@@ -64,6 +64,7 @@ elif [ "$mode" == "operadriver" ]; then
 elif [ "$mode" == "geckodriver" -o "$mode" == "gecko+selenium" ]; then
     download_selenium "$3"
     download_geckodriver "$5"
+    template_file="Dockerfile.server.tmpl"
 elif [ "$mode" == "selenium" ]; then
     download_selenium "$3"
     template_file="Dockerfile.server.tmpl"
