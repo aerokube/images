@@ -63,10 +63,10 @@ Building procedure is automated with shell scripts ```selenium/build-dev.sh``` a
 | selenoid/firefox:45.0 | 2.53.1 | 45.0.2 |
 | selenoid/firefox:46.0 | 2.53.1 | 46.0.1 |
 | selenoid/firefox:47.0 | 2.53.1 | 47.0.1 |
-| selenoid/firefox:48.0 | 3.3.1 + GD 0.15.0 | 48.0.2 |
-| selenoid/firefox:49.0 | 3.3.1 + GD 0.15.0 | 49.0.2 |
-| selenoid/firefox:50.0 | 3.3.1 + GD 0.15.0 | 50.0.2 |
-| selenoid/firefox:51.0 | 3.3.1 + GD 0.15.0 | 51.0.1 |
+| selenoid/firefox:48.0 | 3.2.0 + GD 0.14.0 | 48.0.2 |
+| selenoid/firefox:49.0 | 3.2.0 + GD 0.14.0 | 49.0.2 |
+| selenoid/firefox:50.0 | 3.2.0 + GD 0.14.0 | 50.0.2 |
+| selenoid/firefox:51.0 | 3.2.0 + GD 0.14.0 | 51.0.1 |
 | selenoid/firefox:52.0 | 3.3.1 + GD 0.15.0 | 52.0.2 |
 
 ### Chrome

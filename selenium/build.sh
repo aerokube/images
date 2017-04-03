@@ -14,6 +14,9 @@ download_selenium() {
         "2.53.1")
             url="http://selenium-release.storage.googleapis.com/2.53/selenium-server-standalone-2.53.1.jar"
             ;;
+        "3.2.0")
+            url="http://selenium-release.storage.googleapis.com/3.2/selenium-server-standalone-3.2.0.jar"
+            ;;
         "3.3.1")
             url="http://selenium-release.storage.googleapis.com/3.3/selenium-server-standalone-3.3.1.jar"
             ;;
