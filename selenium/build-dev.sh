@@ -29,7 +29,7 @@ else
 fi
 pushd "$dir_name"
 echo "Creating image $tag with cleanup=$cleanup..."
-docker build --build-arg VERSION="$version" --build-arg CLEANUP="$cleanup" -t "$tag" .
+docker build --build-arg VERSION="$version" --build-arg CLEANUP="$cleanup" -t "$tag" --no-cache .
 popd
 rm -Rf "$dir_name"
 exit 0
