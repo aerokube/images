@@ -61,7 +61,7 @@ if [ "$mode" == "chromedriver" ]; then
     download_chromedriver "$3"
 elif [ "$mode" == "operadriver" ]; then
     download_operadriver "$3"
-elif [ "$mode" == "geckodriver" ]; then
+elif [ "$mode" == "geckodriver" -o "$mode" == "server_driver" ]; then
     download_geckodriver "$3"
 elif [ "$mode" == "selenium" ]; then
     download_selenium "$3"
