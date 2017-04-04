@@ -84,40 +84,28 @@ Building procedure is automated with shell scripts ```selenium/build-dev.sh``` a
 | selenoid/chrome:56.0 | 2.28 | 56.0.2924.87 |
 | selenoid/chrome:57.0 | 2.28 | 57.0.2987.110 |
 
+**Note:** containers for older Chrome versions were not built because we have no Debian packages. If you have such packages - we could create more containers.
+
 ### Opera
 
-| Container | Selenium version |
-| --------- | ---------------- |
-| selenoid/opera:12.16 | 2.35.0 |
+| Container | Selenium version | Opera version |
+| --------- | ---------------- | ------------- |
+| selenoid/opera:12.16 | 2.35.0 | 12.16.1860 |
 
-| Container | Operadriver version |
-| --------- | ------------------- |
-| selenoid/opera:15.0 | 0.2.2 |
-| selenoid/opera:16.0 | 0.2.2 |
-| selenoid/opera:17.0 | 0.2.2 |
-| selenoid/opera:18.0 | 0.2.2 |
-| selenoid/opera:19.0 | 0.2.2 |
-| selenoid/opera:20.0 | 0.2.2 |
-| selenoid/opera:21.0 | 0.2.2 |
-| selenoid/opera:22.0 | 0.2.2 |
-| selenoid/opera:23.0 | 0.2.2 |
-| selenoid/opera:24.0 | 0.2.2 |
-| selenoid/opera:25.0 | 0.2.2 |
-| selenoid/opera:26.0 | 0.2.2 |
-| selenoid/opera:27.0 | 0.2.2 |
-| selenoid/opera:28.0 | 0.2.2 |
-| selenoid/opera:29.0 | 0.2.2 |
-| selenoid/opera:30.0 | 0.2.2 |
-| selenoid/opera:32.0 | 0.2.2 |
-| selenoid/opera:33.0 | 0.2.2 |
-| selenoid/opera:34.0 | 0.2.2 |
-| selenoid/opera:35.0 | 0.2.2 |
-| selenoid/opera:36.0 | 0.2.2 |
-| selenoid/opera:37.0 | 0.2.2 |
-| selenoid/opera:38.0 | 0.2.2 |
-| selenoid/opera:39.0 | 0.2.2 |
-| selenoid/opera:40.0 | 0.2.2 |
-| selenoid/opera:41.0 | 0.2.2 |
-| selenoid/opera:42.0 | 0.2.2 |
-| selenoid/opera:43.0 | 0.2.2 |
-| selenoid/opera:44.0 | 0.2.2 |
+| Container | Operadriver version | Opera version |
+| --------- | ------------------- | ------------- |
+| selenoid/opera:32.0 | 0.2.2 | 32.0.1948.69 |
+| selenoid/opera:33.0 | 0.2.2 | 33.0.1990.115 |
+| selenoid/opera:34.0 | 0.2.2 | 34.0.2036.50 |
+| selenoid/opera:35.0 | 0.2.2 | 35.0.2066.92 |
+| selenoid/opera:36.0 | 0.2.2 | 36.0.2130.65 |
+| selenoid/opera:37.0 | 0.2.2 | 37.0.2178.54 |
+| selenoid/opera:38.0 | 0.2.2 | 38.0.2220.41 |
+| selenoid/opera:39.0 | 0.2.2 | 39.0.2256.71 |
+| selenoid/opera:40.0 | 0.2.2 | 40.0.2308.90 |
+| selenoid/opera:41.0 | 0.2.2 | 41.0.2353.69 |
+| selenoid/opera:42.0 | 0.2.2 | 42.0.2393.94 |
+| selenoid/opera:43.0 | 0.2.2 | 43.0.2442.991 |
+| selenoid/opera:44.0 | 0.2.2 | 44.0.2510.857 |
+
+**Note:** containers for older Opera versions were not built because we have no Debian packages. If you have such packages - we could create more containers.
