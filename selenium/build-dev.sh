@@ -26,7 +26,8 @@ if [ "$browser" == "firefox/ubuntuzilla" ]; then
     cat "$browser/Dockerfile.tmpl" | sed -e "s|@@REQUIRES_JAVA@@|$requires_java_value|g" > "$dir_name/Dockerfile"
 else
     if [ "$browser" == "chrome/local" ]; then
-        cp "$browser/*.deb" "$dir_name"
+        debWildcard="$browser/*.deb"
+        cp $debWildcard $browser"/*.deb" "$dir_name"
     fi
     cp "$browser/Dockerfile" "$dir_name"
 fi

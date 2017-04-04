@@ -44,7 +44,8 @@ RUN \
          libappindicator1 \
          libnss3 \
          lsb-base \
-         xdg-utils && \
+         xdg-utils \
+         libcurl3 && \
         dpkg -i google-chrome-stable.deb && \
         chown root:root /opt/google/chrome/chrome-sandbox && \
         chmod 4755 /opt/google/chrome/chrome-sandbox && \
