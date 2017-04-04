@@ -1,5 +1,6 @@
 FROM selenoid/base:1.0
 
+ARG VERSION=noop
 ARG CLEANUP
 
 COPY google-chrome-stable.deb / 
@@ -49,4 +50,5 @@ RUN \
         dpkg -i google-chrome-stable.deb && \
         chown root:root /opt/google/chrome/chrome-sandbox && \
         chmod 4755 /opt/google/chrome/chrome-sandbox && \
+        google-chrome-stable --version && \
         ($CLEANUP && rm -Rf /tmp/* && rm /google-chrome-stable.deb) || true

@@ -26,6 +26,5 @@ RUN \
             ) \
         ) && \
         dpkg -i firefox-mozilla-build.deb && \
-        rm firefox-mozilla-build.deb && \
         firefox --version && \
-        ($CLEANUP && rm -Rf /tmp/*) || true
+        ($CLEANUP && rm -Rf /tmp/* && rm firefox-mozilla-build.deb) || true
