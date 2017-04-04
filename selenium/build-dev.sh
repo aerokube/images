@@ -27,7 +27,7 @@ if [ "$browser" == "firefox/ubuntuzilla" ]; then
 else
     if [ "$browser" == "chrome/local" ]; then
         debWildcard="$browser/*.deb"
-        cp $debWildcard $browser"/*.deb" "$dir_name"
+        cp $debWildcard "$dir_name"
     fi
     cp "$browser/Dockerfile" "$dir_name"
 fi
