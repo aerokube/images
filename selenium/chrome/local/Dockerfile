@@ -45,11 +45,7 @@ RUN \
          lsb-base \
          xdg-utils \
          libcurl3 && \
-        dpkg -i google-chrome-stable.deb && \
-        chown root:root /opt/google/chrome/chrome-sandbox && \
-        chmod 4755 /opt/google/chrome/chrome-sandbox && \
-        google-chrome-stable --version && \
-        ($CLEANUP && rm -Rf /tmp/* && rm /google-chrome-stable.deb) || true
+        ($CLEANUP && rm -Rf /tmp/*) || true
         
 COPY google-chrome-stable.deb /
 
