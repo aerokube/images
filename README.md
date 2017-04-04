@@ -71,37 +71,18 @@ Building procedure is automated with shell scripts ```selenium/build-dev.sh``` a
 
 ### Chrome
 
-| Container | Chromedriver version |
-| --------- | -------------------- |
-| selenoid/chrome:29.0 | 2.6 |
-| selenoid/chrome:30.0 | 2.8 |
-| selenoid/chrome:31.0 | 2.9 |
-| selenoid/chrome:32.0 | 2.9 |
-| selenoid/chrome:33.0 | 2.10 |
-| selenoid/chrome:34.0 | 2.10 |
-| selenoid/chrome:35.0 | 2.10 |
-| selenoid/chrome:36.0 | 2.12 |
-| selenoid/chrome:37.0 | 2.12 |
-| selenoid/chrome:38.0 | 2.13 |
-| selenoid/chrome:39.0 | 2.14 |
-| selenoid/chrome:40.0 | 2.15 |
-| selenoid/chrome:41.0 | 2.15 |
-| selenoid/chrome:42.0 | 2.16 |
-| selenoid/chrome:43.0 | 2.20 |
-| selenoid/chrome:44.0 | 2.20 |
-| selenoid/chrome:45.0 | 2.20 |
-| selenoid/chrome:46.0 | 2.21 |
-| selenoid/chrome:47.0 | 2.21 |
-| selenoid/chrome:48.0 | 2.21 |
-| selenoid/chrome:49.0 | 2.22 |
-| selenoid/chrome:50.0 | 2.22 |
-| selenoid/chrome:51.0 | 2.23 |
-| selenoid/chrome:52.0 | 2.24 |
-| selenoid/chrome:53.0 | 2.26 |
-| selenoid/chrome:54.0 | 2.27 |
-| selenoid/chrome:55.0 | 2.28 |
-| selenoid/chrome:56.0 | 2.28 |
-| selenoid/chrome:57.0 | 2.28 |
+| Container | Chromedriver version | Chrome version |
+| --------- | -------------------- | -------------- |
+| selenoid/chrome:48.0 | 2.21 | 48.0.2564.116 |
+| selenoid/chrome:49.0 | 2.22 | 49.0.2623.112 |
+| selenoid/chrome:50.0 | 2.22 | 50.0.2661.94 |
+| selenoid/chrome:51.0 | 2.23 | 51.0.2704.106 |
+| selenoid/chrome:52.0 | 2.24 | 52.0.2743.116 |
+| selenoid/chrome:53.0 | 2.26 | 53.0.2785.143 |
+| selenoid/chrome:54.0 | 2.27 | 54.0.2840.100 |
+| selenoid/chrome:55.0 | 2.28 | 55.0.2883.87 |
+| selenoid/chrome:56.0 | 2.28 | 56.0.2924.87 |
+| selenoid/chrome:57.0 | 2.28 | 57.0.2987.110 |
 
 ### Opera
 
