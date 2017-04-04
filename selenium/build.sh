@@ -55,7 +55,6 @@ set -x
 mode=$1
 version=$2
 tag=$4
-driver_version=${5:-""}
 dir_name="/tmp/$(uuidgen | sed -e 's|-||g')"
 mkdir -p "$dir_name"
 pushd "$dir_name"

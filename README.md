@@ -71,72 +71,72 @@ Building procedure is automated with shell scripts ```selenium/build-dev.sh``` a
 
 ### Chrome
 
-| Chrome version | Chromedriver version |
-| -------------- | -------------------- |
-| 29 | 2.6 |
-| 30 | 2.8 |
-| 31 | 2.9 |
-| 32 | 2.9 |
-| 33 | 2.10 |
-| 34 | 2.10 |
-| 35 | 2.10 |
-| 36 | 2.12 |
-| 37 | 2.12 |
-| 38 | 2.13 |
-| 39 | 2.14 |
-| 40 | 2.15 |
-| 41 | 2.15 |
-| 42 | 2.16 |
-| 43 | 2.20 |
-| 44 | 2.20 |
-| 45 | 2.20 |
-| 46 | 2.21 |
-| 47 | 2.21 |
-| 48 | 2.21 |
-| 49 | 2.22 |
-| 50 | 2.22 |
-| 51 | 2.23 |
-| 52 | 2.24 |
-| 53 | 2.26 |
-| 54 | 2.27 |
-| 55 | 2.28 |
-| 56 | 2.28 |
-| 57 | 2.28 |
+| Container | Chromedriver version |
+| --------- | -------------------- |
+| selenoid/chrome:29.0 | 2.6 |
+| selenoid/chrome:30.0 | 2.8 |
+| selenoid/chrome:31.0 | 2.9 |
+| selenoid/chrome:32.0 | 2.9 |
+| selenoid/chrome:33.0 | 2.10 |
+| selenoid/chrome:34.0 | 2.10 |
+| selenoid/chrome:35.0 | 2.10 |
+| selenoid/chrome:36.0 | 2.12 |
+| selenoid/chrome:37.0 | 2.12 |
+| selenoid/chrome:38.0 | 2.13 |
+| selenoid/chrome:39.0 | 2.14 |
+| selenoid/chrome:40.0 | 2.15 |
+| selenoid/chrome:41.0 | 2.15 |
+| selenoid/chrome:42.0 | 2.16 |
+| selenoid/chrome:43.0 | 2.20 |
+| selenoid/chrome:44.0 | 2.20 |
+| selenoid/chrome:45.0 | 2.20 |
+| selenoid/chrome:46.0 | 2.21 |
+| selenoid/chrome:47.0 | 2.21 |
+| selenoid/chrome:48.0 | 2.21 |
+| selenoid/chrome:49.0 | 2.22 |
+| selenoid/chrome:50.0 | 2.22 |
+| selenoid/chrome:51.0 | 2.23 |
+| selenoid/chrome:52.0 | 2.24 |
+| selenoid/chrome:53.0 | 2.26 |
+| selenoid/chrome:54.0 | 2.27 |
+| selenoid/chrome:55.0 | 2.28 |
+| selenoid/chrome:56.0 | 2.28 |
+| selenoid/chrome:57.0 | 2.28 |
 
 ### Opera
 
-| Opera Presto version | Selenium version |
-| --------------------- | ---------------- |
-| 12.16 | 2.35.0 |
+| Container | Selenium version |
+| --------- | ---------------- |
+| selenoid/opera:12.16 | 2.35.0 |
 
-| Opera Blink version | Operadriver version |
-| ------------------- | ------------------- |
-| 15 | 0.2.2 |
-| 16 | 0.2.2 |
-| 17 | 0.2.2 |
-| 18 | 0.2.2 |
-| 19 | 0.2.2 |
-| 20 | 0.2.2 |
-| 21 | 0.2.2 |
-| 22 | 0.2.2 |
-| 23 | 0.2.2 |
-| 24 | 0.2.2 |
-| 25 | 0.2.2 |
-| 26 | 0.2.2 |
-| 27 | 0.2.2 |
-| 28 | 0.2.2 |
-| 29 | 0.2.2 |
-| 30 | 0.2.2 |
-| 32 | 0.2.2 |
-| 33 | 0.2.2 |
-| 34 | 0.2.2 |
-| 35 | 0.2.2 |
-| 36 | 0.2.2 |
-| 37 | 0.2.2 |
-| 38 | 0.2.2 |
-| 39 | 0.2.2 |
-| 40 | 0.2.2 |
-| 41 | 0.2.2 |
-| 42 | 0.2.2 |
-| 43 | 0.2.2 |
-| 44 | 0.2.2 |
+| Container | Operadriver version |
+| --------- | ------------------- |
+| selenoid/opera:15.0 | 0.2.2 |
+| selenoid/opera:16.0 | 0.2.2 |
+| selenoid/opera:17.0 | 0.2.2 |
+| selenoid/opera:18.0 | 0.2.2 |
+| selenoid/opera:19.0 | 0.2.2 |
+| selenoid/opera:20.0 | 0.2.2 |
+| selenoid/opera:21.0 | 0.2.2 |
+| selenoid/opera:22.0 | 0.2.2 |
+| selenoid/opera:23.0 | 0.2.2 |
+| selenoid/opera:24.0 | 0.2.2 |
+| selenoid/opera:25.0 | 0.2.2 |
+| selenoid/opera:26.0 | 0.2.2 |
+| selenoid/opera:27.0 | 0.2.2 |
+| selenoid/opera:28.0 | 0.2.2 |
+| selenoid/opera:29.0 | 0.2.2 |
+| selenoid/opera:30.0 | 0.2.2 |
+| selenoid/opera:32.0 | 0.2.2 |
+| selenoid/opera:33.0 | 0.2.2 |
+| selenoid/opera:34.0 | 0.2.2 |
+| selenoid/opera:35.0 | 0.2.2 |
+| selenoid/opera:36.0 | 0.2.2 |
+| selenoid/opera:37.0 | 0.2.2 |
+| selenoid/opera:38.0 | 0.2.2 |
+| selenoid/opera:39.0 | 0.2.2 |
+| selenoid/opera:40.0 | 0.2.2 |
+| selenoid/opera:41.0 | 0.2.2 |
+| selenoid/opera:42.0 | 0.2.2 |
+| selenoid/opera:43.0 | 0.2.2 |
+| selenoid/opera:44.0 | 0.2.2 |
