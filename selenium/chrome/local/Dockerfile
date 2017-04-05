@@ -6,7 +6,7 @@ ARG CLEANUP
 RUN \
         ( [ "$CLEANUP" != "true" ] && rm -f /etc/apt/apt.conf.d/docker-clean ) || true && \
         apt-get update && \
-        apt-get -y install gconf-service \
+        apt-get -y --no-install-recommends install gconf-service \
          libasound2 \
          libatk1.0-0 \
          libc6 \
