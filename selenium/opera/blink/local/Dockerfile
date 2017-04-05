@@ -46,12 +46,10 @@ RUN \
          libcurl3 && \
          rm -Rf /tmp/*
         
-COPY google-chrome-stable.deb /
+COPY opera-stable.deb /
 
 RUN \
-        dpkg -i google-chrome-stable.deb && \
-        chown root:root /opt/google/chrome/chrome-sandbox && \
-        chmod 4755 /opt/google/chrome/chrome-sandbox && \
-        google-chrome-stable --version && \
+        dpkg -i opera-stable.deb && \
+        opera --version && \
         rm -Rf /tmp/*
 

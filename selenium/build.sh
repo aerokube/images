@@ -80,7 +80,7 @@ if [ -f "entrypoint.sh" ]; then
     cp entrypoint.sh "$dir_name/entrypoint.sh"
 fi
 pushd "$dir_name"
-docker build -t "$tag" --no-cache .
+docker build -t "$tag" .
 popd
 rm -Rf "$dir_name"
 exit 0

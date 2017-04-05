@@ -75,7 +75,7 @@ Building procedure is automated with shell scripts ```selenium/build-dev.sh``` a
 | --------- | -------------------- | -------------- |
 | selenoid/chrome:48.0 | 2.21 | 48.0.2564.116 |
 | selenoid/chrome:49.0 | 2.22 | 49.0.2623.112 |
-| selenoid/chrome:50.0 | 2.22 | 50.0.2661.94 |
+| selenoid/chrome:50.0 | 2.22 | 50.0.2661.102 |
 | selenoid/chrome:51.0 | 2.23 | 51.0.2704.106 |
 | selenoid/chrome:52.0 | 2.24 | 52.0.2743.116 |
 | selenoid/chrome:53.0 | 2.26 | 53.0.2785.143 |

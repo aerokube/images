@@ -2,7 +2,7 @@
 set -e
 
 if [ -z "$1" -o -z "$2" ]; then
-    echo 'Usage: build-dev.sh {firefox/official|firefox/ubuntuzilla|chrome/apt|chrome/local|opera/presto|opera/blink} <browser_version> [<cleanup={true|false}>] [<requires_java={true|false}>]'
+    echo 'Usage: build-dev.sh {firefox/official|firefox/ubuntuzilla|chrome/apt|chrome/local|opera/presto|opera/blink/local|opera/blink/apt} <browser_version> [<cleanup={true|false}>] [<requires_java={true|false}>]'
     exit 1
 fi
 set -x
@@ -25,7 +25,7 @@ if [ "$browser" == "firefox/ubuntuzilla" ]; then
     fi
     cat "$browser/Dockerfile.tmpl" | sed -e "s|@@REQUIRES_JAVA@@|$requires_java_value|g" > "$dir_name/Dockerfile"
 else
-    if [ "$browser" == "chrome/local" ]; then
+    if [ "$browser" == "chrome/local" -o "$browser" == "opera/blink/local" ]; then
         debWildcard="$browser/*.deb"
         cp $debWildcard "$dir_name"
     fi
@@ -33,7 +33,7 @@ else
 fi
 pushd "$dir_name"
 echo "Creating image $tag with cleanup=$cleanup..."
-docker build --build-arg VERSION="$version" --build-arg CLEANUP="$cleanup" -t "$tag" --no-cache .
+docker build --build-arg VERSION="$version" --build-arg CLEANUP="$cleanup" -t "$tag" .
 popd
 rm -Rf "$dir_name"
 exit 0
