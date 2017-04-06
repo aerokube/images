@@ -90,7 +90,7 @@ Building procedure is automated with shell scripts ```selenium/build-dev.sh``` a
 
 | Container | Selenium version | Opera version |
 | --------- | ---------------- | ------------- |
-| selenoid/opera:12.16 | 2.37.0 | 12.16.1860 |
+| selenoid/opera:12.16 | 2.37.0 | 12.16.1860 (dialogs and probably async JS don't work) |
 
 | Container | Operadriver version | Opera version |
 | --------- | ------------------- | ------------- |
