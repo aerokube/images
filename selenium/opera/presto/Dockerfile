@@ -5,7 +5,7 @@ ARG CLEANUP
 
 RUN  \
         ( [ "$CLEANUP" != "true" ] && rm -f /etc/apt/apt.conf.d/docker-clean ) || true && \
-        wget -O- http://deb.opera.com/archive.key | apt-key add -A && \
+        wget -O- http://deb.opera.com/archive.key | apt-key add - && \
         echo 'deb http://deb.opera.com/opera/ stable non-free' >> /etc/apt/sources.list.d/opera.list && \
         apt-get update && \
         apt-get -y install opera=$VERSION && \
