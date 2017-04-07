@@ -11,7 +11,7 @@ browser=$1
 version=$2
 cleanup=${3:-"false"}
 requires_java=${4:-"false"}
-browser_name=$(echo "$browser" | sed -e 's/\(..*\)\/..*/\1/g')
+browser_name=$(echo "$browser" | sed -e 's/\(\/..*\)\+//g')
 tag="selenoid/dev:"$browser_name"_"$version
 if [ "$cleanup" == "false" ]; then
     tag=$tag"_full"
