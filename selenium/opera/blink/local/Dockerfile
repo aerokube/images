@@ -40,7 +40,7 @@ RUN \
          libxtst6 \
          debconf \
          gnupg \
-         libudev0 \
+         libudev1 \
          ca-certificates \
          fonts-liberation \
          libappindicator1 \
