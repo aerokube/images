@@ -22,6 +22,7 @@ RUN \
          libgtk2.0-0 \
          libnspr4 \
          libnss3 \
+         libnotify4 \
          libpango1.0-0 \
          libstdc++6 \
          libx11-6 \
@@ -37,6 +38,9 @@ RUN \
          libxrender1 \
          libxss1 \
          libxtst6 \
+         debconf \
+         gnupg \
+         libudev0 \
          ca-certificates \
          fonts-liberation \
          libappindicator1 \
