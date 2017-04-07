@@ -43,8 +43,9 @@ download_chromedriver() {
 download_operadriver() {
     wget -O operadriver.zip https://github.com/operasoftware/operachromiumdriver/releases/download/v$1/operadriver_linux64.zip
     unzip operadriver.zip
+    cp operadriver_linux64/operadriver ./operadriver
     chmod +x operadriver
-    rm operadriver.zip
+    rm -Rf operadriver.zip operadriver_linux64
 }
 
 if [ -z "$1" -o -z "$2" -o -z "$3" -o -z "$4" ]; then
