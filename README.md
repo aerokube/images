@@ -92,6 +92,10 @@ Building procedure is automated with shell scripts ```selenium/build-dev.sh``` a
 | --------- | ---------------- | ------------- |
 | selenoid/opera:12.16 | 2.37.0 | 12.16.1860 (dialogs and probably async JS don't work) |
 
+Due to bug in Operadriver to work with Opera Blink containers you need to pass additional capability:
+```
+{"browserName": "operablink", "operaOptions": {"binary": "/usr/bin/opera"}}
+```
 | Container | Operadriver version | Opera version |
 | --------- | ------------------- | ------------- |
 | selenoid/opera:32.0 | 0.2.2 | 32.0.1948.69 |
