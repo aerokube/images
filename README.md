@@ -96,9 +96,9 @@ Due to bug in Operadriver to work with Opera Blink containers you need to pass a
 ```
 {"browserName": "operablink", "operaOptions": {"binary": "/usr/bin/opera"}}
 ```
+We do not consider these containers really stable. Many of base operations like working with proxies may not work.
 | Container | Operadriver version | Opera version |
 | --------- | ------------------- | ------------- |
-| selenoid/opera:32.0 | 0.2.2 | 32.0.1948.69 |
 | selenoid/opera:33.0 | 0.2.2 | 33.0.1990.115 |
 | selenoid/opera:34.0 | 0.2.2 | 34.0.2036.50 |
 | selenoid/opera:35.0 | 0.2.2 | 35.0.2066.92 |
@@ -107,9 +107,9 @@ Due to bug in Operadriver to work with Opera Blink containers you need to pass a
 | selenoid/opera:38.0 | 0.2.2 | 38.0.2220.41 |
 | selenoid/opera:39.0 | 0.2.2 | 39.0.2256.71 |
 | selenoid/opera:40.0 | 0.2.2 | 40.0.2308.90 |
-| selenoid/opera:41.0 | 0.2.2 | 41.0.2353.69 |
-| selenoid/opera:42.0 | 0.2.2 | 42.0.2393.94 |
-| selenoid/opera:43.0 | 0.2.2 | 43.0.2442.991 |
-| selenoid/opera:44.0 | 0.2.2 | 44.0.2510.857 |
+| selenoid/opera:41.0 | 2.27 | 41.0.2353.69 |
+| selenoid/opera:42.0 | 2.27 | 42.0.2393.94 |
+| selenoid/opera:43.0 | 2.27 | 43.0.2442.991 |
+| selenoid/opera:44.0 | 2.27 | 44.0.2510.857 |
 
 **Note:** containers for older Opera versions were not built because we have no Debian packages. If you have such packages - we could create more containers.
