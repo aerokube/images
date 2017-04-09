@@ -9,4 +9,5 @@ RUN  \
         echo 'deb http://deb.opera.com/opera-stable/ stable non-free' > /etc/apt/sources.list.d/opera-blink.list && \
         apt-get update && \
         apt-get -y --no-install-recommends install opera-stable=$VERSION && \
+        opera --version && \
         ($CLEANUP && rm -Rf /tmp/*) || true
