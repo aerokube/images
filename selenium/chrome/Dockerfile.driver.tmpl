@@ -1,5 +1,11 @@
 FROM selenoid/dev:chrome_@@VERSION@@
 
+RUN \
+        adduser --system --home /home/selenium \
+        --ingroup nogroup --disabled-password --shell /bin/bash \
+        selenium
+USER selenium
+
 COPY chromedriver /usr/bin/
 COPY entrypoint.sh /
 
