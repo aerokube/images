@@ -97,6 +97,7 @@ Due to bug in Operadriver to work with Opera Blink containers you need to pass a
 {"browserName": "operablink", "operaOptions": {"binary": "/usr/bin/opera"}}
 ```
 We do not consider these containers really stable. Many of base operations like working with proxies may not work.
+
 | Container | Operadriver version | Opera version |
 | --------- | ------------------- | ------------- |
 | selenoid/opera:33.0 | 0.2.2 | 33.0.1990.115 |
