@@ -83,6 +83,7 @@ Building procedure is automated with shell scripts ```selenium/build-dev.sh``` a
 | selenoid/chrome:55.0 | 2.28 | 55.0.2883.87 |
 | selenoid/chrome:56.0 | 2.29 | 56.0.2924.87 |
 | selenoid/chrome:57.0 | 2.29 | 57.0.2987.110 |
+| selenoid/chrome:58.0 | 2.29 | 57.0.2987.110 |
 
 **Note:** containers for older Chrome versions were not built because we have no Debian packages. If you have such packages - we could create more containers.
 
