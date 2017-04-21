@@ -22,7 +22,7 @@ if [ "$cleanup" == "false" ]; then
 fi
 dir_name="/tmp/$(uuidgen | sed -e 's|-||g')"
 mkdir -p "$dir_name"
-if [ "$browser" == "firefox/ubuntuzilla" ]; then
+if [ "$browser" == "firefox/ubuntuzilla" -o "$browser" == "firefox/apt" ]; then
     requires_java_value=""
     if [ "$requires_java" == "true" ]; then
         requires_java_value="_java"
