@@ -68,6 +68,7 @@ Building procedure is automated with shell scripts ```selenium/build-dev.sh``` a
 | selenoid/firefox:50.0 | 3.2.0 + GD 0.13.0 | 50.0.2 (native events, switching windows and proxies don't work) |
 | selenoid/firefox:51.0 | 3.2.0 + GD 0.14.0 | 51.0.1 (native events, switching windows and proxies don't work) |
 | selenoid/firefox:52.0 | 3.3.1 + GD 0.15.0 | 52.0.2 (native events, switching windows don't work; proxy capability format could change) |
+| selenoid/firefox:53.0 | 3.3.1 + GD 0.15.0 | 53.0 (switching windows don't work; proxy capability format could change) |
 
 ### Chrome
 
