@@ -20,6 +20,9 @@ download_selenium() {
         "3.3.1")
             url="http://selenium-release.storage.googleapis.com/3.3/selenium-server-standalone-3.3.1.jar"
             ;;
+        "3.4.0")
+            url="https://selenium-release.storage.googleapis.com/3.4/selenium-server-standalone-3.4.0.jar"
+            ;;
         *)
             echo "Unsupported Selenium version: $selenium_version"
             exit 1
