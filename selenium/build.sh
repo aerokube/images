@@ -70,7 +70,9 @@ if [ "$mode" == "chromedriver" ]; then
     download_chromedriver "$3"
 elif [ "$mode" == "operadriver" ]; then
     download_operadriver "$3"
-elif [ "$mode" == "geckodriver" -o "$mode" == "gecko+selenium" ]; then
+elif [ "$mode" == "geckodriver" ]; then
+    download_geckodriver "$3"
+elif [ "$mode" == "gecko+selenium" ]; then
     download_selenium "$3"
     download_geckodriver "$5"
     template_file="Dockerfile.server.tmpl"
