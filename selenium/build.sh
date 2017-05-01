@@ -54,7 +54,7 @@ download_operadriver() {
 }
 
 if [ -z "$1" -o -z "$2" -o -z "$3" -o -z "$4" ]; then
-    echo 'Usage: build.sh {chromedriver|operadriver|selenium} <browser_version> <driver_or_selenium_version> <tag>'
+    echo 'Usage: build.sh {chromedriver|operadriver|geckodriver|gecko+selenium|selenium} <browser_version> <driver_or_selenium_version> <tag>'
     exit 1
 fi
 set -x
