@@ -54,7 +54,7 @@ download_operadriver() {
 }
 
 download_selenoid() {
-    wget -O selenoid https://github.com/aerokube/selenoid/releases/download/$1/selenoid_darwin_amd64
+    wget -O selenoid https://github.com/aerokube/selenoid/releases/download/$1/selenoid_linux_amd64
     chmod +x selenoid
 }
 
