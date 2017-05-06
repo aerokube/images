@@ -53,8 +53,12 @@ download_operadriver() {
     rm -Rf operadriver.zip operadriver_linux64
 }
 
+download_selenoid() {
+    wget -O selenoid https://github.com/aerokube/selenoid/releases/download/$1/selenoid_darwin_amd64
+}
+
 if [ -z "$1" -o -z "$2" -o -z "$3" -o -z "$4" ]; then
-    echo 'Usage: build.sh {chromedriver|operadriver|geckodriver|gecko+selenium|selenium} <browser_version> <driver_or_selenium_version> <tag>'
+    echo 'Usage: build.sh {chromedriver|operadriver|geckodriver|gecko+selenium|gecko+selenoid|selenium} <browser_version> <driver_or_selenium_version> <tag> [<supplementary_version>]'
     exit 1
 fi
 set -x
@@ -72,6 +76,9 @@ elif [ "$mode" == "operadriver" ]; then
     download_operadriver "$3"
 elif [ "$mode" == "geckodriver" ]; then
     download_geckodriver "$3"
+elif [ "$mode" == "gecko+selenoid" ]; then
+    download_selenoid "$3"
+    download_geckodriver "$5"
 elif [ "$mode" == "gecko+selenium" ]; then
     download_selenium "$3"
     download_geckodriver "$5"
@@ -85,6 +92,9 @@ else
 fi
 popd
 cat "$template_file" | sed -e "s|@@VERSION@@|$version|g" > "$dir_name/Dockerfile"
+if [ -f "browsers.json" ]; then
+    cat browsers.json | sed -e "s|@@VERSION@@|$version|g" > "$dir_name/browsers.json"
+fi
 if [ -f "entrypoint.sh" ]; then
     cp entrypoint.sh "$dir_name/entrypoint.sh"
 fi

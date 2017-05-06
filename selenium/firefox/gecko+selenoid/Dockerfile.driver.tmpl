@@ -1,0 +1,9 @@
+FROM selenoid/dev:firefox_@@VERSION@@
+
+COPY geckodriver /usr/bin/
+COPY selenoid /usr/bin
+COPY browsers.json /etc/selenoid
+COPY entrypoint.sh /
+
+EXPOSE 4444
+ENTRYPOINT /entrypoint.sh
