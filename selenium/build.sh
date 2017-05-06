@@ -55,6 +55,7 @@ download_operadriver() {
 
 download_selenoid() {
     wget -O selenoid https://github.com/aerokube/selenoid/releases/download/$1/selenoid_darwin_amd64
+    chmod +x selenoid
 }
 
 if [ -z "$1" -o -z "$2" -o -z "$3" -o -z "$4" ]; then
