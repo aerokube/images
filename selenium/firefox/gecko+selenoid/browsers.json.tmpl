@@ -3,7 +3,8 @@
     "default": "@@VERSION@@",
     "versions": {
       "@@VERSION@@": {
-        "image": ["/usr/bin/geckodriver", "--host", "::", "--log", "debug"]
+        "image": ["/usr/bin/geckodriver", "--host", "::", "--port", "4444", "--log", "debug"]
+        "port": "4444"
       }
     }
   }
