@@ -92,8 +92,8 @@ else
 fi
 popd
 cat "$template_file" | sed -e "s|@@VERSION@@|$version|g" > "$dir_name/Dockerfile"
-if [ -f "browsers.json" ]; then
-    cat browsers.json | sed -e "s|@@VERSION@@|$version|g" > "$dir_name/browsers.json"
+if [ -f "browsers.json.mtpl" ]; then
+    cat browsers.json.tmpl | sed -e "s|@@VERSION@@|$version|g" > "$dir_name/browsers.json"
 fi
 if [ -f "entrypoint.sh" ]; then
     cp entrypoint.sh "$dir_name/entrypoint.sh"
