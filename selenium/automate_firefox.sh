@@ -1,0 +1,28 @@
+#!/bin/bash
+set -e
+set -x
+browser_version=$1
+selenium_version=$2
+tag=$3
+driver_version=$4
+./build-dev.sh firefox/apt $browser_version false true $tag
+./build-dev.sh firefox/apt $browser_version true true $tag
+pushd firefox/gecko+selenium
+../../build.sh gecko+selenium $tag $selenium_version selenoid/firefox:$tag $driver_version
+popd
+docker rm -f selenium || true
+docker run -d --name selenium -p 4444:4444  selenoid/firefox:$tag
+tests_dir=../../selenoid-container-tests/
+if [ -d "$tests_dir" ]; them
+    pushd "$tests_dir"
+    mvn clean test -Dgrid.browser.version=$tag || true
+    popd
+else
+    echo "Skipping tests as $tests_dir does not exist."
+fi
+read -p "Push?" yn
+if [ "$yn" == "y" ]; then
+	docker push "selenoid/dev:firefox_"$tag
+	docker push "selenoid/dev:firefox_"$tag"_full"
+	docker push "selenoid/firefox:$tag"
+fi
