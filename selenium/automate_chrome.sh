@@ -12,7 +12,7 @@ popd
 docker rm -f selenium || true
 docker run -d --name selenium -p 4444:4444 selenoid/chrome:$tag
 tests_dir=../../selenoid-container-tests/
-if [ -d "$tests_dir" ]; them
+if [ -d "$tests_dir" ]; then
     pushd "$tests_dir"
     mvn clean test -Dgrid.connection.url="http://localhost:4444/" -Dgrid.browser.version=$tag || true
     popd

@@ -2,18 +2,18 @@
 set -e
 set -x
 browser_version=$1
-selenium_version=$2
+selenoid_version=$2
 tag=$3
 driver_version=$4
 ./build-dev.sh firefox/apt $browser_version false true $tag
 ./build-dev.sh firefox/apt $browser_version true true $tag
-pushd firefox/gecko+selenium
-../../build.sh gecko+selenium $tag $selenium_version selenoid/firefox:$tag $driver_version
+pushd firefox/gecko+selenoid
+../../build.sh gecko+selenoid $tag $selenoid_version selenoid/firefox:$tag $driver_version
 popd
 docker rm -f selenium || true
 docker run -d --name selenium -p 4444:4444  selenoid/firefox:$tag
 tests_dir=../../selenoid-container-tests/
-if [ -d "$tests_dir" ]; them
+if [ -d "$tests_dir" ]; then
     pushd "$tests_dir"
     mvn clean test -Dgrid.browser.version=$tag || true
     popd
