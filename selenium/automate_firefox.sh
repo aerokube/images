@@ -5,8 +5,8 @@ browser_version=$1
 selenoid_version=$2
 tag=$3
 driver_version=$4
-./build-dev.sh firefox/apt $browser_version false true $tag
-./build-dev.sh firefox/apt $browser_version true true $tag
+./build-dev.sh firefox/apt $browser_version false false $tag
+./build-dev.sh firefox/apt $browser_version true false $tag
 pushd firefox/gecko+selenoid
 ../../build.sh gecko+selenoid $tag $selenoid_version selenoid/firefox:$tag $driver_version
 popd
