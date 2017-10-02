@@ -24,6 +24,6 @@ if [ "$yn" == "y" ]; then
 	docker push "selenoid/dev:chrome_"$browser_version
 	docker push "selenoid/dev:chrome_"$browser_version"_full"
 	docker push "selenoid/chrome:$tag"
-  docker tag "selenoid/chrome:$tag" "selenoid/chrome:latest"
-  docker push "selenoid/chrome:latest"
+    docker tag "selenoid/chrome:$tag" "selenoid/chrome:latest"
+    docker push "selenoid/chrome:latest"
 fi

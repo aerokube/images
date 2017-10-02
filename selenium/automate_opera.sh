@@ -24,6 +24,6 @@ read -p "Push?" yn
 if [ "$yn" == "y" ]; then
 	docker push "selenoid/dev:opera_"$browser_version
 	docker push "selenoid/opera:$tag"
-  docker tag "selenoid/opera:$tag" "selenoid/opera:latest"
-  docker push "selenoid/opera:latest"
+    docker tag "selenoid/opera:$tag" "selenoid/opera:latest"
+    docker push "selenoid/opera:latest"
 fi

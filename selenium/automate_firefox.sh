@@ -25,6 +25,6 @@ if [ "$yn" == "y" ]; then
 	docker push "selenoid/dev:firefox_"$tag
 	docker push "selenoid/dev:firefox_"$tag"_full"
 	docker push "selenoid/firefox:$tag"
-  docker tag "selenoid/firefox:$tag" "selenoid/firefox:latest"
-  docker push "selenoid/firefox:latest"
+    docker tag "selenoid/firefox:$tag" "selenoid/firefox:latest"
+    docker push "selenoid/firefox:latest"
 fi
