@@ -1,7 +1,7 @@
 # Selenoid Docker Images
 This repository contains [Docker](http://docker.com/) build files to be used for [Selenoid](http://github.com/aerokube/selenoid) project. You can find prebuilt images [here](https://hub.docker.com/u/selenoid/).
 
-## How image are built
+## How images are built
 
 ![layers](layers.png)
 
