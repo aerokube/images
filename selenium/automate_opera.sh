@@ -1,6 +1,5 @@
 #!/bin/bash
 set -e
-set -x
 #package_path=$1
 browser_version=$1
 driver_version=$2
@@ -10,6 +9,7 @@ if [ -z "$1" -o -z "$2" -o -z "$3" ]; then
     echo 'Usage: automate_opera.sh <browser_version> <operadriver_version> <tag_version>'
     exit 1
 fi
+set -x
 
 #cp $package_path ~/vania-pooh/selenoid-containers/selenium/opera/blink/local/opera-stable.deb
 ./build-dev.sh opera/blink/apt $browser_version true false

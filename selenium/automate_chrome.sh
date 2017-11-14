@@ -1,6 +1,5 @@
 #!/bin/bash
 set -e
-set -x
 browser_version=$1
 driver_version=$2
 tag=$3
@@ -9,6 +8,7 @@ if [ -z "$1" -o -z "$2" -o -z "$3" ]; then
     echo 'Usage: automate_chrome.sh <browser_version> <chromedriver_version> <tag_version>'
     exit 1
 fi
+set -x
 
 ./build-dev.sh chrome/apt $browser_version true true
 ./build-dev.sh chrome/apt $browser_version false true

@@ -1,6 +1,5 @@
 #!/bin/bash
 set -e
-set -x
 browser_version=$1
 selenoid_version=$2
 tag=$3
@@ -10,6 +9,7 @@ if [ -z "$1" -o -z "$2" -o -z "$3" -o -z "$4" ]; then
     echo 'Usage: automate_firefox.sh <browser_version> <selenoid_version> <tag_version> <geckodriver_version>'
     exit 1
 fi
+set -x
 
 ./build-dev.sh firefox/apt $browser_version false false $tag
 ./build-dev.sh firefox/apt $browser_version true false $tag
