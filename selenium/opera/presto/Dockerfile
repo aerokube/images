@@ -1,4 +1,4 @@
-FROM selenoid/base:1.0_java
+FROM selenoid/base:2.0_java
 
 ARG VERSION=12.16.1860
 ARG CLEANUP
