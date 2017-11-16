@@ -16,10 +16,11 @@ if [ -n "$5" ]; then
     tag_version=$5
 fi
 browser_name=$(echo "$browser" | sed -e 's/\(\/..*\)\+//g')
-tag="selenoid/dev:"$browser_name"_"$tag_version
+image_name="dev_"$browser_name
 if [ "$cleanup" == "false" ]; then
-    tag=$tag"_full"
+    image_name=$image_name"_full"
 fi
+tag="selenoid/"$image_name":"$tag_version
 dir_name="/tmp/$(uuidgen | sed -e 's|-||g')"
 mkdir -p "$dir_name"
 if [ "$browser" == "firefox/ubuntuzilla" -o "$browser" == "firefox/apt" ]; then

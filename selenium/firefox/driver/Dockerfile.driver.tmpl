@@ -1,7 +1,0 @@
-FROM selenoid/dev:firefox_@@VERSION@@
-
-COPY geckodriver /usr/bin/
-COPY entrypoint.sh /
-
-EXPOSE 4444
-ENTRYPOINT /entrypoint.sh
