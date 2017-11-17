@@ -13,7 +13,7 @@ set -x
 browser_version=$input
 method="chrome/apt"
 if [ -f $input ]; then
-    cp "$input" google-chrome-stable.deb
+    cp "$input" chrome/local/google-chrome-stable.deb
     filename=$(echo "$input" | awk -F '/' '{print $NF}')
     browser_version=$(echo $filename | awk -F '_' '{print $2}')
     method="chrome/local"
