@@ -18,9 +18,11 @@ cat "Dockerfile.tmpl" | sed -e "s|@@VERSION@@|$version|g" > "$dir_name/Dockerfil
 cp "entrypoint.sh" "$dir_name"
 pushd "$dir_name"
 browser_name=$(echo "$browser" | sed -e 's/\(\/..*\)\+//g')
-tag="selenoid/vnc:"$browser_name"_"$version
+tag="selenoid/vnc_"$browser_name":"$version
+old_tag="selenoid/vnc:"$browser_name"_"$version
 echo "Creating VNC image $tag..."
 docker build -t "$tag" .
+docker tag "$tag" "$old_tag"
 popd
 rm -Rf "$dir_name"
 exit 0
