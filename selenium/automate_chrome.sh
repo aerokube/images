@@ -27,24 +27,24 @@ popd
 
 test_image(){
     docker rm -f selenium || true
-    docker run -d --name selenium -p 4444:4444 $1
+    docker run -d --name selenium -p 4444:4444 $1 $2
     tests_dir=../../selenoid-container-tests/
     if [ -d "$tests_dir" ]; then
         pushd "$tests_dir"
-        mvn clean test -Dgrid.connection.url="http://localhost:4444/" -Dgrid.browser.version=$1 || true
+        mvn clean test -Dgrid.connection.url="http://localhost:4444/" -Dgrid.browser.version=$2 || true
         popd
     else
         echo "Skipping tests as $tests_dir does not exist."
     fi
 }
 
-test_image "selenoid/chrome:"$tag
+test_image "selenoid/chrome" $tag
 read -p "Create VNC?" vnc
 if [ "$vnc" == "y" ]; then
     pushd vnc/chrome
     ../../build-vnc.sh chrome $tag 
     popd
-    test_image "selenoid/vnc_chrome:"$tag
+    test_image "selenoid/vnc_chrome" $tag
 fi
 
 read -p "Push?" yn
