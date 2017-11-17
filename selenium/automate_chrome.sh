@@ -49,8 +49,8 @@ fi
 
 read -p "Push?" yn
 if [ "$yn" == "y" ]; then
-	docker push "selenoid/dev:chrome_"$browser_version
-	docker push "selenoid/dev:chrome_"$browser_version"_full"
+	docker push "selenoid/dev_chrome:"$browser_version
+	docker push "selenoid/dev_chrome_full:"$browser_version
 	docker push "selenoid/chrome:$tag"
     docker tag "selenoid/chrome:$tag" "selenoid/chrome:latest"
     docker push "selenoid/chrome:latest"
