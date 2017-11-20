@@ -25,7 +25,7 @@ test_image(){
     tests_dir=../../selenoid-container-tests/
     if [ -d "$tests_dir" ]; then
         pushd "$tests_dir"
-        mvn clean test -Dgrid.browser.version=$2 || true
+        mvn clean test -Dgrid.browser.name=firefox -Dgrid.browser.version=$2 || true
         popd
     else
         echo "Skipping tests as $tests_dir does not exist."
