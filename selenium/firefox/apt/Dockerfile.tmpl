@@ -7,4 +7,4 @@ RUN  \
         ( [ "$CLEANUP" != "true" ] && rm -f /etc/apt/apt.conf.d/docker-clean ) || true && \
         apt-get update && \
         apt-get -y --no-install-recommends install firefox=$VERSION && \
-        ($CLEANUP && rm -Rf /tmp/*) || true
+        ($CLEANUP && rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/*) || true

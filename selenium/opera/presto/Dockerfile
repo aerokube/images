@@ -9,4 +9,4 @@ RUN  \
         echo 'deb http://deb.opera.com/opera/ stable non-free' >> /etc/apt/sources.list.d/opera.list && \
         apt-get update && \
         apt-get -y install opera=$VERSION && \
-        ($CLEANUP && rm -Rf /tmp/*) || true
+        ($CLEANUP && rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/*) || true

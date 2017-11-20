@@ -13,6 +13,7 @@ set -x
 
 #cp $package_path ~/vania-pooh/selenoid-containers/selenium/opera/blink/local/opera-stable.deb
 ./build-dev.sh opera/blink/apt $browser_version true false
+./build-dev.sh opera/blink/apt $browser_version false false
 pushd opera/blink
 ../../build.sh operadriver $browser_version $driver_version selenoid/opera:$tag
 popd

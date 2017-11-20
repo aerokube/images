@@ -11,4 +11,4 @@ RUN \
         apt-get -y  --no-install-recommends install google-chrome-stable=$VERSION && \
         chown root:root /opt/google/chrome/chrome-sandbox && \
         chmod 4755 /opt/google/chrome/chrome-sandbox && \
-        ($CLEANUP && rm -Rf /tmp/*) || true
+        ($CLEANUP && rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/*) || true
