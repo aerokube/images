@@ -1,9 +1,13 @@
 FROM selenoid/opera:@@VERSION@@
 
+USER root
+
 RUN \
 	apt-get update && \
 	apt-get -y --no-install-recommends install x11vnc && \
 	apt-get clean && \
 	rm -Rf /tmp/*
+
+USER selenium
 
 COPY entrypoint.sh /
