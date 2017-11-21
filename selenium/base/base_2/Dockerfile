@@ -21,7 +21,8 @@ RUN apt-get update && apt-get install -y ttf-mscorefonts-installer \
     fonts-dejavu-core \
     fonts-liberation \
     fonts-ubuntu-font-family-console \
-    fonts-wqy-zenhei \ fonts-thai-tlwg-ttf \
+    fonts-wqy-zenhei \
+    fonts-thai-tlwg-ttf \
     fonts-ipafont-mincho \
     fonts-sahadeva \
     libfontconfig1 \
