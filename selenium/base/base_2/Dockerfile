@@ -12,7 +12,7 @@ RUN \
     echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections && \
     echo 'UTC' | tee /etc/timezone && \
     dpkg-reconfigure -f noninteractive tzdata && \
-    echo "gtk-cursor-blink=0" > /root/.gtkrc-2.0 &&
+    echo "gtk-cursor-blink=0" > /root/.gtkrc-2.0
 
 RUN apt-get update && apt-get install -y ttf-mscorefonts-installer \
     ttf-dejavu-core \
