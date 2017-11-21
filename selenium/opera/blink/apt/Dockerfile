@@ -10,4 +10,5 @@ RUN  \
         apt-get update && \
         apt-get -y --no-install-recommends install opera-stable=$VERSION && \
         opera --version && \
+        rm /etc/apt/sources.list.d/opera-stable.list && \
         ($CLEANUP && rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/*) || true
