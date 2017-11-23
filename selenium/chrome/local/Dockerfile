@@ -43,15 +43,14 @@ RUN \
          libnss3 \
          lsb-base \
          xdg-utils \
-         libcurl3 && \
-         rm -Rf /tmp/*
-        
-COPY google-chrome-stable.deb /
-
-RUN \
-        dpkg -i google-chrome-stable.deb && \
-        chown root:root /opt/google/chrome/chrome-sandbox && \
-        chmod 4755 /opt/google/chrome/chrome-sandbox && \
-        google-chrome-stable --version && \
-        rm -Rf /tmp/*
-
+         libcurl3 
+         curl && \
+         curl http://apt-repo/google-chrome-stable.deb && \
+         apt-get -y purge curl && \
+         dpkg -i google-chrome-stable.deb && \
+         rm google-chrome-stable.deb && \
+         chown root:root /opt/google/chrome/chrome-sandbox && \
+         chmod 4755 /opt/google/chrome/chrome-sandbox && \
+         google-chrome-stable --version && \
+         rm -Rf /tmp/* && \
+         rm -Rf /var/lib/apt/lists/*

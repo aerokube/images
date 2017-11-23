@@ -23,6 +23,7 @@ fi
 tag="selenoid/"$image_name":"$tag_version
 dir_name="/tmp/$(uuidgen | sed -e 's|-||g')"
 mkdir -p "$dir_name"
+additional_docker_args=""
 if [ "$browser" == "firefox/ubuntuzilla" -o "$browser" == "firefox/apt" ]; then
     requires_java_value=""
     if [ "$requires_java" == "true" ]; then
@@ -33,12 +34,20 @@ else
     if [ "$browser" == "chrome/local" -o "$browser" == "opera/blink/local" ]; then
         debWildcard="$browser/*.deb"
         cp $debWildcard "$dir_name"
+        docker rm -f static-server || true
+        docker run -d -p 80:8080 -v "$dir_name":/srv/http --name static-server pierrezemb/gostatic
+        host_ip=$(ifconfig docker0 | grep inet | grep -v inet6 | awk '{print $2;}' | sed -e 's|addr:||g')
+        if [ -z $host_ip ]; then
+            echo "Failed to determine host machine IP..."
+            exit 1
+        fi
+        additional_docker_args="--add-host apt-repo:$host_ip"
     fi
     cp "$browser/Dockerfile" "$dir_name"
 fi
 pushd "$dir_name"
 echo "Creating image $tag with cleanup=$cleanup..."
-docker build --build-arg VERSION="$version" --build-arg CLEANUP="$cleanup" -t "$tag" .
+docker build "$additional_docker_args" --build-arg VERSION="$version" --build-arg CLEANUP="$cleanup" -t "$tag" .
 popd
 rm -Rf "$dir_name"
 exit 0
