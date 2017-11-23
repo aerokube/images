@@ -1,19 +1,28 @@
 #!/bin/bash
 set -e
-#package_path=$1
-browser_version=$1
+input=$1
 driver_version=$2
 tag=$3
 
 if [ -z "$1" -o -z "$2" -o -z "$3" ]; then
-    echo 'Usage: automate_opera.sh <browser_version> <operadriver_version> <tag_version>'
+    echo 'Usage: automate_opera.sh <browser_version|package_file> <operadriver_version> <tag_version>'
     exit 1
 fi
 set -x
 
-#cp $package_path ~/vania-pooh/selenoid-containers/selenium/opera/blink/local/opera-stable.deb
-./build-dev.sh opera/blink/apt $browser_version true false
-./build-dev.sh opera/blink/apt $browser_version false false
+browser_version=$input
+method="opera/blink/apt"
+if [ -f $input ]; then
+    cp "$input" opera/blink/apt/google-chrome-stable.deb
+    filename=$(echo "$input" | awk -F '/' '{print $NF}')
+    browser_version=$(echo $filename | awk -F '_' '{print $2}' | awk -F '-' '{print $1}')
+    method="opera/blink/local"
+fi
+
+./build-dev.sh $method $browser_version true false
+if [ method == "opera/blink/apt" ]; then
+    ./build-dev.sh $method $browser_version false false
+fi
 pushd opera/blink
 ../../build.sh operadriver $browser_version $driver_version selenoid/opera:$tag
 popd
@@ -43,7 +52,9 @@ fi
 read -p "Push?" yn
 if [ "$yn" == "y" ]; then
 	docker push "selenoid/dev_opera:"$browser_version
-	docker push "selenoid/dev_opera_full:"$browser_version
+	if [ method == "opera/blink/apt" ]; then
+	    docker push "selenoid/dev_opera_full:"$browser_version
+    fi
 	docker push "selenoid/opera:$tag"
     docker tag "selenoid/opera:$tag" "selenoid/opera:latest"
     docker push "selenoid/opera:latest"

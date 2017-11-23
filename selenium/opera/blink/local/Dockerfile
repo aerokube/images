@@ -47,13 +47,11 @@ RUN \
          libnss3 \
          lsb-base \
          xdg-utils \
-         libcurl3 && \
-         rm -Rf /tmp/*
-        
-COPY opera-stable.deb /
-
-RUN \
-        dpkg -i opera-stable.deb && \
-        opera --version && \
-        rm -Rf /tmp/*
-
+         libcurl3 
+         curl && \
+         curl http://apt-repo/opera-stable.deb && \
+         apt-get -y purge curl && \
+         dpkg -i opera-stable.deb && \
+         opera --version && \
+         rm -Rf /tmp/* && \
+         rm -Rf /var/lib/apt/lists/*

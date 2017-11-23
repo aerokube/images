@@ -20,7 +20,9 @@ if [ -f $input ]; then
 fi
 
 ./build-dev.sh $method $browser_version true true
-./build-dev.sh $method $browser_version false true
+if [ method == "chrome/apt" ]; then
+    ./build-dev.sh $method $browser_version false true
+fi
 pushd chrome
 ../build.sh chromedriver $browser_version $driver_version selenoid/chrome:$tag
 popd
@@ -50,7 +52,9 @@ fi
 read -p "Push?" yn
 if [ "$yn" == "y" ]; then
 	docker push "selenoid/dev_chrome:"$browser_version
-	docker push "selenoid/dev_chrome_full:"$browser_version
+	if [ method == "chrome/apt" ]; then
+    	docker push "selenoid/dev_chrome_full:"$browser_version
+    fi
 	docker push "selenoid/chrome:$tag"
     docker tag "selenoid/chrome:$tag" "selenoid/chrome:latest"
     docker push "selenoid/chrome:latest"
