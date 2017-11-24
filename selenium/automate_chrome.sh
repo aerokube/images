@@ -29,7 +29,7 @@ popd
 
 test_image(){
     docker rm -f selenium || true
-    docker run -d --name selenium -p 4444:4444 $1 $2
+    docker run -d --name selenium -p 4444:4444 $1:$2
     tests_dir=../../selenoid-container-tests/
     if [ -d "$tests_dir" ]; then
         pushd "$tests_dir"
