@@ -43,7 +43,7 @@ RUN \
          libnss3 \
          lsb-base \
          xdg-utils \
-         libcurl3 
+         libcurl3 \
          curl && \
          curl http://apt-repo/google-chrome-stable.deb && \
          apt-get -y purge curl && \

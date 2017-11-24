@@ -47,7 +47,7 @@ RUN \
          libnss3 \
          lsb-base \
          xdg-utils \
-         libcurl3 
+         libcurl3 \
          curl && \
          curl http://apt-repo/opera-stable.deb && \
          apt-get -y purge curl && \
