@@ -35,7 +35,7 @@ else
         debWildcard="$browser/*.deb"
         cp $debWildcard "$dir_name"
         docker rm -f static-server || true
-        docker run -d -p 80:8080 -v "$dir_name":/srv/http --name static-server pierrezemb/gostatic
+        docker run -d -p 8080:8043 -v "$dir_name":/srv/http --name static-server pierrezemb/gostatic
         host_ip=$(ifconfig docker0 | grep inet | grep -v inet6 | awk '{print $2;}' | sed -e 's|addr:||g')
         if [ -z $host_ip ]; then
             echo "Failed to determine host machine IP..."

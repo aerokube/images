@@ -49,7 +49,7 @@ RUN \
          xdg-utils \
          libcurl3 \
          curl && \
-         curl http://apt-repo/opera-stable.deb && \
+         curl http://apt-repo:8080/opera-stable.deb && \
          apt-get -y purge curl && \
          dpkg -i opera-stable.deb && \
          opera --version && \

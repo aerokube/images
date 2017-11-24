@@ -45,7 +45,7 @@ RUN \
          xdg-utils \
          libcurl3 \
          curl && \
-         curl http://apt-repo/google-chrome-stable.deb && \
+         curl http://apt-repo:8080/google-chrome-stable.deb && \
          apt-get -y purge curl && \
          dpkg -i google-chrome-stable.deb && \
          rm google-chrome-stable.deb && \
