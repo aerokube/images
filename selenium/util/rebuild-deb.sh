@@ -50,6 +50,7 @@ set -x
 spackage=$(echo "$filename" | awk -F '/' '{print $NF}')
 package=$(echo $spackage | awk -F '_' '{print $1}')
 version=$(echo $spackage | awk -F '_' '{print $2}')
+rm -Rf "$package" control changelog
 
 # Set variables
 export DH_ALWAYS_EXCLUDE="CVS:.svn:.git"
@@ -73,7 +74,7 @@ fi
 new_version=$version
 if [ -n $add_postfix ]; then
     new_version=$new_version"+"$add_postfix
-fi 
+fi
 dch --create --force-distribution --distribution unstable --package "$package" --newversion "$new_version" -c changelog 'Package rebuilt'
 
 # Fix control
