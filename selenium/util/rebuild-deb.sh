@@ -67,6 +67,7 @@ if [ -n $changelog -a -f $changelog ]; then
 fi
 old_version=$version
 if [ -n $remove_postfix ]; then
+    version=$(echo $version | awk -F '+' '{print $1}')
     old_version=$old_version"+"$remove_postfix
 fi 
 new_version=$version
