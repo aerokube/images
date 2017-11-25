@@ -18,7 +18,7 @@ filename=''
 remove_postfix=''
 add_postfix=''
 
-while getopts 'u:r:p:a:e:' OPTION
+while getopts 'f:r:a:' OPTION
 do
      case $OPTION in
          h)
