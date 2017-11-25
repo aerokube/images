@@ -68,7 +68,7 @@ fi
 old_version=$version
 if [ -n $remove_postfix ]; then
     version=$(echo $version | awk -F '+' '{print $1}')
-    old_version=$old_version"+"$remove_postfix
+    old_version=$version"+"$remove_postfix
 fi 
 new_version=$version
 if [ -n $add_postfix ]; then
