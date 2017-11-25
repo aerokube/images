@@ -47,6 +47,7 @@ if [[ -z $filename ]]; then
 fi
 set -x
 
+cp "$filename" .
 spackage=$(echo "$filename" | awk -F '/' '{print $NF}')
 package=$(echo $spackage | awk -F '_' '{print $1}')
 version=$(echo $spackage | awk -F '_' '{print $2}')
@@ -88,3 +89,6 @@ cp control $package/DEBIAN/control
 # Build package
 sed -i "s/$old_version/$new_version/g" $package/DEBIAN/control
 dpkg-deb -b $package/ ./
+
+# Remove source package
+rm -f "./$spackage"
