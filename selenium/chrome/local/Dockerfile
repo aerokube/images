@@ -20,6 +20,7 @@ RUN \
          libgdk-pixbuf2.0-0 \
          libglib2.0-0 \
          libgtk2.0-0 \
+         libgtk-3-0 \
          libnspr4 \
          libnss3 \
          libpango1.0-0 \
