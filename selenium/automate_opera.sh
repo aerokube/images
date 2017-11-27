@@ -13,9 +13,9 @@ set -x
 browser_version=$input
 method="opera/blink/apt"
 if [ -f $input ]; then
-    cp "$input" opera/blink/local/google-chrome-stable.deb
+    cp "$input" opera/blink/local/opera-stable.deb
     filename=$(echo "$input" | awk -F '/' '{print $NF}')
-    browser_version=$(echo $filename | awk -F '_' '{print $2}' | awk -F '-' '{print $1}')
+    browser_version=$(echo $filename | awk -F '_' '{print $2}' | awk -F '+' '{print $1}')
     method="opera/blink/local"
 fi
 
