@@ -1,22 +1,38 @@
 #!/bin/bash
 set -e
-browser_version=$1
-selenoid_version=$2
+input=$1
+server_version=$2
 tag=$3
 driver_version=$4
 
 if [ -z "$1" -o -z "$2" -o -z "$3" -o -z "$4" ]; then
-    echo 'Usage: automate_firefox.sh <browser_version> <selenoid_version> <tag_version> <geckodriver_version>'
+    echo 'Usage: automate_firefox.sh <browser_version|package_file> <selenium_version|selenoid_version> <tag_version> <geckodriver_version>'
     exit 1
 fi
 set -x
 
-method=firefox/apt
-runner=gecko+selenoid
-./build-dev.sh $method $browser_version false false $tag
-./build-dev.sh $method $browser_version true false $tag
+browser_version=$input
+method="firefox/apt"
+runner="selenoid"
+requires_java="false"
+numeric_version=$(echo "$tag" | awk -F '.' '{print $1}' )
+if [ $numeric_version -lt 48 ]; then
+    runner="selenium"
+    requires_java="true"
+fi
+
+if [ -f $input ]; then
+    filename=$(echo "$input" | awk -F '/' '{print $NF}')
+    arch=$(echo "$filename" | awk -F '_' '{print $NF}' | sed -e 's|.deb||g')
+    cp "$input" firefox/local/firefox_$arch.deb
+    browser_version=$(echo $filename | awk -F '_' '{print $2}' | awk -F '-' '{print $1}')
+    method="firefox/local"
+fi
+
+./build-dev.sh $method $browser_version false $requires_java $tag
+./build-dev.sh $method $browser_version true $requires_java $tag
 pushd firefox/$runner
-../../build.sh $runner $tag $selenoid_version selenoid/firefox:$tag $driver_version
+../../build.sh $runner $tag $server_version selenoid/firefox:$tag $driver_version
 popd
 
 test_image(){
