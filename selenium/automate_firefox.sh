@@ -21,7 +21,7 @@ if [ $numeric_version -lt 48 ]; then
     requires_java="true"
 fi
 
-if [ -f $input ]; then
+if [ -f "$input" ]; then
     filename=$(echo "$input" | awk -F '/' '{print $NF}')
     arch=$(echo "$filename" | awk -F '_' '{print $NF}' | sed -e 's|.deb||g')
     cp "$input" firefox/local/firefox_$arch.deb
@@ -60,7 +60,9 @@ fi
 read -p "Push?" yn
 if [ "$yn" == "y" ]; then
 	docker push "selenoid/dev_firefox:"$tag
-	docker push "selenoid/dev_firefox_full:"$tag
+	if [ "$method" == "chrome/apt" ]; then
+	    docker push "selenoid/dev_firefox_full:"$tag
+    fi
 	docker push "selenoid/firefox:$tag"
     docker tag "selenoid/firefox:$tag" "selenoid/firefox:latest"
     docker push "selenoid/firefox:latest"

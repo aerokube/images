@@ -12,7 +12,7 @@ set -x
 
 browser_version=$input
 method="opera/blink/apt"
-if [ -f $input ]; then
+if [ -f "$input" ]; then
     cp "$input" opera/blink/local/opera-stable.deb
     filename=$(echo "$input" | awk -F '/' '{print $NF}')
     browser_version=$(echo $filename | awk -F '_' '{print $2}' | awk -F '+' '{print $1}')
@@ -20,7 +20,7 @@ if [ -f $input ]; then
 fi
 
 ./build-dev.sh $method $browser_version true false
-if [ method == "opera/blink/apt" ]; then
+if [ "$method" == "opera/blink/apt" ]; then
     ./build-dev.sh $method $browser_version false false
 fi
 pushd opera/blink
@@ -52,7 +52,7 @@ fi
 read -p "Push?" yn
 if [ "$yn" == "y" ]; then
 	docker push "selenoid/dev_opera:"$browser_version
-	if [ method == "opera/blink/apt" ]; then
+	if [ "$method" == "opera/blink/apt" ]; then
 	    docker push "selenoid/dev_opera_full:"$browser_version
     fi
 	docker push "selenoid/opera:$tag"

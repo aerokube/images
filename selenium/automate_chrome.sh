@@ -12,7 +12,7 @@ set -x
 
 browser_version=$input
 method="chrome/apt"
-if [ -f $input ]; then
+if [ -f "$input" ]; then
     cp "$input" chrome/local/google-chrome-stable.deb
     filename=$(echo "$input" | awk -F '/' '{print $NF}')
     browser_version=$(echo $filename | awk -F '_' '{print $2}' | awk -F '-' '{print $1}')
@@ -20,7 +20,7 @@ if [ -f $input ]; then
 fi
 
 ./build-dev.sh $method $browser_version true true
-if [ method == "chrome/apt" ]; then
+if [ "$method" == "chrome/apt" ]; then
     ./build-dev.sh $method $browser_version false true
 fi
 pushd chrome
@@ -52,7 +52,7 @@ fi
 read -p "Push?" yn
 if [ "$yn" == "y" ]; then
 	docker push "selenoid/dev_chrome:"$browser_version
-	if [ method == "chrome/apt" ]; then
+	if [ "$method" == "chrome/apt" ]; then
     	docker push "selenoid/dev_chrome_full:"$browser_version
     fi
 	docker push "selenoid/chrome:$tag"

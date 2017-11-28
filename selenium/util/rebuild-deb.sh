@@ -41,7 +41,7 @@ do
      esac
 done
 
-if [[ -z $filename ]]; then
+if [ -z "$filename" ]; then
      usage
      exit 1
 fi
@@ -49,8 +49,8 @@ set -x
 
 cp "$filename" .
 spackage=$(echo "$filename" | awk -F '/' '{print $NF}')
-package=$(echo $spackage | awk -F '_' '{print $1}')
-version=$(echo $spackage | awk -F '_' '{print $2}')
+package=$(echo "$spackage" | awk -F '_' '{print $1}')
+version=$(echo "$spackage" | awk -F '_' '{print $2}')
 rm -Rf "$package" control changelog
 
 # Set variables
@@ -64,16 +64,16 @@ dpkg-deb -e $spackage $package/DEBIAN
 
 # Extract package changelog
 changelog=$(find $package/usr/share/doc -name 'changelog*.gz' 2>/dev/null| head -n 1)
-if [ -n $changelog -a -f $changelog ]; then
-    rm -f $changelog
+if [ -n "$changelog" -a -f "$changelog" ]; then
+    rm -f "$changelog"
 fi
 old_version=$version
-if [ -n $remove_postfix ]; then
+if [ -n "$remove_postfix" ]; then
     version=$(echo $version | sed -e "s|+$remove_postfix||g")
     old_version=$version"+"$remove_postfix
 fi 
 new_version=$version
-if [ -n $add_postfix ]; then
+if [ -n "$add_postfix" ]; then
     new_version=$new_version"+"$add_postfix
 fi
 dch --create --force-distribution --distribution unstable --package "$package" --newversion "$new_version" -c changelog 'Package rebuilt'
