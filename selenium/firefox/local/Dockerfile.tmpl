@@ -27,4 +27,4 @@ RUN \
         ) && \
         dpkg -i firefox.deb && \
         firefox --version && \
-        ($CLEANUP && rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/* && rm -f firefox_*.deb) || true
+        ($CLEANUP && rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/* && rm -f firefox*.deb) || true
