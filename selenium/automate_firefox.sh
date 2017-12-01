@@ -24,6 +24,7 @@ fi
 if [ -f "$input" ]; then
     filename=$(echo "$input" | awk -F '/' '{print $NF}')
     arch=$(echo "$filename" | awk -F '_' '{print $NF}' | sed -e 's|.deb||g')
+    rm -f firefox/local/firefox*.deb
     cp "$input" firefox/local/firefox_$arch.deb
     browser_version=$(echo $filename | awk -F '_' '{print $2}' | awk -F '-' '{print $1}')
     method="firefox/local"

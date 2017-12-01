@@ -7,7 +7,7 @@ RUN \
         ( [ "$CLEANUP" != "true" ] && rm -f /etc/apt/apt.conf.d/docker-clean ) || true && \
         ( \
             ( \
-                wget -O firefox.deb firefox.deb http://apt-repo:8080/firefox_amd64.deb && \
+                wget -O firefox.deb http://apt-repo:8080/firefox_amd64.deb && \
                 apt-get update && \
                 apt-get -y install libgtk-3-0 \
             ) || \
