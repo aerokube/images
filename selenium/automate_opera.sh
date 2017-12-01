@@ -19,9 +19,9 @@ if [ -f "$input" ]; then
     method="opera/blink/local"
 fi
 
-./build-dev.sh $method $browser_version true false
+./build-dev.sh $method $browser_version true
 if [ "$method" == "opera/blink/apt" ]; then
-    ./build-dev.sh $method $browser_version false false
+    ./build-dev.sh $method $browser_version false
 fi
 pushd opera/blink
 ../../build.sh operadriver $browser_version $driver_version selenoid/opera:$tag

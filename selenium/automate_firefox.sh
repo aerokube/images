@@ -29,8 +29,10 @@ if [ -f "$input" ]; then
     method="firefox/local"
 fi
 
-./build-dev.sh $method $browser_version false $requires_java $tag
 ./build-dev.sh $method $browser_version true $requires_java $tag
+if [ "$method" == "firefox/apt" ]; then
+    ./build-dev.sh $method $browser_version false $requires_java $tag
+fi
 pushd firefox/$runner
 ../../build.sh $runner $tag $server_version selenoid/firefox:$tag "$driver_version"
 popd
@@ -60,7 +62,7 @@ fi
 read -p "Push?" yn
 if [ "$yn" == "y" ]; then
 	docker push "selenoid/dev_firefox:"$tag
-	if [ "$method" == "chrome/apt" ]; then
+	if [ "$method" == "firefox/apt" ]; then
 	    docker push "selenoid/dev_firefox_full:"$tag
     fi
 	docker push "selenoid/firefox:$tag"
