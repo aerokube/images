@@ -5,8 +5,8 @@ server_version=$2
 tag=$3
 driver_version=$4
 
-if [ -z "$1" -o -z "$2" -o -z "$3" -o -z "$4" ]; then
-    echo 'Usage: automate_firefox.sh <browser_version|package_file> <selenium_version|selenoid_version> <tag_version> <geckodriver_version>'
+if [ -z "$1" -o -z "$2" -o -z "$3" ]; then
+    echo 'Usage: automate_firefox.sh <browser_version|package_file> <selenium_version|selenoid_version> <tag_version> [<geckodriver_version>]'
     exit 1
 fi
 set -x
@@ -32,7 +32,7 @@ fi
 ./build-dev.sh $method $browser_version false $requires_java $tag
 ./build-dev.sh $method $browser_version true $requires_java $tag
 pushd firefox/$runner
-../../build.sh $runner $tag $server_version selenoid/firefox:$tag $driver_version
+../../build.sh $runner $tag $server_version selenoid/firefox:$tag "$driver_version"
 popd
 
 test_image(){
