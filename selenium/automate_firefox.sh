@@ -19,6 +19,9 @@ numeric_version=$(echo "$tag" | awk -F '.' '{print $1}' )
 if [ $numeric_version -lt 48 ]; then
     runner="selenium"
     requires_java="true"
+elif [ -z "$driver_version" ]; then
+    echo 'Driver version is required for Firefox 48 and above'
+    exit 1
 fi
 
 if [ -f "$input" ]; then
