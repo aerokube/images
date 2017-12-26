@@ -6,5 +6,18 @@ ARG CLEANUP
 RUN  \
         ( [ "$CLEANUP" != "true" ] && rm -f /etc/apt/apt.conf.d/docker-clean ) || true && \
         apt-get update && \
-        apt-get -y --no-install-recommends install firefox=$VERSION && \
+        apt-get -y --no-install-recommends install pulseaudio firefox=$VERSION && \
         ($CLEANUP && rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/*) || true
+
+RUN useradd seluser \
+         --shell /bin/bash  \
+         --create-home \
+  && usermod -a -G sudo seluser \
+  && echo 'ALL ALL = (ALL) NOPASSWD: ALL' >> /etc/sudoers \
+  && echo 'seluser:secret' | chpasswd
+
+RUN mkdir /video
+
+RUN chown seluser /video /var/log
+
+USER seluser
