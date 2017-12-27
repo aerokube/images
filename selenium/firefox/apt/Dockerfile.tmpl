@@ -9,15 +9,14 @@ RUN  \
         apt-get -y --no-install-recommends install pulseaudio firefox=$VERSION && \
         ($CLEANUP && rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/*) || true
 
-RUN useradd seluser \
-         --shell /bin/bash  \
-         --create-home \
-  && usermod -a -G sudo seluser \
-  && echo 'ALL ALL = (ALL) NOPASSWD: ALL' >> /etc/sudoers \
-  && echo 'seluser:secret' | chpasswd
+RUN \
+        adduser --system --home /home/selenium \
+        --ingroup nogroup --disabled-password --shell /bin/bash selenium && \
+        usermod -a -G sudo selenium && \
+        echo 'ALL ALL = (ALL) NOPASSWD: ALL' >> /etc/sudoers
 
 RUN mkdir /video
 
-RUN chown seluser /video /var/log
+RUN chown selenium /video /var/log
 
-USER seluser
+USER selenium
