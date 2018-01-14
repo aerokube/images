@@ -5,5 +5,14 @@ COPY selenoid /usr/bin/
 COPY browsers.json /etc/selenoid/
 COPY entrypoint.sh /
 
+RUN \
+        apt-get update && \
+        apt-get -y --no-install-recommends install pulseaudio && \
+        apt-get clean && \
+        adduser --system --home /home/selenium \
+        --ingroup nogroup --disabled-password --shell /bin/bash selenium && \
+        rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/*
+USER selenium
+
 EXPOSE 4444
 ENTRYPOINT /entrypoint.sh
