@@ -24,7 +24,7 @@ RUN \
 	    libgconf2-4 \
 	    maven \
 	    nodejs \
-	    java8-runtime \
+	    openjdk-8-jre \
 	    python \
 	    qemu-kvm \
 	    qemu-system-x86 \
