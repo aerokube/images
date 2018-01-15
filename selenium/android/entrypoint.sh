@@ -23,4 +23,4 @@ sleep 5
 #if [ -z "$ADD_APP" ]; then
 #	CHROME_ARGS="--chromedriver-port $CHROMEDRIVER_PORT --app-pkg \"com.android.chrome\" --app-activity \"com.google.android.apps.chrome.Main\" --no-reset"
 #fi
-/opt/node_modules/.bin/appium -a 0.0.0.0 -p $PORT -bp $BOOTSTRAP_PORT -U $EMULATOR --platform-name Android --device-name android --log-timestamp --log-no-colors --default-capabilities "{\"newCommandTimeout\": \"$TIMEOUT\"}" $CHROME_ARGS
+/opt/node_modules/.bin/appium -a 0.0.0.0 -p 4444 -bp $BOOTSTRAP_PORT -U $EMULATOR --platform-name Android --device-name android --log-timestamp --log-no-colors --default-capabilities "{\"newCommandTimeout\": \"$TIMEOUT\"}" $CHROME_ARGS
