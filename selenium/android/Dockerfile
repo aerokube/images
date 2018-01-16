@@ -7,24 +7,25 @@ ARG APPIUM_VERSION="1.7.1"
 
 RUN \
 	dpkg --add-architecture i386 && \
-	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 7FCD11186050CD1A && \
 	apt-get update && \
-	apt-get install -y curl && \
+	apt-get install -y curl software-properties-common && \
+	add-apt-repository -y ppa:webupd8team/java && \
 	curl --silent --location https://deb.nodesource.com/setup_6.x | bash - && \
+	echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections && \
 	apt-get install -y --no-install-recommends \
 	    ant \
 	    autossh \
 	    curl \
 	    git \
+	    dbus \
 	    gettext-base \
 	    libncurses5:i386 \
 	    libstdc++6:i386 \
 	    lib32stdc++6 \
 	    lib32z1 \
 	    libgconf2-4 \
-	    maven \
 	    nodejs \
-	    openjdk-8-jre \
+	    oracle-java8-installer  \
 	    python \
 	    qemu-kvm \
 	    qemu-system-x86 \
@@ -43,6 +44,7 @@ RUN \
 	cd / && npm install --prefix ./opt/ appium@"$APPIUM_VERSION" wd && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* && \
+	rm -rf /var/cache/oracle-jdk8-installer && \
 	rm -rf /tmp/*
 
 # Static files

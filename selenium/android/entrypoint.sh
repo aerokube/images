@@ -12,7 +12,8 @@ fi
 
 Xorg :0 &
 sleep 1
-ANDROID_AVD_HOME=/root/.android/avd DISPLAY=:0 /opt/android-sdk-linux/emulator/emulator -no-window -no-audio -no-boot-anim -no-jni -avd android6.0-1 -sdcard /sdcard.img -skin "$SKIN" -skindir /opt/android-sdk-linux/platforms/android-23/skins/ -verbose -gpu mesa -qemu -enable-kvm &
+x11vnc -display ":0" -passwd selenoid -shared -forever -loop500 -rfbport 5900 -rfbportv6 5900 -logfile /var/log/x11vnc.log &
+ANDROID_AVD_HOME=/root/.android/avd DISPLAY=:0 /opt/android-sdk-linux/emulator/emulator -no-audio -no-jni -avd android6.0-1 -sdcard /sdcard.img -skin "$SKIN" -skindir /opt/android-sdk-linux/platforms/android-23/skins/ -verbose -gpu swiftshader -qemu -enable-kvm &
 sleep 30
 
 #if [ -n "$INSTALL_APP" ]; then
