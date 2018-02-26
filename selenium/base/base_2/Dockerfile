@@ -34,6 +34,7 @@ RUN apt-get update && apt-get install -y ttf-mscorefonts-installer \
     xfonts-encodings \
     xfonts-utils \
     flashplugin-installer \
+    fluxbox \
     xvfb && \
     mkdir -p /var/lib/locales/supported.d/ && grep UTF-8 /usr/share/i18n/SUPPORTED > /var/lib/locales/supported.d/all && \
     locale-gen && update-locale && \

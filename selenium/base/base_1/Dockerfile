@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 
 RUN \
     apt-get update && \
-    apt-get install -y apt-transport-https ca-certificates && \
+    apt-get install -y apt-transport-https ca-certificates tzdata && \
     apt-get clean && \
     rm -Rf /tmp/*
     
@@ -30,6 +30,7 @@ RUN apt-get update && apt-get install -y ttf-mscorefonts-installer \
     xfonts-encodings \
     xfonts-utils \
     flashplugin-installer \
+    fluxbox \
     xvfb && \
     fc-cache -f -v && \
     apt-get clean && \
