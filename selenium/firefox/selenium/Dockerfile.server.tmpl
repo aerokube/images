@@ -3,5 +3,10 @@ FROM selenoid/dev_firefox:@@VERSION@@
 COPY selenium-server-standalone.jar /usr/share/selenium/
 COPY entrypoint.sh /
 
+RUN \
+        apt-get update && \
+        apt-get -y install fluxbox x11-utils && \
+        apt-get clean && \
+        rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/*
 EXPOSE 4444
 ENTRYPOINT /entrypoint.sh

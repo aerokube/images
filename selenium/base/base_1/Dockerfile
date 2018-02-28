@@ -11,7 +11,7 @@ COPY sources.list /etc/apt/
 RUN \
     echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections && \
     echo 'UTC' | tee /etc/timezone && \
-    dpkg-reconfigure -f noninteractive tzdata && \
+    dpkg-reconfigure -f noninteractive && \
     echo "gtk-cursor-blink=0" > /root/.gtkrc-2.0
 
 RUN apt-get update && apt-get install -y ttf-mscorefonts-installer \
@@ -30,8 +30,6 @@ RUN apt-get update && apt-get install -y ttf-mscorefonts-installer \
     xfonts-encodings \
     xfonts-utils \
     flashplugin-installer \
-    x11-utils \
-    fluxbox \
     xvfb && \
     fc-cache -f -v && \
     apt-get clean && \
