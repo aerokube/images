@@ -7,7 +7,7 @@ COPY entrypoint.sh /
 
 RUN \
         apt-get update && \
-        apt-get -y --no-install-recommends install pulseaudio && \
+        apt-get -y --no-install-recommends install pulseaudio fluxbox x11-utils && \
         apt-get clean && \
         adduser --system --home /home/selenium \
         --ingroup nogroup --disabled-password --shell /bin/bash selenium && \

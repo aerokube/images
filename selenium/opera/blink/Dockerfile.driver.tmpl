@@ -4,6 +4,11 @@ COPY operadriver /usr/bin/
 COPY entrypoint.sh /
 
 RUN \
+        apt-get update && \
+        apt-get -y install fluxbox x11-utils && \
+        apt-get clean && \
+        rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/*
+RUN \
         adduser --system --home /home/selenium \
         --ingroup nogroup --disabled-password --shell /bin/bash selenium && \
         chmod +x /usr/bin/operadriver
