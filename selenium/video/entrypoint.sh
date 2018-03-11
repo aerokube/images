@@ -4,6 +4,9 @@ BROWSER_CONTAINER_NAME=${BROWSER_CONTAINER_NAME:-"browser"}
 DISPLAY=${DISPLAY:-"99"}
 FILE_NAME=${FILE_NAME:-"video.mp4"}
 FRAME_RATE=${FRAME_RATE:-"12"}
+if [ -n "$LOCK_FILE" ]; then
+    flock -x "$LOCK_FILE" read &
+fi
 retcode=1
 echo 'Waiting for display to open...'
 until [ $retcode -eq 0 ]; do
