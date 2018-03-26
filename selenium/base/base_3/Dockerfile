@@ -1,6 +1,6 @@
 FROM golang:1.10
 
-COPY fileserver /
+COPY fileserver /fileserver
 
 RUN \
     apt-get update && \
