@@ -5,12 +5,11 @@ COPY fileserver /
 RUN \
     apt-get update && \
     apt-get install -y upx-ucl && \
-    cd /fileserver &&
+    cd /fileserver && \
     GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" && \
     upx /fileserver/fileserver
 
 FROM selenoid/base:2.0
-
 
 RUN \
     apt-get update && \
