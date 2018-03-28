@@ -12,10 +12,14 @@ RUN \
 FROM selenoid/base:2.0
 
 RUN \
+    adduser --system --home /home/selenium \
+    --ingroup nogroup --disabled-password --shell /bin/bash selenium && \
+    mkdir -p /home/selenium/Downloads && \
+    ln -s /home/selenium/Downloads /static && \
     apt-get update && \
     apt-get install -y pulseaudio fluxbox x11-utils feh x11vnc && \
     apt-get clean && \
     rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/*
-    
-COPY wallpaper.png /usr/share/images/fluxbox/
+
+COPY aerokube.png /usr/share/images/fluxbox/
 COPY --from=0 /fileserver/fileserver /usr/bin/

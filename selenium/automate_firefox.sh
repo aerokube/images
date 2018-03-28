@@ -55,13 +55,8 @@ test_image(){
 }
 
 test_image "selenoid/firefox" $tag
-read -p "Create VNC?" vnc
-if [ "$vnc" == "y" ]; then
-    pushd vnc/firefox/$runner
-    ../../../build-vnc.sh firefox $tag 
-    popd
-    test_image "selenoid/vnc_firefox" $tag
-fi
+docker tag "selenoid/firefox:$tag" "selenoid/vnc_firefox:$tag"
+docker tag "selenoid/firefox:$tag" "selenoid/vnc:firefox_$tag"
 
 read -p "Push?" yn
 if [ "$yn" == "y" ]; then

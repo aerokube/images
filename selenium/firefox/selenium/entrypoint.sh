@@ -1,6 +1,7 @@
 #!/bin/bash
 SCREEN_RESOLUTION=${SCREEN_RESOLUTION:-"1920x1080x24"}
 DISPLAY=99
+/usr/bin/fileserver &
 /usr/bin/xvfb-run -l -n "$DISPLAY" -s "-ac -screen 0 $SCREEN_RESOLUTION -noreset -listen tcp" /usr/bin/java -Xmx256m -Djava.security.egd=file:/dev/./urandom -jar /usr/share/selenium/selenium-server-standalone.jar -port 4444 -browserTimeout 120 &
 XVFB_PID=$!
 
@@ -14,5 +15,9 @@ until [ $retcode -eq 0 ]; do
   fi
 done
 
+DISPLAY=":$DISPLAY" fbsetbg /usr/share/images/fluxbox/aerokube.png
 fluxbox -display :$DISPLAY &
+if [ -n "$ENABLE_VNC" ]; then
+    x11vnc -display ":$DISPLAY" -passwd selenoid -shared -forever -loop500 -rfbport 5900 -rfbportv6 5900 -logfile /home/selenium/x11vnc.log &
+fi
 wait $XVFB_PID

@@ -41,13 +41,8 @@ test_image(){
 }
 
 test_image "selenoid/opera" $tag
-read -p "Create VNC?" vnc
-if [ "$vnc" == "y" ]; then
-    pushd vnc/opera/blink
-    ../../../build-vnc.sh opera $tag 
-    popd
-    test_image "selenoid/vnc_opera" $tag
-fi
+docker tag "selenoid/opera:$tag" "selenoid/vnc_opera:$tag"
+docker tag "selenoid/opera:$tag" "selenoid/vnc:opera_$tag"
 
 read -p "Push?" yn
 if [ "$yn" == "y" ]; then

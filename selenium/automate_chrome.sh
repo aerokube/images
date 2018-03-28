@@ -41,13 +41,8 @@ test_image(){
 }
 
 test_image "selenoid/chrome" $tag
-read -p "Create VNC?" vnc
-if [ "$vnc" == "y" ]; then
-    pushd vnc/chrome
-    ../../build-vnc.sh chrome $tag 
-    popd
-    test_image "selenoid/vnc_chrome" $tag
-fi
+docker tag "selenoid/chrome:$tag" "selenoid/vnc_chrome:$tag"
+docker tag "selenoid/chrome:$tag" "selenoid/vnc:chrome_$tag"
 
 read -p "Push?" yn
 if [ "$yn" == "y" ]; then
