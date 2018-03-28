@@ -13,7 +13,7 @@ FROM selenoid/base:2.0
 
 RUN \
     apt-get update && \
-    apt-get install -y pulseaudio fluxbox x11-utils xloadimage && \
+    apt-get install -y pulseaudio fluxbox x11-utils feh && \
     apt-get clean && \
     rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/*
     
