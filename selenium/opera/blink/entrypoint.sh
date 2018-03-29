@@ -16,7 +16,7 @@ until [ $retcode -eq 0 ]; do
 done
 
 fluxbox -display :$DISPLAY &
-if [ -n "$ENABLE_VNC" ]; then
+if [ "$ENABLE_VNC" == "true" ]; then
     x11vnc -display ":$DISPLAY" -passwd selenoid -shared -forever -loop500 -rfbport 5900 -rfbportv6 5900 -logfile /home/selenium/x11vnc.log &
 fi
 wait $XVFB_PID
