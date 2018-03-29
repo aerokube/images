@@ -15,7 +15,6 @@ until [ $retcode -eq 0 ]; do
   fi
 done
 
-DISPLAY=":$DISPLAY" fbsetbg /usr/share/images/fluxbox/aerokube.png
 fluxbox -display :$DISPLAY &
 if [ -n "$ENABLE_VNC" ]; then
     x11vnc -display ":$DISPLAY" -passwd selenoid -shared -forever -loop500 -rfbport 5900 -rfbportv6 5900 -logfile /home/selenium/x11vnc.log &
