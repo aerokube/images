@@ -67,8 +67,6 @@ if [ "$yn" == "y" ]; then
 	docker push "selenoid/firefox:$tag"
     docker tag "selenoid/firefox:$tag" "selenoid/firefox:latest"
     docker push "selenoid/firefox:latest"
-    if [ "$vnc" == "y" ]; then
-        docker push "selenoid/vnc:firefox_"$tag
-        docker push "selenoid/vnc_firefox:"$tag
-    fi    
+    docker push "selenoid/vnc:firefox_"$tag
+    docker push "selenoid/vnc_firefox:"$tag
 fi

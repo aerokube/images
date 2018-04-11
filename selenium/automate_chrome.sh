@@ -53,8 +53,6 @@ if [ "$yn" == "y" ]; then
 	docker push "selenoid/chrome:$tag"
     docker tag "selenoid/chrome:$tag" "selenoid/chrome:latest"
     docker push "selenoid/chrome:latest"
-    if [ "$vnc" == "y" ]; then
-        docker push "selenoid/vnc:chrome_"$tag
-        docker push "selenoid/vnc_chrome:"$tag
-    fi
+    docker push "selenoid/vnc:chrome_"$tag
+    docker push "selenoid/vnc_chrome:"$tag
 fi
