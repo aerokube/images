@@ -18,6 +18,8 @@ RUN \
     chown selenium:nogroup /home/selenium/Downloads && \
     mkdir -p /home/selenium/.fluxbox && \
     chown selenium:nogroup /home/selenium/.fluxbox && \
+    wget -O /usr/bin/microinit https://github.com/aerokube/init/releases/download/1.0.0/init_linux_amd64 && \
+    chmod +x /usr/bin/microinit && \
     ln -s /home/selenium/Downloads /static && \
     apt-get update && \
     apt-get install -y pulseaudio fluxbox x11-utils feh x11vnc && \

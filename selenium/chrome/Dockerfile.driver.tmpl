@@ -8,4 +8,4 @@ RUN chmod +x /usr/bin/chromedriver
 USER selenium
 
 EXPOSE 4444
-ENTRYPOINT /entrypoint.sh
+ENTRYPOINT ["/usr/bin/microinit", "/entrypoint.sh"]
