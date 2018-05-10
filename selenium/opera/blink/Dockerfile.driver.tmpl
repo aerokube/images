@@ -7,4 +7,4 @@ RUN chmod +x /usr/bin/operadriver
 USER selenium
 
 EXPOSE 4444
-ENTRYPOINT /entrypoint.sh
+ENTRYPOINT ["/usr/bin/microinit", "/entrypoint.sh"]
