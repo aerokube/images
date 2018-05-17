@@ -118,9 +118,11 @@ android_device=$(request_answer "Specify device preset name if needed:")
 sdcard_size=$(request_answer "Specify SD card size, Mb:" 500)
 userdata_size=$(request_answer "Specify userdata.img size, Mb:" 500)
 
+image_name="android"
 chrome_mobile=$(request_answer "Are you building a Chrome Mobile image (for mobile web testing):" "n")
 if [ "y" == "$chrome_mobile" ]; then
     sed -i 's|@CHROME_MOBILE@|yes|g' "$TMP_DIR/entrypoint.sh"
+    image_name="chrome-mobile"
 else
     sed -i 's|@CHROME_MOBILE@||g' "$TMP_DIR/entrypoint.sh"
 fi
@@ -130,7 +132,7 @@ if [ -n "$chromedriver_version" ]; then
     download_chromedriver "$chromedriver_version"
 fi 
 
-tag=$(request_answer "Specify image tag:" "selenoid/android")
+tag=$(request_answer "Specify image tag:" "selenoid/$image_name:$android_version")
 need_quickboot=$(request_answer "Add Android quick boot snapshot?" "y")
 
 set -x

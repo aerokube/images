@@ -18,7 +18,6 @@ RUN \
 RUN cd / && npm install --prefix ./opt/ appium@$APPIUM_VERSION
 
 COPY android.conf /etc/ld.so.conf.d/
-COPY emulator-snapshot.sh chromedriver* *.apk /usr/bin/
 
 # Android SDK
 ENV ANDROID_HOME /opt/android-sdk-linux
@@ -51,6 +50,8 @@ RUN \
 	resize2fs /root/.android/avd/$AVD_NAME.avd/userdata.img "$USERDATA_SIZE"M && \
 	mv /root/.android/avd/$AVD_NAME.avd/userdata.img /root/.android/avd/$AVD_NAME.avd/userdata-qemu.img && \
 	rm /opt/android-sdk-linux/system-images/$PLATFORM/$EMULATOR_IMAGE_TYPE/x86/userdata.img
+
+COPY emulator-snapshot.sh chromedriver* *.apk /usr/bin/
 
 # Entrypoint
 COPY tmp/entrypoint.sh /
