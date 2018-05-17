@@ -64,19 +64,19 @@ validate_android_version(){
 	7.1)
         build_tools="build-tools;25.0.3"
         platform="android-25"
-        emulator_image="system-images;android-25;google_apis;x86"
+        emulator_image="system-images;android-25;google_apis_playstore;x86"
 		break
 		;;
 	8.0)
         build_tools="build-tools;26.0.3"
         platform="android-26"
-        emulator_image="system-images;android-26;google_apis;x86"
+        emulator_image="system-images;android-26;google_apis_playstore;x86"
 		break
 		;;
 	8.1)
         build_tools="build-tools;27.0.3"
         platform="android-27"
-        emulator_image="system-images;android-27;google_apis;x86"
+        emulator_image="system-images;android-27;google_apis_playstore;x86"
 		break
 		;;
 	*)
