@@ -128,12 +128,13 @@ else
 fi
 
 chromedriver_version=$(request_answer "Specify Chromedriver version if needed:")
-if [ -n "$chromedriver_version" ]; then
-    download_chromedriver "$chromedriver_version"
-fi 
 
 tag=$(request_answer "Specify image tag:" "selenoid/$image_name:$android_version")
 need_quickboot=$(request_answer "Add Android quick boot snapshot?" "y")
+
+if [ -n "$chromedriver_version" ]; then
+    download_chromedriver "$chromedriver_version"
+fi 
 
 set -x
 
