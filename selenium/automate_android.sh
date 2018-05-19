@@ -87,9 +87,11 @@ validate_android_version(){
 }
 
 download_chromedriver() {
+    pushd "$TMP_DIR"
     wget -O chromedriver.zip http://chromedriver.storage.googleapis.com/$1/chromedriver_linux64.zip
     unzip chromedriver.zip
     rm chromedriver.zip
+    popd
 }
 
 require_command "docker"
@@ -114,7 +116,7 @@ emulator_image_type=${emulator_image_info[2]}
 sed -i "s|@AVD_NAME@|$avd_name|g" "$TMP_DIR/entrypoint.sh"
 sed -i "s|@PLATFORM@|$platform|g" "$TMP_DIR/entrypoint.sh"
 
-android_device=$(request_answer "Specify device preset name if needed:")
+android_device=$(request_answer "Specify device preset name if needed (e.g. \"Nexus 4\"):")
 sdcard_size=$(request_answer "Specify SD card size, Mb:" 500)
 userdata_size=$(request_answer "Specify userdata.img size, Mb:" 500)
 
@@ -127,7 +129,7 @@ else
     sed -i 's|@CHROME_MOBILE@||g' "$TMP_DIR/entrypoint.sh"
 fi
 
-chromedriver_version=$(request_answer "Specify Chromedriver version if needed:")
+chromedriver_version=$(request_answer "Specify Chromedriver version if needed (required for Chrome Mobile):")
 
 tag=$(request_answer "Specify image tag:" "selenoid/$image_name:$android_version")
 need_quickboot=$(request_answer "Add Android quick boot snapshot?" "y")
@@ -153,11 +155,10 @@ docker build -t "$tmp_tag" \
 if [ "$need_quickboot" == "y" ]; then 
     id=$(docker run -d --privileged "$tmp_tag")
     sleep 60
-    docker exec "$id" "/emulator-snapshot.sh"
+    docker exec "$id" "/usr/bin/emulator-snapshot.sh"
     sleep 30 # Wait for snapshot to save
     docker commit "$id" "$tag"
     docker rm -f "$id" || true
-    docker rmi -f "$tmp_tag" || true
 else
     docker tag "$tmp_tag" "$tag"
 fi

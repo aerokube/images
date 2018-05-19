@@ -20,7 +20,7 @@ if [ -n "@CHROME_MOBILE@" ]; then
 	APPIUM_ARGS="$APPIUM_ARGS --chromedriver-port $CHROMEDRIVER_PORT --app-pkg \"com.android.chrome\" --app-activity \"com.google.android.apps.chrome.Main\""
 fi
 
-if [ -f "/usr/bin/chromedriver" ]; then
+if [ -x "/usr/bin/chromedriver" ]; then
     APPIUM_ARGS="$APPIUM_ARGS --chromedriver-executable /usr/bin/chromedriver"
 fi
 if [ "$ENABLE_VNC" == "true" ]; then

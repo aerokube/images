@@ -13,7 +13,9 @@ RUN \
 	    unzip \
 	    xvfb \
 	    libpulse0 \
-	    x11vnc
+	    x11vnc \
+	    libglib2.0-0 && \
+    rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/*	    
 
 RUN cd / && npm install --prefix ./opt/ appium@$APPIUM_VERSION
 
@@ -51,7 +53,7 @@ RUN \
 	mv /root/.android/avd/$AVD_NAME.avd/userdata.img /root/.android/avd/$AVD_NAME.avd/userdata-qemu.img && \
 	rm /opt/android-sdk-linux/system-images/$PLATFORM/$EMULATOR_IMAGE_TYPE/x86/userdata.img
 
-COPY emulator-snapshot.sh chromedriver* *.apk /usr/bin/
+COPY emulator-snapshot.sh tmp/chromedriver* *.apk /usr/bin/
 
 # Entrypoint
 COPY tmp/entrypoint.sh /
