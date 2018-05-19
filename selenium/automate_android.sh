@@ -87,7 +87,7 @@ validate_android_version(){
 }
 
 download_chromedriver() {
-    pushd "android"
+    pushd "$TMP_DIR"
     wget -O chromedriver.zip http://chromedriver.storage.googleapis.com/$1/chromedriver_linux64.zip
     unzip chromedriver.zip
     rm chromedriver.zip
@@ -159,7 +159,6 @@ if [ "$need_quickboot" == "y" ]; then
     sleep 30 # Wait for snapshot to save
     docker commit "$id" "$tag"
     docker rm -f "$id" || true
-    docker rmi -f "$tmp_tag" || true
 else
     docker tag "$tmp_tag" "$tag"
 fi
