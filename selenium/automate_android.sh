@@ -87,7 +87,7 @@ validate_android_version(){
 }
 
 download_chromedriver() {
-    pushd "$TMP_DIR"
+    pushd "android"
     wget -O chromedriver.zip http://chromedriver.storage.googleapis.com/$1/chromedriver_linux64.zip
     unzip chromedriver.zip
     rm chromedriver.zip
