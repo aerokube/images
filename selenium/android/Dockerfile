@@ -13,7 +13,9 @@ RUN \
 	    unzip \
 	    xvfb \
 	    libpulse0 \
-	    x11vnc
+	    x11vnc \
+	    libglib2.0-0 &&
+    rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/*	    
 
 RUN cd / && npm install --prefix ./opt/ appium@$APPIUM_VERSION
 
