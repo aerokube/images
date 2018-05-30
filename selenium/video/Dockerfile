@@ -15,7 +15,7 @@ FROM alpine:3.6
 
 RUN apk add -U x264-libs sdl2 libxcb libbz2 xset && \
     rm -rf /var/cache/apk/*
-COPY --from=0 /home/selenoid/aports/main/ffmpeg/src/ffmpeg-3.4/ffmpeg /usr/bin/ffmpeg
+COPY --from=0 /home/selenoid/aports/community/ffmpeg/src/ffmpeg-3.4/ffmpeg /usr/bin/ffmpeg
 
 COPY entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]
