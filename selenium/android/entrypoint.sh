@@ -11,10 +11,10 @@ SCREEN_RESOLUTION=${SCREEN_RESOLUTION:-"1920x1080x24"}
 SKIN=${SKIN:-"1080x1920"}
 
 if [ "$ENABLE_VNC" != "true" ]; then
-    EMULATOR_ARGS="-no-window -no-boot-anim"
+    EMULATOR_ARGS="-no-window"
 fi
-/usr/bin/xvfb-run -l -n "$DISPLAY" -s "-ac -screen 0 $SCREEN_RESOLUTION -noreset -listen tcp" /bin/sh -c "ANDROID_AVD_HOME=/root/.android/avd DISPLAY=:$DISPLAY /opt/android-sdk-linux/emulator/emulator $EMULATOR_ARGS -no-audio -no-jni -avd @AVD_NAME@ -sdcard /sdcard.img -skin $SKIN -skindir /opt/android-sdk-linux/platforms/@PLATFORM@/skins/ -verbose -gpu swiftshader_indirect -qemu -enable-kvm" &
-sleep 4
+/usr/bin/xvfb-run -l -n "$DISPLAY" -s "-ac -screen 0 $SCREEN_RESOLUTION -noreset -listen tcp" /bin/sh -c "ANDROID_AVD_HOME=/root/.android/avd DISPLAY=:$DISPLAY /opt/android-sdk-linux/emulator/emulator $EMULATOR_ARGS -no-boot-anim -no-audio -no-jni -avd @AVD_NAME@ -sdcard /sdcard.img -skin $SKIN -skindir /opt/android-sdk-linux/platforms/@PLATFORM@/skins/ -verbose -gpu swiftshader_indirect -qemu -enable-kvm" &
+while [ "`adb shell getprop sys.boot_completed | tr -d '\r' `" != "1" ] ; do sleep 1; done
 
 if [ -n "@CHROME_MOBILE@" ]; then
 	APPIUM_ARGS="$APPIUM_ARGS --chromedriver-port $CHROMEDRIVER_PORT --app-pkg \"com.android.chrome\" --app-activity \"com.google.android.apps.chrome.Main\""
