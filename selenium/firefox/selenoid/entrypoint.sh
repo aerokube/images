@@ -1,7 +1,27 @@
 #!/bin/bash
 SCREEN_RESOLUTION=${SCREEN_RESOLUTION:-"1920x1080x24"}
 DISPLAY=99
+
+clean() {
+  if [ -n "$FILESERVER_PID" ]; then
+    kill -TERM "$FILESERVER_PID"
+  fi
+  if [ -n "$XVFB_PID" ]; then
+    kill -TERM "$XVFB_PID"
+  fi
+  if [ -n "$FLUXBOX_PID" ]; then
+    kill -TERM $FLUXBOX_PID
+  fi
+  if [ -n "$X11VNC_PID" ]; then
+    kill -TERM "$X11VNC_PID"
+  fi
+}
+
+trap clean SIGINT SIGTERM
+
 /usr/bin/fileserver &
+FILESERVER_PID=$!
+
 /usr/bin/xvfb-run -l -n "$DISPLAY" -s "-ac -screen 0 $SCREEN_RESOLUTION -noreset -listen tcp" /usr/bin/selenoid -conf /etc/selenoid/browsers.json -disable-docker -timeout 1h -enable-file-upload -capture-driver-logs &
 XVFB_PID=$!
 
@@ -16,8 +36,11 @@ until [ $retcode -eq 0 ]; do
 done
 
 fluxbox -display :$DISPLAY &
+FLUXBOX_PID=$!
+
 if [ "$ENABLE_VNC" == "true" ]; then
     x11vnc -display ":$DISPLAY" -passwd selenoid -shared -forever -loop500 -rfbport 5900 -rfbportv6 5900 -logfile /home/selenium/x11vnc.log &
+    X11VNC_PID=$!
 fi
 
-wait $XVFB_PID
+wait

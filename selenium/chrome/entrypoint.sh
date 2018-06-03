@@ -3,17 +3,17 @@ SCREEN_RESOLUTION=${SCREEN_RESOLUTION:-"1920x1080x24"}
 DISPLAY=99
 
 clean() {
-  if [ -n $FILESERVER_PID ]; then
-    kill -TERM $FILESERVER_PID
+  if [ -n "$FILESERVER_PID" ]; then
+    kill -TERM "$FILESERVER_PID"
   fi
-  if [ -n $XVFB_PID ]; then
-    kill -TERM $XVFB_PID
+  if [ -n "$XVFB_PID" ]; then
+    kill -TERM "$XVFB_PID"
   fi
-  if [ -n $FLUXBOX_PID ]; then
+  if [ -n "$FLUXBOX_PID" ]; then
     kill -TERM $FLUXBOX_PID
   fi
-  if [ -n $X11VNC_PID ]; then
-    kill -TERM $X11VNC_PID
+  if [ -n "$X11VNC_PID" ]; then
+    kill -TERM "$X11VNC_PID"
   fi
 }
 
