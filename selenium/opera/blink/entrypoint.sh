@@ -10,7 +10,7 @@ clean() {
     kill -TERM "$XVFB_PID"
   fi
   if [ -n "$FLUXBOX_PID" ]; then
-    kill -TERM $FLUXBOX_PID
+    kill -TERM "$FLUXBOX_PID"
   fi
   if [ -n "$X11VNC_PID" ]; then
     kill -TERM "$X11VNC_PID"
