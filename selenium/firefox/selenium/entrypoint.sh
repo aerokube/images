@@ -1,5 +1,6 @@
 #!/bin/bash
 SCREEN_RESOLUTION=${SCREEN_RESOLUTION:-"1920x1080x24"}
+ENABLE_WINDOW_MANAGER=${ENABLE_WINDOW_MANAGER:-""}
 DISPLAY=99
 
 clean() {
@@ -35,8 +36,10 @@ until [ $retcode -eq 0 ]; do
   fi
 done
 
-fluxbox -display :$DISPLAY &
-FLUXBOX_PID=$!
+if [ -n "$ENABLE_WINDOW_MANAGER" ]; then
+    fluxbox -display :$DISPLAY &
+    FLUXBOX_PID=$!
+fi
 
 if [ "$ENABLE_VNC" == "true" ]; then
     x11vnc -display ":$DISPLAY" -passwd selenoid -shared -forever -loop500 -rfbport 5900 -rfbportv6 5900 -logfile /home/selenium/x11vnc.log &
