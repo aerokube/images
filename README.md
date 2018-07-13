@@ -9,6 +9,8 @@ This repository contains [Docker](http://docker.com/) build files to be used for
 
 ### Opera: [![Opera Docker Pulls](https://img.shields.io/docker/pulls/selenoid/opera.svg)](https://hub.docker.com/r/selenoid/opera)
 
+### Android: [![Android Docker Pulls](https://img.shields.io/docker/pulls/selenoid/android.svg)](https://hub.docker.com/r/selenoid/android)
+
 ## How images are built
 
 ![layers](layers.png)
