@@ -18,4 +18,4 @@ until [ $retcode -eq 0 ]; do
 		sleep 0.1
 	fi
 done
-exec ffmpeg -y -f x11grab -video_size ${VIDEO_SIZE} -r ${FRAME_RATE} -i ${BROWSER_CONTAINER_NAME}:${DISPLAY} -codec:v libx264 -pix_fmt yuv420p "/data/$FILE_NAME"
+exec ffmpeg -y -f x11grab -video_size ${VIDEO_SIZE} -r ${FRAME_RATE} -i ${BROWSER_CONTAINER_NAME}:${DISPLAY} -codec:v ${CODEC} -pix_fmt yuv420p "/data/$FILE_NAME"
