@@ -101,7 +101,9 @@ appium_version=$(request_answer "Specify Appium version:" "1.8.1")
 
 until [ "$?" -ne 0 ]; do
     android_version=$(request_answer "Specify Android version:" "6.0")
-    validate_android_version "$android_version"
+    if validate_android_version "$android_version"; then
+        break
+    fi
 done
 IFS=';' read -ra emulator_image_info <<< "$emulator_image"
 emulator_image_type=${emulator_image_info[2]}
