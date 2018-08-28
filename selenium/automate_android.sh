@@ -91,6 +91,7 @@ require_command "sed"
 require_command "true"
 require_command "false"
 require_command "wget"
+require_command "unzip"
 
 TMP_DIR="android/tmp"
 rm -Rf ./"$TMP_DIR" || true
