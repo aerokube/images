@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	http.HandleFunc("/clipboard", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		cmd := exec.Command("xsel")
 		stdout, err := cmd.StdoutPipe()
 		if err != nil {
