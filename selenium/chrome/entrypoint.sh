@@ -7,6 +7,9 @@ clean() {
   if [ -n "$FILESERVER_PID" ]; then
     kill -TERM "$FILESERVER_PID"
   fi
+  if [ -n "$XSELD_PID" ]; then
+    kill -TERM "$XSELD_PID"
+  fi
   if [ -n "$XVFB_PID" ]; then
     kill -TERM "$XVFB_PID"
   fi
@@ -22,6 +25,9 @@ trap clean SIGINT SIGTERM
 
 /usr/bin/fileserver &
 FILESERVER_PID=$!
+
+/usr/bin/xseld &
+XSELD_PID=$!
 
 /usr/bin/xvfb-run -l -n "$DISPLAY" -s "-ac -screen 0 $SCREEN_RESOLUTION -noreset -listen tcp" /usr/bin/chromedriver --port=4444 --whitelisted-ips='' --verbose &
 XVFB_PID=$!
