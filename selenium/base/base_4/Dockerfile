@@ -23,5 +23,11 @@ RUN \
 
 FROM selenoid/base:3.0
 
+RUN \
+    apt-get update && \
+    apt-get install -y xsel && \
+    apt-get clean && \
+    rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/*
+
 COPY --from=0 /xseld/xseld /usr/bin/
 COPY --from=1 /wm-detector/wm-detector /usr/bin/
