@@ -18,7 +18,7 @@ RUN \
     apt-get update && \
     apt-get install -y upx-ucl && \
     cd /wm-detector && \
-    cc -o wm-detector && \
+    cc wm-detector.c -o wm-detector && \
     upx /wm-detector/wm-detector
 
 FROM selenoid/base:3.0
