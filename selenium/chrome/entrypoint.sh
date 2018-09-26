@@ -26,7 +26,7 @@ trap clean SIGINT SIGTERM
 /usr/bin/fileserver &
 FILESERVER_PID=$!
 
-/usr/bin/xseld &
+DISPLAY=":$DISPLAY" /usr/bin/xseld &
 XSELD_PID=$!
 
 /usr/bin/xvfb-run -l -n "$DISPLAY" -s "-ac -screen 0 $SCREEN_RESOLUTION -noreset -listen tcp" /usr/bin/chromedriver --port=4444 --whitelisted-ips='' --verbose &
