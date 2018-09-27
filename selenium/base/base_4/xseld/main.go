@@ -9,7 +9,7 @@ import (
 
 func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		cmd := exec.Command("xsel")
+		cmd := exec.Command("xsel", "-b")
 		switch r.Method {
 		case http.MethodGet:
 			stdout, err := cmd.StdoutPipe()
