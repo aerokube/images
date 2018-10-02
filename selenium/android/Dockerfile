@@ -37,12 +37,12 @@ ARG SDCARD_SIZE="500"
 ARG USERDATA_SIZE="500"
 
 RUN \
-	curl -o sdk-tools.zip https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip && \
+	curl -o sdk-tools.zip https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip && \
 	mkdir -p /opt/android-sdk-linux && \
 	unzip -q sdk-tools.zip -d /opt/android-sdk-linux && \
 	rm sdk-tools.zip && \
 	yes | sdkmanager --licenses && \
-	sdkmanager "tools" "platform-tools" "$BUILD_TOOLS" "platforms;$PLATFORM" "$EMULATOR_IMAGE" && \
+	sdkmanager "emulator" "tools" "platform-tools" "$BUILD_TOOLS" "platforms;$PLATFORM" "$EMULATOR_IMAGE" && \
 	mksdcard "$SDCARD_SIZE"M sdcard.img && \
 	echo "no" | ( \ 
 	    ([ -n "$ANDROID_DEVICE" ] && avdmanager create avd -n "$AVD_NAME" -k "$EMULATOR_IMAGE" --abi x86 --device "$ANDROID_DEVICE" --sdcard /sdcard.img ) || \
