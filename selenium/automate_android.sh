@@ -148,7 +148,7 @@ docker build -t "$tmp_tag" \
     --build-arg USERDATA_SIZE="$userdata_size" android
 
 if [ "$need_quickboot" == "y" ]; then 
-    id=$(docker run -d --privileged "$tmp_tag")
+    id=$(docker run -e CHROME_MOBILE="$chrome_mobile" -d --privileged "$tmp_tag")
     sleep 60
     docker exec "$id" "/usr/bin/emulator-snapshot.sh"
     sleep 30 # Wait for snapshot to save
