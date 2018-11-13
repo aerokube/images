@@ -1,5 +1,6 @@
 *.iml
 .idea
 *.deb
+*.bak
 
 .DS_Store
