@@ -108,8 +108,8 @@ until [ "$?" -ne 0 ]; do
 done
 IFS=';' read -ra emulator_image_info <<< "$emulator_image"
 emulator_image_type=${emulator_image_info[2]}
-sed -i "s|@AVD_NAME@|$avd_name|g" "$TMP_DIR/entrypoint.sh"
-sed -i "s|@PLATFORM@|$platform|g" "$TMP_DIR/entrypoint.sh"
+sed -i.bak "s|@AVD_NAME@|$avd_name|g" "$TMP_DIR/entrypoint.sh"
+sed -i.bak "s|@PLATFORM@|$platform|g" "$TMP_DIR/entrypoint.sh"
 
 android_device=$(request_answer "Specify device preset name if needed (e.g. \"Nexus 4\"):")
 sdcard_size=$(request_answer "Specify SD card size, Mb:" 500)
@@ -118,10 +118,10 @@ userdata_size=$(request_answer "Specify userdata.img size, Mb:" 500)
 image_name="android"
 chrome_mobile=$(request_answer "Are you building a Chrome Mobile image (for mobile web testing):" "n")
 if [ "y" == "$chrome_mobile" ]; then
-    sed -i 's|@CHROME_MOBILE@|yes|g' "$TMP_DIR/entrypoint.sh"
+    sed -i.bak 's|@CHROME_MOBILE@|yes|g' "$TMP_DIR/entrypoint.sh"
     image_name="chrome-mobile"
 else
-    sed -i 's|@CHROME_MOBILE@||g' "$TMP_DIR/entrypoint.sh"
+    sed -i.bak 's|@CHROME_MOBILE@||g' "$TMP_DIR/entrypoint.sh"
 fi
 
 chromedriver_version=$(request_answer "Specify Chromedriver version if needed (required for Chrome Mobile):")
@@ -133,6 +133,7 @@ if [ -n "$chromedriver_version" ]; then
     download_chromedriver "$chromedriver_version"
 fi 
 
+rm -Rf *.bak || true
 set -x
 
 tmp_tag="$tag"_tmp
