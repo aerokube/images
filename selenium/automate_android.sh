@@ -30,44 +30,37 @@ request_answer(){
 validate_android_version(){
     version="$1"
     avd_name="android$version-1"
+    build_tools="build-tools;28.0.3"
     case "$version" in
 	4.4)
-        build_tools="build-tools;19.1.0"
         platform="android-19"
         emulator_image="system-images;android-19;default;x86"
 		;;
 	5.0)
-        build_tools="build-tools;21.1.2"
         platform="android-21"
         emulator_image="system-images;android-21;default;x86"
 		;;
 	5.1)
-        build_tools="build-tools;22.0.1"
         platform="android-22"
         emulator_image="system-images;android-22;default;x86"
 		;;
 	6.0)
-        build_tools="build-tools;23.0.3"
         platform="android-23"
         emulator_image="system-images;android-23;default;x86"
 		;;
 	7.0)
-        build_tools="build-tools;24.0.3"
         platform="android-24"
         emulator_image="system-images;android-24;default;x86"
 		;;
 	7.1)
-        build_tools="build-tools;25.0.3"
         platform="android-25"
         emulator_image="system-images;android-25;google_apis;x86"
 		;;
 	8.0)
-        build_tools="build-tools;26.0.3"
         platform="android-26"
         emulator_image="system-images;android-26;google_apis;x86"
 		;;
 	8.1)
-        build_tools="build-tools;27.0.3"
         platform="android-27"
         emulator_image="system-images;android-27;google_apis;x86"
 		;;
