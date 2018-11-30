@@ -1,4 +1,4 @@
-FROM golang:1.11
+FROM golang:1.11 as xseld
 
 COPY xseld /xseld
 
@@ -10,24 +10,71 @@ RUN \
     GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" && \
     upx /xseld/xseld
 
-#FROM gcc:5
-#
-#COPY wm-detector /wm-detector
-#
-#RUN \
-#    apt-get update && \
-#    apt-get install -y upx-ucl && \
-#    cd /wm-detector && \
-#    cc wm-detector.c -o wm-detector && \
-#    upx /wm-detector/wm-detector
+FROM gcc:5 as wd-detector
 
-FROM selenoid/base:3.0
+COPY wm-detector /wm-detector
 
 RUN \
     apt-get update && \
-    apt-get install -y xsel && \
+    apt-get install -y upx-ucl && \
+    cd /wm-detector && \
+    cc wm-detector.c -o wm-detector && \
+    upx /wm-detector/wm-detector
+
+FROM ubuntu:18.04
+
+RUN \
+    apt-get update && \
+    apt-get install -y apt-transport-https ca-certificates tzdata locales && \
+    echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections && \
+    echo 'UTC' | tee /etc/timezone && \
+    dpkg-reconfigure -f noninteractive tzdata && \
+    echo "gtk-cursor-blink=0" > /root/.gtkrc-2.0 && \
+    apt-get update && \
+    apt-get install -y ttf-mscorefonts-installer \
+    ttf-dejavu-core \
+    fontconfig \
+    fontconfig-config \
+    fonts-dejavu-core \
+    fonts-liberation \
+    fonts-ubuntu-font-family-console \
+    fonts-wqy-zenhei \
+    fonts-thai-tlwg-ttf \
+    fonts-ipafont-mincho \
+    fonts-sahadeva \
+    fonts-noto-color-emoji \
+    libfontconfig1 \
+    libfontenc1 \
+    libfreetype6 \
+    libxfont1 \
+    libxft2 \
+    xfonts-base \
+    xfonts-encodings \
+    xfonts-utils \
+    flashplugin-installer \
+    xvfb \
+    pulseaudio \ 
+    fluxbox \
+    x11-utils \ 
+    feh \
+    x11vnc \
+    xsel && \
+    mkdir -p /var/lib/locales/supported.d/ && grep UTF-8 /usr/share/i18n/SUPPORTED > /var/lib/locales/supported.d/all && \
+    locale-gen && update-locale && \
+    fc-cache -f -v && \
+    adduser --system --home /home/selenium \
+    --ingroup nogroup --disabled-password --shell /bin/bash selenium && \
+    mkdir -p /home/selenium/Downloads && \
+    chown selenium:nogroup /home/selenium/Downloads && \
+    mkdir -p /home/selenium/.fluxbox && \
+    chown selenium:nogroup /home/selenium/.fluxbox && \
+    ln -s /home/selenium/Downloads /static && \  
     apt-get clean && \
     rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/*
 
-COPY --from=0 /xseld/xseld /usr/bin/
-#COPY --from=1 /wm-detector/wm-detector /usr/bin/
+COPY fluxbox/aerokube /usr/share/fluxbox/styles/
+COPY fluxbox/init /home/selenium/.fluxbox/
+COPY aerokube.png /usr/share/images/fluxbox/
+
+COPY --from=xseld /xseld/xseld /usr/bin/
+COPY --from=wm-detector /wm-detector/wm-detector /usr/bin/
