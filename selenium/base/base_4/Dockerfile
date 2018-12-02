@@ -39,7 +39,7 @@ RUN \
     libfontconfig1 \
     libfontenc1 \
     libfreetype6 \
-    libxfont1 \
+    libxfont2 \
     libxft2 \
     xfonts-base \
     xfonts-encodings \
