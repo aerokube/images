@@ -50,7 +50,7 @@ until [ $retcode -eq 0 ]; do
 done
 
 if [ -n "$ENABLE_WINDOW_MANAGER" ]; then
-    fluxbox -display "$DISPLAY" &
+    fluxbox -display "$DISPLAY" 2>/dev/null &
     FLUXBOX_PID=$!
 fi
 
