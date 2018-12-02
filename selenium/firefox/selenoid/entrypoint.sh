@@ -35,7 +35,7 @@ FILESERVER_PID=$!
 DISPLAY="$DISPLAY" /usr/bin/xseld &
 XSELD_PID=$!
 
-/usr/bin/xvfb-run -l -n "$DISPLAY_NUM" -s "-ac -screen 0 $SCREEN_RESOLUTION -noreset -listen tcp" /usr/bin/selenoid -conf /etc/selenoid/browsers.json -disable-docker -timeout 1h -enable-file-upload -capture-driver-logs &
+/usr/bin/xvfb-run -l -n "$DISPLAY_NUM" -s "-ac -screen 0 $SCREEN_RESOLUTION -noreset -listen tcp" /usr/bin/wmwait /usr/bin/selenoid -conf /etc/selenoid/browsers.json -disable-docker -timeout 1h -enable-file-upload -capture-driver-logs &
 XVFB_PID=$!
 
 retcode=1
@@ -48,10 +48,8 @@ until [ $retcode -eq 0 ]; do
   fi
 done
 
-if [ -n "$ENABLE_WINDOW_MANAGER" ]; then
-    fluxbox -display "$DISPLAY" &
-    FLUXBOX_PID=$!
-fi
+fluxbox -display "$DISPLAY" 2>/dev/null &
+FLUXBOX_PID=$!
 
 if [ "$ENABLE_VNC" == "true" ]; then
     x11vnc -display "$DISPLAY" -passwd selenoid -shared -forever -loop500 -rfbport 5900 -rfbportv6 5900 -logfile /home/selenium/x11vnc.log &
