@@ -1,25 +1,18 @@
-FROM golang:1.11 as xseld
+FROM golang:1.11 as go
 
 COPY xseld /xseld
+
+COPY wmwait /wmwait
 
 RUN \
     apt-get update && \
     apt-get install -y upx-ucl && \
     cd /xseld && \
-    go mod download && \
     GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" && \
-    upx /xseld/xseld
-
-FROM gcc:5 as wd-detector
-
-COPY wm-detector /wm-detector
-
-RUN \
-    apt-get update && \
-    apt-get install -y upx-ucl && \
-    cd /wm-detector && \
-    cc wm-detector.c -o wm-detector && \
-    upx /wm-detector/wm-detector
+    upx /xseld/xseld && \
+    cd /wmwait && \
+    GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" && \
+    upx /wmwait/wmwait
 
 FROM ubuntu:18.04
 
@@ -76,5 +69,5 @@ COPY fluxbox/aerokube /usr/share/fluxbox/styles/
 COPY fluxbox/init /home/selenium/.fluxbox/
 COPY aerokube.png /usr/share/images/fluxbox/
 
-COPY --from=xseld /xseld/xseld /usr/bin/
-COPY --from=wm-detector /wm-detector/wm-detector /usr/bin/
+COPY --from=go /xseld/xseld /usr/bin/
+COPY --from=go /wmwait/wmwait /usr/bin/

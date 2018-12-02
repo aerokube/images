@@ -1,1 +1,1 @@
-module github.com/aandryashin/xseld
+module github.com/aerokube/xseld
