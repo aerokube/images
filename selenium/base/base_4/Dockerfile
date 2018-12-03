@@ -50,6 +50,7 @@ RUN \
     fluxbox \
     x11-utils \ 
     x11vnc \
+    eterm \
     xsel && \
     mkdir -p /var/lib/locales/supported.d/ && grep UTF-8 /usr/share/i18n/SUPPORTED > /var/lib/locales/supported.d/all && \
     locale-gen && update-locale && \
