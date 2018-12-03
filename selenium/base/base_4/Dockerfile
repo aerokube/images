@@ -4,9 +4,14 @@ COPY xseld /xseld
 
 COPY wmwait /wmwait
 
+COPY fileserver /fileserver
+
 RUN \
     apt-get update && \
     apt-get install -y upx-ucl && \
+    cd /fileserver && \
+    GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" && \
+    upx /fileserver/fileserver && \
     cd /xseld && \
     GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" && \
     upx /xseld/xseld && \
@@ -70,5 +75,6 @@ COPY fluxbox/aerokube /usr/share/fluxbox/styles/
 COPY fluxbox/init /home/selenium/.fluxbox/
 COPY aerokube.png /usr/share/images/fluxbox/
 
+COPY --from=go /fileserver/fileserver /usr/bin/
 COPY --from=go /xseld/xseld /usr/bin/
 COPY --from=go /wmwait/wmwait /usr/bin/
