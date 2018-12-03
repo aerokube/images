@@ -17,14 +17,15 @@ RUN \
 FROM ubuntu:18.04
 
 RUN \
-    apt-get update && \
-    apt-get install -y apt-transport-https ca-certificates tzdata locales && \
+    apt update && \
+    apt remove -y libcurl4 && \
+    apt install -y apt-transport-https ca-certificates tzdata locales libcurl4 curl && \
     echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections && \
     echo 'UTC' | tee /etc/timezone && \
     dpkg-reconfigure -f noninteractive tzdata && \
     echo "gtk-cursor-blink=0" > /root/.gtkrc-2.0 && \
-    apt-get update && \
-    apt-get install -y ttf-mscorefonts-installer \
+    apt update && \
+    apt install -y ttf-mscorefonts-installer \
     ttf-dejavu-core \
     fontconfig \
     fontconfig-config \
