@@ -14,15 +14,19 @@ import (
 )
 
 func main() {
+	fmt.Println("Waiting for WM to start")
 	err := waitWM()
 	if err != nil {
-		fmt.Printf("Failed to wait for WM: %v", err)
+		fmt.Printf("Failed to wait for WM: %v\n", err)
 		os.Exit(1)
 	}
+	fmt.Printf("Starting command: %v\n", os.Args[1:])
 	cmd := exec.Command(os.Args[1], os.Args[2:]...)
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
 	err = cmd.Start()
 	if err != nil {
-		fmt.Printf("Failed to start command: %v", err)
+		fmt.Printf("Failed to start command: %v\n", err)
 		os.Exit(1)
 	}
 
@@ -33,7 +37,7 @@ func main() {
 		cmd.Process.Signal(syscall.SIGINT)
 		err := cmd.Wait()
 		if err != nil {
-			fmt.Printf("Failed to wait for command to stop: %v", err)
+			fmt.Printf("Failed to wait for command to stop: %v\n", err)
 			os.Exit(1)
 		}
 		os.Exit(0)
