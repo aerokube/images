@@ -59,7 +59,7 @@ func waitWM() error {
 		close(ch)
 	}
 	xevent.ClientMessageFun(h).Connect(x, x.RootWin())
-	xevent.Main(x)
+	go xevent.Main(x)
 	select {
 	case <-ch:
 		return nil
