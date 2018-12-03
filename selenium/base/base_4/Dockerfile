@@ -24,7 +24,7 @@ FROM ubuntu:18.04
 RUN \
     apt update && \
     apt remove -y libcurl4 && \
-    apt install -y apt-transport-https ca-certificates tzdata locales libcurl4 curl && \
+    apt install -y apt-transport-https ca-certificates tzdata locales libcurl4 curl gnupg && \
     echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections && \
     echo 'UTC' | tee /etc/timezone && \
     dpkg-reconfigure -f noninteractive tzdata && \
