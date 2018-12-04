@@ -15,7 +15,6 @@ import (
 )
 
 func main() {
-	fmt.Println("Waiting for WM to start")
 	err := waitWM()
 	if err != nil {
 		fmt.Printf("Failed to wait for WM: %v\n", err)
@@ -33,16 +32,15 @@ func main() {
 
 	sig := make(chan os.Signal)
 	signal.Notify(sig, syscall.SIGINT, syscall.SIGTERM)
-	go func() {
-		<-sig
-		cmd.Process.Signal(syscall.SIGINT)
-		err := cmd.Wait()
-		if err != nil {
-			fmt.Printf("Failed to wait for command to stop: %v\n", err)
-			os.Exit(1)
-		}
-		os.Exit(0)
-	}()
+	<-sig
+	cmd.Process.Signal(syscall.SIGINT)
+	fmt.Println("Stopping command")
+	err = cmd.Wait()
+	if err != nil {
+		fmt.Printf("Failed to stop command: %v\n", err)
+		os.Exit(1)
+	}
+	os.Exit(0)
 
 }
 
@@ -56,7 +54,8 @@ func waitWM() error {
 		fmt.Printf("Detected running WM %s\n", wm)
 		return nil
 	}
-	
+
+	fmt.Println("Waiting for WM to start")
 	ch := make(chan struct{}, 1)
 	err = xwindow.New(x, x.RootWin()).Listen(xproto.EventMaskSubstructureNotify, xproto.EventMaskSubstructureRedirect)
 	if err != nil {
