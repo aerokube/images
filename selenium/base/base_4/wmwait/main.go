@@ -50,9 +50,11 @@ func waitWM() error {
 		return fmt.Errorf("failed to connect to display: %v", err)
 	}
 	
-	if wm, err := ewmh.GetEwmhWM(x); err != nil {
+	if wm, err := ewmh.GetEwmhWM(x); err == nil {
 		fmt.Printf("Detected running WM %s\n", wm)
 		return nil
+	} else {
+		fmt.Printf("Failed to detect running WM: %v\n", err)
 	}
 
 	fmt.Println("Waiting for WM to start")
