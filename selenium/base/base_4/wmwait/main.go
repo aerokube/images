@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/BurntSushi/xgb/xproto"
 	"github.com/BurntSushi/xgbutil"
+	"github.com/BurntSushi/xgbutil/ewmh"
 	"github.com/BurntSushi/xgbutil/xevent"
 	"github.com/BurntSushi/xgbutil/xwindow"
 	"os"
@@ -50,6 +51,12 @@ func waitWM() error {
 	if err != nil {
 		return fmt.Errorf("failed to connect to display: %v", err)
 	}
+	
+	if wm, err := ewmh.GetEwmhWM(x); err != nil {
+		fmt.Printf("Detected running WM %s\n", wm)
+		return nil
+	}
+	
 	ch := make(chan struct{}, 1)
 	err = xwindow.New(x, x.RootWin()).Listen(xproto.EventMaskSubstructureNotify, xproto.EventMaskSubstructureRedirect)
 	if err != nil {
