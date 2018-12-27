@@ -27,7 +27,7 @@ trap clean SIGINT SIGTERM
 if [ "$ENABLE_VNC" != "true" ]; then
     EMULATOR_ARGS="-no-window"
 fi
-/usr/bin/xvfb-run -l -n "$DISPLAY" -s "-ac -screen 0 $SCREEN_RESOLUTION -noreset -listen tcp" /bin/sh -c "ANDROID_AVD_HOME=/root/.android/avd DISPLAY=:$DISPLAY /opt/android-sdk-linux/emulator/emulator $EMULATOR_ARGS -writable-system -no-boot-anim -no-audio -no-jni -avd @AVD_NAME@ -sdcard /sdcard.img -skin $SKIN -skindir /opt/android-sdk-linux/platforms/@PLATFORM@/skins/ -verbose -gpu swiftshader_indirect -qemu -enable-kvm" &
+/usr/bin/xvfb-run -l -n "$DISPLAY" -s "-ac -screen 0 $SCREEN_RESOLUTION -noreset -listen tcp" /bin/sh -c "ANDROID_AVD_HOME=/root/.android/avd DISPLAY=:$DISPLAY /opt/android-sdk-linux/emulator/emulator $EMULATOR_ARGS -writable-system -no-boot-anim -no-audio -no-jni -avd @AVD_NAME@ -sdcard /sdcard.img -skin $SKIN -skindir /opt/android-sdk-linux/platforms/@PLATFORM@/skins/ -verbose -gpu swiftshader_indirect -ranchu -qemu -enable-kvm" &
 XVFB_PID=$!
 
 while [ "`adb shell getprop sys.boot_completed | tr -d '\r' `" != "1" ] ; do sleep 1; done
