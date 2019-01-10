@@ -9,15 +9,15 @@ COPY fileserver /fileserver
 RUN \
     apt-get update && \
     apt-get install -y upx-ucl && \
-    cd /fileserver && \
-    GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" && \
-    upx /fileserver/fileserver && \
     cd /xseld && \
     GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" && \
     upx /xseld/xseld && \
     cd /wmwait && \
     GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" && \
-    upx /wmwait/wmwait
+    upx /wmwait/wmwait && \
+    cd /fileserver && \
+    GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" && \
+    upx /fileserver/fileserver
 
 FROM ubuntu:18.04
 

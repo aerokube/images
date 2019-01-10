@@ -1,4 +1,4 @@
-FROM selenoid/base:4.0
+FROM selenoid/base:4.0_devtools
 
 ARG VERSION
 ARG CLEANUP
