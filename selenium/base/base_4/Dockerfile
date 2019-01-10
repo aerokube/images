@@ -1,7 +1,5 @@
 FROM golang:1.11 as go
 
-COPY cdp /cdp
-
 COPY xseld /xseld
 
 COPY wmwait /wmwait
@@ -11,9 +9,6 @@ COPY fileserver /fileserver
 RUN \
     apt-get update && \
     apt-get install -y upx-ucl && \
-    cd /cdp && \
-    GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" && \
-    upx /cdp/cdp && \
     cd /xseld && \
     GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" && \
     upx /xseld/xseld && \
