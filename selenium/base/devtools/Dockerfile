@@ -1,6 +1,6 @@
 FROM golang:1.11 as go
 
-COPY devtools/devtools /devtools
+COPY devtools /devtools
 
 RUN \
     apt-get update && \
