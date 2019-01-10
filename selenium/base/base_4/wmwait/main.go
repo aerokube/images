@@ -1,12 +1,36 @@
 package main
 
+// To compile this you have to install libx11-dev package in addition to Golang
+
+// #cgo pkg-config: x11
+/*
+
+#include <X11/Xlib.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+int retcode = -1;
+
+int OnWMDetected(Display* display, XErrorEvent* e) {
+    retcode = 0;
+    return 0;
+}
+
+int check() {
+    Display *display = XOpenDisplay(NULL);
+    if (display == NULL) {
+        return 1;
+    }
+    XSetErrorHandler(&OnWMDetected);
+    XSelectInput(display, DefaultRootWindow(display), SubstructureRedirectMask | SubstructureNotifyMask);
+    XSync(display, 1);
+    return retcode;
+}
+*/
+import "C"
+
 import (
 	"fmt"
-	"github.com/BurntSushi/xgb/xproto"
-	"github.com/BurntSushi/xgbutil"
-	"github.com/BurntSushi/xgbutil/ewmh"
-	"github.com/BurntSushi/xgbutil/xevent"
-	"github.com/BurntSushi/xgbutil/xwindow"
 	"os"
 	"os/exec"
 	"os/signal"
@@ -45,33 +69,22 @@ func main() {
 }
 
 func waitWM() error {
-	x, err := xgbutil.NewConn()
-	if err != nil {
-		return fmt.Errorf("failed to connect to display: %v", err)
-	}
-	
-	if wm, err := ewmh.GetEwmhWM(x); err == nil {
-		fmt.Printf("Detected running WM %s\n", wm)
-		return nil
-	} else {
-		fmt.Printf("Failed to detect running WM: %v\n", err)
-	}
-
 	fmt.Println("Waiting for WM to start")
 	ch := make(chan struct{}, 1)
-	err = xwindow.New(x, x.RootWin()).Listen(xproto.EventMaskSubstructureNotify, xproto.EventMaskSubstructureRedirect)
-	if err != nil {
-		return fmt.Errorf("failed to listen for X events: %v", err)
-	}
-	h := func(_ *xgbutil.XUtil, _ xevent.ClientMessageEvent) {
-		close(ch)
-	}
-	xevent.ClientMessageFun(h).Connect(x, x.RootWin())
-	go xevent.Main(x)
+	go func(ch chan struct{}) {
+		for {
+			code := C.check()
+			if code == 0 {
+				close(ch)
+				break
+			}
+			time.Sleep(100 * time.Millisecond)
+		}
+	}(ch)
 	select {
 	case <-ch:
 		return nil
-	case <-time.After(60*time.Second):
+	case <-time.After(60 * time.Second):
 		return fmt.Errorf("timed out waiting for WM to start")
 	}
 }

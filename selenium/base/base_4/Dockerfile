@@ -8,7 +8,7 @@ COPY fileserver /fileserver
 
 RUN \
     apt-get update && \
-    apt-get install -y upx-ucl && \
+    apt-get install -y upx-ucl libx11-dev && \
     cd /xseld && \
     GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" && \
     upx /xseld/xseld && \
