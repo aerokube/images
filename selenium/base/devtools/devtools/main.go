@@ -17,5 +17,5 @@ func init() {
 
 func main() {
 	log.Printf("[INIT] [Listening on %s]", listen)
-	log.Fatal(http.ListenAndServe(listen, mux()))
+	log.Fatal(http.ListenAndServe(listen, ws()))
 }
