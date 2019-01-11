@@ -36,6 +36,9 @@ trap clean SIGINT SIGTERM
 /usr/bin/fileserver &
 FILESERVER_PID=$!
 
+/usr/bin/devtools &
+DEVTOOLS_PID=$!
+
 DISPLAY="$DISPLAY" /usr/bin/xseld &
 XSELD_PID=$!
 
@@ -58,11 +61,6 @@ FLUXBOX_PID=$!
 if [ "$ENABLE_VNC" == "true" ]; then
     x11vnc -display "$DISPLAY" -passwd selenoid -shared -forever -loop500 -rfbport 5900 -rfbportv6 5900 -logfile /home/selenium/x11vnc.log &
     X11VNC_PID=$!
-fi
-
-if [ "$ENABLE_DEVTOOLS" == "true" ]; then
-    /usr/bin/devtools &
-    DEVTOOLS_PID=$!
 fi
 
 wait
