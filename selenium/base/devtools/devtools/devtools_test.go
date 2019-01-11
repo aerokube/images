@@ -8,8 +8,11 @@ import (
 	"github.com/gorilla/websocket"
 	"github.com/mafredri/cdp"
 	"github.com/mafredri/cdp/rpcc"
+	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
+	"os"
+	"path/filepath"
 	"testing"
 	"time"
 )
@@ -92,4 +95,15 @@ func TestDevtools(t *testing.T) {
 	c := cdp.NewClient(conn)
 	err = c.Page.Enable(ctx)
 	AssertThat(t, err, Is{nil})
+}
+
+func TestDetectDevtoolsHost(t *testing.T) {
+	name, _ := ioutil.TempDir("", "devtools")
+	defer os.RemoveAll(name)
+	profilePath := filepath.Join(name, ".org.chromium.Chromium.deadbee")
+	os.MkdirAll(profilePath, os.ModePerm)
+	portFile := filepath.Join(profilePath, "DevToolsActivePort")
+	ioutil.WriteFile(portFile, []byte("12345"), 0644)
+
+	AssertThat(t, detectDevtoolsHost(name), EqualTo{"127.0.0.1:12345"})
 }

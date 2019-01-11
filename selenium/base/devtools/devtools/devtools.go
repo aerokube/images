@@ -7,18 +7,22 @@ import (
 	"github.com/aerokube/util"
 	"golang.org/x/net/websocket"
 	"io"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"net/url"
+	"os"
+	"path/filepath"
+	"strconv"
 )
 
-var	devtoolsHost = "127.0.0.1:9222"
+var devtoolsHost = "127.0.0.1:9222"
 
 func ws() http.Handler {
 	return websocket.Server{Handler: page} //Origin checking is turned off
 }
 
-func page(wsconn *websocket.Conn){
+func page(wsconn *websocket.Conn) {
 	_, remote := util.RequestInfo(wsconn.Request())
 	u, err := getDebuggerUrl()
 	if err != nil {
@@ -45,7 +49,7 @@ func page(wsconn *websocket.Conn){
 func getDebuggerUrl() (*url.URL, error) {
 	u := url.URL{
 		Scheme: "http",
-		Host:   devtoolsHost,
+		Host:   detectDevtoolsHost("/tmp"),
 		Path:   "/json/list",
 	}
 	resp, err := http.Get(u.String())
@@ -69,4 +73,30 @@ func getDebuggerUrl() (*url.URL, error) {
 		}
 	}
 	return nil, errors.New("debugger URL information not found")
+}
+
+func detectDevtoolsHost(baseDir string) string {
+	candidates, err := filepath.Glob(filepath.Join(baseDir, ".org.chromium.Chromium*"))
+	if err == nil {
+		for _, c := range candidates {
+			f, err := os.Stat(c)
+			if err != nil {
+				continue
+			}
+			if !f.IsDir() {
+				continue
+			}
+			portFile := filepath.Join(c, "DevToolsActivePort")
+			data, err := ioutil.ReadFile(portFile)
+			if err != nil {
+				continue
+			}
+			port, err := strconv.Atoi(string(data))
+			if err != nil {
+				continue
+			}
+			return fmt.Sprintf("127.0.0.1:%d", port)
+		}
+	}
+	return devtoolsHost
 }
