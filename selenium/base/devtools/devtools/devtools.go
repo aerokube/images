@@ -14,6 +14,7 @@ import (
 	"os"
 	"path/filepath"
 	"strconv"
+	"strings"
 )
 
 var devtoolsHost = "127.0.0.1:9222"
@@ -91,7 +92,11 @@ func detectDevtoolsHost(baseDir string) string {
 			if err != nil {
 				continue
 			}
-			port, err := strconv.Atoi(string(data))
+			lines := strings.Split(string(data), "\n")
+			if len(lines) == 0 {
+				continue
+			}
+			port, err := strconv.Atoi(lines[0])
 			if err != nil {
 				continue
 			}

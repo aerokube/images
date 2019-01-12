@@ -103,7 +103,7 @@ func TestDetectDevtoolsHost(t *testing.T) {
 	profilePath := filepath.Join(name, ".org.chromium.Chromium.deadbee")
 	os.MkdirAll(profilePath, os.ModePerm)
 	portFile := filepath.Join(profilePath, "DevToolsActivePort")
-	ioutil.WriteFile(portFile, []byte("12345"), 0644)
+	ioutil.WriteFile(portFile, []byte("12345\n/devtools/browser/6f37c7fe-a0a6-4346-a6e2-80c5da0687f0"), 0644)
 
 	AssertThat(t, detectDevtoolsHost(name), EqualTo{"127.0.0.1:12345"})
 }
