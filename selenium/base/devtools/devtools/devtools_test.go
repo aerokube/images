@@ -31,26 +31,25 @@ func init() {
 
 func mockDevtoolsMux() http.Handler {
 	mux := http.NewServeMux()
-	targets := func(w http.ResponseWriter, _ *http.Request) {
+	version := func(w http.ResponseWriter, _ *http.Request) {
 		w.Header().Add("Content-Type", "application/json")
-		w.Write([]byte(fmt.Sprintf(`[ {
-		"description": "",
-		"devtoolsFrontendUrl": "/devtools/inspector.html?ws=%s/devtools/page/DAB7FB6187B554E10B0BD18821265734",
-		"id": "DAB7FB6187B554E10B0BD18821265734",
-		"title": "Yahoo",
-		"type": "page",
-		"url": "https://www.yahoo.com/",
-		"webSocketDebuggerUrl": "ws://%s/devtools/page/DAB7FB6187B554E10B0BD18821265734"
-		} ]`, devtoolsHost, devtoolsHost)))
+		w.Write([]byte(fmt.Sprintf(`{
+		"Browser": "Chrome/72.0.3601.0",
+		"Protocol-Version": "1.3",
+		"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3601.0 Safari/537.36",
+		"V8-Version": "7.2.233",
+		"WebKit-Version": "537.36 (@cfede9db1d154de0468cb0538479f34c0755a0f4)",
+		"webSocketDebuggerUrl": "ws://%s/devtools/browser/b0b8a4fb-bb17-4359-9533-a8d9f3908bd8"
+	}`, devtoolsHost)))
 	}
-	mux.HandleFunc("/json", targets)
-	mux.HandleFunc("/json/list", targets)
+	mux.HandleFunc("/json/version", version)
 	upgrader := websocket.Upgrader{
 		CheckOrigin: func(_ *http.Request) bool {
 			return true
 		},
 	}
-	mux.HandleFunc("/devtools/page/", func(w http.ResponseWriter, r *http.Request) {
+
+	mux.HandleFunc("/devtools/browser/", func(w http.ResponseWriter, r *http.Request) {
 		//Echo request ID but omit Method
 		c, err := upgrader.Upgrade(w, r, nil)
 		if err != nil {
