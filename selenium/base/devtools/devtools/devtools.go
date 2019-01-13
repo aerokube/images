@@ -51,7 +51,7 @@ func getDebuggerUrl() (*url.URL, error) {
 	u := url.URL{
 		Scheme: "http",
 		Host:   detectDevtoolsHost("/tmp"),
-		Path:   "/json/list",
+		Path:   "/json/version",
 	}
 	resp, err := http.Get(u.String())
 
@@ -59,19 +59,14 @@ func getDebuggerUrl() (*url.URL, error) {
 		return nil, fmt.Errorf("failed to get debugger url: %v", err)
 	}
 
-	var data []map[string]string
-	err = json.NewDecoder(resp.Body).Decode(&data)
+	var version map[string]string
+	err = json.NewDecoder(resp.Body).Decode(&version)
 	if err != nil {
 		return nil, fmt.Errorf("failed to read response body: %v", err)
 	}
-	for _, v := range data {
-		if v["type"] == "page" {
-			u, err := url.Parse(v["webSocketDebuggerUrl"])
-			if err != nil {
-				return nil, fmt.Errorf("wrong debugger URL: %v", err)
-			}
-			return u, nil
-		}
+	wsUrl, err := url.Parse(version["webSocketDebuggerUrl"])
+	if err == nil {
+		return wsUrl, nil
 	}
 	return nil, errors.New("debugger URL information not found")
 }
