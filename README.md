@@ -39,7 +39,13 @@ selenoid-container-tests/ # <== optional tests repo
 $ ./automate_firefox.sh 63.0+build2-0ubuntu0.16.04.2 1.8.1 63.0 0.23.0
 ```
 Here `63.0+build2-0ubuntu0.16.04.2` is `firefox` package version for Ubuntu 16.04, `1.8.1` is [Selenoid](https://github.com/aerokube/selenoid/releases) version to use inside image (just use latest release version here), `63.0` is Docker tag to be applied, `0.23.0` is [Geckodriver](http://github.com/mozilla/geckodriver/releases) version to use.
-  
+
+If you wish to pack a local Debian package instead of APT - just replace package version with full path to **deb** file:
+```
+$ ./automate_firefox.sh /path/to/firefox_63.0+build2-0ubuntu0.16.04.2.deb 1.8.1 63.0 0.23.0
+``` 
+It is important to use package files with full version specified name because automation scripts determine browser version by parsing package file name!
+
 * To build a Chrome image use the following command:
 ```
 $ ./automate_chrome.sh 70.0.3538.67-1 2.43 70.0
