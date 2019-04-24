@@ -57,4 +57,4 @@ COPY emulator-snapshot.sh tmp/chromedriver* *.apk /usr/bin/
 
 # Entrypoint
 COPY tmp/entrypoint.sh /
-ENTRYPOINT /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
