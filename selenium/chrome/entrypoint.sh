@@ -42,6 +42,8 @@ DEVTOOLS_PID=$!
 DISPLAY="$DISPLAY" /usr/bin/xseld &
 XSELD_PID=$!
 
+while ip addr | grep inet | grep -q tentative > /dev/null; do sleep 0.1; done
+
 /usr/bin/xvfb-run -l -n "$DISPLAY_NUM" -s "-ac -screen 0 $SCREEN_RESOLUTION -noreset -listen tcp" /usr/bin/wmwait /usr/bin/chromedriver --port=4444 --whitelisted-ips='' ${DRIVER_ARGS} &
 XVFB_PID=$!
 

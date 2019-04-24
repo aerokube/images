@@ -45,6 +45,7 @@ RUN \
          lsb-base \
          xdg-utils \
          libcurl3 \
+         iproute2 \
          curl && \
          curl -O http://apt-repo:8080/google-chrome-stable.deb && \
          apt-get -y purge curl && \
