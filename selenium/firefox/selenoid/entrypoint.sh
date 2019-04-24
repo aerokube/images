@@ -35,7 +35,7 @@ FILESERVER_PID=$!
 DISPLAY="$DISPLAY" /usr/bin/xseld &
 XSELD_PID=$!
 
-/usr/bin/xvfb-run -l -n "$DISPLAY_NUM" -s "-ac -screen 0 $SCREEN_RESOLUTION -noreset -listen tcp" /usr/bin/wmwait /usr/bin/selenoid -conf /etc/selenoid/browsers.json -disable-docker -timeout 1h -enable-file-upload -capture-driver-logs &
+/usr/bin/xvfb-run -l -n "$DISPLAY_NUM" -s "-ac -screen 0 $SCREEN_RESOLUTION -noreset -listen tcp" /usr/bin/wmwait /usr/bin/selenoid -conf /etc/selenoid/browsers.json -disable-docker -timeout 1h -max-timeout 24h -enable-file-upload -capture-driver-logs &
 XVFB_PID=$!
 
 retcode=1
