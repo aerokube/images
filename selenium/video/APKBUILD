@@ -35,7 +35,6 @@ build() {
 		--disable-stripping \
 		--disable-ffplay \
 		--disable-ffprobe \
-		--disable-ffserver \
 		--disable-doc \
 		--disable-htmlpages \
 		--disable-manpages \
@@ -50,10 +49,8 @@ build() {
 		--disable-dxva2 \
 		--disable-nvenc \
 		--disable-vaapi \
-		--disable-vda \
 		--disable-vdpau \
 		--disable-videotoolbox \
-		--disable-static \
 		--disable-librtmp \
 		$_asm $_dbg
 	make
