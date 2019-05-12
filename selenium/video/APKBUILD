@@ -14,7 +14,7 @@ makedepends="gnutls-dev lame-dev libvorbis-dev xvidcore-dev zlib-dev libvdpau-de
 source="https://ffmpeg.org/releases/ffmpeg-$pkgver.tar.xz
 	0001-libavutil-clean-up-unused-FF_SYMVER-macro.patch
 	"
-builddir="$srcdir/$pkgname"
+builddir="$srcdir/$pkgsource-$pkgver"
 
 build() {
 	local _dbg="--disable-debug"
