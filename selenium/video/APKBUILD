@@ -1,6 +1,7 @@
 # Contributor: Anton Dzyk <anton.dzyk@yandex.ru>
 # Maintainer: Ivan Krutov <vania-pooh@aerokube.com>
 pkgname=ffmpeg-x11grab
+pkgsource=ffmpeg
 pkgver=4.1.3
 pkgrel=1
 pkgdesc="FFMPEG version optimized for x11grab to x264"
