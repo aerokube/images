@@ -32,7 +32,8 @@ build() {
 		--enable-avfilter \
 		--enable-gpl \
 		--enable-libx264 \
-		--disable-stripping \
+        --enable-static \
+        --enable-small \
 		--disable-ffplay \
 		--disable-ffprobe \
 		--disable-doc \
@@ -52,6 +53,8 @@ build() {
 		--disable-vdpau \
 		--disable-videotoolbox \
 		--disable-librtmp \
+        --disable-devices \
+        --enable-indev=xcbgrab \		
 		$_asm $_dbg
 	make
 }
