@@ -91,7 +91,7 @@ rm -Rf ./"$TMP_DIR" || true
 mkdir -p "$TMP_DIR"
 cp android/entrypoint.sh "$TMP_DIR/entrypoint.sh"
 
-appium_version=$(request_answer "Specify Appium version:" "1.8.1")
+appium_version=$(request_answer "Specify Appium version:" "1.13.0")
 
 until [ "$?" -ne 0 ]; do
     android_version=$(request_answer "Specify Android version:" "6.0")
