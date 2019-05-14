@@ -68,10 +68,6 @@ validate_android_version(){
         platform="android-28"
         emulator_image="system-images;android-28;google_apis;x86"
 		;;
-	10.0)
-        platform="android-29"
-        emulator_image="system-images;android-29;google_apis;x86"
-		;;
 	*)
 		echo "Unsupported Android version"
 		false
