@@ -2,8 +2,6 @@ FROM golang:1.11 as go
 
 COPY xseld /xseld
 
-COPY wmwait /wmwait
-
 COPY fileserver /fileserver
 
 RUN \
@@ -12,9 +10,6 @@ RUN \
     cd /xseld && \
     GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" && \
     upx /xseld/xseld && \
-    cd /wmwait && \
-    GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" && \
-    upx /wmwait/wmwait && \
     cd /fileserver && \
     GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" && \
     upx /fileserver/fileserver
@@ -54,9 +49,9 @@ RUN \
     xvfb \
     pulseaudio \ 
     fluxbox \
-    x11-utils \ 
     x11vnc \
     feh \
+    wmctrl \
     xsel && \
     mkdir -p /var/lib/locales/supported.d/ && grep UTF-8 /usr/share/i18n/SUPPORTED > /var/lib/locales/supported.d/all && \
     locale-gen && update-locale && \
@@ -77,4 +72,3 @@ COPY aerokube.png /usr/share/images/fluxbox/
 
 COPY --from=go /fileserver/fileserver /usr/bin/
 COPY --from=go /xseld/xseld /usr/bin/
-COPY --from=go /wmwait/wmwait /usr/bin/
