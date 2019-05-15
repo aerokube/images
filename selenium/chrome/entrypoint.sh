@@ -44,7 +44,7 @@ XSELD_PID=$!
 
 while ip addr | grep inet | grep -q tentative > /dev/null; do sleep 0.1; done
 
-/usr/bin/xvfb-run -l -n "$DISPLAY_NUM" -s "-ac -screen 0 $SCREEN_RESOLUTION -noreset -listen tcp" fluxbox -display "$DISPLAY" 2>/dev/null &
+/usr/bin/xvfb-run -l -n "$DISPLAY_NUM" -s "-ac -screen 0 $SCREEN_RESOLUTION -noreset -listen tcp" /usr/bin/fluxbox -display "$DISPLAY" -log /home/selenium/fluxbox.log 2>/dev/null &
 XVFB_PID=$!
 
 retcode=1
