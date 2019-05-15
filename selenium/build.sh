@@ -87,6 +87,9 @@ else
 fi
 popd
 cat "$template_file" | sed -e "s|@@VERSION@@|$version|g" > "$dir_name/Dockerfile"
+if [ "$mode" == "chromedriver" ]; then
+    cp devtools "$dir_name/devtools"
+fi
 if [ -f "browsers.json.tmpl" ]; then
     cat browsers.json.tmpl | sed -e "s|@@VERSION@@|$version|g" > "$dir_name/browsers.json"
 fi
