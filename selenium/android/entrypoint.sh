@@ -33,7 +33,7 @@ XVFB_PID=$!
 while [ "`adb shell getprop sys.boot_completed | tr -d '\r' `" != "1" ] ; do sleep 1; done
 
 if [ -n "@CHROME_MOBILE@" ]; then
-	APPIUM_ARGS="$APPIUM_ARGS --chromedriver-port $CHROMEDRIVER_PORT --app-pkg \"com.android.chrome\" --app-activity \"com.google.android.apps.chrome.Main\""
+	APPIUM_ARGS="$APPIUM_ARGS --chromedriver-port $CHROMEDRIVER_PORT
 fi
 
 if [ -x "/usr/bin/chromedriver" ]; then

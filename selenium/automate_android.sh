@@ -113,17 +113,19 @@ sdcard_size=$(request_answer "Specify SD card size, Mb:" 500)
 userdata_size=$(request_answer "Specify userdata.img size, Mb:" 500)
 
 image_name="android"
+default_tag="$android_version"
 chrome_mobile=$(request_answer "Are you building a Chrome Mobile image (for mobile web testing):" "n")
 if [ "y" == "$chrome_mobile" ]; then
     sed -i.bak 's|@CHROME_MOBILE@|yes|g' "$TMP_DIR/entrypoint.sh"
-    image_name="chrome-mobile"
+    image_name="chrome"
+    default_tag="mobile-$android_version"
 else
     sed -i.bak 's|@CHROME_MOBILE@||g' "$TMP_DIR/entrypoint.sh"
 fi
 
 chromedriver_version=$(request_answer "Specify Chromedriver version if needed (required for Chrome Mobile):")
 
-tag=$(request_answer "Specify image tag:" "selenoid/$image_name:$android_version")
+tag=$(request_answer "Specify image tag:" "selenoid/$image_name:$default_tag")
 need_quickboot=$(request_answer "Add Android quick boot snapshot?" "y")
 
 if [ -n "$chromedriver_version" ]; then
