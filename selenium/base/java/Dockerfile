@@ -1,4 +1,4 @@
-FROM selenoid/base:4.0
+FROM selenoid/base:5.0
 
 RUN \
     apt-get update && \
