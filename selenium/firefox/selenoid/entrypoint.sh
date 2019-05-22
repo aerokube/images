@@ -4,9 +4,11 @@ ENABLE_WINDOW_MANAGER=${ENABLE_WINDOW_MANAGER:-""}
 DISPLAY_NUM=99
 export DISPLAY=":$DISPLAY_NUM"
 
-VERBOSE=${VERBOSE:-""}
-if [ -n "$VERBOSE" ]; then
+QUIET=${QUIET:-""}
+if [ -z "$QUIET" ]; then
     sed -i 's|@@DRIVER_ARGS@@|, "--log", "debug"|g' /etc/selenoid/browsers.json
+else
+    sed -i 's|@@DRIVER_ARGS@@||g' /etc/selenoid/browsers.json
 fi
 
 clean() {
