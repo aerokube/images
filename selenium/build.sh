@@ -44,7 +44,7 @@ download_chromedriver() {
 }
 
 download_operadriver() {
-    wget -O operadriver.zip https://github.com/operasoftware/operachromiumdriver/releases/download/v$1/operadriver_linux64.zip
+    wget -O operadriver.zip https://github.com/operasoftware/operachromiumdriver/releases/download/v.$1/operadriver_linux64.zip
     unzip operadriver.zip
     if [ -d operadriver_linux64 ]; then
         cp operadriver_linux64/operadriver ./operadriver
