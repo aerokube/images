@@ -8,6 +8,7 @@ RUN \
 	curl --silent --location https://deb.nodesource.com/setup_10.x | bash - && \
 	apt-get install -y --no-install-recommends \
 	    curl \
+	    iproute2 \
 	    nodejs \
 	    openjdk-8-jre-headless \
 	    unzip \
