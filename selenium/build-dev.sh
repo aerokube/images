@@ -2,7 +2,7 @@
 set -e
 
 if [ -z "$1" -o -z "$2" ]; then
-    echo 'Usage: build-dev.sh {firefox/apt|firefox/local|chrome/apt|chrome/local|opera/presto|opera/blink/local|opera/blink/apt} <browser_version> [<cleanup={true|false}>] [<requires_java={true|false}>]'
+    echo 'Usage: build-dev.sh {firefox/apt|firefox/local|chrome/apt|chrome/local|opera/presto|opera/blink/local|opera/blink/apt|yandex/local|yandex/apt} <browser_version> [<cleanup={true|false}>] [<requires_java={true|false}>]'
     exit 1
 fi
 set -x
@@ -15,7 +15,7 @@ tag_version="$version"
 if [ -n "$5" ]; then
     tag_version=$5
 fi
-browser_name=$(echo "$browser" | sed -e 's/\(\/..*\)\+//g')
+browser_name="${browser%%/*}"
 image_name="dev_"$browser_name
 if [ "$cleanup" == "false" ]; then
     image_name=$image_name"_full"
@@ -33,7 +33,7 @@ if [ "$browser" == "firefox/local" -o "$browser" == "firefox/apt" ]; then
 else
     cp "$browser/Dockerfile" "$dir_name"
 fi
-if [ "$browser" == "chrome/local" -o "$browser" == "opera/blink/local" -o "$browser" == "firefox/local" ]; then
+if [ "$browser" == "chrome/local" -o "$browser" == "opera/blink/local" -o "$browser" == "firefox/local" -o "$browser" == "yandex/local" ]; then
     debWildcard="$browser/*.deb"
     cp $debWildcard "$dir_name"
     docker rm -f static-server || true
