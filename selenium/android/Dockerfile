@@ -1,12 +1,13 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 ARG APPIUM_VERSION="1.8.1"
 
 RUN \
-	apt-get update && \
-	apt-get install -y curl && \
+    apt update && \
+    apt remove -y libcurl4 && \
+    apt install -y apt-transport-https ca-certificates tzdata locales libcurl4 curl gnupg && \
 	curl --silent --location https://deb.nodesource.com/setup_10.x | bash - && \
-	apt-get install -y --no-install-recommends \
+	apt install -y --no-install-recommends \
 	    curl \
 	    iproute2 \
 	    nodejs \
@@ -14,13 +15,20 @@ RUN \
 	    unzip \
 	    xvfb \
 	    libpulse0 \
-	    x11vnc \
+        fluxbox \
+        x11vnc \
+        feh \
+        wmctrl \
 	    libglib2.0-0 && \
-    rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/*	    
+    apt-get clean && \
+    rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/*
 
 RUN cd / && npm install --prefix ./opt/ appium@$APPIUM_VERSION
 
 COPY android.conf /etc/ld.so.conf.d/
+COPY fluxbox/aerokube /usr/share/fluxbox/styles/
+COPY fluxbox/init /root/.fluxbox/
+COPY fluxbox/aerokube.png /usr/share/images/fluxbox/
 
 # Android SDK
 ENV ANDROID_HOME /opt/android-sdk-linux
@@ -45,7 +53,7 @@ RUN \
 	yes | sdkmanager --licenses && \
 	sdkmanager "emulator" "tools" "platform-tools" "$BUILD_TOOLS" "platforms;$PLATFORM" "$EMULATOR_IMAGE" && \
 	mksdcard "$SDCARD_SIZE"M sdcard.img && \
-	echo "no" | ( \ 
+	echo "no" | ( \
 	    ([ -n "$ANDROID_DEVICE" ] && avdmanager create avd -n "$AVD_NAME" -k "$EMULATOR_IMAGE" --abi x86 --device "$ANDROID_DEVICE" --sdcard /sdcard.img ) || \
 	    avdmanager create avd -n "$AVD_NAME" -k "$EMULATOR_IMAGE" --abi x86 --sdcard /sdcard.img \
     ) && \
