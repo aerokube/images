@@ -32,7 +32,7 @@ XVFB_PID=$!
 
 retcode=1
 until [ $retcode -eq 0 ]; do
-  DISPLAY="$DISPLAY" wmctrl -m >/dev/null 2>&1
+  DISPLAY=":$DISPLAY" wmctrl -m >/dev/null 2>&1
   retcode=$?
   if [ $retcode -ne 0 ]; then
     echo Waiting X server...
