@@ -9,8 +9,10 @@ PORT=${PORT:-"4444"}
 DISPLAY=99
 SCREEN_RESOLUTION=${SCREEN_RESOLUTION:-"1920x1080x24"}
 SKIN=${SKIN:-"1080x1920"}
+STOP=""
 
 clean() {
+  STOP="yes"
   if [ -n "$APPIUM_PID" ]; then
     kill -TERM "$APPIUM_PID"
   fi
@@ -27,11 +29,11 @@ clean() {
 
 trap clean SIGINT SIGTERM
 
-/usr/bin/xvfb-run -l -n "$DISPLAY" -s "-ac -screen 0 $SCREEN_RESOLUTION -noreset -listen tcp"  /usr/bin/fluxbox -display ":$DISPLAY" -log /root/fluxbox.log 2>/dev/null &
+/usr/bin/xvfb-run -l -n "$DISPLAY" -s "-ac -screen 0 $SCREEN_RESOLUTION -noreset -listen tcp" /usr/bin/fluxbox -display ":$DISPLAY" -log /root/fluxbox.log 2>/dev/null &
 XVFB_PID=$!
 
 retcode=1
-until [ $retcode -eq 0 ]; do
+until [ $retcode -eq 0 -o -n "$STOP" ]; do
   DISPLAY=":$DISPLAY" wmctrl -m >/dev/null 2>&1
   retcode=$?
   if [ $retcode -ne 0 ]; then
@@ -51,7 +53,7 @@ if [ "$ENABLE_VNC" == "true" ]; then
     X11VNC_PID=$!
 fi
 
-while [ "`adb shell getprop sys.boot_completed | tr -d '\r' `" != "1" ] ; do sleep 1; done
+while [ "`adb shell getprop sys.boot_completed | tr -d '\r' `" != "1" -a -z "$STOP" ] ; do sleep 1; done
 
 if [ -n "@CHROME_MOBILE@" ]; then
     while ip addr | grep inet | grep -q tentative > /dev/null; do sleep 0.1; done
