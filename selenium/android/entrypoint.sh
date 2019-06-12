@@ -1,6 +1,4 @@
 #!/bin/bash
-mkdir -p /etc/appium
-CONFIG=/etc/appium/appium.json
 CHROMEDRIVER_PORT=9515
 BOOTSTRAP_PORT=4725
 EMULATOR=emulator-5554
