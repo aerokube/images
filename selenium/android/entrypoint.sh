@@ -41,6 +41,7 @@ until [ $retcode -eq 0 -o -n "$STOP" ]; do
     sleep 0.1
   fi
 done
+if [ -n "$STOP" ]; then exit 0; fi
 
 if [ "$ENABLE_VNC" != "true" -a "$ENABLE_VIDEO" != "true" ]; then
     EMULATOR_ARGS="-no-window"
@@ -54,6 +55,7 @@ if [ "$ENABLE_VNC" == "true" ]; then
 fi
 
 while [ "`adb shell getprop sys.boot_completed | tr -d '\r' `" != "1" -a -z "$STOP" ] ; do sleep 1; done
+if [ -n "$STOP" ]; then exit 0; fi
 
 if [ -n "@CHROME_MOBILE@" ]; then
     while ip addr | grep inet | grep -q tentative > /dev/null; do sleep 0.1; done
