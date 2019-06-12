@@ -27,7 +27,7 @@ clean() {
 
 trap clean SIGINT SIGTERM
 
-/usr/bin/xvfb-run -l -n "$DISPLAY" -s "-ac -screen 0 $SCREEN_RESOLUTION -noreset -listen tcp" /usr/bin/fluxbox -display ":$DISPLAY" -log /root/fluxbox.log 2>/dev/null &
+/usr/bin/xvfb-run -e /dev/stdout -l -n "$DISPLAY" -s "-ac -screen 0 $SCREEN_RESOLUTION -noreset -listen tcp" /usr/bin/fluxbox -display ":$DISPLAY" -log /root/fluxbox.log 2>/dev/null &
 XVFB_PID=$!
 
 retcode=1
