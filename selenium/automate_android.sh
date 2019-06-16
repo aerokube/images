@@ -112,7 +112,7 @@ cp android/entrypoint.sh "$TMP_DIR/entrypoint.sh"
 appium_version=$(request_answer "Specify Appium version:" "1.13.0")
 
 until [ "$?" -ne 0 ]; do
-    android_version=$(request_answer "Specify Android version:" "6.0")
+    android_version=$(request_answer "Specify Android version:" "8.1")
     if validate_android_version "$android_version"; then
         break
     fi
