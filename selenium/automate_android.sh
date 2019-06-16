@@ -84,13 +84,17 @@ download_chromedriver() {
 }
 
 test_image(){
-    docker rm -f selenium || true
-    docker run -d --name selenium -p 4445:4444 $1
     tests_dir=../../selenoid-container-tests/
     if [ -d "$tests_dir" ]; then
+        echo "Running test suite on image."
+        docker rm -f selenium || true
+        docker run -d --privileged --name selenium -p 4445:4444 $1
+        echo "Waiting for image to start..."
+        sleep 20
         pushd "$tests_dir"
         mvn clean test -Dgrid.connection.url="http://localhost:4445/wd/hub" -Dgrid.browser.name=chrome || true
         popd
+        docker rm -f selenium || true
     else
         echo "Skipping tests as $tests_dir does not exist."
     fi
