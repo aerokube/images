@@ -139,7 +139,7 @@ fi
 
 chromedriver_version=$(request_answer "Specify Chromedriver version if needed (required for Chrome Mobile):")
 chrome_major_version="$(cut -d'.' -f1 <<<${chromedriver_version})"
-chrome_minor_version="$(cut -d'.' -f1 <<<${chromedriver_version})"
+chrome_minor_version="$(cut -d'.' -f2 <<<${chromedriver_version})"
 chrome_version="$chrome_major_version.$chrome_minor_version"
 if [ -n ${chrome_version} ]; then
     default_tag="$chrome_version"
