@@ -182,6 +182,7 @@ else
     docker tag "$tmp_tag" "$tag"
 fi
 docker rmi -f "$tmp_tag" || true
+set +x
 
 if [ "y" == "$chrome_mobile" ]; then
     test_image "$tag"
