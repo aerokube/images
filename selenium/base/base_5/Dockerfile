@@ -11,6 +11,7 @@ RUN \
     GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" && \
     upx /xseld/xseld && \
     cd /fileserver && \
+    go test -race && \
     GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" && \
     upx /fileserver/fileserver
 
@@ -47,7 +48,7 @@ RUN \
     xfonts-utils \
     flashplugin-installer \
     xvfb \
-    pulseaudio \ 
+    pulseaudio \
     fluxbox \
     x11vnc \
     feh \
@@ -62,7 +63,7 @@ RUN \
     chown selenium:nogroup /home/selenium/Downloads && \
     mkdir -p /home/selenium/.fluxbox && \
     chown selenium:nogroup /home/selenium/.fluxbox && \
-    ln -s /home/selenium/Downloads /static && \  
+    ln -s /home/selenium/Downloads /static && \
     apt-get clean && \
     rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/*
 
