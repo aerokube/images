@@ -5,8 +5,10 @@ import (
 	"encoding/json"
 	"fmt"
 	. "github.com/aandryashin/matchers"
+	. "github.com/aandryashin/matchers/httpresp"
 	"github.com/gorilla/websocket"
 	"github.com/mafredri/cdp"
+	"github.com/mafredri/cdp/protocol/target"
 	"github.com/mafredri/cdp/rpcc"
 	"io/ioutil"
 	"net/http"
@@ -23,7 +25,7 @@ var (
 )
 
 func init() {
-	srv = httptest.NewServer(ws())
+	srv = httptest.NewServer(root())
 	listen = srv.Listener.Addr().String()
 	devtoolsSrv = httptest.NewServer(mockDevtoolsMux())
 	devtoolsHost = devtoolsSrv.Listener.Addr().String()
@@ -43,13 +45,42 @@ func mockDevtoolsMux() http.Handler {
 	}`, devtoolsHost)))
 	}
 	mux.HandleFunc("/json/version", version)
+	listTargets := func(w http.ResponseWriter, _ *http.Request) {
+		w.Header().Add("Content-Type", "application/json")
+		w.Write([]byte(fmt.Sprintf(`[ {
+  "description": "",
+  "devtoolsFrontendUrl": "/devtools/inspector.html?ws=localhost:9222/devtools/page/one",
+  "id": "one",
+  "title": "Aerokube",
+  "type": "page",
+  "url": "https://www.aerokube.com/",
+  "webSocketDebuggerUrl": "ws://%s/devtools/page/one"
+}, {
+  "description": "",
+  "devtoolsFrontendUrl": "/devtools/inspector.html?ws=localhost:9222/devtools/page/two",
+  "id": "two",
+  "title": "Aerokube Selenoid",
+  "type": "page",
+  "url": "https://selenoid.aerokube.com/",
+  "webSocketDebuggerUrl": "ws://%s/devtools/page/two"
+} ]`, devtoolsHost, devtoolsHost)))
+
+	}
+	mux.HandleFunc("/json/list", listTargets)
+	mux.HandleFunc("/json", listTargets)
+
+	mux.HandleFunc("/json/protocol", func(w http.ResponseWriter, _ *http.Request) {
+		w.Header().Add("Content-Type", "application/json")
+		w.Write([]byte("{}"))
+	})
+
 	upgrader := websocket.Upgrader{
 		CheckOrigin: func(_ *http.Request) bool {
 			return true
 		},
 	}
 
-	mux.HandleFunc("/devtools/browser/", func(w http.ResponseWriter, r *http.Request) {
+	devtoolsEcho := func(w http.ResponseWriter, r *http.Request) {
 		//Echo request ID but omit Method
 		c, err := upgrader.Upgrade(w, r, nil)
 		if err != nil {
@@ -61,15 +92,25 @@ func mockDevtoolsMux() http.Handler {
 			if err != nil {
 				break
 			}
-			type req struct {
-				ID uint64 `json:"id"`
-			}
-			var r req
-			err = json.Unmarshal(message, &r)
+			var req rpcc.Request
+			err = json.Unmarshal(message, &req)
 			if err != nil {
 				panic(err)
 			}
-			output, err := json.Marshal(r)
+			resp := rpcc.Response{
+				ID: req.ID,
+			}
+			if req.Method == "Target.getTargets" {
+				result := target.GetTargetsReply{
+					TargetInfos: []target.Info{
+						{TargetID: "one", Type: "page"},
+						{TargetID: "two", Type: "page"},
+					},
+				}
+				resBytes, _ := json.Marshal(result)
+				resp.Result = json.RawMessage(resBytes)
+			}
+			output, err := json.Marshal(resp)
 			if err != nil {
 				panic(err)
 			}
@@ -78,21 +119,48 @@ func mockDevtoolsMux() http.Handler {
 				break
 			}
 		}
-	})
+	}
+
+	mux.HandleFunc("/devtools/browser/", devtoolsEcho)
+	mux.HandleFunc("/devtools/page/", devtoolsEcho)
 	return mux
+}
+
+func TestProtocol(t *testing.T) {
+	u := fmt.Sprintf("http://%s/json/protocol", srv.Listener.Addr().String())
+	resp, err := http.Get(u)
+	AssertThat(t, err, Is{nil})
+	AssertThat(t, resp, Code{200})
 }
 
 func TestDevtools(t *testing.T) {
 	ctx, cancel := context.WithTimeout(context.Background(), 200*time.Millisecond)
 	defer cancel()
 
-	u := fmt.Sprintf("ws://%s/", srv.Listener.Addr().String())
-	conn, err := rpcc.DialContext(ctx, u)
+	browserWs := fmt.Sprintf("ws://%s/", srv.Listener.Addr().String())
+	browserConn, err := rpcc.DialContext(ctx, browserWs)
 	AssertThat(t, err, Is{nil})
-	defer conn.Close()
+	defer browserConn.Close()
 
-	c := cdp.NewClient(conn)
-	err = c.Page.Enable(ctx)
+	browserClient := cdp.NewClient(browserConn)
+	targets, err := browserClient.Target.GetTargets(ctx)
+	AssertThat(t, err, Is{nil})
+	AssertThat(t, len(targets.TargetInfos), EqualTo{2})
+
+	defaultPageWs := fmt.Sprintf("ws://%s/page", srv.Listener.Addr().String())
+	defaultPageConn, err := rpcc.DialContext(ctx, defaultPageWs)
+	AssertThat(t, err, Is{nil})
+	defer defaultPageConn.Close()
+	defaultPageClient := cdp.NewClient(defaultPageConn)
+	err = defaultPageClient.Page.Enable(ctx)
+	AssertThat(t, err, Is{nil})
+
+	selectedPageWs := fmt.Sprintf("ws://%s/page/%s", srv.Listener.Addr().String(), targets.TargetInfos[1].TargetID)
+	selectedPageConn, err := rpcc.DialContext(ctx, selectedPageWs)
+	AssertThat(t, err, Is{nil})
+	defer selectedPageConn.Close()
+	selectedPageClient := cdp.NewClient(selectedPageConn)
+	err = selectedPageClient.Page.Enable(ctx)
 	AssertThat(t, err, Is{nil})
 }
 
