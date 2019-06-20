@@ -1,15 +1,14 @@
 package main
 
 import (
-	"encoding/json"
+	"context"
 	"errors"
 	"fmt"
-	"github.com/aerokube/util"
-	"golang.org/x/net/websocket"
-	"io"
+	"github.com/mafredri/cdp/devtool"
 	"io/ioutil"
 	"log"
 	"net/http"
+	"net/http/httputil"
 	"net/url"
 	"os"
 	"path/filepath"
@@ -17,58 +16,105 @@ import (
 	"strings"
 )
 
-var devtoolsHost = "127.0.0.1:9222"
+const (
+	devtoolsBaseDir = "/tmp"
+	slash = "/"
+)
 
-func ws() http.Handler {
-	return websocket.Server{Handler: page} //Origin checking is turned off
+var (
+	devtoolsHost = "127.0.0.1:9222"
+)
+
+func root() http.Handler {
+	mux := http.NewServeMux()
+	mux.HandleFunc("/browser", browser)
+	mux.HandleFunc("/json/protocol", protocol)
+	mux.HandleFunc("/page", page)
+	mux.HandleFunc("/page/", page)
+	mux.HandleFunc("/", browser)
+	return mux
 }
 
-func page(wsconn *websocket.Conn) {
-	_, remote := util.RequestInfo(wsconn.Request())
-	u, err := getDebuggerUrl()
+func browser(w http.ResponseWriter, r *http.Request) {
+	u, err := getBrowserWebSocketUrl()
 	if err != nil {
-		log.Printf("[WEBSOCKET_URL_ERROR] [%v]", err)
+		log.Printf("[BROWSER_URL_ERROR] [%v]", err)
 		return
 	}
-	conn, err := websocket.Dial(u.String(), "", "http://localhost/")
-	if err != nil {
-		log.Printf("[WEBSOCKET_CONNECTION_ERROR] [%v]", err)
-		return
-	}
-	log.Printf("[WEBSOCKET] [%s] [%s]", remote, u.String())
-	defer conn.Close()
-	wsconn.PayloadType = websocket.BinaryFrame
-	go func() {
-		io.Copy(wsconn, conn)
-		wsconn.Close()
-		log.Printf("[WEBSOCKET_CLOSED] [%s]", remote)
-	}()
-	io.Copy(conn, wsconn)
-	log.Printf("[WEBSOCKET_CLIENT_DISCONNECTED] [%s]", remote)
+	log.Printf("[BROWSER] [%s]", u.String())
+	proxyWebSocket(w, r, u)
 }
 
-func getDebuggerUrl() (*url.URL, error) {
-	u := url.URL{
+func proxyWebSocket(w http.ResponseWriter, r *http.Request, u *url.URL) {
+	u.Scheme = "http"
+	(&httputil.ReverseProxy{
+		Director: func(r *http.Request) {
+			r.URL = u
+		},
+	}).ServeHTTP(w, r)
+}
+
+func page(w http.ResponseWriter, r *http.Request) {
+	fragments := strings.Split(r.URL.Path, slash)
+	targetId := ""
+	if len(fragments) == 3 {
+		targetId = fragments[2]
+	}
+	u, err := getPageWebSocketUrl(targetId)
+	if err != nil {
+		log.Printf("[PAGE_URL_ERROR] [%v]", err)
+		return
+	}
+	log.Printf("[PAGE] [%s]", u.String())
+	proxyWebSocket(w, r, u)
+}
+
+func protocol(w http.ResponseWriter, r *http.Request) {
+	u := &url.URL{
+		Host: detectDevtoolsHost(devtoolsBaseDir),
 		Scheme: "http",
-		Host:   detectDevtoolsHost("/tmp"),
-		Path:   "/json/version",
+		Path: "/json/protocol",
 	}
-	resp, err := http.Get(u.String())
+	log.Printf("[PROTOCOL] [%s]", u.String())
+	(&httputil.ReverseProxy{
+		Director: func(r *http.Request) {
+			r.URL = u
+		},
+	}).ServeHTTP(w, r)
+}
 
+func getBrowserWebSocketUrl() (*url.URL, error) {
+	ctx := context.Background()
+	dt := devtool.New(fmt.Sprintf("http://%s", detectDevtoolsHost(devtoolsBaseDir)))
+	ver, err := dt.Version(ctx)
 	if err != nil {
-		return nil, fmt.Errorf("failed to get debugger url: %v", err)
+		return nil, fmt.Errorf("failed to get browser websocket url: %v", err)
 	}
 
-	var version map[string]string
-	err = json.NewDecoder(resp.Body).Decode(&version)
-	if err != nil {
-		return nil, fmt.Errorf("failed to read response body: %v", err)
-	}
-	wsUrl, err := url.Parse(version["webSocketDebuggerUrl"])
+	wsUrl, err := url.Parse(ver.WebSocketDebuggerURL)
 	if err == nil {
 		return wsUrl, nil
 	}
-	return nil, errors.New("debugger URL information not found")
+	return nil, errors.New("browser websocket URL information not found")
+}
+
+func getPageWebSocketUrl(targetId string) (*url.URL, error) {
+	ctx := context.Background()
+	dt := devtool.New(fmt.Sprintf("http://%s", detectDevtoolsHost(devtoolsBaseDir)))
+	targets, err := dt.List(ctx)
+	if err != nil {
+		return nil, fmt.Errorf("failed to list targets: %v", err)
+	}
+	for _, t := range targets {
+		if (targetId == "" && t.Type == devtool.Page) || targetId == t.ID {
+			wsUrl, err := url.Parse(t.WebSocketDebuggerURL)
+			if err != nil {
+				return nil, fmt.Errorf("invalid websocket URL for matched target %s: %v", t.ID, err)
+			}
+			return wsUrl, nil
+		}
+	}
+	return nil, errors.New("no matching target found")
 }
 
 func detectDevtoolsHost(baseDir string) string {
