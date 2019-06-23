@@ -38,7 +38,11 @@ if [ "$browser" == "chrome/local" -o "$browser" == "opera/blink/local" -o "$brow
     cp $debWildcard "$dir_name"
     docker rm -f static-server || true
     docker run -d -p 8080:8043 -v "$dir_name":/srv/http --name static-server pierrezemb/gostatic
-    host_ip=$(ifconfig docker0 | grep inet | grep -v inet6 | awk '{print $2;}' | sed -e 's|addr:||g')
+    if [ $(uname) == "Darwin" ]; then
+        host_ip=$(ifconfig | grep -E "([0-9]{1,3}\.){3}[0-9]{1,3}" | grep -v 127.0.0.1 | awk '{ print $2 }' | cut -f2 -d: | head -n1)
+    else
+        host_ip=$(ifconfig docker0 | grep inet | grep -v inet6 | awk '{print $2;}' | sed -e 's|addr:||g')
+    fi
     if [ -z "$host_ip" ]; then
         echo "Failed to determine host machine IP..."
         exit 1
