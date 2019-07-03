@@ -1,3 +1,14 @@
+FROM golang:1.12.5 as go
+
+COPY devtools /devtools
+
+RUN \
+    apt-get update && \
+    apt-get install -y upx-ucl libx11-dev && \
+    cd /devtools && \
+    GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" && \
+    upx /devtools/devtools
+
 FROM ubuntu:18.04
 
 ARG APPIUM_VERSION="1.8.1"
@@ -29,6 +40,7 @@ COPY android.conf /etc/ld.so.conf.d/
 COPY fluxbox/aerokube /usr/share/fluxbox/styles/
 COPY fluxbox/init /root/.fluxbox/
 COPY fluxbox/aerokube.png /usr/share/images/fluxbox/
+COPY --from=go /devtools/devtools /usr/bin/
 
 # Android SDK
 ENV ANDROID_HOME /opt/android-sdk-linux

@@ -21,6 +21,9 @@ clean() {
   if [ -n "$X11VNC_PID" ]; then
     kill -TERM "$X11VNC_PID"
   fi
+  if [ -n "$DEVTOOLS_PID" ]; then
+    kill -TERM "$DEVTOOLS_PID"
+  fi
   if [ -n "$XVFB_PID" ]; then
     kill -TERM "$XVFB_PID"
   fi
@@ -59,6 +62,8 @@ if [ -n "$STOP" ]; then exit 0; fi
 if [ -n "@CHROME_MOBILE@" ]; then
     while ip addr | grep inet | grep -q tentative > /dev/null; do sleep 0.1; done
 	APPIUM_ARGS="$APPIUM_ARGS --chromedriver-port $CHROMEDRIVER_PORT"
+    /usr/bin/devtools &
+    DEVTOOLS_PID=$!
 fi
 
 if [ -x "/usr/bin/chromedriver" ]; then
