@@ -28,7 +28,7 @@ func init() {
 	srv = httptest.NewServer(root())
 	listen = srv.Listener.Addr().String()
 	devtoolsSrv = httptest.NewServer(mockDevtoolsMux())
-	devtoolsHost = devtoolsSrv.Listener.Addr().String()
+	defaultDevtoolsHost = devtoolsSrv.Listener.Addr().String()
 }
 
 func mockDevtoolsMux() http.Handler {
@@ -42,7 +42,7 @@ func mockDevtoolsMux() http.Handler {
 		"V8-Version": "7.2.233",
 		"WebKit-Version": "537.36 (@cfede9db1d154de0468cb0538479f34c0755a0f4)",
 		"webSocketDebuggerUrl": "ws://%s/devtools/browser/b0b8a4fb-bb17-4359-9533-a8d9f3908bd8"
-	}`, devtoolsHost)))
+	}`, defaultDevtoolsHost)))
 	}
 	mux.HandleFunc("/json/version", version)
 	listTargets := func(w http.ResponseWriter, _ *http.Request) {
@@ -63,7 +63,7 @@ func mockDevtoolsMux() http.Handler {
   "type": "page",
   "url": "https://selenoid.aerokube.com/",
   "webSocketDebuggerUrl": "ws://%s/devtools/page/two"
-} ]`, devtoolsHost, devtoolsHost)))
+} ]`, defaultDevtoolsHost, defaultDevtoolsHost)))
 
 	}
 	mux.HandleFunc("/json/list", listTargets)

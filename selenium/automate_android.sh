@@ -112,6 +112,7 @@ TMP_DIR="android/tmp"
 rm -Rf ./"$TMP_DIR" || true
 mkdir -p "$TMP_DIR"
 cp android/entrypoint.sh "$TMP_DIR/entrypoint.sh"
+cp -r chrome/devtools "$TMP_DIR/devtools"
 
 appium_version=$(request_answer "Specify Appium version:" "1.13.0")
 

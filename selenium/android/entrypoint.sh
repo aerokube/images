@@ -62,7 +62,7 @@ if [ -n "$STOP" ]; then exit 0; fi
 if [ -n "@CHROME_MOBILE@" ]; then
     while ip addr | grep inet | grep -q tentative > /dev/null; do sleep 0.1; done
 	APPIUM_ARGS="$APPIUM_ARGS --chromedriver-port $CHROMEDRIVER_PORT"
-    /usr/bin/devtools &
+    /usr/bin/devtools --android &
     DEVTOOLS_PID=$!
 fi
 
