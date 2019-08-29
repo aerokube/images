@@ -34,7 +34,14 @@ func TestDownloadAndRemoveFile(t *testing.T) {
 	AssertThat(t, resp, Code{200})
 	_, err = os.Stat(tempFile.Name())
 	AssertThat(t, err, Is{nil})
-	
+
+	rsp, err := http.Get(withUrl("/?json"))
+	AssertThat(t, err, Is{nil})
+	AssertThat(t, rsp, Code{http.StatusOK})
+	var files []string
+	AssertThat(t, rsp, IsJson{&files})
+	AssertThat(t, files, EqualTo{[]string{tempFileName}})
+
 	req, _ := http.NewRequest(http.MethodDelete, withUrl("/" + tempFileName), nil)
 	resp, err = http.DefaultClient.Do(req)
 	AssertThat(t, err, Is{nil})
