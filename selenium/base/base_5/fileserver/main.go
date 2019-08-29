@@ -1,7 +1,9 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
@@ -13,6 +15,8 @@ func main() {
 	log.Fatal(http.ListenAndServe(":8080", mux("/static")))
 }
 
+const jsonParam = "json"
+
 func mux(dir string) http.Handler {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request){
@@ -20,9 +24,27 @@ func mux(dir string) http.Handler {
 			deleteFileIfExists(w, r, dir)
 			return
 		}
+		if _, ok := r.URL.Query()[jsonParam]; ok {
+			listFilesAsJson(w, dir)
+			return
+		}
 		http.FileServer(http.Dir(dir)).ServeHTTP(w, r)
 	})
 	return mux
+}
+
+func listFilesAsJson(w http.ResponseWriter, dir string) {
+	files, err := ioutil.ReadDir(dir)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	var ret []string
+	for _, f := range files {
+		ret = append(ret, f.Name())
+	}
+	w.Header().Add("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(ret)
 }
 
 func deleteFileIfExists(w http.ResponseWriter, r *http.Request, dir string) {
