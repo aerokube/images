@@ -39,7 +39,7 @@ func listFilesAsJson(w http.ResponseWriter, dir string) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	var ret []string
+	ret := []string{}
 	for _, f := range files {
 		ret = append(ret, f.Name())
 	}
