@@ -53,13 +53,18 @@ download_operadriver() {
     rm -Rf operadriver.zip operadriver_linux64
 }
 
+download_yandexdriver() {
+    wget -O yandexdriver https://raw.githubusercontent.com/yandex/YandexDriver/master/linux/$1/yandexdriver
+    chmod +x yandexdriver
+}
+
 download_selenoid() {
     wget -O selenoid https://github.com/aerokube/selenoid/releases/download/$1/selenoid_linux_amd64
     chmod +x selenoid
 }
 
 if [ -z "$1" -o -z "$2" -o -z "$3" -o -z "$4" ]; then
-    echo 'Usage: build.sh {chromedriver|operadriver|selenoid|selenium} <browser_version> <driver_or_selenium_version> <tag> [<supplementary_version>]'
+    echo 'Usage: build.sh {chromedriver|operadriver|yandexdriver|selenoid|selenium} <browser_version> <driver_or_selenium_version> <tag> [<supplementary_version>]'
     exit 1
 fi
 set -x
@@ -75,6 +80,8 @@ if [ "$mode" == "chromedriver" ]; then
     download_chromedriver "$3"
 elif [ "$mode" == "operadriver" ]; then
     download_operadriver "$3"
+elif [ "$mode" == "yandexdriver" ]; then
+    download_yandexdriver "$3"
 elif [ "$mode" == "selenoid" ]; then
     download_selenoid "$3"
     download_geckodriver "$5"

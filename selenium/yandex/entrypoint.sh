@@ -16,7 +16,7 @@ clean() {
   fi
   if [ -n "$XSELD_PID" ]; then
     kill -TERM "$XSELD_PID"
-  fi  
+  fi
   if [ -n "$XVFB_PID" ]; then
     kill -TERM "$XVFB_PID"
   fi
@@ -54,7 +54,7 @@ if [ "$ENABLE_VNC" == "true" ]; then
     X11VNC_PID=$!
 fi
 
-DISPLAY="$DISPLAY" /usr/bin/operadriver --port=4444 --whitelisted-ips='' ${DRIVER_ARGS} &
+DISPLAY="$DISPLAY" /usr/bin/yandexdriver --port=4444 --whitelisted-ips='' ${DRIVER_ARGS} &
 DRIVER_PID=$!
 
 wait
