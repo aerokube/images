@@ -10,6 +10,5 @@ RUN  \
         apt-get update && \
         apt-get -y --no-install-recommends install yandex-browser-beta=$VERSION && \
         yandex-browser-beta --version && \
-        ln /usr/bin/yandex-browser-beta /usr/bin/opera && \
         rm /etc/apt/sources.list.d/yandex-browser.list && \
         ($CLEANUP && rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/*) || true

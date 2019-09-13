@@ -54,6 +54,5 @@ RUN \
          apt-get -y purge curl && \
          dpkg -i yandex-browser.deb && \
          yandex-browser-beta --version && \
-         ln /usr/bin/yandex-browser-beta /usr/bin/opera && \
          rm -Rf /tmp/* && \
          rm -Rf /var/lib/apt/lists/*

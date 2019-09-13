@@ -1,9 +1,9 @@
 FROM selenoid/dev_yandex:@@VERSION@@
 
-COPY operadriver /usr/bin/
+COPY yandexdriver /usr/bin/
 COPY entrypoint.sh /
 
-RUN chmod +x /usr/bin/operadriver
+RUN chmod +x /usr/bin/yandexdriver
 USER selenium
 
 EXPOSE 4444
