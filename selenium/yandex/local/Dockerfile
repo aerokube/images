@@ -44,11 +44,11 @@ RUN \
          libudev1 \
          ca-certificates \
          fonts-liberation \
-         libappindicator1 \
+         libappindicator3-1 \
          libnss3 \
          lsb-base \
          xdg-utils \
-         libcurl3 \
+         libcurl4 \
          curl && \
          curl -O http://apt-repo:8080/yandex-browser.deb && \
          apt-get -y purge curl && \
