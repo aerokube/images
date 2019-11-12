@@ -15,6 +15,7 @@ tag_version="$version"
 if [ -n "$5" ]; then
     tag_version=$5
 fi
+disable_docker_cache=${DISABLE_DOCKER_CACHE:-false}
 browser_name="${browser%%/*}"
 image_name="dev_"$browser_name
 if [ "$cleanup" == "false" ]; then
@@ -48,6 +49,9 @@ if [ "$browser" == "chrome/local" -o "$browser" == "opera/blink/local" -o "$brow
         exit 1
     fi
     additional_docker_args="--add-host apt-repo:$host_ip"
+fi
+if [ "$disable_docker_cache" == "true" ]; then
+    additional_docker_args+=" --no-cache"
 fi
 pushd "$dir_name"
 echo "Creating image $tag with cleanup=$cleanup..."

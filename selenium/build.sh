@@ -72,6 +72,7 @@ set -x
 mode=$1
 version=$2
 tag=$4
+disable_docker_cache=${DISABLE_DOCKER_CACHE:-false}
 dir_name="/tmp/$(uuidgen | sed -e 's|-||g')"
 mkdir -p "$dir_name"
 pushd "$dir_name"
@@ -103,8 +104,12 @@ fi
 if [ -f "entrypoint.sh" ]; then
     cp entrypoint.sh "$dir_name/entrypoint.sh"
 fi
+additional_docker_args=""
+if [ "$disable_docker_cache" == "true" ]; then
+    additional_docker_args+=" --no-cache"
+fi
 pushd "$dir_name"
-docker build -t "$tag" .
+docker build $additional_docker_args -t "$tag" .
 popd
 rm -Rf "$dir_name"
 exit 0

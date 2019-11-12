@@ -3,6 +3,7 @@ set -e
 input=$1
 driver_version=$2
 tag=$3
+test_failure_ignore=${TEST_FAILURE_IGNORE:-true}
 
 if [ -z "$1" -o -z "$2" -o -z "$3" ]; then
     echo 'Usage: automate_yandex.sh <browser_version|package_file> <yandexdriver_version> <tag_version>'
@@ -33,7 +34,7 @@ test_image(){
     tests_dir=../../selenoid-container-tests/
     if [ -d "$tests_dir" ]; then
         pushd "$tests_dir"
-        mvn clean test -Dgrid.connection.url="http://localhost:4445/" -Dgrid.browser.name=chrome -Dgrid.browser.version=$2 || true
+        mvn clean test -Dgrid.connection.url="http://localhost:4445/" -Dgrid.browser.name=chrome -Dgrid.browser.version=$2 || $test_failure_ignore
         popd
     else
         echo "Skipping tests as $tests_dir does not exist."
