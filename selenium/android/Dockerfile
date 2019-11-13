@@ -26,19 +26,10 @@ RUN \
 	    unzip \
 	    xvfb \
 	    libpulse0 \
-		libx11-xcb1 \
-		libxcb1 \ 
 		libxcomposite1 \
 		libxcursor1 \
-		libxdamage1 \
-		libxext6 \
-		libxfixes3 \
 		libxi6 \
-		libxrandr2 \
 		libasound2 \
-		libxrender1 \
-		libxss1 \
-		libxtst6 \
         fluxbox \
         x11vnc \
         feh \
