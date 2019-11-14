@@ -36,27 +36,33 @@ selenoid-container-tests/ # <== optional tests repo
 ```
 * To build a Firefox image use the following command:
 ```
-$ ./automate_firefox.sh 63.0+build2-0ubuntu0.16.04.2 1.8.1 63.0 0.23.0
+$ ./automate_firefox.sh 70.0.1+build1-0ubuntu0.18.04.1 1.9.3 70.0 0.26.0
 ```
-Here `63.0+build2-0ubuntu0.16.04.2` is `firefox` package version for Ubuntu 16.04, `1.8.1` is [Selenoid](https://github.com/aerokube/selenoid/releases) version to use inside image (just use latest release version here), `63.0` is Docker tag to be applied, `0.23.0` is [Geckodriver](http://github.com/mozilla/geckodriver/releases) version to use.
+Here `70.0.1+build1-0ubuntu0.18.04.1` is `firefox` package version for Ubuntu 18.04, `1.9.3` is [Selenoid](https://github.com/aerokube/selenoid/releases) version to use inside image (just use latest release version here), `70.0` is Docker tag to be applied, `0.26.0` is [Geckodriver](http://github.com/mozilla/geckodriver/releases) version to use.
 
 If you wish to pack a local Debian package instead of APT - just replace package version with full path to **deb** file:
 ```
-$ ./automate_firefox.sh /path/to/firefox_63.0+build2-0ubuntu0.16.04.2.deb 1.8.1 63.0 0.23.0
+$ ./automate_firefox.sh /path/to/firefox_70.0.1+build1-0ubuntu0.18.04.1_i386.deb 1.9.3 70.0 0.26.0
 ``` 
 It is important to use package files with full version specified name because automation scripts determine browser version by parsing package file name!
 
 * To build a Chrome image use the following command:
 ```
-$ ./automate_chrome.sh 70.0.3538.67-1 2.43 70.0
+$ ./automate_chrome.sh 78.0.3904.97-1 78.0.3904.70 78.0
 ```
-Here `70.0.3538.67-1` is `google-chrome-stable` package version for Ubuntu 16.04, `2.43` is [Chromedriver](https://chromedriver.storage.googleapis.com/index.html) version, `70.0` is Docker tag to be applied.  
+Here `78.0.3904.97-1` is `google-chrome-stable` package version for Ubuntu 18.04, `78.0.3904.70` is [Chromedriver](https://chromedriver.storage.googleapis.com/index.html) version, `78.0` is Docker tag to be applied.  
 
 * To build an Opera image use the following command:
 ```
-$ ./automate_opera.sh 56.0.3051.31 .2.40 56.0
+$ ./automate_opera.sh 64.0.3417.92 77.0.3865.120 64.0
 ```
-Here `56.0.3051.31` is `opera-stable` package version for Ubuntu 16.04, `.2.40` is [Operadriver](https://github.com/operasoftware/operachromiumdriver/releases) version, `70.0` is Docker tag to be applied.  
+Here `64.0.3417.92` is `opera-stable` package version for Ubuntu 18.04, `77.0.3865.120` is [Operadriver](https://github.com/operasoftware/operachromiumdriver/releases) version, `64.0` is Docker tag to be applied.  
+
+* To build a Yandex image use the following command:
+```
+$ ./automate_yandex.sh 19.9.3.358-1 19.9.3 19.9
+```
+Here `19.9.3.358-1` is `yandex-browser-beta` package version for Ubuntu 18.04, `19.9.3` is [Yandexdriver](https://github.com/yandex/YandexDriver/tree/master/linux) version, `19.9` is Docker tag to be applied.
 
 * To build an Android image use the following command:
 ```
