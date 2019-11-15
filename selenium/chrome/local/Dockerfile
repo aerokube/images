@@ -3,6 +3,8 @@ FROM selenoid/base:5.0
 ARG VERSION=noop
 ARG CLEANUP=noop
 
+LABEL browser=google-chrome-stable_$VERSION
+
 RUN \
         apt-get update && \
         apt-get -y --no-install-recommends install gconf-service \

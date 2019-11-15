@@ -3,6 +3,8 @@ FROM selenoid/base:5.0
 ARG VERSION
 ARG CLEANUP
 
+LABEL browser=google-chrome-stable_$VERSION
+
 RUN \
         ( [ "$CLEANUP" != "true" ] && rm -f /etc/apt/apt.conf.d/docker-clean ) || true && \
         wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \

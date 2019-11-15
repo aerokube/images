@@ -3,6 +3,8 @@ FROM selenoid/base:5.0
 ARG VERSION
 ARG CLEANUP
 
+LABEL browser=opera-stable_$VERSION
+
 RUN  \
         ( [ "$CLEANUP" != "true" ] && rm -f /etc/apt/apt.conf.d/docker-clean ) || true && \
         wget -O- http://deb.opera.com/archive.key | apt-key add - && \
