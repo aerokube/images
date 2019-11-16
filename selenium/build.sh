@@ -77,17 +77,24 @@ dir_name="/tmp/$(uuidgen | sed -e 's|-||g')"
 mkdir -p "$dir_name"
 pushd "$dir_name"
 template_file="Dockerfile.driver.tmpl"
+additional_docker_args=""
 if [ "$mode" == "chromedriver" ]; then
     download_chromedriver "$3"
+    additional_docker_args+="--label driver=chromedriver_$3"
 elif [ "$mode" == "operadriver" ]; then
     download_operadriver "$3"
+    additional_docker_args+="--label driver=operadriver_$3"
 elif [ "$mode" == "yandexdriver" ]; then
     download_yandexdriver "$3"
+    additional_docker_args+="--label driver=yandexdriver_$3"
 elif [ "$mode" == "selenoid" ]; then
     download_selenoid "$3"
+    additional_docker_args+="--label selenoid=$3"
     download_geckodriver "$5"
+    additional_docker_args+=" --label driver=geckodriver_$5"
 elif [ "$mode" == "selenium" ]; then
     download_selenium "$3"
+    additional_docker_args+="--label selenium=$3"
     template_file="Dockerfile.server.tmpl"
 else
     echo "Unsupported mode: will do nothing. Exiting."
@@ -104,7 +111,6 @@ fi
 if [ -f "entrypoint.sh" ]; then
     cp entrypoint.sh "$dir_name/entrypoint.sh"
 fi
-additional_docker_args=""
 if [ "$disable_docker_cache" == "true" ]; then
     additional_docker_args+=" --no-cache"
 fi

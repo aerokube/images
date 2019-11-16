@@ -3,6 +3,8 @@ FROM selenoid/base:5.0@@REQUIRES_JAVA@@
 ARG VERSION
 ARG CLEANUP
 
+LABEL browser=firefox_$VERSION
+
 RUN  \
         ( [ "$CLEANUP" != "true" ] && rm -f /etc/apt/apt.conf.d/docker-clean ) || true && \
         apt-get update && \
