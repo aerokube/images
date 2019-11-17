@@ -36,7 +36,7 @@ else
 fi
 if [ "$browser" == "chrome/local" -o "$browser" == "opera/blink/local" -o "$browser" == "firefox/local" -o "$browser" == "yandex/local" ]; then
     debWildcard="$browser/*.deb"
-    cp $debWildcard "$dir_name"
+    mv $debWildcard "$dir_name"
     docker rm -f static-server || true
     docker run -d -p 8080:8043 -v "$dir_name":/srv/http --name static-server pierrezemb/gostatic
     if [ $(uname) == "Darwin" ]; then
