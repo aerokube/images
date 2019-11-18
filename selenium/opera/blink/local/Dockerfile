@@ -2,8 +2,9 @@ FROM selenoid/base:5.0
 
 ARG VERSION=noop
 ARG CLEANUP=noop
+ARG PACKAGE=opera-stable
 
-LABEL browser=opera-stable_$VERSION
+LABEL browser=$PACKAGE:$VERSION
 
 RUN \
         apt-get update && \
@@ -52,9 +53,11 @@ RUN \
          xdg-utils \
          libcurl4 \
          curl && \
-         curl -O http://apt-repo:8080/opera-stable.deb && \
+         curl -O http://apt-repo:8080/opera.deb && \
          apt-get -y purge curl && \
-         dpkg -i opera-stable.deb && \
+         dpkg -i opera.deb && \
+         ( [ "$PACKAGE" != "opera-stable" ] && ln /usr/bin/$PACKAGE /usr/bin/opera ) || true && \
+         rm opera.deb && \
          opera --version && \
          rm -Rf /tmp/* && \
          rm -Rf /var/lib/apt/lists/*

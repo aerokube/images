@@ -2,11 +2,21 @@ FROM selenoid/base:5.0@@REQUIRES_JAVA@@
 
 ARG VERSION
 ARG CLEANUP
+ARG PACKAGE=firefox
+ARG PPA
 
-LABEL browser=firefox_$VERSION
+LABEL browser=$PACKAGE:$VERSION
 
 RUN  \
         ( [ "$CLEANUP" != "true" ] && rm -f /etc/apt/apt.conf.d/docker-clean ) || true && \
+        ( [ "$PPA" != "" ] && \
+            apt-get update && \
+            apt-get install -y software-properties-common && \
+            apt-get update && \
+            add-apt-repository -y $PPA \
+        ) || true && \
         apt-get update && \
-        apt-get -y --no-install-recommends install firefox=$VERSION && \
+        apt-get -y --no-install-recommends install $PACKAGE=$VERSION && \
+        ( [ "$PACKAGE" = "firefox-trunk" ] && ln /usr/bin/$PACKAGE /usr/bin/firefox ) || true && \
+        firefox --version && \
         ($CLEANUP && rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/*) || true

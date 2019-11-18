@@ -3,7 +3,7 @@ FROM selenoid/base:5.0
 ARG VERSION=19.4.2.698-1
 ARG CLEANUP
 
-LABEL browser=yandex-browser-beta_$VERSION
+LABEL browser=yandex-browser-beta:$VERSION
 
 RUN  \
         ( [ "$CLEANUP" != "true" ] && rm -f /etc/apt/apt.conf.d/docker-clean ) || true && \

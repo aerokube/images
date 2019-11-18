@@ -3,10 +3,11 @@ set -e
 input=$1
 driver_version=$2
 tag=$3
+channel=${4:-"default"}
 test_failure_ignore=${TEST_FAILURE_IGNORE:-true}
 
 if [ -z "$1" -o -z "$2" -o -z "$3" ]; then
-    echo 'Usage: ./automate_chrome.sh <browser_version|package_file> <chromedriver_version> <tag_version>'
+    echo 'Usage: ./automate_chrome.sh <browser_version|package_file> <chromedriver_version> <tag_version> [<channel={beta|dev}>]'
     exit 1
 fi
 set -x
@@ -14,15 +15,15 @@ set -x
 browser_version=$input
 method="chrome/apt"
 if [ -f "$input" ]; then
-    cp "$input" chrome/local/google-chrome-stable.deb
+    cp "$input" chrome/local/google-chrome.deb
     filename=$(echo "$input" | awk -F '/' '{print $NF}')
     browser_version=$(echo $filename | awk -F '_' '{print $2}' | awk -F '-' '{print $1}')
     method="chrome/local"
 fi
 
-./build-dev.sh $method $browser_version true
+./build-dev.sh $method $browser_version $channel true
 if [ "$method" == "chrome/apt" ]; then
-    ./build-dev.sh $method $browser_version false
+    ./build-dev.sh $method $browser_version $channel false
 fi
 pushd chrome
 ../build.sh chromedriver $browser_version $driver_version selenoid/chrome:$tag
