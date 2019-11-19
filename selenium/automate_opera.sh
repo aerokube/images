@@ -3,10 +3,11 @@ set -e
 input=$1
 driver_version=$2
 tag=$3
+channel=${4:-"default"}
 test_failure_ignore=${TEST_FAILURE_IGNORE:-true}
 
 if [ -z "$1" -o -z "$2" -o -z "$3" ]; then
-    echo 'Usage: automate_opera.sh <browser_version|package_file> <operadriver_version> <tag_version>'
+    echo 'Usage: automate_opera.sh <browser_version|package_file> <operadriver_version> <tag_version> [<channel={beta|dev}>]'
     exit 1
 fi
 set -x
@@ -14,15 +15,15 @@ set -x
 browser_version=$input
 method="opera/blink/apt"
 if [ -f "$input" ]; then
-    cp "$input" opera/blink/local/opera-stable.deb
+    cp "$input" opera/blink/local/opera.deb
     filename=$(echo "$input" | awk -F '/' '{print $NF}')
     browser_version=$(echo $filename | awk -F '_' '{print $2}' | awk -F '+' '{print $1}')
     method="opera/blink/local"
 fi
 
-./build-dev.sh $method $browser_version true
+./build-dev.sh $method $browser_version $channel true
 if [ "$method" == "opera/blink/apt" ]; then
-    ./build-dev.sh $method $browser_version false
+    ./build-dev.sh $method $browser_version $channel false
 fi
 pushd opera/blink
 ../../build.sh operadriver $browser_version $driver_version selenoid/opera:$tag
@@ -30,7 +31,7 @@ popd
 
 test_image(){
     docker rm -f selenium || true
-    docker run -d --name selenium -p 4445:4444  $1:$2
+    docker run -d --name selenium -p 4445:4444 $1:$2
     tests_dir=../../selenoid-container-tests/
     if [ -d "$tests_dir" ]; then
         pushd "$tests_dir"

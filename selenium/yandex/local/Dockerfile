@@ -3,7 +3,7 @@ FROM selenoid/base:5.0
 ARG VERSION=noop
 ARG CLEANUP=noop
 
-LABEL browser=yandex-browser-beta_$VERSION
+LABEL browser=yandex-browser-beta:$VERSION
 
 RUN \
         apt-get update && \
@@ -55,6 +55,7 @@ RUN \
          curl -O http://apt-repo:8080/yandex-browser.deb && \
          apt-get -y purge curl && \
          dpkg -i yandex-browser.deb && \
+         rm yandex-browser.deb && \
          yandex-browser-beta --version && \
          rm -Rf /tmp/* && \
          rm -Rf /var/lib/apt/lists/*

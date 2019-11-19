@@ -2,8 +2,10 @@ FROM selenoid/base:5.0
 
 ARG VERSION=noop
 ARG CLEANUP=noop
+ARG PACKAGE=google-chrome-stable
+ARG INSTALL_DIR=chrome
 
-LABEL browser=google-chrome-stable_$VERSION
+LABEL browser=$PACKAGE:$VERSION
 
 RUN \
         apt-get update && \
@@ -49,12 +51,12 @@ RUN \
          libcurl4 \
          iproute2 \
          curl && \
-         curl -O http://apt-repo:8080/google-chrome-stable.deb && \
+         curl -O http://apt-repo:8080/google-chrome.deb && \
          apt-get -y purge curl && \
-         dpkg -i google-chrome-stable.deb && \
-         rm google-chrome-stable.deb && \
-         chown root:root /opt/google/chrome/chrome-sandbox && \
-         chmod 4755 /opt/google/chrome/chrome-sandbox && \
-         google-chrome-stable --version && \
+         dpkg -i google-chrome.deb && \
+         rm google-chrome.deb && \
+         chown root:root /opt/google/$INSTALL_DIR/chrome-sandbox && \
+         chmod 4755 /opt/google/$INSTALL_DIR/chrome-sandbox && \
+         google-chrome --version && \
          rm -Rf /tmp/* && \
          rm -Rf /var/lib/apt/lists/*

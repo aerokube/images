@@ -80,18 +80,18 @@ template_file="Dockerfile.driver.tmpl"
 additional_docker_args=""
 if [ "$mode" == "chromedriver" ]; then
     download_chromedriver "$3"
-    additional_docker_args+="--label driver=chromedriver_$3"
+    additional_docker_args+="--label driver=chromedriver:$3"
 elif [ "$mode" == "operadriver" ]; then
     download_operadriver "$3"
-    additional_docker_args+="--label driver=operadriver_$3"
+    additional_docker_args+="--label driver=operadriver:$3"
 elif [ "$mode" == "yandexdriver" ]; then
     download_yandexdriver "$3"
-    additional_docker_args+="--label driver=yandexdriver_$3"
+    additional_docker_args+="--label driver=yandexdriver:$3"
 elif [ "$mode" == "selenoid" ]; then
     download_selenoid "$3"
     additional_docker_args+="--label selenoid=$3"
     download_geckodriver "$5"
-    additional_docker_args+=" --label driver=geckodriver_$5"
+    additional_docker_args+=" --label driver=geckodriver:$5"
 elif [ "$mode" == "selenium" ]; then
     download_selenium "$3"
     additional_docker_args+="--label selenium=$3"

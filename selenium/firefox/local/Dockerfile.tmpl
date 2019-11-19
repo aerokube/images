@@ -1,9 +1,11 @@
 FROM selenoid/base:5.0@@REQUIRES_JAVA@@
 
-ARG VERSION
+ARG VERSION=noop
 ARG CLEANUP
+ARG PACKAGE=firefox
+ARG PPA=noop
 
-LABEL browser=firefox_$VERSION
+LABEL browser=$PACKAGE:$VERSION
 
 RUN \
         ( [ "$CLEANUP" != "true" ] && rm -f /etc/apt/apt.conf.d/docker-clean ) || true && \
@@ -28,5 +30,7 @@ RUN \
             ) \
         ) && \
         dpkg -i firefox.deb && \
+        ( [ "$PACKAGE" = "firefox-trunk" ] && ln /usr/bin/$PACKAGE /usr/bin/firefox ) || true && \
+        rm firefox.deb && \
         firefox --version && \
         ($CLEANUP && rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/* && rm -f firefox*.deb) || true

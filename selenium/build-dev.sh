@@ -1,19 +1,20 @@
 #!/bin/bash
 set -e
 
-if [ -z "$1" -o -z "$2" ]; then
-    echo 'Usage: build-dev.sh {firefox/apt|firefox/local|chrome/apt|chrome/local|opera/presto|opera/blink/local|opera/blink/apt|yandex/local|yandex/apt} <browser_version> [<cleanup={true|false}>] [<requires_java={true|false}>]'
+if [ -z "$1" -o -z "$2" -o -z "$3" ]; then
+    echo 'Usage: build-dev.sh {firefox/apt|firefox/local|chrome/apt|chrome/local|opera/presto|opera/blink/local|opera/blink/apt|yandex/local|yandex/apt} <browser_version> {default|beta|dev} [<cleanup={true|false}>] [<requires_java={true|false}>]'
     exit 1
 fi
 set -x
 
 browser=$1
 version=$2
-cleanup=${3:-"false"}
-requires_java=${4:-"false"}
+channel=$3
+cleanup=${4:-"false"}
+requires_java=${5:-"false"}
 tag_version="$version"
-if [ -n "$5" ]; then
-    tag_version=$5
+if [ -n "$6" ]; then
+    tag_version=$6
 fi
 disable_docker_cache=${DISABLE_DOCKER_CACHE:-false}
 browser_name="${browser%%/*}"
@@ -49,6 +50,40 @@ if [ "$browser" == "chrome/local" -o "$browser" == "opera/blink/local" -o "$brow
         exit 1
     fi
     additional_docker_args="--add-host apt-repo:$host_ip"
+fi
+if [ "$channel" != "default" ]; then
+    case $browser_name in
+        firefox)
+            case $channel in
+                beta)
+                    additional_docker_args+=" --build-arg PPA=ppa:mozillateam/firefox-next"
+                    ;;
+                dev)
+                    additional_docker_args+=" --build-arg PACKAGE=firefox-trunk --build-arg PPA=ppa:ubuntu-mozilla-daily/ppa"
+                    ;;
+            esac
+            ;;
+        chrome)
+            case $channel in
+                beta)
+                    additional_docker_args+=" --build-arg PACKAGE=google-chrome-beta --build-arg INSTALL_DIR=chrome-beta"
+                    ;;
+                dev)
+                    additional_docker_args+=" --build-arg PACKAGE=google-chrome-unstable --build-arg INSTALL_DIR=chrome-unstable"
+                    ;;
+            esac
+            ;;
+        opera)
+            case $channel in
+                beta)
+                    additional_docker_args+=" --build-arg PACKAGE=opera-beta"
+                    ;;
+                dev)
+                    additional_docker_args+=" --build-arg PACKAGE=opera-developer"
+                    ;;
+            esac
+            ;;
+    esac
 fi
 if [ "$disable_docker_cache" == "true" ]; then
     additional_docker_args+=" --no-cache"

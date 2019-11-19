@@ -20,9 +20,9 @@ if [ -f "$input" ]; then
     method="yandex/local"
 fi
 
-./build-dev.sh $method $browser_version true
+./build-dev.sh $method $browser_version default true
 if [ "$method" == "yandex/apt" ]; then
-    ./build-dev.sh $method $browser_version false
+    ./build-dev.sh $method $browser_version default false
 fi
 pushd yandex
 ../build.sh yandexdriver $browser_version $driver_version selenoid/yandex-browser:$tag
