@@ -137,7 +137,6 @@ chrome_mobile=$(request_answer "Are you building a Chrome Mobile image (for mobi
 if [ "y" == "$chrome_mobile" ]; then
     sed -i.bak 's|@CHROME_MOBILE@|yes|g' "$TMP_DIR/entrypoint.sh"
     image_name="chrome-mobile"
-    default_tag="$android_version"
 else
     sed -i.bak 's|@CHROME_MOBILE@||g' "$TMP_DIR/entrypoint.sh"
 fi
@@ -145,9 +144,8 @@ fi
 chromedriver_version=$(request_answer "Specify Chromedriver version if needed (required for Chrome Mobile):")
 chrome_major_version="$(cut -d'.' -f1 <<<${chromedriver_version})"
 chrome_minor_version="$(cut -d'.' -f2 <<<${chromedriver_version})"
-chrome_version="$chrome_major_version.$chrome_minor_version"
-if [ -n ${chrome_version} ]; then
-    default_tag="$chrome_version"
+if [ -n ${chrome_major_version} -a -n ${chrome_minor_version} ]; then
+    default_tag="$chrome_major_version.$chrome_minor_version"
 fi
 
 tag=$(request_answer "Specify image tag:" "selenoid/$image_name:$default_tag")
