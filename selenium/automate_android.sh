@@ -29,6 +29,7 @@ request_answer(){
 
 validate_android_version(){
     version="$1"
+    type=${2:-"default"}
     avd_name="android$version-1"
     build_tools="build-tools;29.0.2"
     case "$version" in
@@ -54,22 +55,38 @@ validate_android_version(){
 		;;
 	7.1)
         platform="android-25"
-        emulator_image="system-images;android-25;google_apis;x86"
+        emulator_image="system-images;android-25;default;x86"
 		;;
 	8.0)
         platform="android-26"
-        emulator_image="system-images;android-26;google_apis;x86"
+        emulator_image="system-images;android-26;default;x86"
 		;;
 	8.1)
         platform="android-27"
-        emulator_image="system-images;android-27;google_apis;x86"
+        emulator_image="system-images;android-27;default;x86"
 		;;
 	9.0)
         platform="android-28"
-        emulator_image="system-images;android-28;google_apis;x86"
+        emulator_image="system-images;android-28;default;x86"
+		;;
+	10.0)
+        platform="android-29"
+        emulator_image="system-images;android-28;default;x86"
 		;;
 	*)
 		echo "Unsupported Android version"
+		false
+		;;
+    esac
+}
+
+validate_android_image_type(){
+    type="$1"
+        case "$version" in
+	"default" | "google_apis" | "google_apis_playstore" | "android-wear" | "android-tv" )
+		;;
+	*)
+		echo "Unsupported Android image type"
 		false
 		;;
     esac
@@ -117,8 +134,14 @@ cp -r chrome/devtools "$TMP_DIR/devtools"
 appium_version=$(request_answer "Specify Appium version:" "1.13.0")
 
 until [ "$?" -ne 0 ]; do
+    android_image_type=$(request_answer "Specify Android image type (possible values: \"default\", \"google_apis\", \"google_apis_playstore\", \"android-tv\", \"android-wear\"):" "default")
+    if validate_android_image_type "$android_image_type"; then
+        break
+    fi
+done
+until [ "$?" -ne 0 ]; do
     android_version=$(request_answer "Specify Android version:" "8.1")
-    if validate_android_version "$android_version"; then
+    if validate_android_version "$android_version" "$android_image_type"; then
         break
     fi
 done
