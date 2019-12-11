@@ -30,7 +30,7 @@ request_answer(){
 validate_android_version(){
     version="$1"
     avd_name="android$version-1"
-    build_tools="build-tools;28.0.3"
+    build_tools="build-tools;29.0.2"
     case "$version" in
 	4.4)
         platform="android-19"
