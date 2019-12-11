@@ -35,43 +35,43 @@ validate_android_version(){
     case "$version" in
 	4.4)
         platform="android-19"
-        emulator_image="system-images;android-19;default;x86"
+        emulator_image="system-images;android-19;$type;x86"
 		;;
 	5.0)
         platform="android-21"
-        emulator_image="system-images;android-21;default;x86"
+        emulator_image="system-images;android-21;$type;x86"
 		;;
 	5.1)
         platform="android-22"
-        emulator_image="system-images;android-22;default;x86"
+        emulator_image="system-images;android-22;$type;x86"
 		;;
 	6.0)
         platform="android-23"
-        emulator_image="system-images;android-23;default;x86"
+        emulator_image="system-images;android-23;$type;x86"
 		;;
 	7.0)
         platform="android-24"
-        emulator_image="system-images;android-24;default;x86"
+        emulator_image="system-images;android-24;$type;x86"
 		;;
 	7.1)
         platform="android-25"
-        emulator_image="system-images;android-25;default;x86"
+        emulator_image="system-images;android-25;$type;x86"
 		;;
 	8.0)
         platform="android-26"
-        emulator_image="system-images;android-26;default;x86"
+        emulator_image="system-images;android-26;$type;x86"
 		;;
 	8.1)
         platform="android-27"
-        emulator_image="system-images;android-27;default;x86"
+        emulator_image="system-images;android-27;$type;x86"
 		;;
 	9.0)
         platform="android-28"
-        emulator_image="system-images;android-28;default;x86"
+        emulator_image="system-images;android-28;$type;x86"
 		;;
 	10.0)
         platform="android-29"
-        emulator_image="system-images;android-28;default;x86"
+        emulator_image="system-images;android-29;$type;x86"
 		;;
 	*)
 		echo "Unsupported Android version"
