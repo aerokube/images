@@ -82,7 +82,7 @@ validate_android_version(){
 
 validate_android_image_type(){
     type="$1"
-        case "$version" in
+    case "$type" in
 	"default" | "google_apis" | "google_apis_playstore" | "android-wear" | "android-tv" )
 		;;
 	*)
