@@ -142,10 +142,12 @@ else
 fi
 
 chromedriver_version=$(request_answer "Specify Chromedriver version if needed (required for Chrome Mobile):")
-chrome_major_version="$(cut -d'.' -f1 <<<${chromedriver_version})"
-chrome_minor_version="$(cut -d'.' -f2 <<<${chromedriver_version})"
-if [ -n ${chrome_major_version} -a -n ${chrome_minor_version} ]; then
-    default_tag="$chrome_major_version.$chrome_minor_version"
+if [ -n ${chromedriver_version} ]; then
+    chrome_major_version="$(cut -d'.' -f1 <<<${chromedriver_version})"
+    chrome_minor_version="$(cut -d'.' -f2 <<<${chromedriver_version})"
+    if [ -n ${chrome_major_version} -a -n ${chrome_minor_version} ]; then
+        default_tag="$chrome_major_version.$chrome_minor_version"
+    fi
 fi
 
 tag=$(request_answer "Specify image tag:" "selenoid/$image_name:$default_tag")
