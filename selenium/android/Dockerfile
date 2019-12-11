@@ -66,7 +66,9 @@ RUN \
 	mkdir -p /opt/android-sdk-linux && \
 	unzip -q sdk-tools.zip -d /opt/android-sdk-linux && \
 	rm sdk-tools.zip && \
-	yes | sdkmanager --licenses && \
+	yes | sdkmanager --licenses
+
+RUN \
 	sdkmanager "emulator" "tools" "platform-tools" "$BUILD_TOOLS" "platforms;$PLATFORM" "$EMULATOR_IMAGE" && \
 	mksdcard "$SDCARD_SIZE"M sdcard.img && \
 	echo "no" | ( \
