@@ -49,7 +49,7 @@ COPY --from=go /devtools/devtools /usr/bin/
 # Android SDK
 ENV ANDROID_HOME /opt/android-sdk-linux
 ENV PATH /opt/android-sdk-linux/platform-tools:/opt/android-sdk-linux/tools:/opt/android-sdk-linux/tools/bin:/opt/android-sdk-linux/emulator:$PATH
-ENV LD_LIBRARY_PATH ${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/gles_swiftshader:${LD_LIBRARY_PATH}
+ENV LD_LIBRARY_PATH ${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/gles_swiftshader:${ANDROID_HOME}/emulator/lib64/qt/lib:${ANDROID_HOME}/emulator/lib64/vulkan:${LD_LIBRARY_PATH}
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 
 ARG ANDROID_DEVICE=""
