@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"sort"
 	"strings"
 )
 
@@ -35,6 +36,9 @@ func mux(dir string) http.Handler {
 
 func listFilesAsJson(w http.ResponseWriter, dir string) {
 	files, err := ioutil.ReadDir(dir)
+	sort.Slice(files, func(i, j int) bool {
+		return files[i].ModTime().After(files[j].ModTime())
+	})
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
