@@ -37,6 +37,7 @@ RUN \
     fonts-thai-tlwg-ttf \
     fonts-ipafont-mincho \
     fonts-sahadeva \
+    fonts-noto-unhinted \
     fonts-noto-color-emoji \
     libfontconfig1 \
     libfontenc1 \
