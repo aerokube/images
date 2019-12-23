@@ -11,7 +11,7 @@ RUN cd /home/selenoid/aports/community/ffmpeg/ && \
     abuild build
 USER root
 
-FROM alpine:3.9
+FROM alpine:3.10
 
 RUN apk add -U x264-libs sdl2 libxcb libbz2 xset && \
     rm -rf /var/cache/apk/*
