@@ -1,4 +1,4 @@
-FROM alpine:3.9
+FROM alpine:3.10
 
 RUN apk add -U alpine-sdk && adduser -g "" -D -G abuild selenoid
 USER selenoid
