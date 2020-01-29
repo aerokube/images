@@ -57,6 +57,17 @@ if [ "$ENABLE_VNC" == "true" ]; then
 fi
 
 while [ "`adb shell getprop sys.boot_completed | tr -d '\r' `" != "1" -a -z "$STOP" ] ; do sleep 1; done
+
+apks=(/usr/bin/*.apk)
+for apk in "${apks[@]}"; do
+    if [ -r "$apk" ]; then
+        for i in `seq 1 ${MAX_ATTEMPTS}`; do
+            echo "Installing $apk (attempt #$i of $MAX_ATTEMPTS)"
+            adb -s "$id" install -r "$apk" && break || sleep 15 && echo "Retrying to install $apk"
+        done
+    fi
+done
+
 if [ -n "$STOP" ]; then exit 0; fi
 
 if [ -n "@CHROME_MOBILE@" ]; then
