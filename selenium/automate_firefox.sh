@@ -6,7 +6,7 @@ tag=$3
 test_failure_ignore=${TEST_FAILURE_IGNORE:-true}
 
 if [ -z "$1" -o -z "$2" -o -z "$3" ]; then
-    echo 'Usage: automate_firefox.sh <browser_version|package_file> <selenium_version|selenoid_version> <tag_version> [<geckodriver_version>] [<channel={beta|dev}>]'
+    echo 'Usage: automate_firefox.sh <browser_version|package_file> <selenium_version|selenoid_version|latest> <tag_version> [<geckodriver_version|latest>] [<channel={beta|dev}>]'
     exit 1
 fi
 set -x

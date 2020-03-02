@@ -6,7 +6,7 @@ tag=$3
 test_failure_ignore=${TEST_FAILURE_IGNORE:-true}
 
 if [ -z "$1" -o -z "$2" -o -z "$3" ]; then
-    echo 'Usage: automate_yandex.sh <browser_version|package_file> <yandexdriver_version> <tag_version>'
+    echo 'Usage: automate_yandex.sh <browser_version|package_file> <yandexdriver_version|latest> <tag_version>'
     exit 1
 fi
 set -x

@@ -40,6 +40,11 @@ $ ./automate_firefox.sh 70.0.1+build1-0ubuntu0.18.04.1 1.9.3 70.0 0.26.0
 ```
 Here `70.0.1+build1-0ubuntu0.18.04.1` is `firefox` package version for Ubuntu 18.04, `1.9.3` is [Selenoid](https://github.com/aerokube/selenoid/releases) version to use inside image (just use latest release version here), `70.0` is Docker tag to be applied, `0.26.0` is [Geckodriver](http://github.com/mozilla/geckodriver/releases) version to use.
 
+If you wish to automatically use the latest Selenoid and Geckodriver versions - just replace them with **latest**:
+```
+$ ./automate_firefox.sh 70.0.1+build1-0ubuntu0.18.04.1 latest 70.0 latest
+```
+
 If you wish to pack a local Debian package instead of APT - just replace package version with full path to **deb** file:
 ```
 $ ./automate_firefox.sh /path/to/firefox_70.0.1+build1-0ubuntu0.18.04.1_i386.deb 1.9.3 70.0 0.26.0
@@ -52,6 +57,10 @@ $ ./automate_chrome.sh 78.0.3904.97-1 78.0.3904.70 78.0
 ```
 Here `78.0.3904.97-1` is `google-chrome-stable` package version for Ubuntu 18.04, `78.0.3904.70` is [Chromedriver](https://chromedriver.storage.googleapis.com/index.html) version, `78.0` is Docker tag to be applied.  
 
+If you wish to automatically use the latest [compatible](https://chromedriver.chromium.org/downloads/version-selection) Chromedriver version - just replace it with **latest**:
+```
+$ ./automate_chrome.sh 78.0.3904.97-1 latest 78.0
+```
 * To build an Opera image use the following command:
 ```
 $ ./automate_opera.sh 64.0.3417.92 77.0.3865.120 64.0
