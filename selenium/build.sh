@@ -54,8 +54,16 @@ download_operadriver() {
 }
 
 download_yandexdriver() {
-    wget -O yandexdriver https://raw.githubusercontent.com/yandex/YandexDriver/master/linux/$1/yandexdriver
+    yandex_driver_url=$(wget -qO- "https://api.github.com/repos/yandex/YandexDriver/releases/tags/v$1-stable" | awk -F '"' '/browser_download_url.*?linux.zip/{print $4}')
+    if [ -z "$yandex_driver_url" ]
+    then
+        echo "Unsupported Yandexdriver version: $1"
+        exit 1
+    fi
+    wget -O yandexdriver.zip $yandex_driver_url
+    unzip yandexdriver.zip
     chmod +x yandexdriver
+    rm yandexdriver.zip
 }
 
 download_selenoid() {
