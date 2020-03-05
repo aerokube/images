@@ -7,7 +7,7 @@ channel=${4:-"default"}
 test_failure_ignore=${TEST_FAILURE_IGNORE:-true}
 
 if [ -z "$1" -o -z "$2" -o -z "$3" ]; then
-    echo 'Usage: automate_opera.sh <browser_version|package_file> <operadriver_version> <tag_version> [<channel={beta|dev}>]'
+    echo 'Usage: automate_opera.sh <browser_version|package_file> <operadriver_version|latest> <tag_version> [<channel={beta|dev}>]'
     exit 1
 fi
 set -x
