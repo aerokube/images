@@ -58,7 +58,7 @@ RUN \
     mkdir -p /var/lib/locales/supported.d/ && grep UTF-8 /usr/share/i18n/SUPPORTED > /var/lib/locales/supported.d/all && \
     locale-gen && update-locale && \
     fc-cache -f -v && \
-    adduser --system --home /home/selenium \
+    adduser --system --home /home/selenium --uid 106 \
     --ingroup nogroup --disabled-password --shell /bin/bash selenium && \
     mkdir -p /home/selenium/Downloads && \
     chown selenium:nogroup /home/selenium/Downloads && \
