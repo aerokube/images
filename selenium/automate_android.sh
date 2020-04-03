@@ -30,48 +30,49 @@ request_answer(){
 validate_android_version(){
     version="$1"
     type=${2:-"default"}
+    abi=${3:-"x86"}
     avd_name="android$version-1"
     build_tools="build-tools;29.0.2"
     case "$version" in
 	4.4)
         platform="android-19"
-        emulator_image="system-images;android-19;$type;x86"
+        emulator_image="system-images;android-19;$type;$abi"
 		;;
 	5.0)
         platform="android-21"
-        emulator_image="system-images;android-21;$type;x86"
+        emulator_image="system-images;android-21;$type;$abi"
 		;;
 	5.1)
         platform="android-22"
-        emulator_image="system-images;android-22;$type;x86"
+        emulator_image="system-images;android-22;$type;$abi"
 		;;
 	6.0)
         platform="android-23"
-        emulator_image="system-images;android-23;$type;x86"
+        emulator_image="system-images;android-23;$type;$abi"
 		;;
 	7.0)
         platform="android-24"
-        emulator_image="system-images;android-24;$type;x86"
+        emulator_image="system-images;android-24;$type;$abi"
 		;;
 	7.1)
         platform="android-25"
-        emulator_image="system-images;android-25;$type;x86"
+        emulator_image="system-images;android-25;$type;$abi"
 		;;
 	8.0)
         platform="android-26"
-        emulator_image="system-images;android-26;$type;x86"
+        emulator_image="system-images;android-26;$type;$abi"
 		;;
 	8.1)
         platform="android-27"
-        emulator_image="system-images;android-27;$type;x86"
+        emulator_image="system-images;android-27;$type;$abi"
 		;;
 	9.0)
         platform="android-28"
-        emulator_image="system-images;android-28;$type;x86"
+        emulator_image="system-images;android-28;$type;$abi"
 		;;
 	10.0)
         platform="android-29"
-        emulator_image="system-images;android-29;$type;x86"
+        emulator_image="system-images;android-29;$type;$abi"
 		;;
 	*)
 		echo "Unsupported Android version"
@@ -87,6 +88,18 @@ validate_android_image_type(){
 		;;
 	*)
 		echo "Unsupported Android image type"
+		false
+		;;
+    esac
+}
+
+validate_android_abi(){
+    abi="$1"
+    case "$abi" in
+	"armeabi-v7a" | "arm64-v8a" | "x86" | "x86_64" )
+		;;
+	*)
+		echo "Unsupported Application Binary Interface"
 		false
 		;;
     esac
@@ -140,8 +153,14 @@ until [ "$?" -ne 0 ]; do
     fi
 done
 until [ "$?" -ne 0 ]; do
+    android_abi=$(request_answer "Specify Application Binary Interface (possible values: \"armeabi-v7a\", \"arm64-v8a\", \"x86\", \"x86_64\"):" "x86")
+    if validate_android_abi "$android_abi"; then
+        break
+    fi
+done
+until [ "$?" -ne 0 ]; do
     android_version=$(request_answer "Specify Android version:" "8.1")
-    if validate_android_version "$android_version" "$android_image_type"; then
+    if validate_android_version "$android_version" "$android_image_type" "$android_abi"; then
         break
     fi
 done
@@ -192,6 +211,7 @@ docker build -t "$tmp_tag" \
     --build-arg PLATFORM="$platform" \
     --build-arg EMULATOR_IMAGE="$emulator_image" \
     --build-arg EMULATOR_IMAGE_TYPE="$emulator_image_type" \
+    --build-arg ANDROID_ABI="$android_abi" \
     --build-arg SDCARD_SIZE="$sdcard_size" \
     --build-arg USERDATA_SIZE="$userdata_size" android
 

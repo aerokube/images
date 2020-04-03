@@ -58,6 +58,7 @@ ARG BUILD_TOOLS="build-tools;23.0.1"
 ARG PLATFORM="android-23"
 ARG EMULATOR_IMAGE="system-images;android-23;default;x86"
 ARG EMULATOR_IMAGE_TYPE="default"
+ARG ANDROID_ABI="x86"
 ARG SDCARD_SIZE="500"
 ARG USERDATA_SIZE="500"
 
@@ -72,8 +73,8 @@ RUN \
 	sdkmanager "emulator" "tools" "platform-tools" "$BUILD_TOOLS" "platforms;$PLATFORM" "$EMULATOR_IMAGE" && \
 	mksdcard "$SDCARD_SIZE"M sdcard.img && \
 	echo "no" | ( \
-	    ([ -n "$ANDROID_DEVICE" ] && avdmanager create avd -n "$AVD_NAME" -k "$EMULATOR_IMAGE" --abi x86 --device "$ANDROID_DEVICE" --sdcard /sdcard.img ) || \
-	    avdmanager create avd -n "$AVD_NAME" -k "$EMULATOR_IMAGE" --abi x86 --sdcard /sdcard.img \
+	    ([ -n "$ANDROID_DEVICE" ] && avdmanager create avd -n "$AVD_NAME" -k "$EMULATOR_IMAGE" --abi "$ANDROID_ABI" --device "$ANDROID_DEVICE" --sdcard /sdcard.img ) || \
+	    avdmanager create avd -n "$AVD_NAME" -k "$EMULATOR_IMAGE" --abi "$ANDROID_ABI" --sdcard /sdcard.img \
     ) && \
 	ldconfig && \
 	( \
@@ -81,7 +82,7 @@ RUN \
 	    /opt/android-sdk-linux/emulator/qemu-img resize -f raw /root/.android/avd/$AVD_NAME.avd/userdata.img "$USERDATA_SIZE"M \
     ) && \
 	mv /root/.android/avd/$AVD_NAME.avd/userdata.img /root/.android/avd/$AVD_NAME.avd/userdata-qemu.img && \
-	rm /opt/android-sdk-linux/system-images/$PLATFORM/$EMULATOR_IMAGE_TYPE/x86/userdata.img
+	rm /opt/android-sdk-linux/system-images/$PLATFORM/$EMULATOR_IMAGE_TYPE/"$ANDROID_ABI"/userdata.img
 
 COPY emulator-snapshot.sh tmp/chromedriver* *.apk /usr/bin/
 
