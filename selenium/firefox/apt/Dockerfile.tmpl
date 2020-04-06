@@ -16,7 +16,7 @@ RUN  \
             add-apt-repository -y $PPA \
         ) || true && \
         apt-get update && \
-        apt-get -y --no-install-recommends install iproute2 $PACKAGE=$VERSION && \
+        apt-get -y --no-install-recommends install iproute2 libavcodec57 $PACKAGE=$VERSION && \
         ( [ "$PACKAGE" = "firefox-trunk" ] && ln /usr/bin/$PACKAGE /usr/bin/firefox ) || true && \
         firefox --version && \
         ($CLEANUP && rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/*) || true
