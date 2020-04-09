@@ -40,6 +40,10 @@ get_latest_chromedriver() {
 
 if [ "$driver_version" == "latest" ]; then
     driver_version=$(get_latest_chromedriver $browser_version $channel)
+    if [ -z "$driver_version" ]; then
+        echo 'Could not find compatible ChromeDriver: will do nothing. Exiting.'
+        exit 3
+    fi
 fi
 
 ./build-dev.sh $method $browser_version $channel true
