@@ -1,4 +1,4 @@
-FROM selenoid/base:5.0
+FROM selenoid/base:6.0
 
 ARG VERSION=19.4.2.698-1
 ARG CLEANUP

@@ -44,6 +44,7 @@ RUN \
     libfreetype6 \
     libxfont2 \
     libxft2 \
+    libnss3-tools \
     xfonts-base \
     xfonts-encodings \
     xfonts-utils \

@@ -10,6 +10,20 @@ if [ -z "$QUIET" ]; then
     DRIVER_ARGS="--verbose"
 fi
 
+ROOT_CA_PATH=${ROOT_CA_PATH:-""}
+if [ -r "$ROOT_CA_PATH" ]; then
+    ROOT_CA=$(<"$ROOT_CA_PATH")
+    ROOT_CA_NAME=$(basename "$ROOT_CA_PATH" | sed -e 's|.crt||g')
+fi
+
+ROOT_CA=${ROOT_CA:-""}
+if [ -n "$ROOT_CA" ]; then
+    ROOT_CA_NAME=${ROOT_CA_NAME:-"UserRootCA"}
+    mkdir -p ~/.pki/nssdb
+    certutil -d "sql:$HOME/.pki/nssdb" -N --empty-password
+    echo "$ROOT_CA" | certutil -d "sql:$HOME/.pki/nssdb" -A -t TC -n "$ROOT_CA_NAME"
+fi
+
 clean() {
   if [ -n "$FILESERVER_PID" ]; then
     kill -TERM "$FILESERVER_PID"
