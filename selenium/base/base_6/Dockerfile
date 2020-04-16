@@ -1,4 +1,4 @@
-FROM golang:1.11 as go
+FROM golang:1.14 as go
 
 COPY xseld /xseld
 
