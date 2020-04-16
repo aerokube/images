@@ -21,6 +21,7 @@ RUN \
     apt update && \
     apt remove -y libcurl4 && \
     apt install -y apt-transport-https ca-certificates tzdata locales libcurl4 curl gnupg && \
+    DEBIAN_FRONTEND=noninteractive apt -y upgrade && \
     echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections && \
     echo 'UTC' | tee /etc/timezone && \
     dpkg-reconfigure -f noninteractive tzdata && \
