@@ -21,7 +21,7 @@ func init() {
 func main() {
 	var hosts []string
 	if err := json.Unmarshal([]byte(os.Getenv("URLS")), &hosts); err != nil {
-		fmt.Printf("unmarshall json: %v", err)
+		fmt.Printf("unmarshal json: %v", err)
 		os.Exit(1)
 	}
 	if l := len(hosts); l > 0 {
