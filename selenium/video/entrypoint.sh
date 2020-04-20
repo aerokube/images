@@ -9,6 +9,11 @@ PRESET=${PRESET:-""}
 if [ "$CODEC" == "libx264" -a -n "$PRESET" ]; then
     PRESET="-preset $PRESET"
 fi
+INPUT_OPTIONS=${INPUT_OPTIONS:-""}
+HIDE_CURSOR=${HIDE_CURSOR:-""}
+if [ -n "$HIDE_CURSOR" ]; then
+    INPUT_OPTIONS="$INPUT_OPTIONS -draw_mouse 0"
+fi
 retcode=1
 max_attempts=300
 attempts=0
@@ -22,4 +27,4 @@ until [ $retcode -eq 0 -o $attempts -eq $max_attempts ]; do
 	fi
 	attempts=$((attempts+1))
 done
-exec ffmpeg -y -f x11grab -video_size ${VIDEO_SIZE} -r ${FRAME_RATE} -i ${BROWSER_CONTAINER_NAME}:${DISPLAY} -codec:v ${CODEC} ${PRESET} -pix_fmt yuv420p "/data/$FILE_NAME"
+exec ffmpeg -y -f x11grab -video_size ${VIDEO_SIZE} -r ${FRAME_RATE} ${INPUT_OPTIONS} -i ${BROWSER_CONTAINER_NAME}:${DISPLAY} -codec:v ${CODEC} ${PRESET} -pix_fmt yuv420p "/data/$FILE_NAME"
