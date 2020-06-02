@@ -1,23 +1,24 @@
 FROM ubuntu:18.04 as build
 
 ARG WEBKITGTK_VERSION="2.28.2"
-ARG PREFIX="/opt/webkit"
 
 RUN \
     apt-get update && \
     apt-get -y install xz-utils wget && \
     wget https://webkitgtk.org/releases/webkitgtk-$WEBKITGTK_VERSION.tar.xz && \
     tar xf webkitgtk-$WEBKITGTK_VERSION.tar.xz && \
-    mkdir -p $PREFIX && \
+    mkdir -p /opt/webkit && \
     cd webkitgtk-$WEBKITGTK_VERSION && \
     yes | DEBIAN_FRONTEND=noninteractive Tools/gtk/install-dependencies && \
-    cmake -DPORT=GTK -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$PREFIX -DUSE_WPE_RENDERER=OFF -DENABLE_MINIBROWSER=ON -DENABLE_BUBBLEWRAP_SANDBOX=OFF -DENABLE_SPELLCHECK=OFF -DENABLE_WAYLAND_TARGET=OFF -GNinja && \
+    cmake -DPORT=GTK -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/webkit -DUSE_WPE_RENDERER=OFF -DENABLE_MINIBROWSER=ON -DENABLE_BUBBLEWRAP_SANDBOX=OFF -DENABLE_SPELLCHECK=OFF -DENABLE_WAYLAND_TARGET=OFF -GNinja && \
     ninja && \
     ninja install
 
 FROM selenoid/base:6.0
 
-COPY --from=build $PREFIX $PREFIX
+COPY --from=build /opt/webkit /opt/webkit
+
+ENV LD_LIBRARY_PATH /opt/webkit/lib/:${LD_LIBRARY_PATH}
 
 RUN \
     apt-get update && \
@@ -35,6 +36,7 @@ RUN \
         libnotify4 \
         libxslt1.1 \
         libegl1 && \
+    ldconfig && \
     apt-get clean && \
     rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/*
 
