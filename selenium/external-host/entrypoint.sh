@@ -7,11 +7,6 @@ export URLS
 export VNC_PASSWORD
 export DISPLAY=":$DISPLAY_NUM"
 
-VERBOSE=${VERBOSE:-""}
-if [ -n "$VERBOSE" ]; then
-    sed -i 's|@@DRIVER_ARGS@@|, "--log", "debug"|g' /etc/selenoid/browsers.json
-fi
-
 clean() {
   if [ -n "$XVFB_PID" ]; then
     kill -TERM "$XVFB_PID"
@@ -50,7 +45,7 @@ x11vnc -display $DISPLAY -passwd selenoid -shared -forever -loop500 -rfbport 590
 X11VNC_PID=$!
 
 rproxy $URL &
-RPROXI_PID=$!
+RPROXY_PID=$!
 
 wait
 
