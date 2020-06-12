@@ -6,9 +6,9 @@ export DISPLAY=":$DISPLAY_NUM"
 
 QUIET=${QUIET:-""}
 if [ -z "$QUIET" ]; then
-    sed -i 's|@@DRIVER_ARGS@@|, "--log", "debug"|g' /etc/selenoid/browsers.json
+    sed -i 's|@@DRIVER_ARGS@@|, "--log", "debug"|g' /home/selenium/browsers.json
 else
-    sed -i 's|@@DRIVER_ARGS@@||g' /etc/selenoid/browsers.json
+    sed -i 's|@@DRIVER_ARGS@@||g' /home/selenium/browsers.json
 fi
 
 clean() {
@@ -17,7 +17,7 @@ clean() {
   fi
   if [ -n "$XSELD_PID" ]; then
     kill -TERM "$XSELD_PID"
-  fi  
+  fi
   if [ -n "$XVFB_PID" ]; then
     kill -TERM "$XVFB_PID"
   fi
@@ -55,7 +55,7 @@ if [ "$ENABLE_VNC" == "true" ]; then
     X11VNC_PID=$!
 fi
 
-DISPLAY="$DISPLAY" /usr/bin/selenoid -conf /etc/selenoid/browsers.json -disable-docker -timeout 1h -max-timeout 24h -enable-file-upload -capture-driver-logs &
+DISPLAY="$DISPLAY" /usr/bin/selenoid -conf /home/selenium/browsers.json -disable-docker -timeout 1h -max-timeout 24h -enable-file-upload -capture-driver-logs &
 SELENOID_PID=$!
 
 wait
