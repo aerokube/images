@@ -73,33 +73,25 @@ func main() {
 	server := &http.Server{
 		Addr: listen,
 		Handler: http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-			var caps map[string]interface{}
-			err := json.NewDecoder(r.Body).Decode(&caps)
+			var value map[string]interface{}
+			err := json.NewDecoder(r.Body).Decode(&value)
 			if err != nil {
 				http.Error(w, err.Error(), http.StatusBadRequest)
 				return
 			}
-			if desiredCapabilities, ok := caps["desiredCapabilities"]; ok {
-				if m, ok := desiredCapabilities.(map[string]interface{}); ok {
-					delete(m, "browserName")
-					delete(m, "version")
-				}
+			if _, ok := value["desiredCapabilities"]; ok {
+				delete(value, "desiredCapabilities")
 			}
-			if w3cCapabilities, ok := caps["capabilities"]; ok {
-				if m, ok := w3cCapabilities.(map[string]interface{}); ok {
+			if o, ok := value["capabilities"]; ok {
+				if w3cCapabilities, ok := o.(map[string]interface{}); ok {
 					for _, match := range []string{"alwaysMatch", "firstMatch"} {
-						if m, ok := m[match]; ok {
-							if m, ok := m.(map[string]interface{}); ok {
-								delete(m, "browserName")
-								delete(m, "browserVersion")
-							}
-						}
+						delete(w3cCapabilities, match)
 					}
 				}
 			}
-			body, err := json.Marshal(caps)
+			body, err := json.Marshal(value)
 			if err != nil {
-				log.Printf("[ERROR] marshalilg caps: %v", err)
+				log.Printf("[ERROR] marshalling capabilities: %v", err)
 				http.Error(w, err.Error(), http.StatusInternalServerError)
 				return
 			}
@@ -125,6 +117,7 @@ func main() {
 								if capabilities, ok := o.(map[string]interface{}); ok {
 									capabilities["browserName"] = browserName
 									capabilities["browserVersion"] = browserVersion
+									delete(capabilities, "platformName")
 								}
 							}
 						}
@@ -133,6 +126,7 @@ func main() {
 					if err != nil {
 						return fmt.Errorf("encode json response: %v", err)
 					}
+					resp.Header.Del("Server")
 					resp.Header.Del("Content-Length")
 					resp.ContentLength = int64(len(buf))
 					resp.Body = ioutil.NopCloser(bytes.NewReader(buf))
