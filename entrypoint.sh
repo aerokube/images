@@ -22,6 +22,9 @@ clean() {
   if [ -n "$DRIVER_PID" ]; then
     kill -TERM "$DRIVER_PID"
   fi
+  if [ -n "$PRISM_PID" ]; then
+    kill -TERM "$PRISM_PID"
+  fi
   if [ -n "$X11VNC_PID" ]; then
     kill -TERM "$X11VNC_PID"
   fi
@@ -53,7 +56,10 @@ if [ "$ENABLE_VNC" == "true" ]; then
     X11VNC_PID=$!
 fi
 
-DISPLAY="$DISPLAY" /opt/webkit/bin/WebKitWebDriver --port=4444 --host=0.0.0.0 ${DRIVER_ARGS} &
+DISPLAY="$DISPLAY" /opt/webkit/bin/WebKitWebDriver --port=4545 --host=0.0.0.0 ${DRIVER_ARGS} &
 DRIVER_PID=$!
+
+/usr/bin/prism  &
+PRISM_PID=$!
 
 wait

@@ -14,9 +14,21 @@ RUN \
     ninja && \
     ninja install
 
+FROM golang:1.14 as go
+
+COPY cmd/prism /prism
+
+RUN \
+    apt-get update && \
+    apt-get install -y upx-ucl libx11-dev && \
+    cd /prism && \
+    GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" && \
+    upx /prism/prism
+
 FROM selenoid/base:6.0
 
 COPY --from=build /opt/webkit /opt/webkit
+COPY --from=go /prism/prism /usr/bin/
 
 ENV LD_LIBRARY_PATH /opt/webkit/lib/:${LD_LIBRARY_PATH}
 
