@@ -5,6 +5,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -75,28 +76,30 @@ func main() {
 		Handler: http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 			var value map[string]interface{}
 			err := json.NewDecoder(r.Body).Decode(&value)
-			if err != nil {
+			if err != nil && err != io.EOF {
 				http.Error(w, err.Error(), http.StatusBadRequest)
 				return
 			}
-			if _, ok := value["desiredCapabilities"]; ok {
-				delete(value, "desiredCapabilities")
-			}
-			if o, ok := value["capabilities"]; ok {
-				if w3cCapabilities, ok := o.(map[string]interface{}); ok {
-					for _, match := range []string{"alwaysMatch", "firstMatch"} {
-						delete(w3cCapabilities, match)
+			if err == nil {
+				if _, ok := value["desiredCapabilities"]; ok {
+					delete(value, "desiredCapabilities")
+				}
+				if o, ok := value["capabilities"]; ok {
+					if w3cCapabilities, ok := o.(map[string]interface{}); ok {
+						for _, match := range []string{"alwaysMatch", "firstMatch"} {
+							delete(w3cCapabilities, match)
+						}
 					}
 				}
+				body, err := json.Marshal(value)
+				if err != nil {
+					log.Printf("[ERROR] marshalling capabilities: %v", err)
+					http.Error(w, err.Error(), http.StatusInternalServerError)
+					return
+				}
+				r.Body = ioutil.NopCloser(bytes.NewReader(body))
+				r.ContentLength = int64(len(body))
 			}
-			body, err := json.Marshal(value)
-			if err != nil {
-				log.Printf("[ERROR] marshalling capabilities: %v", err)
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-				return
-			}
-			r.Body = ioutil.NopCloser(bytes.NewReader(body))
-			r.ContentLength = int64(len(body))
 			(&httputil.ReverseProxy{
 				Director: func(r *http.Request) {
 					r.URL.Scheme, r.URL.Host, r.URL.Path = u.Scheme, u.Host, path.Join(u.Path, r.URL.Path)
@@ -112,7 +115,7 @@ func main() {
 						return fmt.Errorf("decode json response: %v", err)
 					}
 					if o, ok := values["value"]; ok {
-						if value := o.(map[string]interface{}); ok {
+						if value, ok := o.(map[string]interface{}); ok {
 							if o, ok := value["capabilities"]; ok {
 								if capabilities, ok := o.(map[string]interface{}); ok {
 									capabilities["browserName"] = browserName
