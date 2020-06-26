@@ -61,6 +61,8 @@ if [ "$channel" != "default" ]; then
                 dev)
                     additional_docker_args+=" --build-arg PACKAGE=firefox-trunk --build-arg PPA=ppa:ubuntu-mozilla-daily/ppa"
                     ;;
+		esr)
+		    additional_docker_args+=" --build-arg PACKAGE=firefox-esr --build-arg PPA=ppa:mozillateam/ppa"
             esac
             ;;
         chrome)
