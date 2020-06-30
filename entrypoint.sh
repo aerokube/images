@@ -56,7 +56,7 @@ if [ "$ENABLE_VNC" == "true" ]; then
     X11VNC_PID=$!
 fi
 
-DISPLAY="$DISPLAY" /opt/webkit/bin/WebKitWebDriver --port=4545 --host=0.0.0.0 ${DRIVER_ARGS} &
+DISPLAY="$DISPLAY" /opt/webkit/bin/WebKitWebDriver --port=5555 --host=0.0.0.0 ${DRIVER_ARGS} &
 DRIVER_PID=$!
 
 /usr/bin/prism  &
