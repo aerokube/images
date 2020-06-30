@@ -20,7 +20,7 @@ import (
 
 var (
 	listen         string        = ":4444"
-	target         string        = "http://localhost:4545"
+	target         string        = "http://localhost:5555"
 	waitTimeout    time.Duration = 30 * time.Second
 	gracePeriod    time.Duration = 30 * time.Second
 	browserName    string        = "safari"
