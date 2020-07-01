@@ -2,8 +2,16 @@ FROM selenoid/dev_firefox:@@VERSION@@
 
 COPY geckodriver /usr/bin/
 COPY selenoid /usr/bin/
-COPY --chown=selenium:nogroup browsers.json /home/selenium/
+COPY browsers.json /home/selenium/
 COPY entrypoint.sh /
+COPY passwd.template /home/selenium
+
+RUN chgrp -R 0 /home/selenium && \
+    chmod -R g+rwX /home/selenium && \
+    chown -R selenium /home/selenium && \
+    apt update && \
+    apt install -y libnss-wrapper gettext libcmocka0
+
 
 USER selenium
 

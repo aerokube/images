@@ -1,8 +1,20 @@
 #!/bin/bash
-SCREEN_RESOLUTION=${SCREEN_RESOLUTION:-"1920x1080x24"}
-ENABLE_WINDOW_MANAGER=${ENABLE_WINDOW_MANAGER:-""}
-DISPLAY_NUM=99
-export DISPLAY=":$DISPLAY_NUM"
+
+##########################################
+## OpenShift Specific User Handling   ####
+##########################################
+
+export HOME=/home/selenium
+export USER_ID=$(id -u)
+export GROUP_ID=$(id -g)
+envsubst < ${HOME}/passwd.template > /home/selenium/passwd
+export LD_PRELOAD=/usr/lib/libnss_wrapper.so
+export NSS_WRAPPER_PASSWD=/home/selenium/passwd
+export NSS_WRAPPER_GROUP=/etc/group
+
+##########################################
+##            Selenoid default        ####
+##########################################
 
 QUIET=${QUIET:-""}
 if [ -z "$QUIET" ]; then
@@ -10,6 +22,11 @@ if [ -z "$QUIET" ]; then
 else
     sed -i 's|@@DRIVER_ARGS@@||g' /home/selenium/browsers.json
 fi
+SCREEN_RESOLUTION=${SCREEN_RESOLUTION:-"1920x1080x24"}
+ENABLE_WINDOW_MANAGER=${ENABLE_WINDOW_MANAGER:-""}
+DISPLAY_NUM=99
+export DISPLAY=":$DISPLAY_NUM"
+
 
 clean() {
   if [ -n "$FILESERVER_PID" ]; then

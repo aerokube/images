@@ -62,6 +62,10 @@ RUN \
     fc-cache -f -v && \
     adduser --system --home /home/selenium --uid 106 \
     --ingroup nogroup --disabled-password --shell /bin/bash selenium && \
+    chgrp -R 0 /home/selenium && \
+    chmod -R g+rwX /home/selenium  && \
+    chgrp -R 0 /usr/share && \
+    chmod -R g+rwX /usr/share && \
     mkdir -p /home/selenium/Downloads && \
     chown selenium:nogroup /home/selenium/Downloads && \
     mkdir -p /home/selenium/.fluxbox && \

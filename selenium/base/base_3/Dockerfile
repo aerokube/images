@@ -13,6 +13,10 @@ FROM selenoid/base:2.0
 
 RUN \
     adduser --system --home /home/selenium \
+    chgrp -R 0 /home/selenium && \
+    chmod -R g+rwX /home/selenium  && \
+    chgrp -R 0 /usr/share && \
+    chmod -R g+rwX /usr/share && \
     --ingroup nogroup --disabled-password --shell /bin/bash selenium && \
     mkdir -p /home/selenium/Downloads && \
     chown selenium:nogroup /home/selenium/Downloads && \
