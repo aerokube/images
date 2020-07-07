@@ -32,13 +32,14 @@ download_selenium() {
 }
 
 download_geckodriver() {
-    geckodriver_driver_url=""
+    local tag=""
     if [ "$1" == "latest" ]; then
-        geckodriver_driver_url=$(wget -qO- "https://api.github.com/repos/mozilla/geckodriver/releases/latest" | awk -F '"' '/browser_download_url.*?linux64.tar.gz/{print $4}')
+        tag="$1"
     else
-        geckodriver_driver_url=$(wget -qO- "https://api.github.com/repos/mozilla/geckodriver/releases/tags/v$1" | awk -F '"' '/browser_download_url.*?linux64.tar.gz/{print $4}')
+        tag="tags/v$1"
     fi
-    wget -O geckodriver.tar.gz $geckodriver_driver_url
+    local download_url=$(wget -qO- "https://api.github.com/repos/mozilla/geckodriver/releases/$tag" | jq -r '.assets[].browser_download_url | select(contains("linux64"))')
+    wget -O geckodriver.tar.gz "$download_url"
     tar xvzf geckodriver.tar.gz
     rm -Rf geckodriver.tar.gz
 }
@@ -50,13 +51,14 @@ download_chromedriver() {
 }
 
 download_operadriver() {
-    operadriver_driver_url=""
+    local tag=""
     if [ "$1" == "latest" ]; then
-        operadriver_driver_url=$(wget -qO- "https://api.github.com/repos/operasoftware/operachromiumdriver/releases/latest" | awk -F '"' '/browser_download_url.*?linux64.zip/{print $4}')
+        tag="$1"
     else
-        operadriver_driver_url=$(wget -qO- "https://api.github.com/repos/operasoftware/operachromiumdriver/releases/tags/v.$1" | awk -F '"' '/browser_download_url.*?linux64.zip/{print $4}')
+        tag="tags/v.$1"
     fi
-    wget -O operadriver.zip $operadriver_driver_url
+    local download_url=$(wget -qO- "https://api.github.com/repos/operasoftware/operachromiumdriver/releases/$tag" | jq -r '.assets[].browser_download_url | select(contains("linux64"))')
+    wget -O operadriver.zip "$download_url"
     unzip operadriver.zip
     if [ -d operadriver_linux64 ]; then
         cp operadriver_linux64/operadriver ./operadriver
@@ -66,30 +68,31 @@ download_operadriver() {
 }
 
 download_yandexdriver() {
-    yandex_driver_url=""
+    local download_url=""
     if [ "$1" == "latest" ]; then
-        yandex_driver_url=$(wget -qO- "https://api.github.com/repos/yandex/YandexDriver/releases" | awk -F '"' '/browser_download_url.*?linux.zip/{print $4;exit}')
+        download_url=$(wget -qO- "https://api.github.com/repos/yandex/YandexDriver/releases" | jq -r 'first(.[].assets[].browser_download_url | select(contains("linux")))')
     else
-        yandex_driver_url=$(wget -qO- "https://api.github.com/repos/yandex/YandexDriver/releases/tags/v$1-stable" | awk -F '"' '/browser_download_url.*?linux.zip/{print $4}')
-        if [ -z "$yandex_driver_url" ]; then
+        download_url=$(wget -qO- "https://api.github.com/repos/yandex/YandexDriver/releases/tags/v$1-stable" | jq -r '.assets[].browser_download_url | select(contains("linux"))')
+        if [ -z "$download_url" ]; then
             echo "Unsupported Yandexdriver version: $1"
             exit 1
         fi
     fi
-    wget -O yandexdriver.zip $yandex_driver_url
+    wget -O yandexdriver.zip "$download_url"
     unzip yandexdriver.zip
     chmod +x yandexdriver
     rm yandexdriver.zip
 }
 
 download_selenoid() {
-    selenoid_url=""
+    local tag=""
     if [ "$1" == "latest" ]; then
-        selenoid_url=$(wget -qO- "https://api.github.com/repos/aerokube/selenoid/releases/latest" | awk -F '"' '/browser_download_url.*?linux_amd64/{print $4}')
+        tag="$1"
     else
-        selenoid_url=$(wget -qO- "https://api.github.com/repos/aerokube/selenoid/releases/tags/$1" | awk -F '"' '/browser_download_url.*?linux_amd64/{print $4}')
+        tag="tags/$1"
     fi
-    wget -O selenoid $selenoid_url
+    local download_url=$(wget -qO- "https://api.github.com/repos/aerokube/selenoid/releases/$tag" | jq -r '.assets[].browser_download_url | select(contains("linux_amd64"))')
+    wget -O selenoid "$download_url"
     chmod +x selenoid
 }
 
