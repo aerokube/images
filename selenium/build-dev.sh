@@ -2,7 +2,7 @@
 set -e
 
 if [ -z "$1" -o -z "$2" -o -z "$3" ]; then
-    echo 'Usage: build-dev.sh {firefox/apt|firefox/local|chrome/apt|chrome/local|opera/presto|opera/blink/local|opera/blink/apt|yandex/local|yandex/apt} <browser_version> {default|beta|dev} [<cleanup={true|false}>] [<requires_java={true|false}>]'
+    echo 'Usage: build-dev.sh {firefox/apt|firefox/local|chrome/apt|chrome/local|opera/presto|opera/blink/local|opera/blink/apt|yandex/local|yandex/apt} <browser_version> {default|beta|dev|esr} [<cleanup={true|false}>] [<requires_java={true|false}>]'
     exit 1
 fi
 set -x
@@ -61,8 +61,9 @@ if [ "$channel" != "default" ]; then
                 dev)
                     additional_docker_args+=" --build-arg PACKAGE=firefox-trunk --build-arg PPA=ppa:ubuntu-mozilla-daily/ppa"
                     ;;
-		esr)
-		    additional_docker_args+=" --build-arg PACKAGE=firefox-esr --build-arg PPA=ppa:mozillateam/ppa"
+                esr)
+                    additional_docker_args+=" --build-arg PACKAGE=firefox-esr --build-arg PPA=ppa:mozillateam/ppa"
+                    ;;
             esac
             ;;
         chrome)

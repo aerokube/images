@@ -79,20 +79,21 @@ $ ./automate_android.sh
 ```
 This command is interactive - just answer the questions and it will build an image for you. In order to bundle custom APK to image - put it to `selenium/android` directory before running the script.
 
-## How to build images for Beta and Dev channels
+## How to build images for non-default channels
 
-Apart from the default Stable release channel, the following ones are also supported:
+Apart from the default stable release channel, the following ones are also supported:
 
 | Browser | Channel | Package |
 | :--- | :--- | :--- |
-| Firefox | Beta | firefox [(PPA)](https://launchpad.net/~mozillateam/+archive/ubuntu/firefox-next/+packages) |
-| Firefox | Dev | firefox-trunk [(PPA)](https://launchpad.net/~ubuntu-mozilla-daily/+archive/ubuntu/ppa/+packages) |
-| Chrome | Beta | google-chrome-beta |
-| Chrome | Dev | google-chrome-unstable |
-| Opera | Beta | opera-beta | |
-| Opera | Dev | opera-developer | |
+| firefox | beta | firefox [(PPA)](http://launchpad.net/~mozillateam/+archive/firefox-next/+packages) |
+| firefox | dev | firefox-trunk [(PPA)](http://launchpad.net/~ubuntu-mozilla-daily/+archive/ppa/+packages) |
+| firefox | esr | firefox-esr [(PPA)](http://launchpad.net/~mozillateam/+archive/ppa/+packages) |
+| chrome | beta | google-chrome-beta |
+| chrome | dev | google-chrome-unstable |
+| opera | beta | opera-beta | |
+| opera | dev | opera-developer | |
 
-* To build an image for one of the channels above use the optional argument `{beta|dev}` at the end of the corresponding command.
+* To build an image for one of the channels above use the optional argument `{beta|dev|esr}` at the end of the corresponding command.
 ```
 $ ./automate_firefox.sh 72.0~a1~hg20191114r501767-0ubuntu0.18.04.1~umd1 1.9.3 72.0a1 0.26.0 dev
 ```
