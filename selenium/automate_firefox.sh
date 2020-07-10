@@ -1,5 +1,25 @@
 #!/bin/bash
 set -e
+
+require_command(){
+    cmd_name=$1
+    if [ -z $(command -v $1) ]; then
+        echo "$1 command required for this script to run"
+        exit 1
+    fi
+}
+
+require_command "awk"
+require_command "cut"
+require_command "docker"
+require_command "ifconfig"
+require_command "jq"
+require_command "sed"
+require_command "tar"
+require_command "true"
+require_command "uuidgen"
+require_command "wget"
+
 input=$1
 server_version=$2
 tag=$3
