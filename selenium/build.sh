@@ -32,13 +32,14 @@ download_selenium() {
 }
 
 download_geckodriver() {
-    local tag=""
+    local download_url=""
+
     if [ "$1" == "latest" ]; then
-        tag="$1"
+        download_url=$(wget -qO- "https://api.github.com/repos/mozilla/geckodriver/releases/$1" | jq -r '.assets[].browser_download_url | select(contains("linux64"))')
     else
-        tag="tags/v$1"
+        download_url="https://github.com/mozilla/geckodriver/releases/download/v$1/geckodriver-v$1-linux64.tar.gz"
     fi
-    local download_url=$(wget -qO- "https://api.github.com/repos/mozilla/geckodriver/releases/$tag" | jq -r '.assets[].browser_download_url | select(contains("linux64"))')
+
     wget -O geckodriver.tar.gz "$download_url"
     tar xvzf geckodriver.tar.gz
     rm -Rf geckodriver.tar.gz
@@ -51,13 +52,14 @@ download_chromedriver() {
 }
 
 download_operadriver() {
-    local tag=""
+    local download_url=""
+
     if [ "$1" == "latest" ]; then
-        tag="$1"
+        download_url=$(wget -qO- "https://api.github.com/repos/operasoftware/operachromiumdriver/releases/$1" | jq -r '.assets[].browser_download_url | select(contains("linux64"))')
     else
-        tag="tags/v.$1"
+        download_url="https://github.com/operasoftware/operachromiumdriver/releases/download/v.$1/operadriver_linux64.zip"
     fi
-    local download_url=$(wget -qO- "https://api.github.com/repos/operasoftware/operachromiumdriver/releases/$tag" | jq -r '.assets[].browser_download_url | select(contains("linux64"))')
+
     wget -O operadriver.zip "$download_url"
     unzip operadriver.zip
     if [ -d operadriver_linux64 ]; then
@@ -85,13 +87,14 @@ download_yandexdriver() {
 }
 
 download_selenoid() {
-    local tag=""
+    local download_url=""
+
     if [ "$1" == "latest" ]; then
-        tag="$1"
+        download_url=$(wget -qO- "https://api.github.com/repos/aerokube/selenoid/releases/$tag" | jq -r '.assets[].browser_download_url | select(contains("linux_amd64"))')
     else
-        tag="tags/$1"
+        download_url="https://github.com/aerokube/selenoid/releases/download/$1/selenoid_linux_amd64"
     fi
-    local download_url=$(wget -qO- "https://api.github.com/repos/aerokube/selenoid/releases/$tag" | jq -r '.assets[].browser_download_url | select(contains("linux_amd64"))')
+
     wget -O selenoid "$download_url"
     chmod +x selenoid
 }
