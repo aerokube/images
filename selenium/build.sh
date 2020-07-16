@@ -90,7 +90,7 @@ download_selenoid() {
     local download_url=""
 
     if [ "$1" == "latest" ]; then
-        download_url=$(wget -qO- "https://api.github.com/repos/aerokube/selenoid/releases/$tag" | jq -r '.assets[].browser_download_url | select(contains("linux_amd64"))')
+        download_url=$(wget -qO- "https://api.github.com/repos/aerokube/selenoid/releases/$1" | jq -r '.assets[].browser_download_url | select(contains("linux_amd64"))')
     else
         download_url="https://github.com/aerokube/selenoid/releases/download/$1/selenoid_linux_amd64"
     fi
