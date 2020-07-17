@@ -25,7 +25,6 @@ fi
 tag="selenoid/"$image_name":"$tag_version
 dir_name="/tmp/$(uuidgen | sed -e 's|-||g')"
 mkdir -p "$dir_name"
-
 additional_docker_args=""
 if [ -n "$http_proxy" -a -n "$https_proxy" ]; then
     additional_docker_args+="--build-arg http_proxy=$http_proxy --build-arg https_proxy=$https_proxy "
@@ -33,7 +32,6 @@ fi
 if [ -n "$HTTP_PROXY" -a -n "$HTTPS_PROXY" ]; then
     additional_docker_args+="--build-arg http_proxy=$HTTP_PROXY --build-arg https_proxy=$HTTPS_PROXY "
 fi
-
 if [ "$browser" == "firefox/local" -o "$browser" == "firefox/apt" ]; then
     requires_java_value=""
     if [ "$requires_java" == "true" ]; then
