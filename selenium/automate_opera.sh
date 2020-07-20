@@ -41,6 +41,14 @@ if [ -f "$input" ]; then
     method="opera/blink/local"
 fi
 
+get_latest_operadriver() {
+    echo "$(wget -qO- "https://api.github.com/repos/operasoftware/operachromiumdriver/releases/latest" | jq -r '.tag_name' | awk -F 'v.' '{print $2}')"
+}
+
+if [ "$driver_version" == "latest" ]; then
+    driver_version=$(get_latest_operadriver)
+fi
+
 ./build-dev.sh $method $browser_version $channel true
 if [ "$method" == "opera/blink/apt" ]; then
     ./build-dev.sh $method $browser_version $channel false
