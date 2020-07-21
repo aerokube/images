@@ -69,9 +69,9 @@ Here `64.0.3417.92` is `opera-stable` package version for Ubuntu 18.04, `77.0.38
 
 * To build a Yandex image use the following command:
 ```
-$ ./automate_yandex.sh 19.9.3.358-1 19.9.3 19.9
+$ ./automate_yandex.sh 20.4.3.268-1 20.4.3.321 20.4
 ```
-Here `19.9.3.358-1` is `yandex-browser-beta` package version for Ubuntu 18.04, `19.9.3` is [Yandexdriver](https://github.com/yandex/YandexDriver/tree/master/linux) version, `19.9` is Docker tag to be applied.
+Here `20.4.3.268-1` is `yandex-browser-beta` package version for Ubuntu 18.04, `20.4.3.321` is [Yandexdriver](https://github.com/yandex/YandexDriver/releases) Linux asset version, `20.4` is Docker tag to be applied.
 
 * To build an Android image use the following command:
 ```

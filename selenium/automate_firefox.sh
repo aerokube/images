@@ -35,8 +35,17 @@ browser_version=$input
 method="firefox/apt"
 runner="selenoid"
 requires_java="false"
-numeric_version=$(echo "$tag" | awk -F '.' '{print $1}' )
+numeric_version=$(echo "$tag" | awk -F '.' '{print $1}')
 driver_version=""
+
+get_latest_selenoid() {
+    echo "$(wget -qO- "https://api.github.com/repos/aerokube/selenoid/releases/latest" | jq -r '.tag_name')"
+}
+
+get_latest_geckodriver() {
+    echo "$(wget -qO- "https://api.github.com/repos/mozilla/geckodriver/releases/latest" | jq -r '.tag_name' | awk -F 'v' '{print $2}')"
+}
+
 if [ $numeric_version -lt 48 ]; then
     channel=${4:-"default"}
     runner="selenium"
@@ -47,6 +56,12 @@ else
     if [ -z "$driver_version" ]; then
         echo 'Driver version is required for Firefox 48 and above'
         exit 1
+    fi
+    if [ "$server_version" == "latest" ]; then
+        server_version=$(get_latest_selenoid)
+    fi
+    if [ "$driver_version" == "latest" ]; then
+        driver_version=$(get_latest_geckodriver)
     fi
 fi
 

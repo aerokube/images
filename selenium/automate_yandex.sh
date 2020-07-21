@@ -40,6 +40,14 @@ if [ -f "$input" ]; then
     method="yandex/local"
 fi
 
+get_latest_yandexdriver() {
+    echo "$(wget -qO- "https://api.github.com/repos/yandex/YandexDriver/releases" | jq -r 'first(.[].assets[].name | select(contains("linux")))' | awk -F '-' '{print $2}' | awk -F '-' '{print $1}')"
+}
+
+if [ "$driver_version" == "latest" ]; then
+    driver_version=$(get_latest_yandexdriver)
+fi
+
 ./build-dev.sh $method $browser_version default true
 if [ "$method" == "yandex/apt" ]; then
     ./build-dev.sh $method $browser_version default false
