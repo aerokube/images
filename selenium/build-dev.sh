@@ -32,15 +32,7 @@ fi
 if [ -n "$HTTP_PROXY" -a -n "$HTTPS_PROXY" ]; then
     additional_docker_args+="--build-arg http_proxy=$HTTP_PROXY --build-arg https_proxy=$HTTPS_PROXY "
 fi
-if [ "$browser" == "firefox/local" -o "$browser" == "firefox/apt" ]; then
-    requires_java_value=""
-    if [ "$requires_java" == "true" ]; then
-        requires_java_value="_java"
-    fi
-    cat "$browser/Dockerfile.tmpl" | sed -e "s|@@REQUIRES_JAVA@@|$requires_java_value|g" > "$dir_name/Dockerfile"
-else
-    cp "$browser/Dockerfile" "$dir_name"
-fi
+cp "$browser/Dockerfile" "$dir_name"
 if [ "$browser" == "chrome/local" -o "$browser" == "opera/blink/local" -o "$browser" == "firefox/local" -o "$browser" == "yandex/local" ]; then
     debWildcard="$browser/*.deb"
     cp $debWildcard "$dir_name"

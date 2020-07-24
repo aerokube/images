@@ -70,8 +70,8 @@ RUN \
     apt-get clean && \
     rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/*
 
-COPY fluxbox/aerokube /usr/share/fluxbox/styles/
-COPY fluxbox/init /home/selenium/.fluxbox/
+COPY fluxbox /usr/share/fluxbox/styles/
+COPY fluxbox /home/selenium/.fluxbox/
 COPY aerokube.png /usr/share/images/fluxbox/
 
 COPY --from=go /fileserver/fileserver /usr/bin/
