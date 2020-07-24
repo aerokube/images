@@ -1,4 +1,4 @@
-FROM selenoid/base:6.0_java
+FROM selenoid/base:6.0
 
 ARG VERSION=12.16.1860
 

@@ -9,13 +9,13 @@ LABEL browser=$PACKAGE:$VERSION
 RUN \
         ( \
             ( \
-                wget -O firefox.deb http://apt-repo:8080/firefox_amd64.deb && \
+                wget -O firefox.deb http://host.docker.internal:8080/firefox_amd64.deb && \
                 apt-get update && \
                 apt-get -y --no-install-recommends install iproute2 libavcodec57 && \
                 apt-get -y install libgtk-3-0 libstartup-notification0 libdbus-glib-1-2 \
             ) || \
             ( \
-                wget -O firefox.deb http://apt-repo:8080/firefox_i386.deb && \
+                wget -O firefox.deb http://host.docker.internal:8080/firefox_i386.deb && \
                 dpkg --add-architecture i386 && \
                 apt-get update && \
                 apt-get -y --no-install-recommends install iproute2 libavcodec57 && \
