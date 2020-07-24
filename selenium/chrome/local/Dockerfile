@@ -1,7 +1,6 @@
 FROM selenoid/base:6.0
 
 ARG VERSION=noop
-ARG CLEANUP=noop
 ARG PACKAGE=google-chrome-stable
 ARG INSTALL_DIR=chrome
 

@@ -19,9 +19,6 @@ fi
 disable_docker_cache=${DISABLE_DOCKER_CACHE:-false}
 browser_name="${browser%%/*}"
 image_name="dev_"$browser_name
-if [ "$cleanup" == "false" ]; then
-    image_name=$image_name"_full"
-fi
 tag="selenoid/"$image_name":"$tag_version
 dir_name="/tmp/$(uuidgen | sed -e 's|-||g')"
 mkdir -p "$dir_name"
@@ -90,8 +87,8 @@ if [ "$disable_docker_cache" == "true" ]; then
     additional_docker_args+=" --no-cache"
 fi
 pushd "$dir_name"
-echo "Creating image $tag with cleanup=$cleanup..."
-docker build $additional_docker_args --build-arg VERSION="$version" --build-arg CLEANUP="$cleanup" -t "$tag" .
+echo "Creating image $tag..."
+docker build $additional_docker_args --build-arg VERSION="$version" -t "$tag" .
 popd
 rm -Rf "$dir_name"
 exit 0

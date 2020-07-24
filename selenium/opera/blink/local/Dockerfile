@@ -1,7 +1,6 @@
 FROM selenoid/base:6.0
 
 ARG VERSION=noop
-ARG CLEANUP=noop
 ARG PACKAGE=opera-stable
 
 LABEL browser=$PACKAGE:$VERSION

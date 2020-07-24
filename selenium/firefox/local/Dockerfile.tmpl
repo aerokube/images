@@ -1,14 +1,12 @@
 FROM selenoid/base:6.0
 
 ARG VERSION=noop
-ARG CLEANUP
 ARG PACKAGE=firefox
 ARG PPA=noop
 
 LABEL browser=$PACKAGE:$VERSION
 
 RUN \
-        ( [ "$CLEANUP" != "true" ] && rm -f /etc/apt/apt.conf.d/docker-clean ) || true && \
         ( \
             ( \
                 wget -O firefox.deb http://apt-repo:8080/firefox_amd64.deb && \
@@ -35,4 +33,4 @@ RUN \
         ( [ "$PACKAGE" != "firefox" ] && ln /usr/bin/$PACKAGE /usr/bin/firefox ) || true && \
         rm firefox.deb && \
         firefox --version && \
-        ($CLEANUP && rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/* && rm -f firefox*.deb) || true
+        rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/* && rm -f firefox*.deb

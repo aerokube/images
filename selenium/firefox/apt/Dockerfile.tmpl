@@ -1,14 +1,12 @@
 FROM selenoid/base:6.0
 
 ARG VERSION
-ARG CLEANUP
 ARG PACKAGE=firefox
 ARG PPA
 
 LABEL browser=$PACKAGE:$VERSION
 
 RUN  \
-        ( [ "$CLEANUP" != "true" ] && rm -f /etc/apt/apt.conf.d/docker-clean ) || true && \
         ( [ "$PPA" != "" ] && \
             apt-get update && \
             apt-get install -y software-properties-common && \
@@ -19,4 +17,4 @@ RUN  \
         apt-get -y --no-install-recommends install iproute2 libavcodec57 $PACKAGE=$VERSION && \
         ( [ "$PACKAGE" != "firefox" ] && ln /usr/bin/$PACKAGE /usr/bin/firefox ) || true && \
         firefox --version && \
-        ($CLEANUP && rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/*) || true
+        rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/*

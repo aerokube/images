@@ -1,7 +1,6 @@
 FROM selenoid/base:6.0
 
 ARG VERSION=noop
-ARG CLEANUP=noop
 
 LABEL browser=yandex-browser-beta:$VERSION
 
