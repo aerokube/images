@@ -15,25 +15,24 @@ import (
 	"os/exec"
 	"path"
 	"path/filepath"
+	"regexp"
 	"runtime"
 	"strings"
 	"time"
 )
-
-//go:generate pkger -include /static
 
 const (
 	LatestVersion = "latest"
 )
 
 type Requirements struct {
-	BrowserSource BrowserSource
+	BrowserSource  BrowserSource
 	BrowserChannel string // "beta", "esr", "dev" and so on
-	DriverVersion string
-	Tags []string
-	NoCache bool
-	TestsDir string
-	SkipTests bool
+	DriverVersion  string
+	Tags           []string
+	NoCache        bool
+	TestsDir       string
+	RunTests       bool
 }
 
 type BrowserSource string
@@ -47,7 +46,7 @@ func (bs *BrowserSource) Prepare() (string, string, error) {
 	if _, err := os.Stat(src); err == nil {
 		pkgName := filepath.Base(src)
 		return src, versionFromPackageName(pkgName), nil
-	} else if u, err := url.Parse(src); err == nil {
+	} else if u, err := url.Parse(src); strings.HasPrefix(src, "http") && err == nil {
 		pkgName := path.Base(src)
 		data, err := downloadFile(u.String())
 		if err != nil {
@@ -91,7 +90,7 @@ func NewImage(srcDir string, destDir string, req Requirements) (*Image, error) {
 		return nil, fmt.Errorf("docker is not installed")
 	}
 
-	err := copySourceFiles(srcDir, destDir)
+	dir, err := copySourceFiles(srcDir, destDir)
 	if err != nil {
 		return nil, fmt.Errorf("copy source files: %v", err)
 	}
@@ -99,7 +98,7 @@ func NewImage(srcDir string, destDir string, req Requirements) (*Image, error) {
 	if len(req.Tags) == 0 {
 		return nil, errors.New("image tag is required")
 	}
-	return &Image{Dir: destDir, Requirements: req}, nil
+	return &Image{Dir: dir, Requirements: req}, nil
 }
 
 func requireCommand(cmd string) bool {
@@ -115,7 +114,7 @@ func tmpDir() (string, error) {
 	return dir, nil
 }
 
-func copySourceFiles(srcDir string, destDir string) error {
+func copySourceFiles(srcDir string, destDir string) (string, error) {
 
 	const prefix = "/static"
 	walkDir := filepath.Join(prefix, srcDir)
@@ -125,13 +124,16 @@ func copySourceFiles(srcDir string, destDir string) error {
 			return err
 		}
 
-		outputPath := filepath.Join(destDir, strings.TrimPrefix(path, prefix))
+		regex := regexp.MustCompile(`^.+:/static(.+)$`)
+		relativePath := regex.FindStringSubmatch(path)[1]
+		outputPath := filepath.Join(destDir, relativePath)
 		if info.IsDir() {
 			return os.MkdirAll(outputPath, info.Mode())
 		}
 
-		fileDir := filepath.Join(destDir, strings.TrimPrefix(filepath.Dir(outputPath), prefix))
+		fileDir := filepath.Join(destDir, filepath.Dir(relativePath))
 		if !fileExists(fileDir) {
+			log.Printf("mkdir dir %s", fileDir)
 			return os.MkdirAll(fileDir, info.Mode())
 		}
 
@@ -166,12 +168,12 @@ func copySourceFiles(srcDir string, destDir string) error {
 	})
 
 	if err != nil {
-		return fmt.Errorf("copy source files: %v", err)
+		return "", err
 	}
 
 	//TODO: need to solve rendering browsers.json.tmpl file
 
-	return nil
+	return filepath.Join(destDir, srcDir), nil
 }
 
 func (i *Image) Build() error {
@@ -286,11 +288,11 @@ func (i *Image) Test(testsDir string, browserName string, browserVersion string)
 	ref := i.Tags[0]
 	err := doTest(ref, testsDir, browserName, browserVersion)
 	if err != nil {
-		if i.SkipTests {
-			log.Printf("skipping tests failed with error: %v", err)
-			return nil
-		} else {
+		if i.RunTests {
 			return fmt.Errorf("tests error: %v", err)
+		} else {
+			log.Printf("skipping tests: %v", err)
+			return nil
 		}
 	}
 	log.Println("tests passed")

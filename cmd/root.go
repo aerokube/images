@@ -6,17 +6,18 @@ import (
 )
 
 var (
-	browserSource string
+	browserSource  string
 	browserChannel string
-	driverVersion string
-	noCache bool
-	testsDir string
-	skipTests bool
-	tags []string
+	driverVersion  string
+	noCache        bool
+	testsDir       string
+	test           bool
+	tags           []string
 
 	rootCmd  = &cobra.Command{
 		Use:   "images",
 		Short: "images is a tool to build Docker images with browsers",
+		SilenceUsage: true,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			return cmd.Usage()
 		},
@@ -30,7 +31,7 @@ func initFlags() {
 	rootCmd.PersistentFlags().StringVarP(&browserChannel, "channel", "c", "default", "browser channel")
 	rootCmd.PersistentFlags().BoolVarP(&noCache, "no-cache", "n", false, "do not use Docker cache")
 	rootCmd.PersistentFlags().StringVar(&testsDir, "tests-dir", "", "directory with tests")
-	rootCmd.PersistentFlags().BoolVar(&skipTests, "skip-tests", false, "skip test execution results")
+	rootCmd.PersistentFlags().BoolVar(&test, "tests", false, "run tests")
 }
 
 func init() {

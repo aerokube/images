@@ -11,13 +11,13 @@ var (
 		Short: "build Chrome image",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			req := build.Requirements{
-				BrowserSource: build.BrowserSource(browserSource),
+				BrowserSource:  build.BrowserSource(browserSource),
 				BrowserChannel: browserChannel,
-				DriverVersion: driverVersion,
-				NoCache: noCache,
-				TestsDir: testsDir,
-				SkipTests: skipTests,
-				Tags: tags,
+				DriverVersion:  driverVersion,
+				NoCache:        noCache,
+				TestsDir:       testsDir,
+				RunTests:       test,
+				Tags:           tags,
 			}
 			chrome := &build.Chrome{req}
 			return chrome.Build()

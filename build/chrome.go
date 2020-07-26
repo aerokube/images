@@ -65,15 +65,16 @@ func (c *Chrome) Build() error {
 	if err != nil {
 		return fmt.Errorf("create temporary dir: %v", err)
 	}
-	driverVersion, err := c.downloadChromedriver(destDir, pkgVersion)
-	if err != nil {
-		return fmt.Errorf("failed to download Chromedriver: %v", err)
-	}
-
 
 	image, err := NewImage("chrome", destDir, c.Requirements)
 	if err != nil {
 		return fmt.Errorf("init dev image: %v", err)
+	}
+	image.BuildArgs = append(image.BuildArgs, fmt.Sprintf("VERSION=%s", pkgVersion))
+
+	driverVersion, err := c.downloadChromedriver(image.Dir, pkgVersion)
+	if err != nil {
+		return fmt.Errorf("failed to download Chromedriver: %v", err)
 	}
 	image.Labels = []string{fmt.Sprintf("driver=chromedriver:%s", driverVersion)}
 
