@@ -12,6 +12,7 @@ var (
 	noCache        bool
 	testsDir       string
 	test           bool
+	push           bool
 	tags           []string
 
 	rootCmd  = &cobra.Command{
@@ -32,6 +33,7 @@ func initFlags() {
 	rootCmd.PersistentFlags().BoolVarP(&noCache, "no-cache", "n", false, "do not use Docker cache")
 	rootCmd.PersistentFlags().StringVar(&testsDir, "tests-dir", "", "directory with tests")
 	rootCmd.PersistentFlags().BoolVar(&test, "tests", false, "run tests")
+	rootCmd.PersistentFlags().BoolVarP(&push, "push", "p", false, "push image to Docker registry")
 }
 
 func init() {

@@ -6,7 +6,7 @@ import (
 )
 
 var (
-	chromeCmd  = &cobra.Command{
+	chromeCmd = &cobra.Command{
 		Use:   "chrome",
 		Short: "build Chrome image",
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -18,6 +18,7 @@ var (
 				TestsDir:       testsDir,
 				RunTests:       test,
 				Tags:           tags,
+				PushImage:      push,
 			}
 			chrome := &build.Chrome{req}
 			return chrome.Build()

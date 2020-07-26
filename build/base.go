@@ -33,6 +33,7 @@ type Requirements struct {
 	NoCache        bool
 	TestsDir       string
 	RunTests       bool
+	PushImage      bool
 }
 
 type BrowserSource string
@@ -345,4 +346,23 @@ func doTest(ref string, testsDir string, browserName string, browserVersion stri
 func fileExists(p string) bool {
 	_, err := os.Stat(p)
 	return !os.IsNotExist(err)
+}
+
+func (i *Image) Push() error {
+	if i.PushImage {
+		for _, tag := range i.Tags {
+			cmd := exec.Command("docker", "push", tag)
+			cmd.Stdout = os.Stdout
+			cmd.Stderr = os.Stderr
+			err := cmd.Start()
+			if err != nil {
+				return fmt.Errorf("invalid docker push %s: %v", tag, err)
+			}
+			err = cmd.Wait()
+			if err != nil {
+				return fmt.Errorf("pushing failed: %v", err)
+			}
+		}
+	}
+	return nil
 }

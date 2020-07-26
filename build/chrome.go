@@ -88,6 +88,11 @@ func (c *Chrome) Build() error {
 		return fmt.Errorf("test image: %v", err)
 	}
 
+	err = image.Push()
+	if err != nil {
+		return fmt.Errorf("push image: %v", err)
+	}
+
 	return nil
 }
 
