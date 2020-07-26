@@ -1,0 +1,34 @@
+name: release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  golang:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Golang
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.14.x
+
+      - uses: actions/cache@v1
+        with:
+          path: ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+
+      - name: Test
+        run: ci/test.sh
+
+      - name: Build
+        run: ci/build.sh
+
+      - uses: AButler/upload-release-assets@v2.0
+        with:
+          files: 'dist/*'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
