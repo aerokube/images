@@ -1,8 +1,7 @@
 FROM selenoid/base:6.0
 
 ARG VERSION=noop
-ARG PACKAGE=google-chrome-stable
-ARG INSTALL_DIR=chrome
+ARG PACKAGE=opera-stable
 
 LABEL browser=$PACKAGE:$VERSION
 
@@ -26,6 +25,7 @@ RUN \
          libgtk-3-0 \
          libnspr4 \
          libnss3 \
+         libnotify4 \
          libpango1.0-0 \
          libstdc++6 \
          libx11-6 \
@@ -41,6 +41,9 @@ RUN \
          libxrender1 \
          libxss1 \
          libxtst6 \
+         debconf \
+         gnupg \
+         libudev1 \
          ca-certificates \
          fonts-liberation \
          libappindicator3-1 \
@@ -48,14 +51,12 @@ RUN \
          lsb-base \
          xdg-utils \
          libcurl4 \
-         iproute2 \
          curl && \
-         curl -O http://apt-repo:8080/google-chrome.deb && \
+         curl -O http://host.docker.internal:8080/opera.deb && \
          apt-get -y purge curl && \
-         dpkg -i google-chrome.deb && \
-         rm google-chrome.deb && \
-         chown root:root /opt/google/$INSTALL_DIR/chrome-sandbox && \
-         chmod 4755 /opt/google/$INSTALL_DIR/chrome-sandbox && \
-         google-chrome --version && \
+         dpkg -i opera.deb && \
+         ( [ "$PACKAGE" != "opera-stable" ] && ln /usr/bin/$PACKAGE /usr/bin/opera ) || true && \
+         rm opera.deb && \
+         opera --version && \
          rm -Rf /tmp/* && \
          rm -Rf /var/lib/apt/lists/*

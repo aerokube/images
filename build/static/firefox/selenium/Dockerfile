@@ -1,4 +1,5 @@
-FROM selenoid/dev_firefox:@@VERSION@@
+ARG VERSION
+FROM selenoid/dev_firefox:$VERSION
 
 RUN \
     apt-get update && \

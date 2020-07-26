@@ -1,4 +1,5 @@
-FROM selenoid/dev_yandex:@@VERSION@@
+ARG VERSION
+FROM selenoid/dev_yandex:$VERSION
 
 COPY yandexdriver /usr/bin/
 COPY entrypoint.sh /

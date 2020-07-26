@@ -1,4 +1,5 @@
-FROM selenoid/dev_opera:@@VERSION@@
+ARG VERSION
+FROM selenoid/dev_opera:$VERSION
 
 RUN \
     apt-get update && \
