@@ -15,9 +15,9 @@ var (
 	push           bool
 	tags           []string
 
-	rootCmd  = &cobra.Command{
-		Use:   "images",
-		Short: "images is a tool to build Docker images with browsers",
+	rootCmd = &cobra.Command{
+		Use:          "images",
+		Short:        "images is a tool to build Docker images with browsers",
 		SilenceUsage: true,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			return cmd.Usage()
@@ -39,6 +39,8 @@ func initFlags() {
 func init() {
 	initFlags()
 	rootCmd.AddCommand(chromeCmd)
+	rootCmd.AddCommand(operaCmd)
+	rootCmd.AddCommand(yandexCmd)
 	rootCmd.AddCommand(versionCmd)
 }
 

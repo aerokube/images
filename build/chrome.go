@@ -159,12 +159,17 @@ func (c *Chrome) getLatestChromeDriver(baseUrl string, pkgVersion string) (strin
 		u := path.Join(baseUrl, "LATEST_RELEASE")
 		return fetchVersion(u)
 	default:
-		chromeBuildVersion := pkgVersion
-		pieces := strings.Split(pkgVersion, ".")
-		if len(pieces) >= 3 {
-			chromeBuildVersion = strings.Join(pieces[0:3], ".")
-		}
+		chromeBuildVersion := buildVersion(pkgVersion)
 		u := path.Join(baseUrl, fmt.Sprintf("LATEST_RELEASE_%s", chromeBuildVersion))
 		return fetchVersion(u)
 	}
+}
+
+func buildVersion(pkgVersion string) string {
+	buildVersion := pkgVersion
+	pieces := strings.Split(pkgVersion, ".")
+	if len(pieces) >= 3 {
+		buildVersion = strings.Join(pieces[0:3], ".")
+	}
+	return buildVersion
 }
