@@ -39,6 +39,7 @@ func initFlags() {
 func init() {
 	initFlags()
 	rootCmd.AddCommand(chromeCmd)
+	rootCmd.AddCommand(firefoxCmd)
 	rootCmd.AddCommand(operaCmd)
 	rootCmd.AddCommand(yandexCmd)
 	rootCmd.AddCommand(versionCmd)

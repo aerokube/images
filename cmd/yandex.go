@@ -20,8 +20,8 @@ var (
 				Tags:           tags,
 				PushImage:      push,
 			}
-			chrome := &build.YandexBrowser{req}
-			return chrome.Build()
+			yandexBrowser := &build.YandexBrowser{req}
+			return yandexBrowser.Build()
 		},
 	}
 )

@@ -20,8 +20,8 @@ var (
 				Tags:           tags,
 				PushImage:      push,
 			}
-			chrome := &build.Opera{req}
-			return chrome.Build()
+			opera := &build.Opera{req}
+			return opera.Build()
 		},
 	}
 )

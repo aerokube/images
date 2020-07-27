@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 )
 
 const (
@@ -63,11 +64,11 @@ func (o *Opera) Build() error {
 
 	image, err := NewImage("opera", destDir, o.Requirements)
 	if err != nil {
-		return fmt.Errorf("init dev image: %v", err)
+		return fmt.Errorf("init image: %v", err)
 	}
 	image.BuildArgs = append(image.BuildArgs, fmt.Sprintf("VERSION=%s", pkgVersion))
 
-	driverVersion, err := o.downloadOperadriver(image.Dir, pkgVersion)
+	driverVersion, err := o.downloadOperaDriver(image.Dir)
 	if err != nil {
 		return fmt.Errorf("failed to download operadriver: %v", err)
 	}
@@ -102,17 +103,17 @@ func (o *Opera) channelToBuildArgs() []string {
 	}
 }
 
-func (o *Opera) downloadOperadriver(dir string, pkgVersion string) (string, error) {
+func (o *Opera) downloadOperaDriver(dir string) (string, error) {
 	version := o.DriverVersion
 	if version == LatestVersion {
 		v, err := latestGithubRelease("operasoftware/operachromiumdriver")
 		if err != nil {
 			return "", fmt.Errorf("latest Operadriver version: %v", err)
 		}
-		version = v
+		version = strings.TrimPrefix("v.", v)
 	}
 
-	u := fmt.Sprintf("https://github.com/operasoftware/operachromiumdriver/releases/download/%s/operadriver_linux64.zip", version)
+	u := fmt.Sprintf("https://github.com/operasoftware/operachromiumdriver/releases/download/v.%s/operadriver_linux64.zip", version)
 	_, err := downloadDriver(u, operaDriverBinary, dir)
 	if err != nil {
 		return "", fmt.Errorf("download Operadriver: %v", err)

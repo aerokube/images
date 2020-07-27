@@ -62,11 +62,11 @@ func (yb *YandexBrowser) Build() error {
 
 	image, err := NewImage("opera", destDir, yb.Requirements)
 	if err != nil {
-		return fmt.Errorf("init dev image: %v", err)
+		return fmt.Errorf("init image: %v", err)
 	}
 	image.BuildArgs = append(image.BuildArgs, fmt.Sprintf("VERSION=%s", pkgVersion))
 
-	driverVersion, err := yb.downloadYandexDriver(image.Dir, pkgVersion)
+	driverVersion, err := yb.downloadYandexDriver(image.Dir)
 	if err != nil {
 		return fmt.Errorf("failed to download yandexdriver: %v", err)
 	}
@@ -90,7 +90,7 @@ func (yb *YandexBrowser) Build() error {
 	return nil
 }
 
-func (yb *YandexBrowser) downloadYandexDriver(dir string, pkgVersion string) (string, error) {
+func (yb *YandexBrowser) downloadYandexDriver(dir string) (string, error) {
 	version := yb.DriverVersion
 	if version == LatestVersion {
 		v, err := latestGithubRelease("yandex/YandexDriver")

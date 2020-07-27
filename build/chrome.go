@@ -68,11 +68,11 @@ func (c *Chrome) Build() error {
 
 	image, err := NewImage("chrome", destDir, c.Requirements)
 	if err != nil {
-		return fmt.Errorf("init dev image: %v", err)
+		return fmt.Errorf("init image: %v", err)
 	}
 	image.BuildArgs = append(image.BuildArgs, fmt.Sprintf("VERSION=%s", pkgVersion))
 
-	driverVersion, err := c.downloadChromedriver(image.Dir, pkgVersion)
+	driverVersion, err := c.downloadChromeDriver(image.Dir, pkgVersion)
 	if err != nil {
 		return fmt.Errorf("failed to download Chromedriver: %v", err)
 	}
@@ -107,13 +107,13 @@ func (c *Chrome) channelToBuildArgs() []string {
 	}
 }
 
-func (c *Chrome) downloadChromedriver(dir string, pkgVersion string) (string, error) {
+func (c *Chrome) downloadChromeDriver(dir string, pkgVersion string) (string, error) {
 	version := c.DriverVersion
 	if version == LatestVersion {
 		const baseUrl = "https://chromedriver.storage.googleapis.com"
 		v, err := c.getLatestChromeDriver(baseUrl, pkgVersion)
 		if err != nil {
-			return "", fmt.Errorf("latest Chromedriver version: %v", err)
+			return "", fmt.Errorf("latest chromedriver version: %v", err)
 		}
 		version = v
 	}
@@ -145,7 +145,7 @@ func (c *Chrome) getLatestChromeDriver(baseUrl string, pkgVersion string) (strin
 
 	switch c.BrowserChannel {
 	case "dev":
-		chromeMajorVersion, err := strconv.Atoi(strings.Split(pkgVersion, ".")[0])
+		chromeMajorVersion, err := strconv.Atoi(majorVersion(pkgVersion))
 		if err != nil {
 			return "", fmt.Errorf("chrome major version: %v", err)
 		}
@@ -165,11 +165,23 @@ func (c *Chrome) getLatestChromeDriver(baseUrl string, pkgVersion string) (strin
 	}
 }
 
-func buildVersion(pkgVersion string) string {
+func versionN(pkgVersion string, n int) string {
 	buildVersion := pkgVersion
 	pieces := strings.Split(pkgVersion, ".")
-	if len(pieces) >= 3 {
-		buildVersion = strings.Join(pieces[0:3], ".")
+	if len(pieces) >= n {
+		buildVersion = strings.Join(pieces[0:n], ".")
 	}
 	return buildVersion
+}
+
+func majorVersion(pkgVersion string) string {
+	return versionN(pkgVersion, 1)
+}
+
+func majorMinorVersion(pkgVersion string) string {
+	return versionN(pkgVersion, 2)
+}
+
+func buildVersion(pkgVersion string) string {
+	return versionN(pkgVersion, 3)
 }

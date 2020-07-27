@@ -79,9 +79,9 @@ func versionFromPackageName(name string) string {
 }
 
 type Image struct {
-	Dir string
-	BuildArgs []string
-	Labels []string
+	Dir        string
+	BuildArgs  []string
+	Labels     []string
 	FileServer bool
 	Requirements
 }
@@ -171,8 +171,6 @@ func copySourceFiles(srcDir string, destDir string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-
-	//TODO: need to solve rendering browsers.json.tmpl file
 
 	return filepath.Join(destDir, srcDir), nil
 }
@@ -311,7 +309,7 @@ func doTest(ref string, testsDir string, browserName string, browserVersion stri
 	}
 
 	exec.Command("docker", "rm", "-f", "selenium").Output()
-	defer func(){
+	defer func() {
 		exec.Command("docker", "rm", "-f", "selenium").Output()
 	}()
 
