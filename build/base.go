@@ -33,6 +33,7 @@ type Requirements struct {
 	NoCache        bool
 	TestsDir       string
 	RunTests       bool
+	IgnoreTests    bool
 	PushImage      bool
 }
 
@@ -284,14 +285,17 @@ func dockerHostIP() (string, error) {
 }
 
 func (i *Image) Test(testsDir string, browserName string, browserVersion string) error {
+	if !i.RunTests {
+		return nil
+	}
 	ref := i.Tags[0]
 	err := doTest(ref, testsDir, browserName, browserVersion)
 	if err != nil {
-		if i.RunTests {
-			return fmt.Errorf("tests error: %v", err)
-		} else {
-			log.Printf("skipping tests: %v", err)
+		if i.IgnoreTests {
+			log.Printf("ignoring tests: %v", err)
 			return nil
+		} else {
+			return fmt.Errorf("tests error: %v", err)
 		}
 	}
 	log.Println("tests passed")
@@ -323,10 +327,11 @@ func doTest(ref string, testsDir string, browserName string, browserVersion stri
 	}
 
 	mvnCmd := exec.Command("mvn", "clean", "test",
-		fmt.Sprintf("-Dgrid.connection.url=\"%s\"", seleniumUrl),
-		fmt.Sprintf("-Dgrid.browser.name=\"%s\"", browserName),
-		fmt.Sprintf("-Dgrid.browser.version=\"%s\"", browserVersion),
+		fmt.Sprintf("-Dgrid.connection.url=%s", seleniumUrl),
+		fmt.Sprintf("-Dgrid.browser.name=%s", browserName),
+		fmt.Sprintf("-Dgrid.browser.version=%s", browserVersion),
 	)
+	mvnCmd.Dir = testsDir
 	mvnCmd.Stdout = os.Stdout
 	mvnCmd.Stderr = os.Stderr
 	err = mvnCmd.Start()

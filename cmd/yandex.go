@@ -17,6 +17,7 @@ var (
 				NoCache:        noCache,
 				TestsDir:       testsDir,
 				RunTests:       test,
+				IgnoreTests:    ignoreTests,
 				Tags:           tags,
 				PushImage:      push,
 			}
