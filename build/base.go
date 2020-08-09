@@ -286,6 +286,7 @@ func dockerHostIP() (string, error) {
 
 func (i *Image) Test(testsDir string, browserName string, browserVersion string) error {
 	if !i.RunTests {
+		log.Println("not running tests")
 		return nil
 	}
 	ref := i.Tags[0]
@@ -294,9 +295,8 @@ func (i *Image) Test(testsDir string, browserName string, browserVersion string)
 		if i.IgnoreTests {
 			log.Printf("ignoring tests: %v", err)
 			return nil
-		} else {
-			return fmt.Errorf("tests error: %v", err)
 		}
+		return fmt.Errorf("tests error: %v", err)
 	}
 	log.Println("tests passed")
 	return nil

@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"github.com/aerokube/selenoid-images/build"
 	"github.com/spf13/cobra"
 	"log"
 	"os"
@@ -37,7 +38,7 @@ func initFlags() {
 
 	rootCmd.PersistentFlags().StringSliceVarP(&tags, "tag", "t", []string{}, "image tag")
 	rootCmd.PersistentFlags().StringVarP(&browserSource, "browser", "b", "", "browser APT package version, package file path, package file URL")
-	rootCmd.PersistentFlags().StringVarP(&driverVersion, "driver-version", "d", "", "webdriver version")
+	rootCmd.PersistentFlags().StringVarP(&driverVersion, "driver-version", "d", build.LatestVersion, "webdriver version")
 	rootCmd.PersistentFlags().StringVarP(&browserChannel, "channel", "c", "default", "browser channel")
 	rootCmd.PersistentFlags().BoolVarP(&noCache, "no-cache", "n", false, "do not use Docker cache")
 	rootCmd.PersistentFlags().StringVar(&testsDir, "tests-dir", defaultTestsDir, "directory with tests")
