@@ -32,5 +32,5 @@ var (
 
 func init() {
 	firefoxCmd.Flags().StringVar(&selenoidVersion, "selenoid-version", build.LatestVersion, "Selenoid binary version")
-	firefoxCmd.Flags().StringVar(&selenoidVersion, "selenium-version", "", "Selenium JAR version")
+	firefoxCmd.Flags().StringVar(&seleniumVersion, "selenium-version", "", "Selenium JAR version")
 }

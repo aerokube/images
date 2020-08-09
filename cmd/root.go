@@ -20,9 +20,10 @@ var (
 	tags           []string
 
 	rootCmd = &cobra.Command{
-		Use:          "images",
-		Short:        "images is a tool to build Docker images with browsers",
-		SilenceUsage: true,
+		Use:           "images",
+		Short:         "images is a tool for building Docker images with browsers",
+		SilenceUsage:  true,
+		SilenceErrors: true,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			return cmd.Usage()
 		},
