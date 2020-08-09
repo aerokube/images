@@ -159,7 +159,7 @@ func (c *Firefox) downloadGeckoDriver(dir string) (string, error) {
 		version = v
 	}
 
-	u := fmt.Sprintf("https://github.com/mozilla/geckodriver/releases/download/%s/geckodriver-%s-linux64.tar.gz", version, version)
+	u := fmt.Sprintf("https://github.com/mozilla/geckodriver/releases/download/v%s/geckodriver-v%s-linux64.tar.gz", version, version)
 	_, err := downloadDriver(u, geckoDriverBinary, dir)
 	if err != nil {
 		return "", fmt.Errorf("download geckodriver: %v", err)
