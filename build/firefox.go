@@ -23,7 +23,7 @@ type Firefox struct {
 func (c *Firefox) Build() error {
 
 	if c.SelenoidVersion == "" && c.SeleniumVersion == "" {
-		return errors.New("Selenoid or Selenium JAR version missing")
+		return errors.New("missing Selenoid or Selenium JAR version")
 	}
 
 	// Build dev image

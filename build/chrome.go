@@ -5,7 +5,6 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
-	"path"
 	"path/filepath"
 	"strconv"
 	"strings"
@@ -110,7 +109,7 @@ func (c *Chrome) channelToBuildArgs() []string {
 func (c *Chrome) downloadChromeDriver(dir string, pkgVersion string) (string, error) {
 	version := c.DriverVersion
 	if version == LatestVersion {
-		const baseUrl = "https://chromedriver.storage.googleapis.com"
+		const baseUrl = "https://chromedriver.storage.googleapis.com/"
 		v, err := c.getLatestChromeDriver(baseUrl, pkgVersion)
 		if err != nil {
 			return "", fmt.Errorf("latest chromedriver version: %v", err)
@@ -150,17 +149,17 @@ func (c *Chrome) getLatestChromeDriver(baseUrl string, pkgVersion string) (strin
 			return "", fmt.Errorf("chrome major version: %v", err)
 		}
 		for i := chromeMajorVersion; i > 0; i-- {
-			u := path.Join(baseUrl, fmt.Sprintf("LATEST_RELEASE_%d", chromeMajorVersion))
+			u := baseUrl + fmt.Sprintf("LATEST_RELEASE_%d", chromeMajorVersion)
 			v, err := fetchVersion(u)
 			if err == nil {
 				return v, nil
 			}
 		}
-		u := path.Join(baseUrl, "LATEST_RELEASE")
+		u := baseUrl + "LATEST_RELEASE"
 		return fetchVersion(u)
 	default:
 		chromeBuildVersion := buildVersion(pkgVersion)
-		u := path.Join(baseUrl, fmt.Sprintf("LATEST_RELEASE_%s", chromeBuildVersion))
+		u := baseUrl + fmt.Sprintf("LATEST_RELEASE_%s", chromeBuildVersion)
 		return fetchVersion(u)
 	}
 }
