@@ -40,14 +40,15 @@ func (c *Firefox) Build() error {
 
 	if pkgSrcPath != "" {
 		devSrcDir = "firefox/local"
-		pkgDestPath := filepath.Join(devDestDir, "google-firefox.deb")
+		pkgDestPath := filepath.Join(devDestDir, "firefox.deb")
 		err = os.Rename(pkgSrcPath, pkgDestPath)
 		if err != nil {
 			return fmt.Errorf("move package: %v", err)
 		}
 	}
 
-	devImageTag := fmt.Sprintf("selenoid/dev_firefox:%s", pkgVersion)
+	pkgTagVersion := extractVersion(pkgVersion)
+	devImageTag := fmt.Sprintf("selenoid/dev_firefox:%s", pkgTagVersion)
 	devImageRequirements := Requirements{NoCache: c.NoCache, Tags: []string{devImageTag}}
 	devImage, err := NewImage(devSrcDir, devDestDir, devImageRequirements)
 	if err != nil {
@@ -71,7 +72,7 @@ func (c *Firefox) Build() error {
 		return fmt.Errorf("create temporary dir: %v", err)
 	}
 
-	firefoxMajorVersion, err := strconv.Atoi(majorVersion(pkgVersion))
+	firefoxMajorVersion, err := strconv.Atoi(majorVersion(pkgTagVersion))
 	geckoDriverCompatible := firefoxMajorVersion > 48
 	srcDir := "firefox/selenoid"
 	if !geckoDriverCompatible {
@@ -82,7 +83,7 @@ func (c *Firefox) Build() error {
 	if err != nil {
 		return fmt.Errorf("init dev image: %v", err)
 	}
-	image.BuildArgs = append(image.BuildArgs, fmt.Sprintf("VERSION=%s", pkgVersion))
+	image.BuildArgs = append(image.BuildArgs, fmt.Sprintf("VERSION=%s", pkgTagVersion))
 
 	if geckoDriverCompatible {
 		driverVersion, err := c.downloadGeckoDriver(image.Dir)
@@ -95,10 +96,10 @@ func (c *Firefox) Build() error {
 		if err != nil {
 			return fmt.Errorf("failed to download Selenoid: %v", err)
 		}
-		labels = append(labels, fmt.Sprintf("driver=selenoid:%s", selenoidVersion))
+		labels = append(labels, fmt.Sprintf("selenoid=%s", selenoidVersion))
 		image.Labels = labels
 
-		firefoxMajorMinorVersion := majorMinorVersion(pkgVersion)
+		firefoxMajorMinorVersion := majorMinorVersion(pkgTagVersion)
 		browsersJsonFile := filepath.Join(image.Dir, "browsers.json")
 		data, err := ioutil.ReadFile(browsersJsonFile)
 		if err != nil {
@@ -122,7 +123,7 @@ func (c *Firefox) Build() error {
 		return fmt.Errorf("build image: %v", err)
 	}
 
-	err = image.Test(c.TestsDir, "firefox", pkgVersion)
+	err = image.Test(c.TestsDir, "firefox", pkgTagVersion)
 	if err != nil {
 		return fmt.Errorf("test image: %v", err)
 	}
@@ -158,7 +159,7 @@ func (c *Firefox) downloadGeckoDriver(dir string) (string, error) {
 		version = v
 	}
 
-	u := fmt.Sprintf("https://github.com/mozilla/geckodriver/releases/download/v%s/geckodriver-v%s-linux64.tar.gz", version, version)
+	u := fmt.Sprintf("https://github.com/mozilla/geckodriver/releases/download/%s/geckodriver-%s-linux64.tar.gz", version, version)
 	_, err := downloadDriver(u, geckoDriverBinary, dir)
 	if err != nil {
 		return "", fmt.Errorf("download geckodriver: %v", err)

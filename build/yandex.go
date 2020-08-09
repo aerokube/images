@@ -37,7 +37,8 @@ func (yb *YandexBrowser) Build() error {
 		}
 	}
 
-	devImageTag := fmt.Sprintf("selenoid/dev_yandex:%s", pkgVersion)
+	pkgTagVersion := extractVersion(pkgVersion)
+	devImageTag := fmt.Sprintf("selenoid/dev_yandex:%s", pkgTagVersion)
 	devImageRequirements := Requirements{NoCache: yb.NoCache, Tags: []string{devImageTag}}
 	devImage, err := NewImage(srcDir, devDestDir, devImageRequirements)
 	if err != nil {
@@ -64,7 +65,7 @@ func (yb *YandexBrowser) Build() error {
 	if err != nil {
 		return fmt.Errorf("init image: %v", err)
 	}
-	image.BuildArgs = append(image.BuildArgs, fmt.Sprintf("VERSION=%s", pkgVersion))
+	image.BuildArgs = append(image.BuildArgs, fmt.Sprintf("VERSION=%s", pkgTagVersion))
 
 	driverVersion, err := yb.downloadYandexDriver(image.Dir)
 	if err != nil {
@@ -77,7 +78,7 @@ func (yb *YandexBrowser) Build() error {
 		return fmt.Errorf("build image: %v", err)
 	}
 
-	err = image.Test(yb.TestsDir, "chrome", pkgVersion)
+	err = image.Test(yb.TestsDir, "chrome", pkgTagVersion)
 	if err != nil {
 		return fmt.Errorf("test image: %v", err)
 	}

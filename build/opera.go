@@ -38,7 +38,8 @@ func (o *Opera) Build() error {
 		}
 	}
 
-	devImageTag := fmt.Sprintf("selenoid/dev_opera:%s", pkgVersion)
+	pkgTagVersion := extractVersion(pkgVersion)
+	devImageTag := fmt.Sprintf("selenoid/dev_opera:%s", pkgTagVersion)
 	devImageRequirements := Requirements{NoCache: o.NoCache, Tags: []string{devImageTag}}
 	devImage, err := NewImage(srcDir, devDestDir, devImageRequirements)
 	if err != nil {
@@ -66,7 +67,7 @@ func (o *Opera) Build() error {
 	if err != nil {
 		return fmt.Errorf("init image: %v", err)
 	}
-	image.BuildArgs = append(image.BuildArgs, fmt.Sprintf("VERSION=%s", pkgVersion))
+	image.BuildArgs = append(image.BuildArgs, fmt.Sprintf("VERSION=%s", pkgTagVersion))
 
 	driverVersion, err := o.downloadOperaDriver(image.Dir)
 	if err != nil {
@@ -79,7 +80,7 @@ func (o *Opera) Build() error {
 		return fmt.Errorf("build image: %v", err)
 	}
 
-	err = image.Test(o.TestsDir, "opera", pkgVersion)
+	err = image.Test(o.TestsDir, "opera", pkgTagVersion)
 	if err != nil {
 		return fmt.Errorf("test image: %v", err)
 	}

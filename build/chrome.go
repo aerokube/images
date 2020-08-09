@@ -41,7 +41,8 @@ func (c *Chrome) Build() error {
 		}
 	}
 
-	devImageTag := fmt.Sprintf("selenoid/dev_chrome:%s", pkgVersion)
+	pkgTagVersion := extractVersion(pkgVersion)
+	devImageTag := fmt.Sprintf("selenoid/dev_chrome:%s", pkgTagVersion)
 	devImageRequirements := Requirements{NoCache: c.NoCache, Tags: []string{devImageTag}}
 	devImage, err := NewImage(srcDir, devDestDir, devImageRequirements)
 	if err != nil {
@@ -69,9 +70,9 @@ func (c *Chrome) Build() error {
 	if err != nil {
 		return fmt.Errorf("init image: %v", err)
 	}
-	image.BuildArgs = append(image.BuildArgs, fmt.Sprintf("VERSION=%s", pkgVersion))
+	image.BuildArgs = append(image.BuildArgs, fmt.Sprintf("VERSION=%s", pkgTagVersion))
 
-	driverVersion, err := c.downloadChromeDriver(image.Dir, pkgVersion)
+	driverVersion, err := c.downloadChromeDriver(image.Dir, pkgTagVersion)
 	if err != nil {
 		return fmt.Errorf("failed to download Chromedriver: %v", err)
 	}
@@ -82,7 +83,7 @@ func (c *Chrome) Build() error {
 		return fmt.Errorf("build image: %v", err)
 	}
 
-	err = image.Test(c.TestsDir, "chrome", pkgVersion)
+	err = image.Test(c.TestsDir, "chrome", pkgTagVersion)
 	if err != nil {
 		return fmt.Errorf("test image: %v", err)
 	}

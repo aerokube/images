@@ -12,6 +12,7 @@ import (
 	"gopkg.in/cheggaaa/pb.v1"
 	"io"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -63,6 +64,7 @@ func downloadFileWithProgressBar(url string, w io.Writer) error {
 }
 
 func downloadDriver(url string, filename string, outputDir string) (string, error) {
+	log.Printf("downloading driver from %s", url)
 	data, err := downloadFile(url)
 	if err != nil {
 		return "", fmt.Errorf("failed to download driver archive: %v", err)
@@ -161,7 +163,8 @@ func untar(data []byte, fileName string, outputDir string) (string, error) {
 	if err == nil {
 		tr := tar.NewReader(gzr)
 
-		loop: for {
+	loop:
+		for {
 			header, err := tr.Next()
 			switch {
 			case err == io.EOF:

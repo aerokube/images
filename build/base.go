@@ -47,7 +47,7 @@ func (bs *BrowserSource) Prepare() (string, string, error) {
 	}
 	if _, err := os.Stat(src); err == nil {
 		pkgName := filepath.Base(src)
-		return src, versionFromPackageName(pkgName), nil
+		return src, extractVersion(pkgName), nil
 	} else if u, err := url.Parse(src); strings.HasPrefix(src, "http") && err == nil {
 		pkgName := path.Base(src)
 		data, err := downloadFile(u.String())
@@ -63,12 +63,12 @@ func (bs *BrowserSource) Prepare() (string, string, error) {
 		if err != nil {
 			return "", "", fmt.Errorf("save downloaded file: %v", err)
 		}
-		return outputFileName, versionFromPackageName(pkgName), nil
+		return outputFileName, extractVersion(pkgName), nil
 	}
 	return "", src, nil
 }
 
-func versionFromPackageName(name string) string {
+func extractVersion(name string) string {
 	pieces := strings.Split(name, "_")
 	version := name
 	if len(pieces) >= 2 {
