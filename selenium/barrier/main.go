@@ -51,7 +51,7 @@ func main() {
 
 func mux(ctx context.Context, u *url.URL) http.Handler {
 	mux := http.NewServeMux()
-	mux.HandleFunc("/session", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	mux.HandleFunc("/wd/hub/session", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		select {
 		case <-r.Context().Done():
 			return
@@ -78,7 +78,7 @@ func mux(ctx context.Context, u *url.URL) http.Handler {
 			},
 		}).ServeHTTP(w, r)
 	}))
-	mux.Handle("/session/", &httputil.ReverseProxy{
+	mux.Handle("/wd/hub/session/", &httputil.ReverseProxy{
 		Director: func(r *http.Request) {
 			fragments := strings.Split(r.URL.Path, "/")
 			if r.Method == http.MethodDelete && len(fragments) == 3 {
