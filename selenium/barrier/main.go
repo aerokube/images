@@ -78,14 +78,17 @@ func mux(ctx context.Context, u *url.URL) http.Handler {
 			},
 		}).ServeHTTP(w, r)
 	}))
-	mux.Handle("/wd/hub/session/", &httputil.ReverseProxy{
-		Director: func(r *http.Request) {
-			fragments := strings.Split(r.URL.Path, "/")
-			if r.Method == http.MethodDelete && len(fragments) == 3 {
-				<-queue
-			}
-			r.URL.Scheme, r.URL.Host = u.Scheme, u.Host
-		}})
+	mux.HandleFunc("/wd/hub/session/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		(&httputil.ReverseProxy{
+			Director: func(r *http.Request) {
+				r.URL.Scheme, r.URL.Host = u.Scheme, u.Host
+			},
+		}).ServeHTTP(w, r)
+		fragments := strings.Split(r.URL.Path, "/")
+		if r.Method == http.MethodDelete && len(fragments) == 5 {
+			<-queue
+		}
+	}))
 	return mux
 }
 
