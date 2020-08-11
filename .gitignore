@@ -4,3 +4,5 @@
 *.bak
 
 .DS_Store
+
+selenium/barrier/barrier
