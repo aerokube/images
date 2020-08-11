@@ -25,7 +25,7 @@ var (
 func init() {
 	flag.StringVar(&listen, "listen", ":4444", "host and port to listen to")
 	flag.DurationVar(&gracePeriod, "grace-period", 300*time.Second, "graceful shutdown period")
-	flag.StringVar(&target, "target", "http://localhost:4724", "target proxy url")
+	flag.StringVar(&target, "target", "http://localhost:4723", "target proxy url")
 	flag.Parse()
 }
 
