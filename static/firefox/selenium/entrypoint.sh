@@ -1,6 +1,5 @@
 #!/bin/bash
 SCREEN_RESOLUTION=${SCREEN_RESOLUTION:-"1920x1080x24"}
-ENABLE_WINDOW_MANAGER=${ENABLE_WINDOW_MANAGER:-""}
 DISPLAY_NUM=99
 export DISPLAY=":$DISPLAY_NUM"
 
@@ -10,7 +9,7 @@ clean() {
   fi
   if [ -n "$XSELD_PID" ]; then
     kill -TERM "$XSELD_PID"
-  fi  
+  fi
   if [ -n "$XVFB_PID" ]; then
     kill -TERM "$XVFB_PID"
   fi
