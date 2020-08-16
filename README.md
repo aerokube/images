@@ -1,4 +1,7 @@
 # Selenoid Docker Images
+[![Build Status](https://github.com/aerokube/selenoid-images/workflows/build/badge.svg)](https://github.com/aerokube/selenoid-images/actions?query=workflow%3Abuild)
+[![Release](https://img.shields.io/github/release/aerokube/selenoid-images.svg)](https://github.com/aerokube/selenoid-images/releases/latest)
+
 This repository contains [Docker](http://docker.com/) build files to be used for [Selenoid](http://github.com/aerokube/selenoid) project. You can find prebuilt images [here](https://hub.docker.com/u/selenoid/).
 
 ## Download Statistics
