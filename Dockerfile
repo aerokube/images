@@ -14,7 +14,7 @@ RUN \
     ninja && \
     ninja install
 
-FROM golang:1.14 as go
+FROM golang:1.15 as go
 
 COPY cmd/prism /prism
 
