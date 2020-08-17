@@ -49,7 +49,7 @@ FILESERVER_PID=$!
 DISPLAY="$DISPLAY" /usr/bin/xseld &
 XSELD_PID=$!
 
-/usr/bin/xvfb-run -l -n "$DISPLAY_NUM" -s "-ac -screen 0 $SCREEN_RESOLUTION -noreset -listen tcp" /usr/bin/fluxbox -display "$DISPLAY" -log /tmp/fluxbox.log  2>/dev/null &
+/usr/bin/xvfb-run -l -n "$DISPLAY_NUM" -s "-ac -screen 0 $SCREEN_RESOLUTION -noreset -listen tcp" /usr/bin/fluxbox -display "$DISPLAY" -log /dev/null  2>/dev/null &
 XVFB_PID=$!
 
 retcode=1
@@ -63,7 +63,7 @@ until [ $retcode -eq 0 ]; do
 done
 
 if [ "$ENABLE_VNC" == "true" ]; then
-    x11vnc -display "$DISPLAY" -passwd selenoid -shared -forever -loop500 -rfbport 5900 -rfbportv6 5900 -logfile /tmp/x11vnc.log &
+    x11vnc -display "$DISPLAY" -passwd selenoid -shared -forever -loop500 -rfbport 5900 -rfbportv6 5900 -logfile /dev/null &
     X11VNC_PID=$!
 fi
 
