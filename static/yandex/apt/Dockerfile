@@ -1,4 +1,4 @@
-FROM selenoid/base:6.0
+FROM selenoid/base:7.0
 
 ARG VERSION=19.4.2.698-1
 

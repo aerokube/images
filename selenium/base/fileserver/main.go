@@ -13,14 +13,14 @@ import (
 )
 
 func main() {
-	log.Fatal(http.ListenAndServe(":8080", mux("/static")))
+	log.Fatal(http.ListenAndServe(":8080", mux("/home/selenium/Downloads")))
 }
 
 const jsonParam = "json"
 
 func mux(dir string) http.Handler {
 	mux := http.NewServeMux()
-	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request){
+	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == http.MethodDelete {
 			deleteFileIfExists(w, r, dir)
 			return
