@@ -22,7 +22,7 @@ RUN \
 	    curl \
 	    iproute2 \
 	    nodejs \
-	    openjdk-8-jre-headless \
+	    openjdk-8-jdk-headless \
 	    unzip \
 	    xvfb \
 	    libpulse0 \
