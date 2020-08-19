@@ -4,8 +4,8 @@ SCREEN_RESOLUTION=${SCREEN_RESOLUTION:-"1920x1080x24"}
 DISPLAY_NUM=99
 export DISPLAY=":$DISPLAY_NUM"
 
-QUIET=${QUIET:-""}
-if [ -z "$QUIET" ]; then
+VERBOSE=${VERBOSE:-""}
+if [ -n "$VERBOSE" ]; then
     sed -i 's|@@DRIVER_ARGS@@|, "--log", "debug"|g' /home/selenium/browsers.json
 else
     sed -i 's|@@DRIVER_ARGS@@||g' /home/selenium/browsers.json

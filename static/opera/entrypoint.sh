@@ -4,9 +4,9 @@ SCREEN_RESOLUTION=${SCREEN_RESOLUTION:-"1920x1080x24"}
 DISPLAY_NUM=99
 export DISPLAY=":$DISPLAY_NUM"
 
-QUIET=${QUIET:-""}
+VERBOSE=${VERBOSE:-""}
 DRIVER_ARGS=""
-if [ -z "$QUIET" ]; then
+if [ -n "$VERBOSE" ]; then
     DRIVER_ARGS="--verbose"
 fi
 

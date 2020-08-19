@@ -10,9 +10,9 @@ export DISPLAY=":$DISPLAY_NUM"
 SCREEN_RESOLUTION=${SCREEN_RESOLUTION:-"1920x1080x24"}
 SKIN=${SKIN:-"1080x1920"}
 STOP=""
-QUIET=${QUIET:-""}
+VERBOSE=${VERBOSE:-""}
 
-if [ -n "$QUIET" ]; then
+if [ -z "$VERBOSE" ]; then
     APPIUM_ARGS="$APPIUM_ARGS --log-level error"
 else
     EMULATOR_ARGS="$EMULATOR_ARGS -verbose"
