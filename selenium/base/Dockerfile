@@ -56,23 +56,24 @@ RUN \
     x11vnc \
     feh \
     wmctrl \
+    libnss-wrapper \
     xsel && \
     mkdir -p /var/lib/locales/supported.d/ && grep UTF-8 /usr/share/i18n/SUPPORTED > /var/lib/locales/supported.d/all && \
     locale-gen && update-locale && \
     fc-cache -f -v && \
     adduser --system --home /home/selenium --uid 106 \
-    --ingroup nogroup --disabled-password --shell /bin/bash selenium && \
+    --ingroup root --disabled-password --shell /bin/bash selenium && \
     mkdir -p /home/selenium/Downloads && \
-    chown selenium:nogroup /home/selenium/Downloads && \
     mkdir -p /home/selenium/.fluxbox && \
-    chown selenium:nogroup /home/selenium/.fluxbox && \
-    ln -s /home/selenium/Downloads /static && \
+    chgrp -R 0 /home/selenium && \
+    chmod -R g=u /home/selenium && \
     apt-get clean && \
     rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/*
 
 COPY fluxbox /usr/share/fluxbox/styles/
-COPY fluxbox /home/selenium/.fluxbox/
+COPY --chown=selenium:root fluxbox /home/selenium/.fluxbox/
 COPY aerokube.png /usr/share/images/fluxbox/
 
+COPY permissions.sh /usr/bin/
 COPY --from=go /fileserver/fileserver /usr/bin/
 COPY --from=go /xseld/xseld /usr/bin/

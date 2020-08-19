@@ -1,4 +1,4 @@
-FROM selenoid/base:6.0
+FROM selenoid/base:7.0
 
 RUN  \
         wget -O- http://deb.opera.com/archive.key | apt-key add - && \
