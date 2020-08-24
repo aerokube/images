@@ -61,7 +61,7 @@ func (yb *YandexBrowser) Build() error {
 		return fmt.Errorf("create temporary dir: %v", err)
 	}
 
-	image, err := NewImage("opera", destDir, yb.Requirements)
+	image, err := NewImage("yandex", destDir, yb.Requirements)
 	if err != nil {
 		return fmt.Errorf("init image: %v", err)
 	}
