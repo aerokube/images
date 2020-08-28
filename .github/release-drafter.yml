@@ -1,0 +1,14 @@
+name-template: $NEXT_PATCH_VERSION
+tag-template: $NEXT_PATCH_VERSION
+template: |
+  ## What’s Changed
+
+  $CHANGES
+
+categories:
+  - title: New features
+    label: new-feature
+  - title: Fixes
+    label: bug
+  - title: Improvements
+    label: improvement
