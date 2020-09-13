@@ -76,7 +76,29 @@ func extractVersion(name string) string {
 	}
 	pieces = strings.Split(version, "+")
 	pieces = strings.Split(pieces[0], "-")
+	pieces = strings.Split(pieces[0], "~")
 	return pieces[0]
+}
+
+func versionN(pkgVersion string, n int) string {
+	buildVersion := pkgVersion
+	pieces := strings.Split(pkgVersion, ".")
+	if len(pieces) >= n {
+		buildVersion = strings.Join(pieces[0:n], ".")
+	}
+	return buildVersion
+}
+
+func majorVersion(pkgVersion string) string {
+	return versionN(pkgVersion, 1)
+}
+
+func majorMinorVersion(pkgVersion string) string {
+	return versionN(pkgVersion, 2)
+}
+
+func buildVersion(pkgVersion string) string {
+	return versionN(pkgVersion, 3)
 }
 
 type Image struct {

@@ -63,7 +63,7 @@ $ ./selenoid-images firefox -b 79.0+build1-0ubuntu0.18.04.1 -t selenoid/firefox:
 
 If you wish to pack a local Debian package instead of APT - just replace package version with full path to **deb** file:
 ```
-$ ./selenoid-images firefox -b /path/to/firefox_79.0+build1-0ubuntu0.18.04.1_amd64.dev -t selenoid/firefox:79.0
+$ ./selenoid-images firefox -b /path/to/firefox_79.0+build1-0ubuntu0.18.04.1_amd64.deb -t selenoid/firefox:79.0
 ``` 
 It is important to use package files with full version specified name because automation scripts determine browser version by parsing package file name!
 

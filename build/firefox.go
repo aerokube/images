@@ -85,6 +85,7 @@ func (c *Firefox) Build() error {
 	}
 	image.BuildArgs = append(image.BuildArgs, fmt.Sprintf("VERSION=%s", pkgTagVersion))
 
+	firefoxMajorMinorVersion := majorMinorVersion(pkgTagVersion)
 	if geckoDriverCompatible {
 		driverVersion, err := c.downloadGeckoDriver(image.Dir)
 		if err != nil {
@@ -99,7 +100,6 @@ func (c *Firefox) Build() error {
 		labels = append(labels, fmt.Sprintf("selenoid=%s", selenoidVersion))
 		image.Labels = labels
 
-		firefoxMajorMinorVersion := majorMinorVersion(pkgTagVersion)
 		browsersJsonFile := filepath.Join(image.Dir, "browsers.json")
 		data, err := ioutil.ReadFile(browsersJsonFile)
 		if err != nil {
@@ -123,7 +123,7 @@ func (c *Firefox) Build() error {
 		return fmt.Errorf("build image: %v", err)
 	}
 
-	err = image.Test(c.TestsDir, "firefox", pkgTagVersion)
+	err = image.Test(c.TestsDir, "firefox", firefoxMajorMinorVersion)
 	if err != nil {
 		return fmt.Errorf("test image: %v", err)
 	}

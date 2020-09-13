@@ -7,7 +7,6 @@ import (
 	"os"
 	"path/filepath"
 	"strconv"
-	"strings"
 )
 
 const (
@@ -163,25 +162,4 @@ func (c *Chrome) getLatestChromeDriver(baseUrl string, pkgVersion string) (strin
 		u := baseUrl + fmt.Sprintf("LATEST_RELEASE_%s", chromeBuildVersion)
 		return fetchVersion(u)
 	}
-}
-
-func versionN(pkgVersion string, n int) string {
-	buildVersion := pkgVersion
-	pieces := strings.Split(pkgVersion, ".")
-	if len(pieces) >= n {
-		buildVersion = strings.Join(pieces[0:n], ".")
-	}
-	return buildVersion
-}
-
-func majorVersion(pkgVersion string) string {
-	return versionN(pkgVersion, 1)
-}
-
-func majorMinorVersion(pkgVersion string) string {
-	return versionN(pkgVersion, 2)
-}
-
-func buildVersion(pkgVersion string) string {
-	return versionN(pkgVersion, 3)
 }
