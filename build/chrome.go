@@ -10,7 +10,8 @@ import (
 )
 
 const (
-	chromeDriverBinary = "chromedriver"
+	chromeDriverBinary                 = "chromedriver"
+	noCompatibleChromeDriverFoundError = "could not find compatible chromedriver"
 )
 
 type Chrome struct {
@@ -19,6 +20,24 @@ type Chrome struct {
 
 func (c *Chrome) Build() error {
 
+	pkgSrcPath, pkgVersion, err := c.BrowserSource.Prepare()
+	if err != nil {
+		return fmt.Errorf("invalid browser source: %v", err)
+	}
+
+	pkgTagVersion := extractVersion(pkgVersion)
+
+	driverVersion, err := c.parseChromeDriverVersion(pkgTagVersion)
+	if err != nil {
+		switch err.Error() {
+		case noCompatibleChromeDriverFoundError:
+			fmt.Println(err)
+			os.Exit(3)
+		default:
+			fmt.Errorf("parse chromedriver version: %v", err)
+		}
+	}
+
 	// Build dev image
 	devDestDir, err := tmpDir()
 	if err != nil {
@@ -26,10 +45,6 @@ func (c *Chrome) Build() error {
 	}
 
 	srcDir := "chrome/apt"
-	pkgSrcPath, pkgVersion, err := c.BrowserSource.Prepare()
-	if err != nil {
-		return fmt.Errorf("invalid browser source: %v", err)
-	}
 
 	if pkgSrcPath != "" {
 		srcDir = "chrome/local"
@@ -40,7 +55,6 @@ func (c *Chrome) Build() error {
 		}
 	}
 
-	pkgTagVersion := extractVersion(pkgVersion)
 	devImageTag := fmt.Sprintf("selenoid/dev_chrome:%s", pkgTagVersion)
 	devImageRequirements := Requirements{NoCache: c.NoCache, Tags: []string{devImageTag}}
 	devImage, err := NewImage(srcDir, devDestDir, devImageRequirements)
@@ -71,9 +85,9 @@ func (c *Chrome) Build() error {
 	}
 	image.BuildArgs = append(image.BuildArgs, fmt.Sprintf("VERSION=%s", pkgTagVersion))
 
-	driverVersion, err := c.downloadChromeDriver(image.Dir, pkgTagVersion)
+	err = c.downloadChromeDriver(image.Dir, driverVersion)
 	if err != nil {
-		return fmt.Errorf("failed to download Chromedriver: %v", err)
+		return fmt.Errorf("failed to download chromedriver: %v", err)
 	}
 	image.Labels = []string{fmt.Sprintf("driver=chromedriver:%s", driverVersion)}
 
@@ -106,23 +120,26 @@ func (c *Chrome) channelToBuildArgs() []string {
 	}
 }
 
-func (c *Chrome) downloadChromeDriver(dir string, pkgVersion string) (string, error) {
+func (c *Chrome) parseChromeDriverVersion(pkgVersion string) (string, error) {
 	version := c.DriverVersion
 	if version == LatestVersion {
 		const baseUrl = "https://chromedriver.storage.googleapis.com/"
 		v, err := c.getLatestChromeDriver(baseUrl, pkgVersion)
 		if err != nil {
-			return "", fmt.Errorf("latest chromedriver version: %v", err)
+			return "", err
 		}
 		version = v
 	}
+	return version, nil
+}
 
+func (c *Chrome) downloadChromeDriver(dir string, version string) error {
 	u := fmt.Sprintf("http://chromedriver.storage.googleapis.com/%s/chromedriver_linux64.zip", version)
 	_, err := downloadDriver(u, chromeDriverBinary, dir)
 	if err != nil {
-		return "", fmt.Errorf("download Chromedriver: %v", err)
+		return fmt.Errorf("download chromedriver: %v", err)
 	}
-	return version, nil
+	return nil
 }
 
 func (c *Chrome) getLatestChromeDriver(baseUrl string, pkgVersion string) (string, error) {
@@ -148,15 +165,20 @@ func (c *Chrome) getLatestChromeDriver(baseUrl string, pkgVersion string) (strin
 		if err != nil {
 			return "", fmt.Errorf("chrome major version: %v", err)
 		}
-		for i := chromeMajorVersion; i > 0; i-- {
-			u := baseUrl + fmt.Sprintf("LATEST_RELEASE_%d", chromeMajorVersion)
+		u := baseUrl + fmt.Sprintf("LATEST_RELEASE_%d", chromeMajorVersion)
+		v, err := fetchVersion(u)
+		if err == nil {
+			return v, nil
+		} else {
+			previousChromeMajorVersion := chromeMajorVersion - 1
+			u = baseUrl + fmt.Sprintf("LATEST_RELEASE_%d", previousChromeMajorVersion)
 			v, err := fetchVersion(u)
 			if err == nil {
 				return v, nil
+			} else {
+				return "", fmt.Errorf(noCompatibleChromeDriverFoundError)
 			}
 		}
-		u := baseUrl + "LATEST_RELEASE"
-		return fetchVersion(u)
 	default:
 		chromeBuildVersion := buildVersion(pkgVersion)
 		u := baseUrl + fmt.Sprintf("LATEST_RELEASE_%s", chromeBuildVersion)
