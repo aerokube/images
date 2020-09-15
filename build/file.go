@@ -16,7 +16,6 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
-	"strings"
 )
 
 const (
@@ -223,5 +222,5 @@ func latestGithubRelease(repo string) (string, error) {
 	if err != nil {
 		return "", fmt.Errorf("json unmarshal: %v", err)
 	}
-	return strings.TrimPrefix(i.TagName, "v"), nil
+	return i.TagName, nil
 }
