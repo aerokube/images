@@ -156,7 +156,7 @@ func (c *Firefox) downloadGeckoDriver(dir string) (string, error) {
 		if err != nil {
 			return "", fmt.Errorf("latest geckodriver version: %v", err)
 		}
-		version = v
+		version = strings.TrimPrefix(v, "v")
 	}
 
 	u := fmt.Sprintf("https://github.com/mozilla/geckodriver/releases/download/v%s/geckodriver-v%s-linux64.tar.gz", version, version)

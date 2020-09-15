@@ -111,7 +111,7 @@ func (o *Opera) downloadOperaDriver(dir string) (string, error) {
 		if err != nil {
 			return "", fmt.Errorf("latest Operadriver version: %v", err)
 		}
-		version = strings.TrimPrefix("v.", v)
+		version = strings.TrimPrefix(v, "v.")
 	}
 
 	u := fmt.Sprintf("https://github.com/operasoftware/operachromiumdriver/releases/download/v.%s/operadriver_linux64.zip", version)
