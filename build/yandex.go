@@ -78,7 +78,7 @@ func (yb *YandexBrowser) Build() error {
 		return fmt.Errorf("build image: %v", err)
 	}
 
-	err = image.Test(yb.TestsDir, "chrome", pkgTagVersion)
+	err = image.Test(yb.TestsDir, "yandex", pkgTagVersion)
 	if err != nil {
 		return fmt.Errorf("test image: %v", err)
 	}
