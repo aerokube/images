@@ -1,9 +1,12 @@
 package build
 
 import (
+	"encoding/json"
 	"fmt"
+	"net/http"
 	"os"
 	"path/filepath"
+	"strings"
 )
 
 const (
@@ -94,7 +97,7 @@ func (yb *YandexBrowser) Build() error {
 func (yb *YandexBrowser) downloadYandexDriver(dir string) (string, error) {
 	version := yb.DriverVersion
 	if version == LatestVersion {
-		v, err := latestGithubRelease("yandex/YandexDriver")
+		v, err := getLatestYandexDriver("yandex/YandexDriver")
 		if err != nil {
 			return "", fmt.Errorf("latest yandexdriver version: %v", err)
 		}
@@ -105,7 +108,47 @@ func (yb *YandexBrowser) downloadYandexDriver(dir string) (string, error) {
 	u := fmt.Sprintf("https://github.com/yandex/YandexDriver/releases/download/v%s-stable/yandexdriver-%s-linux.zip", bv, version)
 	_, err := downloadDriver(u, yandexDriverBinary, dir)
 	if err != nil {
-		return "", fmt.Errorf("download Yandexdriver: %v", err)
+		return "", fmt.Errorf("download yandexdriver: %v", err)
 	}
 	return version, nil
+}
+
+func getLatestYandexDriver(repo string) (string, error) {
+	token := os.Getenv("GITHUB_TOKEN")
+	req, err := http.NewRequest(http.MethodGet, fmt.Sprintf("https://api.github.com/repos/%s/releases", repo), nil)
+	if err != nil {
+		return "", fmt.Errorf("invalid request: %v", err)
+	}
+	if token != "" {
+		req.Header.Add("Authorization", fmt.Sprintf("token %s", token))
+	}
+	resp, err := http.DefaultClient.Do(req)
+	if err != nil {
+		return "", fmt.Errorf("github request error: %v", err)
+	}
+	defer resp.Body.Close()
+	if resp.StatusCode != http.StatusOK {
+		return "", fmt.Errorf("github unsuccessful response: %d %s", resp.StatusCode, resp.Status)
+	}
+	type AssetInfo struct {
+		Name string `json:"name"`
+	}
+	type Release struct {
+		Assets []AssetInfo `json:"assets"`
+	}
+	type Releases []Release
+	var releases Releases
+	err = json.NewDecoder(resp.Body).Decode(&releases)
+	if err != nil {
+		return "", fmt.Errorf("json unmarshal: %v", err)
+	}
+	for _, release := range releases {
+		for _, asset := range release.Assets {
+			if strings.Contains(asset.Name, "linux") {
+				version := strings.Split(asset.Name, "-")[1]
+				return version, nil
+			}
+		}
+	}
+	return "", fmt.Errorf("could not find compatible yandexdriver")
 }
