@@ -3,13 +3,12 @@
 set -e
 
 die(){
-    echo $1
+    echo "$1"
     return 1
 }
 
 require_command(){
-    cmd_name=$1
-    if [ -z $(command -v $1) ]; then
+    if [ -z "$(command -v $1)" ]; then
         die "$1 command required for this script to run"
     fi
 }
@@ -20,8 +19,8 @@ request_answer(){
     if [ -n "$default_value" ]; then
         prompt="$prompt [$default_value]"
     fi
-    read -p "$prompt " value
-    if [ -z "$value" -a -n "$default_value" ]; then
+    read -r -p "$prompt " value
+    if [ -z "$value" ] && [ -n "$default_value" ]; then
         value="$default_value"
     fi
     echo "$value"
@@ -144,7 +143,7 @@ mkdir -p "$TMP_DIR"
 cp android/entrypoint.sh "$TMP_DIR/entrypoint.sh"
 cp -r ../static/chrome/devtools "$TMP_DIR/devtools"
 
-appium_version=$(request_answer "Specify Appium version:" "1.13.0")
+appium_version=$(request_answer "Specify Appium version:" "1.18.1")
 
 until [ "$?" -ne 0 ]; do
     android_image_type=$(request_answer "Specify Android image type (possible values: \"default\", \"google_apis\", \"google_apis_playstore\", \"android-tv\", \"android-wear\"):" "default")
@@ -187,7 +186,7 @@ chromedriver_version=$(request_answer "Specify Chromedriver version if needed (r
 if [ -n "$chromedriver_version" ]; then
     chrome_major_version="$(cut -d'.' -f1 <<<${chromedriver_version})"
     chrome_minor_version="$(cut -d'.' -f2 <<<${chromedriver_version})"
-    if [ -n "$chrome_major_version" -a -n "$chrome_minor_version" ]; then
+    if [ -n "$chrome_major_version" ] &&  [ -n "$chrome_minor_version" ]; then
         default_tag="$chrome_major_version.$chrome_minor_version"
     fi
 fi
@@ -232,7 +231,7 @@ if [ "y" == "$chrome_mobile" ]; then
     test_image "$tag"
 fi
 
-read -p "Push?" yn
+read -r -p "Push?" yn
 if [ "$yn" == "y" ]; then
     docker push "$tag"
 fi
