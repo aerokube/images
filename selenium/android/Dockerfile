@@ -53,6 +53,7 @@ ENV LD_LIBRARY_PATH ${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib6
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 
 ARG ANDROID_DEVICE=""
+ARG REPLACE_IMG="y"
 ARG AVD_NAME="android6.0-1"
 ARG BUILD_TOOLS="build-tools;23.0.1"
 ARG PLATFORM="android-23"
@@ -81,7 +82,7 @@ RUN \
 	    resize2fs /root/.android/avd/$AVD_NAME.avd/userdata.img "$USERDATA_SIZE"M || \
 	    /opt/android-sdk-linux/emulator/qemu-img resize -f raw /root/.android/avd/$AVD_NAME.avd/userdata.img "$USERDATA_SIZE"M \
     ) && \
-	mv /root/.android/avd/$AVD_NAME.avd/userdata.img /root/.android/avd/$AVD_NAME.avd/userdata-qemu.img && \
+	([ -z "$REPLACE_IMG" ] || mv /root/.android/avd/$AVD_NAME.avd/userdata.img /root/.android/avd/$AVD_NAME.avd/userdata-qemu.img ) && \
 	rm /opt/android-sdk-linux/system-images/$PLATFORM/$EMULATOR_IMAGE_TYPE/"$ANDROID_ABI"/userdata.img
 
 COPY emulator-snapshot.sh tmp/chromedriver* *.apk /usr/bin/
