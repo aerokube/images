@@ -32,6 +32,7 @@ validate_android_version(){
     abi=${3:-"x86"}
     avd_name="android$version-1"
     build_tools="build-tools;29.0.2"
+    replace_img="y"
     case "$version" in
 	4.4)
         platform="android-19"
@@ -68,14 +69,17 @@ validate_android_version(){
 	9.0)
         platform="android-28"
         emulator_image="system-images;android-28;$type;$abi"
+        replace_img=""
 		;;
 	10.0)
         platform="android-29"
         emulator_image="system-images;android-29;$type;$abi"
+        replace_img=""
     ;;
 	11.0)
         platform="android-30"
         emulator_image="system-images;android-30;$type;$abi"
+        replace_img=""
 		;;
 	*)
 		echo "Unsupported Android version"
@@ -209,6 +213,7 @@ tmp_tag="$tag"_tmp
 docker build -t "$tmp_tag" \
     --build-arg APPIUM_VERSION="$appium_version" \
     --build-arg ANDROID_DEVICE="$android_device" \
+    --build-arg REPLACE_IMG="$replace_img" \
     --build-arg AVD_NAME="$avd_name" \
     --build-arg BUILD_TOOLS="$build_tools" \
     --build-arg PLATFORM="$platform" \
