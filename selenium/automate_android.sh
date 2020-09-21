@@ -72,6 +72,10 @@ validate_android_version(){
 	10.0)
         platform="android-29"
         emulator_image="system-images;android-29;$type;$abi"
+    ;;
+	11.0)
+        platform="android-30"
+        emulator_image="system-images;android-30;$type;$abi"
 		;;
 	*)
 		echo "Unsupported Android version"
