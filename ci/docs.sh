@@ -23,8 +23,8 @@ echo "Removing existing files"
 mkdir -p ${GITHUB_WORKSPACE}/docs/output/${TAGNAME}
 rm -rf ${GITHUB_WORKSPACE}/docs/output/${TAGNAME}/*
 
-#echo "Copying images"
-#cp -R ${GITHUB_WORKSPACE}/docs/img ${GITHUB_WORKSPACE}/docs/output/${TAGNAME}/img
+echo "Copying images"
+cp -R ${GITHUB_WORKSPACE}/docs/img ${GITHUB_WORKSPACE}/docs/output/${TAGNAME}/img
 echo "Generating docs"
 docker run -v ${GITHUB_WORKSPACE}/docs/:/documents/ --name asciidoc-to-html asciidoctor/docker-asciidoctor asciidoctor -a revnumber=${TAGNAME} -D /documents/output/${TAGNAME} index.adoc
 
