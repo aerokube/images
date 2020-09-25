@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/aerokube/selenoid-images/cmd"
+	"github.com/aerokube/images/cmd"
 )
 
 //go:generate pkger -include /static -o build
@@ -9,4 +9,3 @@ import (
 func main() {
 	cmd.Execute()
 }
-

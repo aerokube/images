@@ -1,8 +1,8 @@
-# Selenoid Docker Images
-[![Build Status](https://github.com/aerokube/selenoid-images/workflows/build/badge.svg)](https://github.com/aerokube/selenoid-images/actions?query=workflow%3Abuild)
-[![Release](https://img.shields.io/github/release/aerokube/selenoid-images.svg)](https://github.com/aerokube/selenoid-images/releases/latest)
+# Browser Images
+[![Build Status](https://github.com/aerokube/images/workflows/build/badge.svg)](https://github.com/aerokube/images/actions?query=workflow%3Abuild)
+[![Release](https://img.shields.io/github/release/aerokube/images.svg)](https://github.com/aerokube/images/releases/latest)
 
-This repository contains [Docker](http://docker.com/) build files to be used for [Selenoid](http://github.com/aerokube/selenoid) project. You can find prebuilt images [here](https://hub.docker.com/u/selenoid/).
+This repository contains [Docker](http://docker.com/) build files to be used for [Selenoid](http://github.com/aerokube/selenoid) and [Moon](http://github.com/aerokube/moon) projects. You can find prebuilt images [here](https://hub.docker.com/u/selenoid/).
 
 ## Download Statistics
 
@@ -30,15 +30,15 @@ Building procedure is automated with Go binary with all Docker build files embed
 
 ```
 $ go get github.com/markbates/pkger/cmd/pkger
-$ go generate github.com/aerokube/selenoid-images
+$ go generate github.com/aerokube/images
 $ go build
 ```
 
 To show help:
 
 ```
-$ ./selenoid-images --help
-$ ./selenoid-images firefox --help
+$ ./images --help
+$ ./images firefox --help
 ```
 
 * Before building images you can optionally clone tests repository:
@@ -47,57 +47,57 @@ $ git clone https://github.com/aerokube/selenoid-container-tests.git
 ```
 These tests require Java and Maven 3 to be installed. Tests directory should be cloned to this repository parent directory:
 ```
-selenoid-images/ # <== this repo
+images/ # <== this repo
 selenoid-container-tests/ # <== optional tests repo
 ```
 * To build a Firefox image use the following command:
 ```
-$ ./selenoid-images firefox -b 79.0+build1-0ubuntu0.18.04.1 -d 0.26.0 --selenoid-version 1.10.0 -t selenoid/firefox:79.0
+$ ./images firefox -b 79.0+build1-0ubuntu0.18.04.1 -d 0.26.0 --selenoid-version 1.10.0 -t selenoid/firefox:79.0
 ```
 Here `79.0+build1-0ubuntu0.18.04.1` is `firefox` package version for Ubuntu 18.04, `1.10.10` is [Selenoid](https://github.com/aerokube/selenoid/releases) version to use inside image (just use latest release version here), `selenoid/firefox:79.0` is Docker tag to be applied, `0.26.0` is [Geckodriver](http://github.com/mozilla/geckodriver/releases) version to use.
 
 If you wish to automatically use the latest Selenoid and Geckodriver versions - just omit respective flags or use **latest** as value:
 ```
-$ ./selenoid-images firefox -b 79.0+build1-0ubuntu0.18.04.1 -t selenoid/firefox:79.0
+$ ./images firefox -b 79.0+build1-0ubuntu0.18.04.1 -t selenoid/firefox:79.0
 ```
 
 If you wish to pack a local Debian package instead of APT - just replace package version with full path to **deb** file:
 ```
-$ ./selenoid-images firefox -b /path/to/firefox_79.0+build1-0ubuntu0.18.04.1_amd64.deb -t selenoid/firefox:79.0
+$ ./images firefox -b /path/to/firefox_79.0+build1-0ubuntu0.18.04.1_amd64.deb -t selenoid/firefox:79.0
 ``` 
 It is important to use package files with full version specified name because automation scripts determine browser version by parsing package file name!
 
 To run the tests after building the image add `--test` flag:
 
 ```
-$ ./selenoid-images firefox -b 79.0+build1-0ubuntu0.18.04.1 -t selenoid/firefox:79.0 --test
+$ ./images firefox -b 79.0+build1-0ubuntu0.18.04.1 -t selenoid/firefox:79.0 --test
 ```
 
 To push image after building add `--push` flag:
 
 ```
-$ ./selenoid-images firefox -b 79.0+build1-0ubuntu0.18.04.1 -t selenoid/firefox:79.0 --push
+$ ./images firefox -b 79.0+build1-0ubuntu0.18.04.1 -t selenoid/firefox:79.0 --push
 ```
 
 * To build a Chrome image use the following command:
 ```
-$ ./selenoid-images chrome -b 78.0.3904.97-1 -d 78.0.3904.70 -t selenoid/chrome:78.0
+$ ./images chrome -b 78.0.3904.97-1 -d 78.0.3904.70 -t selenoid/chrome:78.0
 ```
 Here `78.0.3904.97-1` is `google-chrome-stable` package version for Ubuntu 18.04, `78.0.3904.70` is [Chromedriver](https://chromedriver.storage.googleapis.com/index.html) version, `selenoid/chrome:78.0` is Docker tag to be applied.  
 
 If you wish to automatically use the latest [compatible](https://chromedriver.chromium.org/downloads/version-selection) Chromedriver version - just omit respective flag or use **latest** as value:
 ```
-$ ./selenoid-images chrome -b 78.0.3904.97-1 -d latest -t selenoid/chrome:78.0
+$ ./images chrome -b 78.0.3904.97-1 -d latest -t selenoid/chrome:78.0
 ```
 * To build an Opera image use the following command:
 ```
-$ ./selenoid-images opera -b 64.0.3417.92 -d 77.0.3865.120 -t selenoid/opera:64.0
+$ ./images opera -b 64.0.3417.92 -d 77.0.3865.120 -t selenoid/opera:64.0
 ```
 Here `64.0.3417.92` is `opera-stable` package version for Ubuntu 18.04, `77.0.3865.120` is [Operadriver](https://github.com/operasoftware/operachromiumdriver/releases) version, `64.0` is Docker tag to be applied.  
 
 * To build a Yandex image use the following command:
 ```
-$ ./selenoid-images yandex -b 20.4.3.268-1 -d 20.4.3.321 -t selenoid/yandex-browser:20.4
+$ ./images yandex -b 20.4.3.268-1 -d 20.4.3.321 -t selenoid/yandex-browser:20.4
 ```
 Here `20.4.3.268-1` is `yandex-browser-beta` package version for Ubuntu 18.04, `20.4.3.321` is [Yandexdriver](https://github.com/yandex/YandexDriver/releases) Linux asset version, `20.4` is Docker tag to be applied.
 
@@ -124,7 +124,7 @@ Apart from the default stable release channel, the following ones are also suppo
 
 * To build an image for one of the channels above use the `--channel` flag as follows:
 ```
-$ ./selenoid-images firefox -b 72.0~a1~hg20191114r501767-0ubuntu0.18.04.1~umd1 --channel dev -t selenoid/firefox:72.0a1
+$ ./images firefox -b 72.0~a1~hg20191114r501767-0ubuntu0.18.04.1~umd1 --channel dev -t selenoid/firefox:72.0a1
 ```
 
 ## Image information

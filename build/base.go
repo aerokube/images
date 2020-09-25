@@ -54,7 +54,7 @@ func (bs *BrowserSource) Prepare() (string, string, error) {
 		if err != nil {
 			return "", "", fmt.Errorf("download file: %v", err)
 		}
-		f, err := ioutil.TempFile("", "selenoid-images")
+		f, err := ioutil.TempFile("", "images")
 		if err != nil {
 			return "", "", fmt.Errorf("temporary file: %v", err)
 		}
@@ -131,7 +131,7 @@ func requireCommand(cmd string) bool {
 }
 
 func tmpDir() (string, error) {
-	dir, err := ioutil.TempDir("", "selenoid-images")
+	dir, err := ioutil.TempDir("", "images")
 	if err != nil {
 		return "", fmt.Errorf("create temporary dir: %v", err)
 	}

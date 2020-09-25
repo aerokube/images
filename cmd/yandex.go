@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"github.com/aerokube/selenoid-images/build"
+	"github.com/aerokube/images/build"
 	"github.com/spf13/cobra"
 )
 
