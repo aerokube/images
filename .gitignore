@@ -2,7 +2,7 @@
 .idea
 *.deb
 *.bak
-selenoid-images
+images
 pkged.go
 
 .DS_Store

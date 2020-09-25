@@ -28,7 +28,15 @@ jobs:
       - name: Build
         run: ci/build.sh
 
+      - name: Prepare release version
+        run: echo ::set-env name=RELEASE_VERSION::${GITHUB_REF:10}
+
       - uses: AButler/upload-release-assets@v2.0
         with:
           files: 'dist/*'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Release docs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ci/docs.sh $RELEASE_VERSION ${{ secrets.GITHUB_TOKEN }}
