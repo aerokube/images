@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 )
 
 const (
@@ -94,11 +95,11 @@ func (yb *YandexBrowser) Build() error {
 func (yb *YandexBrowser) downloadYandexDriver(dir string) (string, error) {
 	version := yb.DriverVersion
 	if version == LatestVersion {
-		v, err := latestGithubRelease("yandex/YandexDriver")
+		a, err := latestGithubLinuxAsset("yandex/YandexDriver")
 		if err != nil {
-			return "", fmt.Errorf("latest yandexdriver version: %v", err)
+			return "", fmt.Errorf("latest yandexdriver linux asset: %v", err)
 		}
-		version = v
+		version = strings.Split(a, "-")[1]
 	}
 
 	bv := buildVersion(version)

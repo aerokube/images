@@ -2,8 +2,6 @@ package build
 
 import (
 	"fmt"
-	"io/ioutil"
-	"net/http"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -144,17 +142,9 @@ func (c *Chrome) downloadChromeDriver(dir string, version string) error {
 
 func (c *Chrome) getLatestChromeDriver(baseUrl string, pkgVersion string) (string, error) {
 	fetchVersion := func(url string) (string, error) {
-		resp, err := http.Get(url)
+		data, err := sendGet(url)
 		if err != nil {
-			return "", fmt.Errorf("request error: %v", err)
-		}
-		defer resp.Body.Close()
-		if resp.StatusCode != http.StatusOK {
-			return "", fmt.Errorf("unsuccessful response: %d %s", resp.StatusCode, resp.Status)
-		}
-		data, err := ioutil.ReadAll(resp.Body)
-		if err != nil {
-			return "", fmt.Errorf("read driver version: %v", err)
+			return "", fmt.Errorf("read chromedriver version: %v", err)
 		}
 		return string(data), nil
 	}

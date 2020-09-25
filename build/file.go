@@ -16,6 +16,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"strings"
 )
 
 const (
@@ -197,30 +198,80 @@ func outputFile(outputPath string, mode os.FileMode, r io.Reader) error {
 	return nil
 }
 
-func latestGithubRelease(repo string) (string, error) {
-	token := os.Getenv("GITHUB_TOKEN")
-	req, err := http.NewRequest(http.MethodGet, fmt.Sprintf("https://api.github.com/repos/%s/releases/latest", repo), nil)
+func doSendGet(url string, token string) ([]byte, error) {
+	req, err := http.NewRequest(http.MethodGet, url, nil)
 	if err != nil {
-		return "", fmt.Errorf("invalid request: %v", err)
+		return nil, fmt.Errorf("invalid request: %v", err)
 	}
 	if token != "" {
 		req.Header.Add("Authorization", fmt.Sprintf("token %s", token))
 	}
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
-		return "", fmt.Errorf("github request error: %v", err)
+		return nil, fmt.Errorf("request error: %v", err)
 	}
 	defer resp.Body.Close()
 	if resp.StatusCode != http.StatusOK {
-		return "", fmt.Errorf("github unsuccessful response: %d %s", resp.StatusCode, resp.Status)
+		return nil, fmt.Errorf("unsuccessful response: %d %s", resp.StatusCode, resp.Status)
+	}
+	data, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return nil, fmt.Errorf("read response body: %v", err)
+	}
+	return data, nil
+}
+
+func sendGet(url string) ([]byte, error) {
+	return doSendGet(url, "")
+}
+
+func sendGetWithAuth(url string, token string) ([]byte, error) {
+	return doSendGet(url, token)
+}
+
+func latestGithubRelease(repo string) (string, error) {
+	token := os.Getenv("GITHUB_TOKEN")
+	url := fmt.Sprintf("https://api.github.com/repos/%s/releases/latest", repo)
+	data, err := sendGetWithAuth(url, token)
+	if err != nil {
+		return "", fmt.Errorf("get latest github release data: %v", err)
 	}
 	type info struct {
 		TagName string `json:"tag_name"`
 	}
 	var i info
-	err = json.NewDecoder(resp.Body).Decode(&i)
+	err = json.Unmarshal(data, &i)
 	if err != nil {
 		return "", fmt.Errorf("json unmarshal: %v", err)
 	}
 	return i.TagName, nil
+}
+
+func latestGithubLinuxAsset(repo string) (string, error) {
+	token := os.Getenv("GITHUB_TOKEN")
+	url := fmt.Sprintf("https://api.github.com/repos/%s/releases", repo)
+	data, err := sendGetWithAuth(url, token)
+	if err != nil {
+		return "", fmt.Errorf("get github releases data: %v", err)
+	}
+	type AssetInfo struct {
+		Name string `json:"name"`
+	}
+	type Release struct {
+		Assets []AssetInfo `json:"assets"`
+	}
+	type Releases []Release
+	var releases Releases
+	err = json.Unmarshal(data, &releases)
+	if err != nil {
+		return "", fmt.Errorf("json unmarshal: %v", err)
+	}
+	for _, release := range releases {
+		for _, asset := range release.Assets {
+			if strings.Contains(asset.Name, "linux") {
+				return asset.Name, nil
+			}
+		}
+	}
+	return "", fmt.Errorf("could not find github linux asset")
 }
