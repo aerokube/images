@@ -25,4 +25,4 @@ include::firefox.adoc[leveloffset=+1]
 include::opera.adoc[leveloffset=+1]
 include::windows.adoc[leveloffset=+1]
 
-include::building-images.adoc[leveloffset=+1]
+include::building-images.adoc[]
