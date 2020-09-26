@@ -457,17 +457,28 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Aerokube Software OÜ</span><br>
 <span id="revnumber">version latest,</span>
-<span id="revdate">2020-09-25</span>
+<span id="revdate">2020-09-26</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_firefox">1. Firefox</a></li>
-<li><a href="#_chrome">2. Chrome</a></li>
-<li><a href="#_chrome_mobile">3. Chrome Mobile</a></li>
-<li><a href="#_opera">4. Opera</a></li>
-<li><a href="#_internet_explorer_and_microsoft_edge">5. Internet Explorer and Microsoft Edge</a></li>
-<li><a href="#_android">6. Android</a></li>
+<li><a href="#_browser_image_information">1. Browser Image Information</a>
+<ul class="sectlevel2">
+<li><a href="#_android">1.1. Android</a></li>
+<li><a href="#_chrome">1.2. Chrome</a></li>
+<li><a href="#_chrome_mobile">1.3. Chrome Mobile</a></li>
+<li><a href="#_firefox">1.4. Firefox</a></li>
+<li><a href="#_opera">1.5. Opera</a></li>
+<li><a href="#_internet_explorer_and_microsoft_edge">1.6. Internet Explorer and Microsoft Edge</a></li>
+<li><a href="#_building_images">1.7. Building Images</a>
+<ul class="sectlevel3">
+<li><a href="#_whats_inside_images">1.7.1. What&#8217;s Inside Images</a></li>
+<li><a href="#_building_procedure">1.7.2. Building Procedure</a></li>
+<li><a href="#_selecting_browser_channel">1.7.3. Selecting Browser Channel</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -478,15 +489,517 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>This reference covers version: <em>latest</em></p>
 </div>
 <div class="paragraph">
-<p>This section contains information about browser images available for using with [Selenoid](<a href="https://aerokube.com/selenoid/" class="bare">https://aerokube.com/selenoid/</a>) and [Moon](<a href="https://aerokube.com/moon/" class="bare">https://aerokube.com/moon/</a>). Please refer to <a href="https://github.com/aerokube/images">GitHub repository</a> if you need source code.</p>
+<p>This section contains information about browser images available for using with <a href="https://aerokube.com/selenoid/">Selenoid</a> and <a href="https://aerokube.com/moon/">Moon</a>. Please refer to <a href="https://github.com/aerokube/images">GitHub repository</a> if you need source code.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_firefox"><a class="anchor" href="#_firefox"></a>1. Firefox</h2>
+<h2 id="_browser_image_information"><a class="anchor" href="#_browser_image_information"></a>1. Browser Image Information</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_android"><a class="anchor" href="#_android"></a>1.1. Android</h3>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Hardware server or virtual machine with nested virtualization support is required to run Android images.
+</td>
+</tr>
+</table>
+</div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. Firefox Images with Selenium Server</caption>
+<caption class="title">Table 1. Android Images</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Image</th>
+<th class="tableblock halign-left valign-top">Android version</th>
+<th class="tableblock halign-left valign-top">Appium version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/android:4.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.18.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/android:5.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.18.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/android:5.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.18.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/android:6.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.18.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/android:7.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.18.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/android:7.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.18.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/android:8.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.18.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/android:8.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.18.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/android:9.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.18.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/android:10.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.18.1</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>These images include VNC server and Android Quick Boot snapshot.</p>
+</li>
+<li>
+<p>Neither Chromedriver nor Chrome Mobile are installed. To test hybrid apps build your own image using provided automation script.</p>
+</li>
+</ol>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>An example <code>browsers.json</code> for Android images looks like the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json">{
+<span class="key"><span class="delimiter">&quot;</span><span class="content">android</span><span class="delimiter">&quot;</span></span>: {
+<span class="key"><span class="delimiter">&quot;</span><span class="content">default</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">6.0</span><span class="delimiter">&quot;</span></span>,
+<span class="key"><span class="delimiter">&quot;</span><span class="content">versions</span><span class="delimiter">&quot;</span></span>: {
+<span class="key"><span class="delimiter">&quot;</span><span class="content">6.0</span><span class="delimiter">&quot;</span></span>: {
+<span class="key"><span class="delimiter">&quot;</span><span class="content">image</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">selenoid/android:6.0</span><span class="delimiter">&quot;</span></span>,
+<span class="key"><span class="delimiter">&quot;</span><span class="content">port</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">4444</span><span class="delimiter">&quot;</span></span>,
+<span class="key"><span class="delimiter">&quot;</span><span class="content">path</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">/wd/hub</span><span class="delimiter">&quot;</span></span>
+}
+}
+}
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>An example Java test can be found <a href="https://github.com/aerokube/demo-tests/blob/master/src/test/java/com/aerokube/selenoid/AndroidRemoteApkTest.java">here</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_chrome"><a class="anchor" href="#_chrome"></a>1.2. Chrome</h3>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Chrome Images</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Image</th>
+<th class="tableblock halign-left valign-top">VNC Image</th>
+<th class="tableblock halign-left valign-top">Chromedriver version</th>
+<th class="tableblock halign-left valign-top">Chrome version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:48.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_48.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.21</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">48.0.2564.116</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:49.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_49.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.22</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">49.0.2623.112</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:50.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_50.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.22</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">50.0.2661.102</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:51.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_51.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.23</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">51.0.2704.106</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:52.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_52.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.24</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">52.0.2743.116</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:53.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_53.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.26</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">53.0.2785.143</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:54.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_54.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.27</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">54.0.2840.100</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:55.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_55.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.28</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">55.0.2883.87</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:56.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_56.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.29</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">56.0.2924.87</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:57.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_57.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.29</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">57.0.2987.110</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:58.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_58.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.29</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">58.0.3029.81</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:59.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_59.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.30</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">59.0.3071.86</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:60.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_60.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.31</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">60.0.3112.90</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:61.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_61.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.32</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">61.0.3163.79</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:62.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_62.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.33</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">62.0.3202.62</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:63.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_63.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.33</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">63.0.3239.84</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:64.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_64.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.35</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">64.0.3282.119</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:65.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_65.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.38</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">65.0.3325.181</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:66.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_66.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.38</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">66.0.3359.117</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:67.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_67.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.39</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">67.0.3396.62</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:68.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_68.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.41</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">68.0.3440.106</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:69.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_69.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.42</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">69.0.3497.100</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:70.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_70.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.44</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">70.0.3538.110</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:71.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_71.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.44</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">71.0.3578.80</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:72.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_72.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.46</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">72.0.3626.121</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:73.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_73.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">73.0.3683.68</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">73.0.3683.75</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:74.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_74.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">74.0.3729.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">74.0.3729.157</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:75.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_75.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">75.0.3770.90</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">75.0.3770.90</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:76.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_76.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">76.0.3809.87</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">76.0.3809.68</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:77.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_77.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">77.0.3865.40</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">77.0.3865.75</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:78.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_78.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">78.0.3904.87</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">78.0.3904.70</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:79.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_79.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">79.0.3945.36</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">79.0.3945.79</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:80.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_80.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">80.0.3987.106</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">80.0.3987.132</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:81.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_81.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">81.0.4044.138</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">81.0.4044.138</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">82.0.x.x (release skipped by development team)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:83.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_83.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">83.0.4103.39</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">83.0.4103.61</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:84.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_84.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">84.0.4147.30</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">84.0.4147.89</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:85.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_85.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">85.0.4183.87</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">85.0.4183.121</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>These images work with any modern Selenium client version.</p>
+</li>
+<li>
+<p>Images for older Chrome versions were not built because we have no Debian packages. If you have such packages - we could create more images.</p>
+</li>
+</ol>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_chrome_mobile"><a class="anchor" href="#_chrome_mobile"></a>1.3. Chrome Mobile</h3>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Hardware server or virtual machine with nested virtualization support is required to run Chrome Mobile images.
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. Chrome Mobile Images</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Image</th>
+<th class="tableblock halign-left valign-top">Android version</th>
+<th class="tableblock halign-left valign-top">Appium version</th>
+<th class="tableblock halign-left valign-top">Chromedriver version</th>
+<th class="tableblock halign-left valign-top">Chrome version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome-mobile:73.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.13.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">73.0.3683.68</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">73.0.3683.90</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome-mobile:74.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.13.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">74.0.3729.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">74.0.3729.157</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome-mobile:75.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.13.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">75.0.3770.8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">75.0.3770.89</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome-mobile:76.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.16.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">76.0.3809.126</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">76.0.3809.132</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome-mobile:77.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.16.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">77.0.3865.40</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">77.0.3865.116</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome-mobile:78.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.16.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">78.0.3904.105</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">78.0.3904.96</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome-mobile:79.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.16.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">79.0.3945.36</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">79.0.3945.93</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>An example <code>browsers.json</code> for Chrome Mobile images looks like the following:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json">{
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">chrome</span><span class="delimiter">&quot;</span></span>: {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">default</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">mobile-75.0</span><span class="delimiter">&quot;</span></span>,
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">versions</span><span class="delimiter">&quot;</span></span>: {
+            <span class="key"><span class="delimiter">&quot;</span><span class="content">mobile-75.0</span><span class="delimiter">&quot;</span></span>: {
+                <span class="key"><span class="delimiter">&quot;</span><span class="content">image</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">selenoid/chrome-mobile:75.0</span><span class="delimiter">&quot;</span></span>,
+                <span class="key"><span class="delimiter">&quot;</span><span class="content">port</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">4444</span><span class="delimiter">&quot;</span></span>,
+                <span class="key"><span class="delimiter">&quot;</span><span class="content">path</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">/wd/hub</span><span class="delimiter">&quot;</span></span>
+            }
+        }
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_firefox"><a class="anchor" href="#_firefox"></a>1.4. Firefox</h3>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 4. Firefox Images with Selenium Server</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -796,7 +1309,7 @@ Firefox 53.0+ images require Selenium client 3.4.0 or newer.
 </table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 2. Firefox Images with Selenoid</caption>
+<caption class="title">Table 5. Firefox Images with Selenoid</caption>
 <colgroup>
 <col style="width: 16.6666%;">
 <col style="width: 16.6666%;">
@@ -1052,391 +1565,10 @@ Firefox 53.0+ images require Selenium client 3.4.0 or newer.
 </tbody>
 </table>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_chrome"><a class="anchor" href="#_chrome"></a>2. Chrome</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_opera"><a class="anchor" href="#_opera"></a>1.5. Opera</h3>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. Chrome Images</caption>
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Image</th>
-<th class="tableblock halign-left valign-top">VNC Image</th>
-<th class="tableblock halign-left valign-top">Chromedriver version</th>
-<th class="tableblock halign-left valign-top">Chrome version</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:48.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_48.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.21</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">48.0.2564.116</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:49.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_49.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.22</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">49.0.2623.112</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:50.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_50.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.22</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">50.0.2661.102</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:51.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_51.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.23</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">51.0.2704.106</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:52.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_52.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.24</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">52.0.2743.116</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:53.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_53.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.26</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">53.0.2785.143</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:54.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_54.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.27</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">54.0.2840.100</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:55.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_55.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.28</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">55.0.2883.87</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:56.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_56.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.29</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">56.0.2924.87</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:57.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_57.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.29</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">57.0.2987.110</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:58.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_58.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.29</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">58.0.3029.81</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:59.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_59.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.30</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">59.0.3071.86</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:60.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_60.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.31</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">60.0.3112.90</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:61.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_61.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.32</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">61.0.3163.79</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:62.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_62.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.33</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">62.0.3202.62</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:63.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_63.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.33</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">63.0.3239.84</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:64.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_64.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.35</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">64.0.3282.119</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:65.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_65.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.38</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">65.0.3325.181</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:66.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_66.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.38</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">66.0.3359.117</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:67.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_67.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.39</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">67.0.3396.62</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:68.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_68.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.41</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">68.0.3440.106</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:69.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_69.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.42</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">69.0.3497.100</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:70.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_70.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.44</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">70.0.3538.110</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:71.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_71.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.44</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">71.0.3578.80</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:72.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_72.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.46</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">72.0.3626.121</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:73.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_73.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">73.0.3683.68</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">73.0.3683.75</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:74.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_74.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">74.0.3729.6</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">74.0.3729.157</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:75.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_75.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">75.0.3770.90</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">75.0.3770.90</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:76.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_76.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">76.0.3809.87</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">76.0.3809.68</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:77.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_77.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">77.0.3865.40</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">77.0.3865.75</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:78.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_78.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">78.0.3904.87</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">78.0.3904.70</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:79.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_79.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">79.0.3945.36</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">79.0.3945.79</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:80.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_80.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">80.0.3987.106</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">80.0.3987.132</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:81.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_81.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">81.0.4044.138</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">81.0.4044.138</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">82.0.x.x (release skipped by development team)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:83.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_83.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">83.0.4103.39</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">83.0.4103.61</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:84.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_84.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">84.0.4147.30</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">84.0.4147.89</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome:85.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/vnc:chrome_85.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">85.0.4183.87</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">85.0.4183.121</p></td>
-</tr>
-</tbody>
-</table>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>These images work with any modern Selenium client version.</p>
-</li>
-<li>
-<p>Images for older Chrome versions were not built because we have no Debian packages. If you have such packages - we could create more images.</p>
-</li>
-</ol>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_chrome_mobile"><a class="anchor" href="#_chrome_mobile"></a>3. Chrome Mobile</h2>
-<div class="sectionbody">
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-Hardware server or virtual machine with nested virtualization support is required to run Chrome Mobile images.
-</td>
-</tr>
-</table>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 4. Chrome Mobile Images</caption>
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Image</th>
-<th class="tableblock halign-left valign-top">Android version</th>
-<th class="tableblock halign-left valign-top">Appium version</th>
-<th class="tableblock halign-left valign-top">Chromedriver version</th>
-<th class="tableblock halign-left valign-top">Chrome version</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome-mobile:73.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">8.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.13.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">73.0.3683.68</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">73.0.3683.90</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome-mobile:74.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">8.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.13.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">74.0.3729.6</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">74.0.3729.157</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome-mobile:75.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">8.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.13.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">75.0.3770.8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">75.0.3770.89</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome-mobile:76.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">9.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.16.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">76.0.3809.126</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">76.0.3809.132</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome-mobile:77.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">9.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.16.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">77.0.3865.40</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">77.0.3865.116</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome-mobile:78.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">9.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.16.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">78.0.3904.105</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">78.0.3904.96</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome-mobile:79.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">9.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.16.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">79.0.3945.36</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">79.0.3945.93</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>An example <code>browsers.json</code> for Chrome Mobile images looks like the following:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="json">{
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">chrome</span><span class="delimiter">&quot;</span></span>: {
-        <span class="key"><span class="delimiter">&quot;</span><span class="content">default</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">mobile-75.0</span><span class="delimiter">&quot;</span></span>,
-        <span class="key"><span class="delimiter">&quot;</span><span class="content">versions</span><span class="delimiter">&quot;</span></span>: {
-            <span class="key"><span class="delimiter">&quot;</span><span class="content">mobile-75.0</span><span class="delimiter">&quot;</span></span>: {
-                <span class="key"><span class="delimiter">&quot;</span><span class="content">image</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">selenoid/chrome-mobile:75.0</span><span class="delimiter">&quot;</span></span>,
-                <span class="key"><span class="delimiter">&quot;</span><span class="content">port</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">4444</span><span class="delimiter">&quot;</span></span>,
-                <span class="key"><span class="delimiter">&quot;</span><span class="content">path</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">/wd/hub</span><span class="delimiter">&quot;</span></span>
-            }
-        }
-    }
-}</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_opera"><a class="anchor" href="#_opera"></a>4. Opera</h2>
-<div class="sectionbody">
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. Opera Presto Images</caption>
+<caption class="title">Table 6. Opera Presto Images</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1483,7 +1615,7 @@ Hardware server or virtual machine with nested virtualization support is require
 </table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. Opera Blink Images</caption>
+<caption class="title">Table 7. Opera Blink Images</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1751,139 +1883,254 @@ Hardware server or virtual machine with nested virtualization support is require
 </table>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_internet_explorer_and_microsoft_edge"><a class="anchor" href="#_internet_explorer_and_microsoft_edge"></a>5. Internet Explorer and Microsoft Edge</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_internet_explorer_and_microsoft_edge"><a class="anchor" href="#_internet_explorer_and_microsoft_edge"></a>1.6. Internet Explorer and Microsoft Edge</h3>
 <div class="paragraph">
 <p>We don&#8217;t build ready to use images for these browsers because of Windows license limitations. However we provide detailed instructions on building such images <a href="https://github.com/aerokube/windows-images">here</a>. The same approach can be used for preparing images with Firefox, Chrome and Opera under Windows.</p>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_building_images"><a class="anchor" href="#_building_images"></a>1.7. Building Images</h3>
+<div class="sect3">
+<h4 id="_whats_inside_images"><a class="anchor" href="#_whats_inside_images"></a>1.7.1. What&#8217;s Inside Images</h4>
+<div class="paragraph">
+<p>Each image consists of 3 layers:</p>
 </div>
-<div class="sect1">
-<h2 id="_android"><a class="anchor" href="#_android"></a>6. Android</h2>
-<div class="sectionbody">
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-Hardware server or virtual machine with nested virtualization support is required to run Android images.
-</td>
-</tr>
-</table>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Base layer</strong> - contains stuff needed in every image: Xvfb, fonts, locales, cursor blinking fix, timezone definition and so on. You have to build this layer manually.</p>
+</li>
+<li>
+<p><strong>Browser layer</strong> - contains browser binary.</p>
+</li>
+<li>
+<p><strong>Driver layer</strong> - contains either respective web driver binary or corresponding Selenium \ Selenoid server version.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_building_procedure"><a class="anchor" href="#_building_procedure"></a>1.7.2. Building Procedure</h4>
+<div class="paragraph">
+<p>Building procedure is automated with a Go binary. All Docker build files are embedded to this binary. To build the binary from source:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">$ go get github.com/markbates/pkger/cmd/pkger
+$ go generate github.com/aerokube/images
+$ go build</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To show help:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./images --help
+$ ./images firefox --help</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Before building images you can optionally clone tests repository:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">$ git clone https://github.com/aerokube/selenoid-container-tests.git</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>These tests require Java and Maven 3 to be installed. Tests directory should be cloned to this repository parent directory:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">images/ # &lt;== this repo
+selenoid-container-tests/ # &lt;== optional tests repo</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>To build a Firefox image use the following command:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./images firefox -b 79.0+build1-0ubuntu0.18.04.1 -d 0.26.0 --selenoid-version 1.10.0 -t selenoid/firefox:79.0</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here <code>79.0+build1-0ubuntu0.18.04.1</code> is <code>firefox</code> package version for Ubuntu 18.04, <code>1.10.10</code> is <a href="https://github.com/aerokube/selenoid/releases">Selenoid</a> version to use inside image (just use latest release version here), <code>selenoid/firefox:79.0</code> is Docker tag to be applied, <code>0.26.0</code> is <a href="http://github.com/mozilla/geckodriver/releases">Geckodriver</a> version to use.</p>
+</div>
+<div class="paragraph">
+<p>If you wish to automatically use the latest Selenoid and Geckodriver versions - just omit respective flags or use <strong>latest</strong> as value:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./images firefox -b 79.0+build1-0ubuntu0.18.04.1 -t selenoid/firefox:79.0</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you wish to pack a local Debian package instead of APT - just replace package version with full path to <strong>deb</strong> file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./images firefox -b /path/to/firefox_79.0+build1-0ubuntu0.18.04.1_amd64.deb -t selenoid/firefox:79.0</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It is important to use package files with full version specified name because automation scripts determine browser version by parsing package file name!</p>
+</div>
+<div class="paragraph">
+<p>To run the tests after building the image add <code>--test</code> flag:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./images firefox -b 79.0+build1-0ubuntu0.18.04.1 -t selenoid/firefox:79.0 --test</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To push image after building add <code>--push</code> flag:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./images firefox -b 79.0+build1-0ubuntu0.18.04.1 -t selenoid/firefox:79.0 --push</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>To build a Chrome image use the following command:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./images chrome -b 78.0.3904.97-1 -d 78.0.3904.70 -t selenoid/chrome:78.0</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here <code>78.0.3904.97-1</code> is <code>google-chrome-stable</code> package version for Ubuntu 18.04, <code>78.0.3904.70</code> is <a href="https://chromedriver.storage.googleapis.com/index.html">Chromedriver</a> version, <code>selenoid/chrome:78.0</code> is Docker tag to be applied.</p>
+</div>
+<div class="paragraph">
+<p>If you wish to automatically use the latest <a href="https://chromedriver.chromium.org/downloads/version-selection">compatible</a> Chromedriver version - just omit respective flag or use <strong>latest</strong> as value:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./images chrome -b 78.0.3904.97-1 -d latest -t selenoid/chrome:78.0</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>To build an Opera image use the following command:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./images opera -b 64.0.3417.92 -d 77.0.3865.120 -t selenoid/opera:64.0</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here <code>64.0.3417.92</code> is <code>opera-stable</code> package version for Ubuntu 18.04, <code>77.0.3865.120</code> is <a href="https://github.com/operasoftware/operachromiumdriver/releases">Operadriver</a> version, <code>64.0</code> is Docker tag to be applied.</p>
+</div>
+</li>
+<li>
+<p>To build a Yandex image use the following command:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./images yandex -b 20.4.3.268-1 -d 20.4.3.321 -t selenoid/yandex-browser:20.4</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here <code>20.4.3.268-1</code> is <code>yandex-browser-beta</code> package version for Ubuntu 18.04, <code>20.4.3.321</code> is <a href="https://github.com/yandex/YandexDriver/releases">Yandexdriver</a> Linux asset version, <code>20.4</code> is Docker tag to be applied.</p>
+</div>
+</li>
+<li>
+<p>To build an Android image use the following command:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">$ cd selenium
+$ ./automate_android.sh</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This command is interactive - just answer the questions and it will build an image for you. In order to bundle custom APK to image - put it to <code>selenium/android</code> directory before running the script.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_selecting_browser_channel"><a class="anchor" href="#_selecting_browser_channel"></a>1.7.3. Selecting Browser Channel</h4>
+<div class="paragraph">
+<p>Apart from the default stable release channel, the following ones are also supported:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 7. Android Images</caption>
+<caption class="title">Table 8. Available Browser Channels</caption>
 <colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Image</th>
-<th class="tableblock halign-left valign-top">Android version</th>
-<th class="tableblock halign-left valign-top">Appium version</th>
+<th class="tableblock halign-left valign-top">Browser</th>
+<th class="tableblock halign-left valign-top">Channel</th>
+<th class="tableblock halign-left valign-top">Package</th>
+<th class="tableblock halign-left valign-top"></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/android:4.4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4.4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.18.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">firefox</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">beta</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">firefox (<a href="http://launchpad.net/~mozillateam/+archive/firefox-next/+packages">PPA</a>)</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/android:5.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.18.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">firefox</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dev</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">firefox-trunk (<a href="http://launchpad.net/~ubuntu-mozilla-daily/+archive/ppa/+packages">PPA</a>)</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/android:5.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.18.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">firefox</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">esr</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">firefox-esr (<a href="http://launchpad.net/~mozillateam/+archive/ppa/+packages">PPA</a>)</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/android:6.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.18.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">chrome</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">beta</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">google-chrome-beta</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/android:7.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.18.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">chrome</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dev</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">google-chrome-unstable</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/android:7.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.18.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">opera</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">beta</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">opera-beta</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/android:8.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">8.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.18.1</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/android:8.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">8.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.18.1</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/android:9.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">9.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.18.1</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/android:10.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">10.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.18.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">opera</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dev</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">opera-developer</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>
 </table>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="olist arabic">
-<ol class="arabic">
+<div class="ulist">
+<ul>
 <li>
-<p>These images include VNC server and Android Quick Boot snapshot.</p>
-</li>
-<li>
-<p>Neither Chromedriver nor Chrome Mobile are installed. To test hybrid apps build your own image using provided automation script.</p>
-</li>
-</ol>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>An example <code>browsers.json</code> for Android images looks like the following:</p>
-</div>
+<p>To build an image for one of the channels above use the <code>--channel</code> flag as follows:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="json">{
-    <span class="key"><span class="delimiter">&quot;</span><span class="content">android</span><span class="delimiter">&quot;</span></span>: {
-        <span class="key"><span class="delimiter">&quot;</span><span class="content">default</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">6.0</span><span class="delimiter">&quot;</span></span>,
-        <span class="key"><span class="delimiter">&quot;</span><span class="content">versions</span><span class="delimiter">&quot;</span></span>: {
-            <span class="key"><span class="delimiter">&quot;</span><span class="content">6.0</span><span class="delimiter">&quot;</span></span>: {
-                <span class="key"><span class="delimiter">&quot;</span><span class="content">image</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">selenoid/android:6.0</span><span class="delimiter">&quot;</span></span>,
-                <span class="key"><span class="delimiter">&quot;</span><span class="content">port</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">4444</span><span class="delimiter">&quot;</span></span>,
-                <span class="key"><span class="delimiter">&quot;</span><span class="content">path</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">/wd/hub</span><span class="delimiter">&quot;</span></span>
-            }
-        }
-    }
-}</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">$ ./images firefox -b 72.0~a1~hg20191114r501767-0ubuntu0.18.04.1~umd1 --channel dev -t selenoid/firefox:72.0a1</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>An example Java test can be found <a href="https://github.com/aerokube/demo-tests/blob/master/src/test/java/com/aerokube/selenoid/AndroidRemoteApkTest.java">here</a>.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1891,7 +2138,7 @@ Hardware server or virtual machine with nested virtualization support is require
 <div id="footer">
 <div id="footer-text">
 Version latest<br>
-Last updated 2020-09-25 17:11:14 UTC
+Last updated 2020-09-26 09:03:11 UTC
 </div>
 </div>
 <style>
