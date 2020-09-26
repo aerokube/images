@@ -44,7 +44,7 @@ trap clean SIGINT SIGTERM
 XVFB_PID=$!
 
 retcode=1
-until [ $retcode -eq 0 -o -n "$STOP" ]; do
+until [ $retcode -eq 0 ] || [ -n "$STOP" ]; do
   DISPLAY="$DISPLAY" wmctrl -m >/dev/null 2>&1
   retcode=$?
   if [ $retcode -ne 0 ]; then
@@ -54,10 +54,10 @@ until [ $retcode -eq 0 -o -n "$STOP" ]; do
 done
 if [ -n "$STOP" ]; then exit 0; fi
 
-if [ "$ENABLE_VNC" != "true" -a "$ENABLE_VIDEO" != "true" ]; then
+if [ "$ENABLE_VNC" != "true" ] && [ "$ENABLE_VIDEO" != "true" ]; then
     EMULATOR_ARGS="$EMULATOR_ARGS -no-window"
 fi
-ANDROID_AVD_HOME=/root/.android/avd DISPLAY="$DISPLAY" /opt/android-sdk-linux/emulator/emulator ${EMULATOR_ARGS} -writable-system -no-boot-anim -no-audio -no-jni -avd @AVD_NAME@ -sdcard /sdcard.img -skin "$SKIN" -skindir /opt/android-sdk-linux/platforms/@PLATFORM@/skins/ -gpu swiftshader_indirect -ranchu -qemu -enable-kvm &
+ANDROID_AVD_HOME=/root/.android/avd DISPLAY="$DISPLAY" /opt/android-sdk-linux/emulator/emulator "${EMULATOR_ARGS}" -writable-system -no-boot-anim -no-audio -no-jni -avd @AVD_NAME@ -sdcard /sdcard.img -skin "$SKIN" -skindir /opt/android-sdk-linux/platforms/@PLATFORM@/skins/ -gpu swiftshader_indirect -ranchu -qemu -enable-kvm &
 EMULATOR_PID=$!
 
 if [ "$ENABLE_VNC" == "true" ]; then
@@ -65,21 +65,22 @@ if [ "$ENABLE_VNC" == "true" ]; then
     X11VNC_PID=$!
 fi
 
-while [ "`adb shell getprop sys.boot_completed | tr -d '\r' `" != "1" -a -z "$STOP" ] ; do sleep 1; done
+while [ "$(db shell getprop sys.boot_completed | tr -d '\r')" != "1" ] && [ -z "$STOP" ] ; do sleep 1; done
 if [ -n "$STOP" ]; then exit 0; fi
 
+DEFAULT_CAPABILITIES='"androidNaturalOrientation": true, "deviceName": "android", "platformName": "Android", "noReset": true, "udid":"'$EMULATOR'"'
 if [ -n "@CHROME_MOBILE@" ]; then
     while ip addr | grep inet | grep -q tentative > /dev/null; do sleep 0.1; done
-	APPIUM_ARGS="$APPIUM_ARGS --chromedriver-port $CHROMEDRIVER_PORT"
+    DEFAULT_CAPABILITIES=$DEFAULT_CAPABILITIES',"chromedriverPort": '$CHROMEDRIVER_PORT
     /usr/bin/devtools --android &
     DEVTOOLS_PID=$!
 fi
 
 if [ -x "/usr/bin/chromedriver" ]; then
-    APPIUM_ARGS="$APPIUM_ARGS --chromedriver-executable /usr/bin/chromedriver"
+    DEFAULT_CAPABILITIES=$DEFAULT_CAPABILITIES',"chromedriverExecutable": "/usr/bin/chromedriver"'
 fi
 
-/opt/node_modules/.bin/appium -a 0.0.0.0 -p "$PORT" -bp "$BOOTSTRAP_PORT" -U "$EMULATOR" --platform-name Android --device-name android --log-timestamp --log-no-colors --command-timeout 90 --no-reset ${APPIUM_ARGS} --default-capabilities '{"androidNaturalOrientation": true}' &
+/opt/node_modules/.bin/appium -a 0.0.0.0 -p "$PORT" -bp "$BOOTSTRAP_PORT" --log-timestamp --log-no-colors --command-timeout 90 --no-reset "${APPIUM_ARGS}" --default-capabilities "{$DEFAULT_CAPABILITIES}" &
 APPIUM_PID=$!
 
 wait
