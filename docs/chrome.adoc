@@ -1,0 +1,51 @@
+== Chrome
+
+.Chrome Images
+|===
+| Image | VNC Image | Chromedriver version | Chrome version
+
+| selenoid/chrome:48.0 | selenoid/vnc:chrome_48.0 | 2.21 | 48.0.2564.116
+| selenoid/chrome:49.0 | selenoid/vnc:chrome_49.0 | 2.22 | 49.0.2623.112
+| selenoid/chrome:50.0 | selenoid/vnc:chrome_50.0 | 2.22 | 50.0.2661.102
+| selenoid/chrome:51.0 | selenoid/vnc:chrome_51.0 | 2.23 | 51.0.2704.106
+| selenoid/chrome:52.0 | selenoid/vnc:chrome_52.0 | 2.24 | 52.0.2743.116
+| selenoid/chrome:53.0 | selenoid/vnc:chrome_53.0 | 2.26 | 53.0.2785.143
+| selenoid/chrome:54.0 | selenoid/vnc:chrome_54.0 | 2.27 | 54.0.2840.100
+| selenoid/chrome:55.0 | selenoid/vnc:chrome_55.0 | 2.28 | 55.0.2883.87
+| selenoid/chrome:56.0 | selenoid/vnc:chrome_56.0 | 2.29 | 56.0.2924.87
+| selenoid/chrome:57.0 | selenoid/vnc:chrome_57.0 | 2.29 | 57.0.2987.110
+| selenoid/chrome:58.0 | selenoid/vnc:chrome_58.0 | 2.29 | 58.0.3029.81
+| selenoid/chrome:59.0 | selenoid/vnc:chrome_59.0 | 2.30 | 59.0.3071.86
+| selenoid/chrome:60.0 | selenoid/vnc:chrome_60.0 | 2.31 | 60.0.3112.90
+| selenoid/chrome:61.0 | selenoid/vnc:chrome_61.0 | 2.32 | 61.0.3163.79
+| selenoid/chrome:62.0 | selenoid/vnc:chrome_62.0 | 2.33 | 62.0.3202.62
+| selenoid/chrome:63.0 | selenoid/vnc:chrome_63.0 | 2.33 | 63.0.3239.84
+| selenoid/chrome:64.0 | selenoid/vnc:chrome_64.0 | 2.35 | 64.0.3282.119
+| selenoid/chrome:65.0 | selenoid/vnc:chrome_65.0 | 2.38 | 65.0.3325.181
+| selenoid/chrome:66.0 | selenoid/vnc:chrome_66.0 | 2.38 | 66.0.3359.117
+| selenoid/chrome:67.0 | selenoid/vnc:chrome_67.0 | 2.39 | 67.0.3396.62
+| selenoid/chrome:68.0 | selenoid/vnc:chrome_68.0 | 2.41 | 68.0.3440.106
+| selenoid/chrome:69.0 | selenoid/vnc:chrome_69.0 | 2.42 | 69.0.3497.100
+| selenoid/chrome:70.0 | selenoid/vnc:chrome_70.0 | 2.44 | 70.0.3538.110
+| selenoid/chrome:71.0 | selenoid/vnc:chrome_71.0 | 2.44 | 71.0.3578.80
+| selenoid/chrome:72.0 | selenoid/vnc:chrome_72.0 | 2.46 | 72.0.3626.121
+| selenoid/chrome:73.0 | selenoid/vnc:chrome_73.0 | 73.0.3683.68 | 73.0.3683.75
+| selenoid/chrome:74.0 | selenoid/vnc:chrome_74.0 | 74.0.3729.6 | 74.0.3729.157
+| selenoid/chrome:75.0 | selenoid/vnc:chrome_75.0 | 75.0.3770.90 | 75.0.3770.90
+| selenoid/chrome:76.0 | selenoid/vnc:chrome_76.0 | 76.0.3809.87 | 76.0.3809.68
+| selenoid/chrome:77.0 | selenoid/vnc:chrome_77.0 | 77.0.3865.40 | 77.0.3865.75
+| selenoid/chrome:78.0 | selenoid/vnc:chrome_78.0 | 78.0.3904.87 | 78.0.3904.70
+| selenoid/chrome:79.0 | selenoid/vnc:chrome_79.0 | 79.0.3945.36 | 79.0.3945.79
+| selenoid/chrome:80.0 | selenoid/vnc:chrome_80.0 | 80.0.3987.106 | 80.0.3987.132
+| selenoid/chrome:81.0 | selenoid/vnc:chrome_81.0 | 81.0.4044.138 | 81.0.4044.138
+| - | - | - | 82.0.x.x (release skipped by development team)
+| selenoid/chrome:83.0 | selenoid/vnc:chrome_83.0 | 83.0.4103.39 | 83.0.4103.61
+| selenoid/chrome:84.0 | selenoid/vnc:chrome_84.0 | 84.0.4147.30 | 84.0.4147.89
+| selenoid/chrome:85.0 | selenoid/vnc:chrome_85.0 | 85.0.4183.87 | 85.0.4183.121
+|===
+
+[NOTE]
+====
+. These images work with any modern Selenium client version.
+. Images for older Chrome versions were not built because we have no Debian packages. If you have such packages - we could create more images.
+====
