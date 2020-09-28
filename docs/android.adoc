@@ -28,16 +28,16 @@ An example `browsers.json` for Android images looks like the following:
 [source,json]
 ----
 {
-"android": {
-"default": "6.0",
-"versions": {
-"6.0": {
-"image": "selenoid/android:6.0",
-"port": "4444",
-"path": "/wd/hub"
-}
-}
-}
+    "android": {
+        "default": "6.0",
+        "versions": {
+            "6.0": {
+                "image": "selenoid/android:6.0",
+                "port": "4444",
+                "path": "/wd/hub"
+            }
+        }
+    }
 }
 ----
 
