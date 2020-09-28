@@ -140,7 +140,7 @@ Apart from the default stable release channel, the following ones are also suppo
 | opera | dev | opera-developer |
 |===
 
-* To build an image for one of the channels above use the `--channel` flag as follows:
+To build an image for one of the channels above use the `--channel` flag as follows:
 +
 [source,bash]
 ----
