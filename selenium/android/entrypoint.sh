@@ -65,7 +65,7 @@ if [ "$ENABLE_VNC" == "true" ]; then
     X11VNC_PID=$!
 fi
 
-while [ "$(db shell getprop sys.boot_completed | tr -d '\r')" != "1" ] && [ -z "$STOP" ] ; do sleep 1; done
+while [ "$(adb shell getprop sys.boot_completed | tr -d '\r')" != "1" ] && [ -z "$STOP" ] ; do sleep 1; done
 if [ -n "$STOP" ]; then exit 0; fi
 
 DEFAULT_CAPABILITIES='"androidNaturalOrientation": true, "deviceName": "android", "platformName": "Android", "noReset": true, "udid":"'$EMULATOR'"'
