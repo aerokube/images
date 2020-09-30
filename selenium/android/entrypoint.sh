@@ -57,7 +57,7 @@ if [ -n "$STOP" ]; then exit 0; fi
 if [ "$ENABLE_VNC" != "true" ] && [ "$ENABLE_VIDEO" != "true" ]; then
     EMULATOR_ARGS="$EMULATOR_ARGS -no-window"
 fi
-ANDROID_AVD_HOME=/root/.android/avd DISPLAY="$DISPLAY" /opt/android-sdk-linux/emulator/emulator "${EMULATOR_ARGS}" -writable-system -no-boot-anim -no-audio -no-jni -avd @AVD_NAME@ -sdcard /sdcard.img -skin "$SKIN" -skindir /opt/android-sdk-linux/platforms/@PLATFORM@/skins/ -gpu swiftshader_indirect -ranchu -qemu -enable-kvm &
+ANDROID_AVD_HOME=/root/.android/avd DISPLAY="$DISPLAY" /opt/android-sdk-linux/emulator/emulator ${EMULATOR_ARGS} -writable-system -no-boot-anim -no-audio -no-jni -avd @AVD_NAME@ -sdcard /sdcard.img -skin "$SKIN" -skindir /opt/android-sdk-linux/platforms/@PLATFORM@/skins/ -gpu swiftshader_indirect -ranchu -qemu -enable-kvm &
 EMULATOR_PID=$!
 
 if [ "$ENABLE_VNC" == "true" ]; then
@@ -71,7 +71,7 @@ if [ -n "$STOP" ]; then exit 0; fi
 DEFAULT_CAPABILITIES='"androidNaturalOrientation": true, "deviceName": "android", "platformName": "Android", "noReset": true, "udid":"'$EMULATOR'"'
 if [ -n "@CHROME_MOBILE@" ]; then
     while ip addr | grep inet | grep -q tentative > /dev/null; do sleep 0.1; done
-    DEFAULT_CAPABILITIES=$DEFAULT_CAPABILITIES',"chromedriverPort": '$CHROMEDRIVER_PORT
+    DEFAULT_CAPABILITIES=$DEFAULT_CAPABILITIES', "chromedriverPort": '$CHROMEDRIVER_PORT
     /usr/bin/devtools --android &
     DEVTOOLS_PID=$!
 fi
@@ -80,7 +80,7 @@ if [ -x "/usr/bin/chromedriver" ]; then
     DEFAULT_CAPABILITIES=$DEFAULT_CAPABILITIES',"chromedriverExecutable": "/usr/bin/chromedriver"'
 fi
 
-/opt/node_modules/.bin/appium -a 0.0.0.0 -p "$PORT" -bp "$BOOTSTRAP_PORT" --log-timestamp --log-no-colors --command-timeout 90 --no-reset "${APPIUM_ARGS}" --default-capabilities "{$DEFAULT_CAPABILITIES}" &
+/opt/node_modules/.bin/appium -a 0.0.0.0 -p "$PORT" -bp "$BOOTSTRAP_PORT" --log-timestamp --log-no-colors --command-timeout 90 --no-reset ${APPIUM_ARGS} --default-capabilities "{$DEFAULT_CAPABILITIES}" &
 APPIUM_PID=$!
 
 wait
