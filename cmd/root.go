@@ -51,6 +51,7 @@ func initFlags() {
 func init() {
 	initFlags()
 	rootCmd.AddCommand(chromeCmd)
+	rootCmd.AddCommand(edgeCmd)
 	rootCmd.AddCommand(firefoxCmd)
 	rootCmd.AddCommand(operaCmd)
 	rootCmd.AddCommand(yandexCmd)

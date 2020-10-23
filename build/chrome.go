@@ -1,6 +1,7 @@
 package build
 
 import (
+	"errors"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -8,8 +9,7 @@ import (
 )
 
 const (
-	chromeDriverBinary                 = "chromedriver"
-	noCompatibleChromeDriverFoundError = "could not find compatible chromedriver"
+	chromeDriverBinary = "chromedriver"
 )
 
 type Chrome struct {
@@ -27,13 +27,7 @@ func (c *Chrome) Build() error {
 
 	driverVersion, err := c.parseChromeDriverVersion(pkgTagVersion)
 	if err != nil {
-		switch err.Error() {
-		case noCompatibleChromeDriverFoundError:
-			fmt.Println(err)
-			os.Exit(3)
-		default:
-			fmt.Errorf("parse chromedriver version: %v", err)
-		}
+		return fmt.Errorf("parse chromedriver version: %v", err)
 	}
 
 	// Build dev image
@@ -166,7 +160,7 @@ func (c *Chrome) getLatestChromeDriver(baseUrl string, pkgVersion string) (strin
 			if err == nil {
 				return v, nil
 			} else {
-				return "", fmt.Errorf(noCompatibleChromeDriverFoundError)
+				return "", errors.New("could not find compatible chromedriver")
 			}
 		}
 	default:

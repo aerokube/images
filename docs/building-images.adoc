@@ -95,7 +95,14 @@ If you wish to automatically use the latest https://chromedriver.chromium.org/do
 ----
 $ ./images chrome -b 78.0.3904.97-1 -d latest -t selenoid/chrome:78.0
 ----
+
+* To build a Microsoft Edge image use the following command:
 +
+[source,bash]
+----
+$ ./images edge -b 88.0.673.0-1 -d 88.0.673.0 -t selenoid/edge:88.0
+----
+
 * To build an Opera image use the following command:
 +
 [source,bash]
