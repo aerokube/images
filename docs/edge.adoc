@@ -1,0 +1,8 @@
+== Microsoft Edge
+
+.Microsoft Edge Images
+|===
+| Image | msedgedriver version | Edge version
+
+| browsers/edge:88.0 | 88.0.673.0 | 88.0.673.0 (dev)
+|===

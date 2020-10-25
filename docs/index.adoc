@@ -21,6 +21,7 @@ This section contains information about browser images available for using with 
 include::android.adoc[leveloffset=+1]
 include::chrome.adoc[leveloffset=+1]
 include::chrome-mobile.adoc[leveloffset=+1]
+include::edge.adoc[leveloffset=+1]
 include::firefox.adoc[leveloffset=+1]
 include::opera.adoc[leveloffset=+1]
 include::playwright.adoc[leveloffset=+1]
