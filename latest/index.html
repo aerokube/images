@@ -467,10 +467,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_android">1.1. Android</a></li>
 <li><a href="#_chrome">1.2. Chrome</a></li>
 <li><a href="#_chrome_mobile">1.3. Chrome Mobile</a></li>
-<li><a href="#_firefox">1.4. Firefox</a></li>
-<li><a href="#_opera">1.5. Opera</a></li>
-<li><a href="#_playwright">1.6. Playwright</a></li>
-<li><a href="#_internet_explorer_and_microsoft_edge">1.7. Internet Explorer and Microsoft Edge</a></li>
+<li><a href="#_microsoft_edge">1.4. Microsoft Edge</a></li>
+<li><a href="#_firefox">1.5. Firefox</a></li>
+<li><a href="#_opera">1.6. Opera</a></li>
+<li><a href="#_playwright">1.7. Playwright</a></li>
+<li><a href="#_internet_explorer_and_microsoft_edge">1.8. Internet Explorer and Microsoft Edge</a></li>
 </ul>
 </li>
 <li><a href="#_building_images">2. Building Images</a>
@@ -1046,9 +1047,34 @@ Hardware server or virtual machine with nested virtualization support is require
 </div>
 </div>
 <div class="sect2">
-<h3 id="_firefox"><a class="anchor" href="#_firefox"></a>1.4. Firefox</h3>
+<h3 id="_microsoft_edge"><a class="anchor" href="#_microsoft_edge"></a>1.4. Microsoft Edge</h3>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 4. Firefox Images with Selenium Server</caption>
+<caption class="title">Table 4. Microsoft Edge Images</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Image</th>
+<th class="tableblock halign-left valign-top">msedgedriver version</th>
+<th class="tableblock halign-left valign-top">Edge version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/edge:88.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">88.0.673.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">88.0.673.0 (dev)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_firefox"><a class="anchor" href="#_firefox"></a>1.5. Firefox</h3>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. Firefox Images with Selenium Server</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1358,7 +1384,7 @@ Firefox 53.0+ images require Selenium client 3.4.0 or newer.
 </table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. Firefox Images with Selenoid</caption>
+<caption class="title">Table 6. Firefox Images with Selenoid</caption>
 <colgroup>
 <col style="width: 16.6666%;">
 <col style="width: 16.6666%;">
@@ -1629,9 +1655,9 @@ Firefox 53.0+ images require Selenium client 3.4.0 or newer.
 </table>
 </div>
 <div class="sect2">
-<h3 id="_opera"><a class="anchor" href="#_opera"></a>1.5. Opera</h3>
+<h3 id="_opera"><a class="anchor" href="#_opera"></a>1.6. Opera</h3>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. Opera Presto Images</caption>
+<caption class="title">Table 7. Opera Presto Images</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1678,7 +1704,7 @@ Firefox 53.0+ images require Selenium client 3.4.0 or newer.
 </table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 7. Opera Blink Images</caption>
+<caption class="title">Table 8. Opera Blink Images</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1953,12 +1979,12 @@ Firefox 53.0+ images require Selenium client 3.4.0 or newer.
 </div>
 </div>
 <div class="sect2">
-<h3 id="_playwright"><a class="anchor" href="#_playwright"></a>1.6. Playwright</h3>
+<h3 id="_playwright"><a class="anchor" href="#_playwright"></a>1.7. Playwright</h3>
 <div class="paragraph">
 <p>These images are used to run <a href="https://github.com/microsoft/playwright">Playwright</a> tests in parallel.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 8. Chromium Images</caption>
+<caption class="title">Table 9. Chromium Images</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2007,7 +2033,7 @@ Firefox 53.0+ images require Selenium client 3.4.0 or newer.
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 9. Firefox Images</caption>
+<caption class="title">Table 10. Firefox Images</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2056,7 +2082,7 @@ Firefox 53.0+ images require Selenium client 3.4.0 or newer.
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 10. Webkit (Safari Desktop) Images</caption>
+<caption class="title">Table 11. Webkit (Safari Desktop) Images</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2106,7 +2132,7 @@ Firefox 53.0+ images require Selenium client 3.4.0 or newer.
 </table>
 </div>
 <div class="sect2">
-<h3 id="_internet_explorer_and_microsoft_edge"><a class="anchor" href="#_internet_explorer_and_microsoft_edge"></a>1.7. Internet Explorer and Microsoft Edge</h3>
+<h3 id="_internet_explorer_and_microsoft_edge"><a class="anchor" href="#_internet_explorer_and_microsoft_edge"></a>1.8. Internet Explorer and Microsoft Edge</h3>
 <div class="paragraph">
 <p>We don&#8217;t build ready to use images for these browsers because of Windows license limitations. However we provide detailed instructions on building such images <a href="https://github.com/aerokube/windows-images">here</a>. The same approach can be used for preparing images with Firefox, Chrome and Opera under Windows.</p>
 </div>
@@ -2291,7 +2317,7 @@ $ ./automate_android.sh</code></pre>
 <p>Apart from the default stable release channel, the following ones are also supported:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 11. Available Browser Channels</caption>
+<caption class="title">Table 12. Available Browser Channels</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2369,7 +2395,7 @@ $ ./automate_android.sh</code></pre>
 <div id="footer">
 <div id="footer-text">
 Version latest<br>
-Last updated 2020-10-25 10:09:02 UTC
+Last updated 2020-10-25 12:19:48 UTC
 </div>
 </div>
 <style>
