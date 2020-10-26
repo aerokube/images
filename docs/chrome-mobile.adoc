@@ -19,6 +19,7 @@ WARNING: Hardware server or virtual machine with nested virtualization support i
 | selenoid/chrome-mobile:83.0 | 9.0 | 1.18.1 | 83.0.4103.39 | 83.0.4103.106
 | selenoid/chrome-mobile:84.0 | 9.0 | 1.18.1 | 84.0.4147.30 | 84.0.4147.125
 | selenoid/chrome-mobile:85.0 | 9.0 | 1.18.1 | 85.0.4183.87 | 85.0.4183.127
+| selenoid/chrome-mobile:86.0 | 9.0 | 1.18.1 | 86.0.4240.22 | 86.0.4240.110
 |===
 
 An example `browsers.json` for Chrome Mobile images looks like the following:
