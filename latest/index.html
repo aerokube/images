@@ -457,7 +457,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Aerokube Software OÜ</span><br>
 <span id="revnumber">version latest,</span>
-<span id="revdate">2020-10-25</span>
+<span id="revdate">2020-10-26</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -465,13 +465,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_browser_image_information">1. Browser Image Information</a>
 <ul class="sectlevel2">
 <li><a href="#_android">1.1. Android</a></li>
-<li><a href="#_chrome">1.2. Chrome</a></li>
-<li><a href="#_chrome_mobile">1.3. Chrome Mobile</a></li>
-<li><a href="#_microsoft_edge">1.4. Microsoft Edge</a></li>
-<li><a href="#_firefox">1.5. Firefox</a></li>
-<li><a href="#_opera">1.6. Opera</a></li>
-<li><a href="#_playwright">1.7. Playwright</a></li>
-<li><a href="#_internet_explorer_and_microsoft_edge">1.8. Internet Explorer and Microsoft Edge</a></li>
+<li><a href="#_chrome_developer_tools_protocol">1.2. Chrome Developer Tools Protocol</a></li>
+<li><a href="#_chrome">1.3. Chrome</a></li>
+<li><a href="#_chrome_mobile">1.4. Chrome Mobile</a></li>
+<li><a href="#_microsoft_edge">1.5. Microsoft Edge</a></li>
+<li><a href="#_firefox">1.6. Firefox</a></li>
+<li><a href="#_opera">1.7. Opera</a></li>
+<li><a href="#_playwright">1.8. Playwright</a></li>
+<li><a href="#_windows_browsers">1.9. Windows Browsers</a></li>
 </ul>
 </li>
 <li><a href="#_building_images">2. Building Images</a>
@@ -624,9 +625,38 @@ Hardware server or virtual machine with nested virtualization support is require
 </div>
 </div>
 <div class="sect2">
-<h3 id="_chrome"><a class="anchor" href="#_chrome"></a>1.2. Chrome</h3>
+<h3 id="_chrome_developer_tools_protocol"><a class="anchor" href="#_chrome_developer_tools_protocol"></a>1.2. Chrome Developer Tools Protocol</h3>
+<div class="paragraph">
+<p>These images should be used with tools and frameworks relying on [Chrome Developer Tools Protocol](<a href="https://chromedevtools.github.io/devtools-protocol/" class="bare">https://chromedevtools.github.io/devtools-protocol/</a>) such as [Puppeteer](<a href="https://ppts.dev" class="bare">https://ppts.dev</a>).</p>
+</div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 2. Chrome Images</caption>
+<caption class="title">Table 2. Chrome Developer Tools Protocol Images</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Image</th>
+<th class="tableblock halign-left valign-top">Chrome version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cdtp/chrome:85.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">85.0.4183.121</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cdtp/chrome:86.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">86.0.4240.111</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_chrome"><a class="anchor" href="#_chrome"></a>1.3. Chrome</h3>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. Chrome Images</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -901,7 +931,7 @@ Hardware server or virtual machine with nested virtualization support is require
 </div>
 </div>
 <div class="sect2">
-<h3 id="_chrome_mobile"><a class="anchor" href="#_chrome_mobile"></a>1.3. Chrome Mobile</h3>
+<h3 id="_chrome_mobile"><a class="anchor" href="#_chrome_mobile"></a>1.4. Chrome Mobile</h3>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -915,7 +945,7 @@ Hardware server or virtual machine with nested virtualization support is require
 </table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. Chrome Mobile Images</caption>
+<caption class="title">Table 4. Chrome Mobile Images</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1024,6 +1054,13 @@ Hardware server or virtual machine with nested virtualization support is require
 <td class="tableblock halign-left valign-top"><p class="tableblock">85.0.4183.87</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">85.0.4183.127</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">selenoid/chrome-mobile:86.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.18.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">86.0.4240.22</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">86.0.4240.110</p></td>
+</tr>
 </tbody>
 </table>
 <div class="paragraph">
@@ -1047,9 +1084,9 @@ Hardware server or virtual machine with nested virtualization support is require
 </div>
 </div>
 <div class="sect2">
-<h3 id="_microsoft_edge"><a class="anchor" href="#_microsoft_edge"></a>1.4. Microsoft Edge</h3>
+<h3 id="_microsoft_edge"><a class="anchor" href="#_microsoft_edge"></a>1.5. Microsoft Edge</h3>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 4. Microsoft Edge Images</caption>
+<caption class="title">Table 5. Microsoft Edge Images</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -1072,9 +1109,9 @@ Hardware server or virtual machine with nested virtualization support is require
 </table>
 </div>
 <div class="sect2">
-<h3 id="_firefox"><a class="anchor" href="#_firefox"></a>1.5. Firefox</h3>
+<h3 id="_firefox"><a class="anchor" href="#_firefox"></a>1.6. Firefox</h3>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. Firefox Images with Selenium Server</caption>
+<caption class="title">Table 6. Firefox Images with Selenium Server</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1384,7 +1421,7 @@ Firefox 53.0+ images require Selenium client 3.4.0 or newer.
 </table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. Firefox Images with Selenoid</caption>
+<caption class="title">Table 7. Firefox Images with Selenoid</caption>
 <colgroup>
 <col style="width: 16.6666%;">
 <col style="width: 16.6666%;">
@@ -1655,9 +1692,9 @@ Firefox 53.0+ images require Selenium client 3.4.0 or newer.
 </table>
 </div>
 <div class="sect2">
-<h3 id="_opera"><a class="anchor" href="#_opera"></a>1.6. Opera</h3>
+<h3 id="_opera"><a class="anchor" href="#_opera"></a>1.7. Opera</h3>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 7. Opera Presto Images</caption>
+<caption class="title">Table 8. Opera Presto Images</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1704,7 +1741,7 @@ Firefox 53.0+ images require Selenium client 3.4.0 or newer.
 </table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 8. Opera Blink Images</caption>
+<caption class="title">Table 9. Opera Blink Images</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1979,12 +2016,12 @@ Firefox 53.0+ images require Selenium client 3.4.0 or newer.
 </div>
 </div>
 <div class="sect2">
-<h3 id="_playwright"><a class="anchor" href="#_playwright"></a>1.7. Playwright</h3>
+<h3 id="_playwright"><a class="anchor" href="#_playwright"></a>1.8. Playwright</h3>
 <div class="paragraph">
 <p>These images are used to run <a href="https://github.com/microsoft/playwright">Playwright</a> tests in parallel.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 9. Chromium Images</caption>
+<caption class="title">Table 10. Chromium Images</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2033,7 +2070,7 @@ Firefox 53.0+ images require Selenium client 3.4.0 or newer.
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 10. Firefox Images</caption>
+<caption class="title">Table 11. Firefox Images</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2082,7 +2119,7 @@ Firefox 53.0+ images require Selenium client 3.4.0 or newer.
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 11. Webkit (Safari Desktop) Images</caption>
+<caption class="title">Table 12. Webkit (Safari Desktop) Images</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2132,9 +2169,9 @@ Firefox 53.0+ images require Selenium client 3.4.0 or newer.
 </table>
 </div>
 <div class="sect2">
-<h3 id="_internet_explorer_and_microsoft_edge"><a class="anchor" href="#_internet_explorer_and_microsoft_edge"></a>1.8. Internet Explorer and Microsoft Edge</h3>
+<h3 id="_windows_browsers"><a class="anchor" href="#_windows_browsers"></a>1.9. Windows Browsers</h3>
 <div class="paragraph">
-<p>We don&#8217;t build ready to use images for these browsers because of Windows license limitations. However we provide detailed instructions on building such images <a href="https://github.com/aerokube/windows-images">here</a>. The same approach can be used for preparing images with Firefox, Chrome and Opera under Windows.</p>
+<p>We don&#8217;t build ready to use images for Internet Explorer and any other browser under Windows because of Windows license limitations. However we provide detailed instructions on building such images <a href="https://github.com/aerokube/windows-images">here</a>. The same approach can be used for preparing images with Microsoft Edge, Firefox, Chrome and Opera under Windows.</p>
 </div>
 </div>
 </div>
@@ -2317,7 +2354,7 @@ $ ./automate_android.sh</code></pre>
 <p>Apart from the default stable release channel, the following ones are also supported:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 12. Available Browser Channels</caption>
+<caption class="title">Table 13. Available Browser Channels</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2395,7 +2432,7 @@ $ ./automate_android.sh</code></pre>
 <div id="footer">
 <div id="footer-text">
 Version latest<br>
-Last updated 2020-10-25 12:19:48 UTC
+Last updated 2020-10-26 08:23:26 UTC
 </div>
 </div>
 <style>
