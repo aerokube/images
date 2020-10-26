@@ -19,6 +19,7 @@ This section contains information about browser images available for using with 
 
 == Browser Image Information
 include::android.adoc[leveloffset=+1]
+include::cdtp.adoc[leveloffset=+1]
 include::chrome.adoc[leveloffset=+1]
 include::chrome-mobile.adoc[leveloffset=+1]
 include::edge.adoc[leveloffset=+1]
