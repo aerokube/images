@@ -13,7 +13,24 @@ import (
 )
 
 func main() {
-	log.Fatal(http.ListenAndServe(":8080", mux("/home/selenium/Downloads")))
+	dir, err := downloadsDir()
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Fatal(http.ListenAndServe(":8080", mux(dir)))
+}
+
+func downloadsDir() (string, error) {
+	homeDir := os.Getenv("HOME")
+	if homeDir == "" {
+		homeDir = "/home/selenium"
+	}
+	dir := filepath.Join(homeDir, "Downloads")
+	err := os.MkdirAll(dir, 0755)
+	if err != nil {
+		return "", fmt.Errorf("failed to create downloads dir: %v", err)
+	}
+	return dir, nil
 }
 
 const jsonParam = "json"
