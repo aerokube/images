@@ -1,5 +1,7 @@
 == Microsoft Edge
 
+IMPORTANT: When adding Microsoft Edge to browsers.json - you have to use MicrosoftEdge as browser name.
+
 .Microsoft Edge Images
 |===
 | Image | msedgedriver version | Edge version
