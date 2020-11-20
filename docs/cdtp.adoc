@@ -8,4 +8,5 @@ These images should be used with tools and frameworks relying on [Chrome Develop
 
 | cdtp/chrome:85.0 | 85.0.4183.121
 | cdtp/chrome:86.0 | 86.0.4240.111
+| cdtp/chrome:87.0 | 87.0.4280.66
 |===
