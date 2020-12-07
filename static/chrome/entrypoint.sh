@@ -36,6 +36,17 @@ clean() {
 
 trap clean SIGINT SIGTERM
 
+if env | grep -q ROOT_CA_; then
+  mkdir -p $HOME/.pki/nssdb
+  certutil -N --empty-password -d sql:$HOME/.pki/nssdb
+  for e in $(env | grep ROOT_CA_ | sed -e 's/=.*$//'); do
+    certname=$(echo -n $e | sed -e 's/ROOT_CA_//')
+    echo ${!e} | base64 -d >/tmp/cert.pem
+    certutil -A -n ${certname} -t "TCu,Cu,Tu" -i /tmp/cert.pem -d sql:$HOME/.pki/nssdb
+    rm /tmp/cert.pem
+  done
+fi
+
 /usr/bin/fileserver &
 FILESERVER_PID=$!
 

@@ -67,4 +67,21 @@ fi
 DISPLAY="$DISPLAY" /usr/bin/selenoid -conf /home/selenium/browsers.json -disable-docker -timeout 1h -max-timeout 24h -enable-file-upload -capture-driver-logs &
 SELENOID_PID=$!
 
+if env | grep -q ROOT_CA_; then
+  while true; do
+    if certDB=$(ls -d /tmp/rust_mozprofile*/cert9.db 2>/dev/null); then
+      break
+    else
+      sleep 0.1
+    fi
+  done
+  certdir=$(dirname ${certDB})
+  for e in $(env | grep ROOT_CA_ | sed -e 's/=.*$//'); do
+    certname=$(echo -n $e | sed -e 's/ROOT_CA_//')
+    echo ${!e} | base64 -d >/tmp/cert.pem
+    certutil -A -n ${certname} -t "TCu,Cu,Tu" -i /tmp/cert.pem -d sql:${certdir}
+    rm /tmp/cert.pem
+  done
+fi
+
 wait
