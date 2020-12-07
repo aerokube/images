@@ -10,7 +10,7 @@ arch="all"
 license="LGPL-2.1-or-later GPL-2.0-or-later"
 makedepends="gnutls-dev lame-dev libvorbis-dev xvidcore-dev zlib-dev libvdpau-dev
 	imlib2-dev x264-dev libtheora-dev coreutils bzip2-dev perl-dev libvpx-dev
-	libvpx-dev sdl2-dev libxfixes-dev libva-dev v4l-utils-dev yasm opus-dev libass-dev"
+	libvpx-dev sdl2-dev libxfixes-dev libva-dev v4l-utils-dev yasm opus-dev libass-dev pulseaudio-dev"
 source="https://ffmpeg.org/releases/ffmpeg-$pkgver.tar.xz
 	0001-libavutil-clean-up-unused-FF_SYMVER-macro.patch
 	"
@@ -31,6 +31,7 @@ build() {
 		--enable-avfilter \
 		--enable-gpl \
 		--enable-libx264 \
+		--enable-libpulse \
 		--enable-static \
 		--enable-small \
 		--disable-ffplay \
@@ -54,6 +55,7 @@ build() {
 		--disable-librtmp \
 		--disable-devices \
 		--enable-indev=xcbgrab \
+		--enable-indev=pulse \
 		$_asm $_dbg
 	make
 }

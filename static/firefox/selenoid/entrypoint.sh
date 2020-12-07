@@ -27,6 +27,9 @@ clean() {
   if [ -n "$X11VNC_PID" ]; then
     kill -TERM "$X11VNC_PID"
   fi
+  if [ -n "$PULSE_PID" ]; then
+    kill -TERM "$PULSE_PID"
+  fi
 }
 
 trap clean SIGINT SIGTERM
@@ -36,6 +39,12 @@ FILESERVER_PID=$!
 
 DISPLAY="$DISPLAY" /usr/bin/xseld &
 XSELD_PID=$!
+
+mkdir -p ~/.config/pulse
+echo -n 'gIvST5iz2S0J1+JlXC1lD3HWvg61vDTV1xbmiGxZnjB6E3psXsjWUVQS4SRrch6rygQgtpw7qmghDFTaekt8qWiCjGvB0LNzQbvhfs1SFYDMakmIXuoqYoWFqTJ+GOXYByxpgCMylMKwpOoANEDePUCj36nwGaJNTNSjL8WBv+Bf3rJXqWnJ/43a0hUhmBBt28Dhiz6Yqowa83Y4iDRNJbxih6rB1vRNDKqRr/J9XJV+dOlM0dI+K6Vf5Ag+2LGZ3rc5sPVqgHgKK0mcNcsn+yCmO+XLQHD1K+QgL8RITs7nNeF1ikYPVgEYnc0CGzHTMvFR7JLgwL2gTXulCdwPbg=='| base64 -d>~/.config/pulse/cookie
+pulseaudio --start --exit-idle-time=-1
+pactl load-module module-native-protocol-tcp
+PULSE_PID=$(ps --no-headers -C pulseaudio -o pid)
 
 /usr/bin/xvfb-run -l -n "$DISPLAY_NUM" -s "-ac -screen 0 $SCREEN_RESOLUTION -noreset -listen tcp" /usr/bin/fluxbox -display "$DISPLAY" -log /dev/null 2>/dev/null &
 XVFB_PID=$!
