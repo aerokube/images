@@ -148,7 +148,7 @@ Apart from the default stable release channel, the following ones are also suppo
 |===
 
 To build an image for one of the channels above use the `--channel` flag as follows:
-+
+
 [source,bash]
 ----
 $ ./images firefox -b 72.0~a1~hg20191114r501767-0ubuntu0.18.04.1~umd1 --channel dev -t selenoid/firefox:72.0a1
