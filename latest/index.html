@@ -457,7 +457,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Aerokube Software OÜ</span><br>
 <span id="revnumber">version latest,</span>
-<span id="revdate">2020-12-07</span>
+<span id="revdate">2020-12-08</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -475,11 +475,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_windows_browsers">1.9. Windows Browsers</a></li>
 </ul>
 </li>
-<li><a href="#_building_images">2. Building Images</a>
+<li><a href="#_features">2. Features</a>
 <ul class="sectlevel2">
-<li><a href="#_whats_inside_images">2.1. What&#8217;s Inside Images</a></li>
-<li><a href="#_building_procedure">2.2. Building Procedure</a></li>
-<li><a href="#_selecting_browser_channel">2.3. Selecting Browser Channel</a></li>
+<li><a href="#_adding_custom_root_certification_authority">2.1. Adding Custom Root Certification Authority</a></li>
+</ul>
+</li>
+<li><a href="#_building_images">3. Building Images</a>
+<ul class="sectlevel2">
+<li><a href="#_whats_inside_images">3.1. What&#8217;s Inside Images</a></li>
+<li><a href="#_building_procedure">3.2. Building Procedure</a></li>
+<li><a href="#_selecting_browser_channel">3.3. Selecting Browser Channel</a></li>
 </ul>
 </li>
 </ul>
@@ -2230,10 +2235,60 @@ When adding Microsoft Edge to browsers.json - you have to use MicrosoftEdge as b
 </div>
 </div>
 <div class="sect1">
-<h2 id="_building_images"><a class="anchor" href="#_building_images"></a>2. Building Images</h2>
+<h2 id="_features"><a class="anchor" href="#_features"></a>2. Features</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_whats_inside_images"><a class="anchor" href="#_whats_inside_images"></a>2.1. What&#8217;s Inside Images</h3>
+<h3 id="_adding_custom_root_certification_authority"><a class="anchor" href="#_adding_custom_root_certification_authority"></a>2.1. Adding Custom Root Certification Authority</h3>
+<div class="paragraph">
+<p>In corporate networks tested environments are often using self-signed <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">TLS</a> certificates. Such certificates are issued by a <a href="https://en.wikipedia.org/wiki/Root_certificate">root certification authority</a> not known to browsers. When trying to open an HTTPS web-page using a self-signed certificate, your browser by default will refuse to do this saying that "Your connection is not private" or "This connection is untrusted". In Selenium tests you can use a standard capability (<code>acceptInsecureCerts = true</code>) to ignore such certificate errors but this will not work when your web-page is using <a href="https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security">HSTS</a>.</p>
+</div>
+<div class="paragraph">
+<p>In order to work properly with self-signed certificates, you have to add your root certification authority certificate to a list of trusted certificates. Our images allow to do this using environment variables. For every root certificate stored in <code>cert.pem</code> file:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Encode <code>cert.pem</code> file contents to <a href="https://en.wikipedia.org/wiki/Base64">Base64</a>:</p>
+<div class="literalblock">
+<div class="content">
+<pre>CERT_CONTENTS=$(cat cert.pem | base64 -w0)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In case of MacOS respective command would be:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>CERT_CONTENTS=$(cat cert.pem | base64)</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Set an environment variable to browser image:</p>
+<div class="literalblock">
+<div class="content">
+<pre>ROOT_CA_&lt;cert-name&gt;="$CERT_CONTENTS"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In that case <code>&lt;cert-name&gt;</code> will be used as certificate name in the browser certificates storage. For example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>ROOT_CA_MY_CERT="LS0tL....=="</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_building_images"><a class="anchor" href="#_building_images"></a>3. Building Images</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_whats_inside_images"><a class="anchor" href="#_whats_inside_images"></a>3.1. What&#8217;s Inside Images</h3>
 <div class="paragraph">
 <p>Each image consists of 3 layers:</p>
 </div>
@@ -2252,7 +2307,7 @@ When adding Microsoft Edge to browsers.json - you have to use MicrosoftEdge as b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_building_procedure"><a class="anchor" href="#_building_procedure"></a>2.2. Building Procedure</h3>
+<h3 id="_building_procedure"><a class="anchor" href="#_building_procedure"></a>3.2. Building Procedure</h3>
 <div class="paragraph">
 <p>Building procedure is automated with a Go binary. All Docker build files are embedded to this binary. To build the binary from source:</p>
 </div>
@@ -2402,7 +2457,7 @@ $ ./automate_android.sh</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_selecting_browser_channel"><a class="anchor" href="#_selecting_browser_channel"></a>2.3. Selecting Browser Channel</h3>
+<h3 id="_selecting_browser_channel"><a class="anchor" href="#_selecting_browser_channel"></a>3.3. Selecting Browser Channel</h3>
 <div class="paragraph">
 <p>Apart from the default stable release channel, the following ones are also supported:</p>
 </div>
@@ -2470,9 +2525,6 @@ $ ./automate_android.sh</code></pre>
 <div class="paragraph">
 <p>To build an image for one of the channels above use the <code>--channel</code> flag as follows:</p>
 </div>
-<div class="paragraph">
-<p>+</p>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="bash">$ ./images firefox -b 72.0~a1~hg20191114r501767-0ubuntu0.18.04.1~umd1 --channel dev -t selenoid/firefox:72.0a1</code></pre>
@@ -2485,7 +2537,7 @@ $ ./automate_android.sh</code></pre>
 <div id="footer">
 <div id="footer-text">
 Version latest<br>
-Last updated 2020-12-07 09:26:33 UTC
+Last updated 2020-12-08 09:36:28 UTC
 </div>
 </div>
 <style>
