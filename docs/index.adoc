@@ -28,4 +28,6 @@ include::opera.adoc[leveloffset=+1]
 include::playwright.adoc[leveloffset=+1]
 include::windows.adoc[leveloffset=+1]
 
+include::features.adoc[]
+
 include::building-images.adoc[]

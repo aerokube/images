@@ -1,0 +1,26 @@
+== Features
+
+=== Adding Custom Root Certification Authority
+
+In corporate networks tested environments are often using self-signed https://en.wikipedia.org/wiki/Transport_Layer_Security[TLS] certificates. Such certificates are issued by a https://en.wikipedia.org/wiki/Root_certificate[root certification authority] not known to browsers. When trying to open an HTTPS web-page using a self-signed certificate, your browser by default will refuse to do this saying that "Your connection is not private" or "This connection is untrusted". In Selenium tests you can use a standard capability (`acceptInsecureCerts = true`) to ignore such certificate errors but this will not work when your web-page is using https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security[HSTS].
+
+In order to work properly with self-signed certificates, you have to add your root certification authority certificate to a list of trusted certificates. Our images allow to do this using environment variables. For every root certificate stored in `cert.pem` file:
+
+. Encode `cert.pem` file contents to https://en.wikipedia.org/wiki/Base64[Base64]:
+
+    CERT_CONTENTS=$(cat cert.pem | base64 -w0)
+
++
+In case of MacOS respective command would be:
+
+    CERT_CONTENTS=$(cat cert.pem | base64)
+
+. Set an environment variable to browser image:
+
+    ROOT_CA_<cert-name>="$CERT_CONTENTS"
+
++
+In that case `<cert-name>` will be used as certificate name in the browser certificates storage. For example:
+
+    ROOT_CA_MY_CERT="LS0tL....=="
+
