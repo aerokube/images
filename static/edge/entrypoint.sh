@@ -10,20 +10,6 @@ if [ -n "$VERBOSE" ]; then
     DRIVER_ARGS="--verbose"
 fi
 
-ROOT_CA_PATH=${ROOT_CA_PATH:-""}
-if [ -r "$ROOT_CA_PATH" ]; then
-    ROOT_CA=$(<"$ROOT_CA_PATH")
-    ROOT_CA_NAME=$(basename "$ROOT_CA_PATH" | sed -e 's|.crt||g')
-fi
-
-ROOT_CA=${ROOT_CA:-""}
-if [ -n "$ROOT_CA" ]; then
-    ROOT_CA_NAME=${ROOT_CA_NAME:-"UserRootCA"}
-    mkdir -p ~/.pki/nssdb
-    certutil -d "sql:$HOME/.pki/nssdb" -N --empty-password
-    echo "$ROOT_CA" | certutil -d "sql:$HOME/.pki/nssdb" -A -t TC -n "$ROOT_CA_NAME"
-fi
-
 clean() {
   if [ -n "$FILESERVER_PID" ]; then
     kill -TERM "$FILESERVER_PID"
@@ -43,6 +29,17 @@ clean() {
 }
 
 trap clean SIGINT SIGTERM
+
+if env | grep -q ROOT_CA_; then
+  mkdir -p $HOME/.pki/nssdb
+  certutil -N --empty-password -d sql:$HOME/.pki/nssdb
+  for e in $(env | grep ROOT_CA_ | sed -e 's/=.*$//'); do
+    certname=$(echo -n $e | sed -e 's/ROOT_CA_//')
+    echo ${!e} | base64 -d >/tmp/cert.pem
+    certutil -A -n ${certname} -t "TCu,Cu,Tu" -i /tmp/cert.pem -d sql:$HOME/.pki/nssdb
+    rm /tmp/cert.pem
+  done
+fi
 
 /usr/bin/fileserver &
 FILESERVER_PID=$!
