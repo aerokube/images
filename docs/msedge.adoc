@@ -7,4 +7,5 @@ IMPORTANT: When adding Microsoft Edge to browsers.json - you have to use Microso
 | Image | msedgedriver version | Edge version
 
 | browsers/edge:88.0 | 88.0.673.0 | 88.0.673.0 (dev)
+| browsers/edge:89.0 | 89.0.731.0 | 89.0.731.0 (dev)
 |===
