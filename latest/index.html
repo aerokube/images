@@ -548,7 +548,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <div class="details">
 <span id="author" class="author">Aerokube Software OÜ</span><br>
 <span id="revnumber">version latest,</span>
-<span id="revdate">2021-01-21</span>
+<span id="revdate">2021-01-31</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -563,7 +563,8 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <li><a href="#_microsoft_edge">1.6. Microsoft Edge</a></li>
 <li><a href="#_opera">1.7. Opera</a></li>
 <li><a href="#_playwright">1.8. Playwright</a></li>
-<li><a href="#_windows_browsers">1.9. Windows Browsers</a></li>
+<li><a href="#_safari">1.9. Safari</a></li>
+<li><a href="#_windows_browsers">1.10. Windows Browsers</a></li>
 </ul>
 </li>
 <li><a href="#_features">2. Features</a>
@@ -2378,7 +2379,41 @@ When adding Microsoft Edge to browsers.json - you have to use MicrosoftEdge as b
 </table>
 </div>
 <div class="sect2">
-<h3 id="_windows_browsers"><a class="anchor" href="#_windows_browsers"></a>1.9. Windows Browsers</h3>
+<h3 id="_safari"><a class="anchor" href="#_safari"></a>1.9. Safari</h3>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Real Safari browser can only run under MacOS \ iOS. These Linux images are using WebKit engine used in Safari browser. From functional point of view real Safari and WebKit browser being used inside these images are equal. However fonts and pixel per pixel rendering could differ.
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 13. Safari Images</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Image</th>
+<th class="tableblock halign-left valign-top">WebkitGTK version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/safari:13.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.28.2</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_windows_browsers"><a class="anchor" href="#_windows_browsers"></a>1.10. Windows Browsers</h3>
 <div class="paragraph">
 <p>We don&#8217;t build ready to use images for Internet Explorer and any other browser under Windows because of Windows license limitations. However we provide detailed instructions on building such images <a href="https://github.com/aerokube/windows-images">here</a>. The same approach can be used for preparing images with Microsoft Edge, Firefox, Chrome and Opera under Windows.</p>
 </div>
@@ -2613,7 +2648,7 @@ $ ./automate_android.sh</code></pre>
 <p>Apart from the default stable release channel, the following ones are also supported:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 13. Available Browser Channels</caption>
+<caption class="title">Table 14. Available Browser Channels</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2688,7 +2723,7 @@ $ ./automate_android.sh</code></pre>
 <div id="footer">
 <div id="footer-text">
 Version latest<br>
-Last updated 2021-01-21 10:34:51 UTC
+Last updated 2021-01-31 08:29:54 UTC
 </div>
 </div>
 <!-- Global site tag (gtag.js) - Google Analytics -->
