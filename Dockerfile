@@ -1,6 +1,6 @@
 FROM ubuntu:18.04 as build
 
-ARG WEBKITGTK_VERSION="2.28.2"
+ARG WEBKITGTK_VERSION="2.30.5"
 
 RUN \
     apt-get update && \
@@ -25,7 +25,7 @@ RUN \
     GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" && \
     upx /prism/prism
 
-FROM selenoid/base:6.0
+FROM selenoid/base:7.0
 
 COPY --from=build /opt/webkit /opt/webkit
 COPY --from=go /prism/prism /usr/bin/
