@@ -14,7 +14,7 @@ RUN  \
             add-apt-repository -y $PPA \
         ) || true && \
         apt-get update && \
-        apt-get -y --no-install-recommends install iproute2 libavcodec57 $PACKAGE=$VERSION && \
+        apt-get -y --no-install-recommends install iproute2 libavcodec58 $PACKAGE=$VERSION && \
         ( [ "$PACKAGE" != "firefox" ] && ln /usr/bin/$PACKAGE /usr/bin/firefox ) || true && \
         firefox --version && \
         rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/*
