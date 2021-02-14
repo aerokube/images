@@ -74,6 +74,5 @@ COPY fluxbox /usr/share/fluxbox/styles/
 COPY --chown=selenium:root fluxbox /home/selenium/.fluxbox/
 COPY aerokube.png /usr/share/images/fluxbox/
 
-COPY permissions.sh /usr/bin/
 COPY --from=go /fileserver/fileserver /usr/bin/
 COPY --from=go /xseld/xseld /usr/bin/
