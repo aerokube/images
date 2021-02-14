@@ -1,10 +1,10 @@
-FROM ubuntu:18.04 as build
+FROM ubuntu:20.04 as build
 
 ARG WEBKITGTK_VERSION="2.30.5"
 
 RUN \
     apt-get update && \
-    apt-get -y install --no-install-recommends xz-utils wget && \
+    apt-get -y install --no-install-recommends ca-certificates xz-utils wget && \
     wget https://webkitgtk.org/releases/webkitgtk-$WEBKITGTK_VERSION.tar.xz && \
     tar xf webkitgtk-$WEBKITGTK_VERSION.tar.xz && \
     mkdir -p /opt/webkit && \
