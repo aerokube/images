@@ -7,7 +7,7 @@ ARG INSTALL_DIR=msedge-beta
 LABEL browser=$PACKAGE:$VERSION
 
 RUN \
-        wget -q -O - https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
+        curl -s https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
         echo 'deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main' > /etc/apt/sources.list.d/microsoft-edge.list && \
         apt-get update && \
         apt-get -y --no-install-recommends install $PACKAGE=$VERSION && \
