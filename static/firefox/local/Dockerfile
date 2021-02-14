@@ -9,20 +9,20 @@ LABEL browser=$PACKAGE:$VERSION
 RUN \
         ( \
             ( \
-                wget -O firefox.deb http://host.docker.internal:8080/firefox_amd64.deb && \
+                curl -o firefox.deb http://host.docker.internal:8080/firefox_amd64.deb && \
                 apt-get update && \
                 apt-get -y --no-install-recommends install iproute2 libavcodec57 && \
                 apt-get -y install libgtk-3-0 libstartup-notification0 libdbus-glib-1-2 \
             ) || \
             ( \
-                wget -O firefox.deb http://host.docker.internal:8080/firefox_i386.deb && \
+                curl -0 firefox.deb http://host.docker.internal:8080/firefox_i386.deb && \
                 dpkg --add-architecture i386 && \
                 apt-get update && \
                 apt-get -y --no-install-recommends install iproute2 libavcodec57 && \
                 apt-get -y install libc6:i386 libncurses5:i386 libstdc++6:i386 libgtk-3-0:i386 libasound2:i386 libdbus-glib-1-2:i386 libxt6:i386 libatomic1:i386 libcairo-gobject2:i386 libstartup-notification0:i386 libx11-xcb1:i386 && \
                 mkdir flashplayer && \
                 cd flashplayer && \
-                wget -O flashplayer.tar.gz https://fpdownload.adobe.com/pub/flashplayer/pdc/32.0.0.387/flash_player_ppapi_linux.i386.tar.gz && \
+                curl -o flashplayer.tar.gz https://fpdownload.adobe.com/pub/flashplayer/pdc/32.0.0.387/flash_player_ppapi_linux.i386.tar.gz && \
                 tar xvzf flashplayer.tar.gz && \
                 cp libpepflashplayer.so /usr/lib/flashplugin-installer/libflashplayer.so && \
                 cd .. && \

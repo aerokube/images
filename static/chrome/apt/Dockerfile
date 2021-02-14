@@ -7,7 +7,7 @@ ARG INSTALL_DIR=chrome
 LABEL browser=$PACKAGE:$VERSION
 
 RUN \
-        wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
+        curl -s https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
         echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' > /etc/apt/sources.list.d/google.list && \
         apt-get update && \
         apt-get -y --no-install-recommends install iproute2 $PACKAGE=$VERSION && \
