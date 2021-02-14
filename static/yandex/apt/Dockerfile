@@ -1,4 +1,4 @@
-FROM selenoid/base:7.0
+FROM browsers/base:7.2
 
 ARG VERSION=19.4.2.698-1
 

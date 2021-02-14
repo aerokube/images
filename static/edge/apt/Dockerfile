@@ -1,4 +1,4 @@
-FROM selenoid/base:7.0
+FROM browsers/base:7.2
 
 ARG VERSION
 ARG PACKAGE=microsoft-edge-beta
