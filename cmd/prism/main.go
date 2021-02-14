@@ -19,12 +19,12 @@ import (
 )
 
 var (
-	listen         string        = ":4444"
-	target         string        = "http://localhost:5555"
-	waitTimeout    time.Duration = 30 * time.Second
-	gracePeriod    time.Duration = 30 * time.Second
-	browserName    string        = "safari"
-	browserVersion string        = "13.0"
+	listen         = ":4444"
+	target         = "http://localhost:5555"
+	waitTimeout    = 30 * time.Second
+	gracePeriod    = 30 * time.Second
+	browserName    = "safari"
+	browserVersion = "14.0"
 )
 
 func wait(ctx context.Context, target string) (*url.URL, error) {

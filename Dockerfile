@@ -4,7 +4,7 @@ ARG WEBKITGTK_VERSION="2.30.5"
 
 RUN \
     apt-get update && \
-    apt-get -y install xz-utils wget && \
+    apt-get -y install --no-install-recommends xz-utils wget && \
     wget https://webkitgtk.org/releases/webkitgtk-$WEBKITGTK_VERSION.tar.xz && \
     tar xf webkitgtk-$WEBKITGTK_VERSION.tar.xz && \
     mkdir -p /opt/webkit && \
@@ -12,7 +12,8 @@ RUN \
     yes | DEBIAN_FRONTEND=noninteractive Tools/gtk/install-dependencies && \
     cmake -DPORT=GTK -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/webkit -DUSE_WPE_RENDERER=OFF -DENABLE_MINIBROWSER=ON -DENABLE_BUBBLEWRAP_SANDBOX=OFF -DENABLE_SPELLCHECK=OFF -DENABLE_WAYLAND_TARGET=OFF -GNinja && \
     ninja && \
-    ninja install
+    ninja install && \
+    rm -Rf /var/lib/apt/lists/*
 
 FROM golang:1.15 as go
 
@@ -20,10 +21,11 @@ COPY cmd/prism /prism
 
 RUN \
     apt-get update && \
-    apt-get install -y upx-ucl libx11-dev && \
+    apt-get install --no-install-recommends -y upx-ucl libx11-dev && \
     cd /prism && \
     GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" && \
-    upx /prism/prism
+    upx /prism/prism && \
+    rm -Rf /var/lib/apt/lists/*
 
 FROM selenoid/base:7.0
 
@@ -34,7 +36,7 @@ ENV LD_LIBRARY_PATH /opt/webkit/lib/:${LD_LIBRARY_PATH}
 
 RUN \
     apt-get update && \
-    apt-get -y install \
+    apt-get -y install --no-install-recommends \
         libsoup2.4-1 \
         libgtk-3-0 \
         libwebp6 \
