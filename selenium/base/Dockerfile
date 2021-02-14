@@ -61,7 +61,7 @@ RUN \
     mkdir -p /var/lib/locales/supported.d/ && grep UTF-8 /usr/share/i18n/SUPPORTED > /var/lib/locales/supported.d/all && \
     locale-gen && update-locale && \
     fc-cache -f -v && \
-    adduser --system --home /home/selenium --uid 106 \
+    adduser --system --home /home/selenium --uid 4096 \
     --ingroup root --disabled-password --shell /bin/bash selenium && \
     mkdir -p /home/selenium/Downloads && \
     mkdir -p /home/selenium/.fluxbox && \
