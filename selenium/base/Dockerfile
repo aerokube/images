@@ -15,7 +15,7 @@ RUN \
     GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" && \
     upx /fileserver/fileserver
 
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 RUN \
     apt update && \
