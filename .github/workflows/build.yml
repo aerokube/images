@@ -23,5 +23,5 @@ jobs:
         with:
           push: true
           tags: registry.aerokube.com/browsers/safari:14.0
-          args: |
+          build-args: |
             WEBKITGTK_VERSION=2.30.5
