@@ -15,7 +15,8 @@ These images are used to run https://github.com/microsoft/playwright[Playwright]
 | playwright/chromium:playwright-1.7.0 | playwright/chromium:89.0 | 1.7.0 | 89.0.4344.0
 | playwright/chromium:playwright-1.8.0 | - | 1.8.0 | 90.0.4392.0
 | playwright/chromium:playwright-1.8.1 | - | 1.8.1 | 90.0.4392.0
-| playwright/chromium:playwright-1.9.0 | playwright/chromium:90.0 | 1.9.0 | 90.0.4421.0
+| playwright/chromium:playwright-1.9.0 | - | 1.9.0 | 90.0.4421.0
+| playwright/chromium:playwright-1.9.1 | playwright/chromium:90.0 | 1.9.1 | 90.0.4421.0
 |===
 
 .Chrome Images
@@ -23,7 +24,8 @@ These images are used to run https://github.com/microsoft/playwright[Playwright]
 | Image | Aliases | Playwright version | Chrome version
 | playwright/chrome:playwright-1.7.1 | playwright/chrome:89.0 | 1.7.1 | 89.0.4389.58
 | playwright/chrome:playwright-1.8.1 | - | 1.8.1 | 90.0.4421.5
-| playwright/chrome:playwright-1.9.0 | playwright/chrome:90.0 | 1.9.0 | 90.0.4421.5
+| playwright/chrome:playwright-1.9.0 | - | 1.9.0 | 90.0.4421.5
+| playwright/chrome:playwright-1.9.1 | playwright/chrome:90.0 | 1.9.1 | 90.0.4427.5
 |===
 
 .Firefox Images
@@ -39,7 +41,8 @@ These images are used to run https://github.com/microsoft/playwright[Playwright]
 | playwright/firefox:playwright-1.7.0 | playwright/firefox:84.0 | 1.7.0 | 84.0b9
 | playwright/firefox:playwright-1.8.0 | - | 1.8.0 | 85.0b5
 | playwright/firefox:playwright-1.8.1 | playwright/firefox:85.0 | 1.8.1 | 85.0b5
-| playwright/firefox:playwright-1.9.0 | playwright/firefox:86.0 | 1.9.0 | 86.0b10
+| playwright/firefox:playwright-1.9.0 | - | 1.9.0 | 86.0b10
+| playwright/firefox:playwright-1.9.1 | playwright/firefox:86.0 | 1.9.1 | 86.0b10
 |===
 
 .Webkit (Safari Desktop) Images
@@ -55,5 +58,6 @@ These images are used to run https://github.com/microsoft/playwright[Playwright]
 | playwright/webkit:playwright-1.7.0 | - | 1.7.0 | 14.1
 | playwright/webkit:playwright-1.8.0 | - | 1.8.0 | 14.1
 | playwright/webkit:playwright-1.8.1 | - | 1.8.1 | 14.1
-| playwright/webkit:playwright-1.9.0 | playwright/webkit:14.1 | 1.9.0 | 14.1
+| playwright/webkit:playwright-1.9.0 | - | 1.9.0 | 14.1
+| playwright/webkit:playwright-1.9.1 | playwright/webkit:14.1 | 1.9.1 | 14.1
 |===
