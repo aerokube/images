@@ -1,6 +1,6 @@
 == Chrome Developer Tools Protocol
 
-These images should be used with tools and frameworks relying on [Chrome Developer Tools Protocol](https://chromedevtools.github.io/devtools-protocol/) such as [Puppeteer](https://ppts.dev).
+These images should be used with tools and frameworks relying on https://chromedevtools.github.io/devtools-protocol/[Chrome Developer Tools Protocol] such as https://ppts.dev[Puppeteer].
 
 .Chrome Developer Tools Protocol Images
 |===
