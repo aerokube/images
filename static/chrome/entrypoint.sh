@@ -4,9 +4,9 @@ DISPLAY_NUM=99
 export DISPLAY=":$DISPLAY_NUM"
 
 VERBOSE=${VERBOSE:-""}
-DRIVER_ARGS=""
+DRIVER_ARGS=${DRIVER_ARGS:-""}
 if [ -n "$VERBOSE" ]; then
-    DRIVER_ARGS="--verbose"
+    DRIVER_ARGS="$DRIVER_ARGS --verbose"
 fi
 
 clean() {

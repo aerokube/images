@@ -6,11 +6,11 @@ export DISPLAY=":$DISPLAY_NUM"
 cp /home/selenium/browsers.json /tmp
 
 VERBOSE=${VERBOSE:-""}
+DRIVER_ARGS=${DRIVER_ARGS:-""}
 if [ -n "$VERBOSE" ]; then
-    sed -i 's|@@DRIVER_ARGS@@|, "--log", "debug"|g' /tmp/browsers.json
-else
-    sed -i 's|@@DRIVER_ARGS@@||g' /tmp/browsers.json
+    DRIVER_ARGS="$DRIVER_ARGS, \"--log\", \"debug\""
 fi
+sed -i "s|@@DRIVER_ARGS@@|$DRIVER_ARGS|g" /tmp/browsers.json
 
 clean() {
   if [ -n "$FILESERVER_PID" ]; then
