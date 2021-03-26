@@ -102,4 +102,5 @@ WARNING: Firefox 53.0+ images require Selenium client 3.4.0 or newer for Java an
 | selenoid/firefox:84.0 | selenoid/vnc:firefox_84.0 | 1.10.0 | 0.28.0 | 84.0
 | selenoid/firefox:85.0 | selenoid/vnc:firefox_85.0 | 1.10.1 | 0.29.0 | 85.0.1
 | selenoid/firefox:86.0 | selenoid/vnc:firefox_86.0 | 1.10.1 | 0.29.0 | 86.0
+| selenoid/firefox:87.0 | selenoid/vnc:firefox_87.0 | 1.10.1 | 0.29.0 | 87.0
 |===
