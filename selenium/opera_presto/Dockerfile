@@ -1,8 +1,8 @@
 FROM browsers/base:7.2
 
 RUN  \
-        curl -s http://deb.opera.com/archive.key | apt-key add - && \
-        echo 'deb http://deb.opera.com/opera/ stable non-free' >> /etc/apt/sources.list.d/opera.list && \
+        curl -s https://deb.opera.com/archive.key | apt-key add - && \
+        echo 'deb https://deb.opera.com/opera/ stable non-free' >> /etc/apt/sources.list.d/opera.list && \
         apt-get update && \
         apt-get -y install opera=12.16.1860 openjdk-8-jre-headless && \
         rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/*

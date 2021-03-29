@@ -6,8 +6,8 @@ ARG PACKAGE=opera-stable
 LABEL browser=$PACKAGE:$VERSION
 
 RUN  \
-        curl -s http://deb.opera.com/archive.key | apt-key add - && \
-        echo 'deb http://deb.opera.com/opera-stable/ stable non-free' > /etc/apt/sources.list.d/opera-blink.list && \
+        curl -s https://deb.opera.com/archive.key | apt-key add - && \
+        echo 'deb https://deb.opera.com/opera-stable/ stable non-free' > /etc/apt/sources.list.d/opera-blink.list && \
         apt-get update && \
         apt-get -y --no-install-recommends install $PACKAGE=$VERSION && \
         ( [ "$PACKAGE" != "opera-stable" ] && ln /usr/bin/$PACKAGE /usr/bin/opera ) || true && \

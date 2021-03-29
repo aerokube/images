@@ -6,7 +6,7 @@ LABEL browser=yandex-browser-beta:$VERSION
 
 RUN  \
         curl -s https://repo.yandex.ru/yandex-browser/YANDEX-BROWSER-KEY.GPG | apt-key add - && \
-        echo 'deb [arch=amd64] http://repo.yandex.ru/yandex-browser/deb beta main' > /etc/apt/sources.list.d/yandex-browser.list && \
+        echo 'deb [arch=amd64] https://repo.yandex.ru/yandex-browser/deb beta main' > /etc/apt/sources.list.d/yandex-browser.list && \
         apt-get update && \
         apt-get -y --no-install-recommends install yandex-browser-beta=$VERSION && \
         yandex-browser-beta --version && \
