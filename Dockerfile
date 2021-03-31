@@ -1,6 +1,6 @@
 FROM ubuntu:20.04 as build
 
-ARG WEBKITGTK_VERSION="2.30.5"
+ARG WEBKITGTK_VERSION="2.32.0"
 
 RUN \
     apt-get update && \
@@ -15,7 +15,7 @@ RUN \
     ninja install && \
     rm -Rf /var/lib/apt/lists/*
 
-FROM golang:1.15 as go
+FROM golang:1.16 as go
 
 COPY cmd/prism /prism
 
