@@ -1,16 +1,15 @@
 FROM ubuntu:20.04 as build
 
-ARG WEBKITGTK_VERSION="2.32.0"
+ARG WEBKIT_VERSION="610.4.3.1.7"
 
 RUN \
     apt-get update && \
-    apt-get -y install --no-install-recommends ca-certificates xz-utils wget && \
-    wget https://webkitgtk.org/releases/webkitgtk-$WEBKITGTK_VERSION.tar.xz && \
-    tar xf webkitgtk-$WEBKITGTK_VERSION.tar.xz && \
+    apt-get -y install --no-install-recommends ca-certificates subversion && \
+    svn checkout https://svn.webkit.org/repository/webkit/tags/Safari-$WEBKIT_VERSION webkit && \
     mkdir -p /opt/webkit && \
-    cd webkitgtk-$WEBKITGTK_VERSION && \
+    cd webkit && \
     yes | DEBIAN_FRONTEND=noninteractive Tools/gtk/install-dependencies && \
-    cmake -DPORT=GTK -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/webkit -DUSE_WPE_RENDERER=OFF -DENABLE_MINIBROWSER=ON -DENABLE_BUBBLEWRAP_SANDBOX=OFF -DENABLE_GAMEPAD=OFF -DENABLE_SPELLCHECK=OFF -DENABLE_WAYLAND_TARGET=OFF -GNinja && \
+    cmake -DPORT=GTK -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/webkit -DUSE_WPE_RENDERER=OFF -DENABLE_MINIBROWSER=ON -DENABLE_BUBBLEWRAP_SANDBOX=OFF -DENABLE_GAMEPAD=OFF -DENABLE_SPELLCHECK=OFF -DENABLE_WAYLAND_TARGET=OFF -DUSE_OPENJPEG=OFF -GNinja && \
     ninja && \
     ninja install && \
     rm -Rf /var/lib/apt/lists/*
