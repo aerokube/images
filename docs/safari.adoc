@@ -4,7 +4,8 @@ IMPORTANT: Real Safari browser can only run under MacOS \ iOS. These Linux image
 
 .Safari Images
 |===
-| Image | WebkitGTK version
+| Image | Webkit version
 
-| browsers/safari:13.0 | 2.28.2
+| browsers/safari:13.0 | 605.x
+| browsers/safari:14.0 | 610.4.3.1.7
 |===
