@@ -53,10 +53,7 @@ RUN \
     apt-get clean && \
     rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/* && \
     chmod 777 /etc/ssl/certs && \
-    rm -Rf /usr/local/share/ca-certificates && \
-    mkdir /tmp/ca-certificates && \
-    chmod 777 /tmp/ca-certificates && \
-    ln -s /tmp/ca-certificates /usr/local/share/ca-certificates
+    mkdir /tmp/ca-certificates
 
 COPY entrypoint.sh /
 
