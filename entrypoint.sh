@@ -38,6 +38,14 @@ FILESERVER_PID=$!
 DISPLAY="$DISPLAY" /usr/bin/xseld &
 XSELD_PID=$!
 
+if env | grep -q ROOT_CA_; then
+  for e in $(env | grep ROOT_CA_ | sed -e 's/=.*$//'); do
+    certname=$(echo -n $e | sed -e 's/ROOT_CA_//')
+    echo ${!e} | base64 -d >/usr/local/share/ca-certificates/$(certname).pem
+  done
+  update-ca-certificates
+fi
+
 /usr/bin/xvfb-run -l -n "$DISPLAY_NUM" -s "-ac -screen 0 $SCREEN_RESOLUTION -noreset -listen tcp" /usr/bin/fluxbox -display "$DISPLAY" >/dev/null 2>&1 &
 XVFB_PID=$!
 
