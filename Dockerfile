@@ -51,7 +51,7 @@ RUN \
         libegl1 && \
     ldconfig && \
     apt-get clean && \
-    rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/* &&
+    rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/* && \
     chmod 777 /etc/ssl/certs && \
     rm -Rf /usr/local/share/ca-certificates && \
     mkdir /tmp/ca-certificates && \
