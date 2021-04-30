@@ -80,8 +80,14 @@ if env | grep -q ROOT_CA_; then
   for e in $(env | grep ROOT_CA_ | sed -e 's/=.*$//'); do
     certname=$(echo -n $e | sed -e 's/ROOT_CA_//')
     echo ${!e} | base64 -d >/tmp/cert.pem
-    certutil -A -n ${certname} -t "TCu,Cu,Tu" -i /tmp/cert.pem -d sql:${certdir}
+    certutil -A -n ${certname} -t "TC,C,T" -i /tmp/cert.pem -d sql:${certdir}
+    if cat tmp/cert.pem | grep -q "PRIVATE KEY"; then
+      AUXILIARY_PASS=123456
+      openssl pkcs12 -export -in /tmp/cert.pem -clcerts -nodes -out /tmp/key.p12 -passout pass:${AUXILIARY_PASS}
+      pk12util -d sql:${certdir} -i /tmp/key.p12 -W ${AUXILIARY_PASS}
+    fi
     rm /tmp/cert.pem
+    rm /tmp/key.p12
   done
 fi
 
