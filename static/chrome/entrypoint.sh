@@ -46,9 +46,9 @@ if env | grep -q ROOT_CA_; then
       AUXILIARY_PASS=123456
       openssl pkcs12 -export -in /tmp/cert.pem -clcerts -nodes -out /tmp/key.p12 -passout pass:${AUXILIARY_PASS}
       pk12util -d sql:$HOME/.pki/nssdb -i /tmp/key.p12 -W ${AUXILIARY_PASS}
+      rm /tmp/key.p12
     fi
     rm /tmp/cert.pem
-    rm /tmp/key.p12
   done
 fi
 
