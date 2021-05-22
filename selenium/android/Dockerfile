@@ -85,6 +85,7 @@ RUN \
 	([ -z "$REPLACE_IMG" ] || mv /root/.android/avd/$AVD_NAME.avd/userdata.img /root/.android/avd/$AVD_NAME.avd/userdata-qemu.img ) && \
 	rm /opt/android-sdk-linux/system-images/$PLATFORM/$EMULATOR_IMAGE_TYPE/"$ANDROID_ABI"/userdata.img
 
+COPY Emulator.conf /root/.config/Android\ Open\ Source\ Project/Emulator.conf
 COPY emulator-snapshot.sh tmp/chromedriver* *.apk /usr/bin/
 
 # Entrypoint
