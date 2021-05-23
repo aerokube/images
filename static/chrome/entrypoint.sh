@@ -43,9 +43,10 @@ if env | grep -q ROOT_CA_; then
     echo ${!e} | base64 -d >/tmp/cert.pem
     certutil -A -n ${certname} -t "TC,C,T" -i /tmp/cert.pem -d sql:$HOME/.pki/nssdb
     if cat tmp/cert.pem | grep -q "PRIVATE KEY"; then
-      AUXILIARY_PASS=123456
-      openssl pkcs12 -export -in /tmp/cert.pem -clcerts -nodes -out /tmp/key.p12 -passout pass:${AUXILIARY_PASS}
-      pk12util -d sql:$HOME/.pki/nssdb -i /tmp/key.p12 -W ${AUXILIARY_PASS}
+      EMPTY_PASS=\'\'
+      openssl pkcs12 -export -in /tmp/cert.pem -clcerts -nodes -out /tmp/key.p12 -passout pass:${EMPTY_PASS}
+      pk12util -d sql:$HOME/.pki/nssdb -i /tmp/key.p12 -W ${EMPTY_PASS}
+      echo ${EMPTY_PASS} > /tmp/empty.file
       rm /tmp/key.p12
     fi
     rm /tmp/cert.pem
