@@ -82,9 +82,9 @@ if env | grep -q ROOT_CA_; then
     echo ${!e} | base64 -d >/tmp/cert.pem
     certutil -A -n ${certname} -t "TC,C,T" -i /tmp/cert.pem -d sql:${certdir}
     if cat tmp/cert.pem | grep -q "PRIVATE KEY"; then
-      EMPTY_PASS=\'\'
-      openssl pkcs12 -export -in /tmp/cert.pem -clcerts -nodes -out /tmp/key.p12 -passout pass:${EMPTY_PASS}
-      pk12util -d sql:${certdir} -i /tmp/key.p12 -W ${EMPTY_PASS}
+      PRIVATE_KEY_PASS=${PRIVATE_KEY_PASS:-\'\'}
+      openssl pkcs12 -export -in /tmp/cert.pem -clcerts -nodes -out /tmp/key.p12 -passout pass:${PRIVATE_KEY_PASS}  -passin pass:${PRIVATE_KEY_PASS}
+      pk12util -d sql:${certdir} -i /tmp/key.p12 -W ${PRIVATE_KEY_PASS}
       rm /tmp/key.p12
     fi
     rm /tmp/cert.pem
