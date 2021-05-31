@@ -12,4 +12,5 @@ These images should be used with tools and frameworks relying on https://chromed
 | cdtp/chrome:88.0 | 88.0.4324.182
 | cdtp/chrome:89.0 | 89.0.4389.72
 | cdtp/chrome:90.0 | 90.0.4430.85
+| cdtp/chrome:91.0 | 91.0.4472.77
 |===
