@@ -65,7 +65,7 @@ ARG USERDATA_SIZE="500"
 
 RUN \
 	curl -o sdk-tools.zip https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip && \
-	mkdir -p /opt/android-sdk-linux && \
+	mkdir -p /opt/android-sdk-linux /root/.config/Android\ Open\ Source\ Project/ && \
 	unzip -q sdk-tools.zip -d /opt/android-sdk-linux && \
 	rm sdk-tools.zip && \
 	yes | sdkmanager --licenses
