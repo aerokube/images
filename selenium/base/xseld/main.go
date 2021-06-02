@@ -12,6 +12,7 @@ func main() {
 		cmd := exec.Command("xsel", "-b")
 		switch r.Method {
 		case http.MethodGet:
+			cmd.Args = append(cmd.Args, "-o")
 			stdout, err := cmd.StdoutPipe()
 			if err != nil {
 				http.Error(w, err.Error(), http.StatusInternalServerError)
