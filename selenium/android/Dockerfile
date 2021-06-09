@@ -17,7 +17,7 @@ RUN \
     apt update && \
     apt remove -y libcurl4 && \
     apt install -y apt-transport-https ca-certificates tzdata locales libcurl4 curl gnupg && \
-	curl --silent --location https://deb.nodesource.com/setup_10.x | bash - && \
+	curl --silent --location https://deb.nodesource.com/setup_12.x | bash - && \
 	apt install -y --no-install-recommends \
 	    curl \
 	    iproute2 \
