@@ -34,7 +34,7 @@ These images are used to run https://github.com/microsoft/playwright[Playwright]
 | playwright/chrome:playwright-1.9.0 | - | 1.9.0 | 90.0.4421.5
 | playwright/chrome:playwright-1.9.1 | - | 1.9.1 | 90.0.4427.5
 | playwright/chrome:playwright-1.9.2 | playwright/chrome:90.0 | 1.9.2 | 90.0.4430.19
-| playwright/chrome:playwright-1.10.0 | playwright/chrome:91.0 | 1.10.0 | 91.0.4455.2
+| playwright/chrome:playwright-1.10.0 | - | 1.10.0 | 91.0.4455.2
 | playwright/chrome:playwright-1.11.0 | - | 1.11.0 | 92.0.4503.0
 | playwright/chrome:playwright-1.11.1 | playwright/chrome:92.0 | 1.11.0 | 92.0.4503.0
 | playwright/chrome:playwright-1.12.0 | - | 1.12.0 | 91.0.4472.101
