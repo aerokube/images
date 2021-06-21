@@ -1,0 +1,79 @@
+== Cypress
+
+These images are used to run https://cypress.io/[Cypress] tests in parallel.
+
+.Chromium Images
+|===
+| Image | Aliases | Cypress version | Chromium version
+
+| browsers/cypress-chromium:cypress-6.8.0 | - | 6.8.0 | 91.0.4472.101
+| browsers/cypress-chromium:cypress-6.9.1 | - | 6.9.1 | 91.0.4472.101
+| browsers/cypress-chromium:cypress-7.0.0 | - | 7.0.0 | 91.0.4472.101
+| browsers/cypress-chromium:cypress-7.0.1 | - | 7.0.1 | 91.0.4472.101
+| browsers/cypress-chromium:cypress-7.1.0 | - | 7.1.0 | 91.0.4472.101
+| browsers/cypress-chromium:cypress-7.2.0 | - | 7.2.0 | 91.0.4472.101
+| browsers/cypress-chromium:cypress-7.3.0 | - | 7.3.0 | 91.0.4472.101
+| browsers/cypress-chromium:cypress-7.4.0 | - | 7.4.0 | 91.0.4472.101
+| browsers/cypress-chromium:cypress-7.5.0 | browsers/cypress-chromium:91.0 | 7.5.0 | 91.0.4472.101
+|===
+
+.Chrome Images
+|===
+| Image | Aliases | Cypress version | Chrome version
+
+| browsers/cypress-chrome:cypress-6.8.0 | - | 6.8.0 | 91.0.4472.114
+| browsers/cypress-chrome:cypress-6.9.1 | - | 6.9.1 | 91.0.4472.114
+| browsers/cypress-chrome:cypress-7.0.0 | - | 7.0.0 | 91.0.4472.114
+| browsers/cypress-chrome:cypress-7.0.1 | - | 7.0.1 | 91.0.4472.114
+| browsers/cypress-chrome:cypress-7.1.0 | - | 7.1.0 | 91.0.4472.114
+| browsers/cypress-chrome:cypress-7.2.0 | - | 7.2.0 | 91.0.4472.114
+| browsers/cypress-chrome:cypress-7.3.0 | - | 7.3.0 | 91.0.4472.114
+| browsers/cypress-chrome:cypress-7.4.0 | - | 7.4.0 | 91.0.4472.114
+| browsers/cypress-chrome:cypress-7.5.0 | browsers/cypress-chrome:91.0 | 7.5.0 | 91.0.4472.114
+|===
+
+.Electron Images
+|===
+| Image | Cypress version
+
+| browsers/cypress-electron:cypress-6.8.0 | 6.8.0
+| browsers/cypress-electron:cypress-6.9.1 | 6.9.1
+| browsers/cypress-electron:cypress-7.0.0 | 7.0.0
+| browsers/cypress-electron:cypress-7.0.1 | 7.0.1
+| browsers/cypress-electron:cypress-7.1.0 | 7.1.0
+| browsers/cypress-electron:cypress-7.2.0 | 7.2.0
+| browsers/cypress-electron:cypress-7.3.0 | 7.3.0
+| browsers/cypress-electron:cypress-7.4.0 | 7.4.0
+| browsers/cypress-electron:cypress-7.5.0 | 7.5.0
+|===
+
+.Microsoft Edge Images
+|===
+| Image | Aliases | Cypress version | Edge version
+
+| browsers/cypress-edge:cypress-6.8.0 | - | 6.8.0 | 92.0.902.15
+| browsers/cypress-edge:cypress-6.9.0 | - | 6.9.0 | 92.0.902.15
+| browsers/cypress-edge:cypress-6.9.1 | - | 6.9.1 | 92.0.902.15
+| browsers/cypress-edge:cypress-7.0.0 | - | 7.0.0 | 92.0.902.15
+| browsers/cypress-edge:cypress-7.0.1 | - | 7.0.1 | 92.0.902.15
+| browsers/cypress-edge:cypress-7.1.0 | - | 7.1.0 | 92.0.902.15
+| browsers/cypress-edge:cypress-7.2.0 | - | 7.2.0 | 92.0.902.15
+| browsers/cypress-edge:cypress-7.3.0 | - | 7.3.0 | 92.0.902.15
+| browsers/cypress-edge:cypress-7.4.0 | - | 7.4.0 | 92.0.902.15
+| browsers/cypress-edge:cypress-7.5.0 | browsers/cypress-edge:92.0 | 7.5.0 | 92.0.902.15
+|===
+
+.Firefox Images
+|===
+| Image | Aliases | Cypress version | Edge version
+
+| browsers/cypress-firefox:cypress-6.8.0 | - | 6.8.0 | 89.0.1
+| browsers/cypress-firefox:cypress-6.9.1 | - | 6.9.1 | 89.0.1
+| browsers/cypress-firefox:cypress-7.0.0 | - | 7.0.0 | 89.0.1
+| browsers/cypress-firefox:cypress-7.0.1 | - | 7.0.1 | 89.0.1
+| browsers/cypress-firefox:cypress-7.1.0 | - | 7.1.0 | 89.0.1
+| browsers/cypress-firefox:cypress-7.2.0 | - | 7.2.0 | 89.0.1
+| browsers/cypress-firefox:cypress-7.3.0 | - | 7.3.0 | 89.0.1
+| browsers/cypress-firefox:cypress-7.4.0 | - | 7.4.0 | 89.0.1
+| browsers/cypress-firefox:cypress-7.5.0 | browsers/cypress-firefox:89.1 | 7.5.0 | 89.0.1
+|===
