@@ -4,7 +4,7 @@ These images are used to run https://github.com/microsoft/playwright[Playwright]
 
 .Chromium Images
 |===
-| Image | Aliases | Playwright version | Chrome version
+| Image | Aliases | Playwright version | Chromium version
 
 | playwright/chromium:playwright-1.1.1 | - | 1.1.1 | 85.0.4165.0
 | playwright/chromium:playwright-1.2.0 | playwright/chromium:85.0 | 1.2.0 | 85.0.4182.0
