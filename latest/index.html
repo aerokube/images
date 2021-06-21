@@ -545,7 +545,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <div class="details">
 <span id="author" class="author">Aerokube Software OÜ</span><br>
 <span id="revnumber">version latest,</span>
-<span id="revdate">2021-06-16</span>
+<span id="revdate">2021-06-21</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -556,12 +556,13 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <li><a href="#_chrome_developer_tools_protocol">1.2. Chrome Developer Tools Protocol</a></li>
 <li><a href="#_chrome">1.3. Chrome</a></li>
 <li><a href="#_chrome_mobile">1.4. Chrome Mobile</a></li>
-<li><a href="#_firefox">1.5. Firefox</a></li>
-<li><a href="#_microsoft_edge">1.6. Microsoft Edge</a></li>
-<li><a href="#_opera">1.7. Opera</a></li>
-<li><a href="#_playwright">1.8. Playwright</a></li>
-<li><a href="#_safari">1.9. Safari</a></li>
-<li><a href="#_windows_browsers">1.10. Windows Browsers</a></li>
+<li><a href="#_cypress">1.5. Cypress</a></li>
+<li><a href="#_firefox">1.6. Firefox</a></li>
+<li><a href="#_microsoft_edge">1.7. Microsoft Edge</a></li>
+<li><a href="#_opera">1.8. Opera</a></li>
+<li><a href="#_playwright">1.9. Playwright</a></li>
+<li><a href="#_safari">1.10. Safari</a></li>
+<li><a href="#_windows_browsers">1.11. Windows Browsers</a></li>
 </ul>
 </li>
 <li><a href="#_features">2. Features</a>
@@ -1228,9 +1229,364 @@ Hardware server or virtual machine with nested virtualization support is require
 </div>
 </div>
 <div class="sect2">
-<h3 id="_firefox"><a class="anchor" href="#_firefox"></a>1.5. Firefox</h3>
+<h3 id="_cypress"><a class="anchor" href="#_cypress"></a>1.5. Cypress</h3>
+<div class="paragraph">
+<p>These images are used to run <a href="https://cypress.io/">Cypress</a> tests in parallel.</p>
+</div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. Firefox Images with Selenium Server</caption>
+<caption class="title">Table 5. Chromium Images</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Image</th>
+<th class="tableblock halign-left valign-top">Aliases</th>
+<th class="tableblock halign-left valign-top">Cypress version</th>
+<th class="tableblock halign-left valign-top">Chromium version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chromium:cypress-6.8.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.8.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.101</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chromium:cypress-6.9.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.9.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.101</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chromium:cypress-7.0.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.0.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.101</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chromium:cypress-7.0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.101</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chromium:cypress-7.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.101</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chromium:cypress-7.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.101</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chromium:cypress-7.3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.101</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chromium:cypress-7.4.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.4.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.101</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chromium:cypress-7.5.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chromium:91.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.5.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.101</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 6. Chrome Images</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Image</th>
+<th class="tableblock halign-left valign-top">Aliases</th>
+<th class="tableblock halign-left valign-top">Cypress version</th>
+<th class="tableblock halign-left valign-top">Chrome version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chrome:cypress-6.8.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.8.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.114</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chrome:cypress-6.9.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.9.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.114</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chrome:cypress-7.0.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.0.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.114</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chrome:cypress-7.0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.114</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chrome:cypress-7.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.114</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chrome:cypress-7.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.114</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chrome:cypress-7.3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.114</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chrome:cypress-7.4.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.4.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.114</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chrome:cypress-7.5.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chrome:91.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.5.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.114</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 7. Electron Images</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Image</th>
+<th class="tableblock halign-left valign-top">Cypress version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-electron:cypress-6.8.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.8.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-electron:cypress-6.9.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.9.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-electron:cypress-7.0.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.0.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-electron:cypress-7.0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.0.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-electron:cypress-7.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.1.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-electron:cypress-7.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.2.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-electron:cypress-7.3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.3.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-electron:cypress-7.4.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.4.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-electron:cypress-7.5.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.5.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 8. Microsoft Edge Images</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Image</th>
+<th class="tableblock halign-left valign-top">Aliases</th>
+<th class="tableblock halign-left valign-top">Cypress version</th>
+<th class="tableblock halign-left valign-top">Edge version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-edge:cypress-6.8.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.8.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.902.15</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-edge:cypress-6.9.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.9.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.902.15</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-edge:cypress-6.9.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.9.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.902.15</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-edge:cypress-7.0.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.0.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.902.15</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-edge:cypress-7.0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.902.15</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-edge:cypress-7.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.902.15</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-edge:cypress-7.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.902.15</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-edge:cypress-7.3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.902.15</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-edge:cypress-7.4.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.4.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.902.15</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-edge:cypress-7.5.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-edge:92.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.5.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.902.15</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 9. Firefox Images</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Image</th>
+<th class="tableblock halign-left valign-top">Aliases</th>
+<th class="tableblock halign-left valign-top">Cypress version</th>
+<th class="tableblock halign-left valign-top">Edge version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-firefox:cypress-6.8.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.8.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">89.0.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-firefox:cypress-6.9.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.9.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">89.0.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-firefox:cypress-7.0.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.0.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">89.0.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-firefox:cypress-7.0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">89.0.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-firefox:cypress-7.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">89.0.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-firefox:cypress-7.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">89.0.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-firefox:cypress-7.3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">89.0.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-firefox:cypress-7.4.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.4.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">89.0.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-firefox:cypress-7.5.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-firefox:89.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.5.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">89.0.1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_firefox"><a class="anchor" href="#_firefox"></a>1.6. Firefox</h3>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 10. Firefox Images with Selenium Server</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1540,7 +1896,7 @@ Firefox 53.0+ images require Selenium client 3.4.0 or newer for Java and Node.js
 </table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. Firefox Images with Selenoid</caption>
+<caption class="title">Table 11. Firefox Images with Selenoid</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1856,7 +2212,7 @@ Firefox 53.0+ images require Selenium client 3.4.0 or newer for Java and Node.js
 </table>
 </div>
 <div class="sect2">
-<h3 id="_microsoft_edge"><a class="anchor" href="#_microsoft_edge"></a>1.6. Microsoft Edge</h3>
+<h3 id="_microsoft_edge"><a class="anchor" href="#_microsoft_edge"></a>1.7. Microsoft Edge</h3>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -1870,7 +2226,7 @@ When adding Microsoft Edge to browsers.json - you have to use MicrosoftEdge as b
 </table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 7. Microsoft Edge Images</caption>
+<caption class="title">Table 12. Microsoft Edge Images</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -1918,9 +2274,9 @@ When adding Microsoft Edge to browsers.json - you have to use MicrosoftEdge as b
 </table>
 </div>
 <div class="sect2">
-<h3 id="_opera"><a class="anchor" href="#_opera"></a>1.7. Opera</h3>
+<h3 id="_opera"><a class="anchor" href="#_opera"></a>1.8. Opera</h3>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 8. Opera Presto Images</caption>
+<caption class="title">Table 13. Opera Presto Images</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1967,7 +2323,7 @@ When adding Microsoft Edge to browsers.json - you have to use MicrosoftEdge as b
 </table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 9. Opera Blink Images</caption>
+<caption class="title">Table 14. Opera Blink Images</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2272,12 +2628,12 @@ When adding Microsoft Edge to browsers.json - you have to use MicrosoftEdge as b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_playwright"><a class="anchor" href="#_playwright"></a>1.8. Playwright</h3>
+<h3 id="_playwright"><a class="anchor" href="#_playwright"></a>1.9. Playwright</h3>
 <div class="paragraph">
 <p>These images are used to run <a href="https://github.com/microsoft/playwright">Playwright</a> tests in parallel.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 10. Chromium Images</caption>
+<caption class="title">Table 15. Chromium Images</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2289,7 +2645,7 @@ When adding Microsoft Edge to browsers.json - you have to use MicrosoftEdge as b
 <th class="tableblock halign-left valign-top">Image</th>
 <th class="tableblock halign-left valign-top">Aliases</th>
 <th class="tableblock halign-left valign-top">Playwright version</th>
-<th class="tableblock halign-left valign-top">Chrome version</th>
+<th class="tableblock halign-left valign-top">Chromium version</th>
 </tr>
 </thead>
 <tbody>
@@ -2404,7 +2760,7 @@ When adding Microsoft Edge to browsers.json - you have to use MicrosoftEdge as b
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 11. Chrome Images</caption>
+<caption class="title">Table 16. Chrome Images</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2487,7 +2843,7 @@ When adding Microsoft Edge to browsers.json - you have to use MicrosoftEdge as b
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 12. Firefox Images</caption>
+<caption class="title">Table 17. Firefox Images</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2614,7 +2970,7 @@ When adding Microsoft Edge to browsers.json - you have to use MicrosoftEdge as b
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 13. Webkit (Safari Desktop) Images</caption>
+<caption class="title">Table 18. Webkit (Safari Desktop) Images</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2742,7 +3098,7 @@ When adding Microsoft Edge to browsers.json - you have to use MicrosoftEdge as b
 </table>
 </div>
 <div class="sect2">
-<h3 id="_safari"><a class="anchor" href="#_safari"></a>1.9. Safari</h3>
+<h3 id="_safari"><a class="anchor" href="#_safari"></a>1.10. Safari</h3>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -2756,7 +3112,7 @@ Real Safari browser can only run under MacOS \ iOS. These Linux images are using
 </table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 14. Safari Images</caption>
+<caption class="title">Table 19. Safari Images</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -2780,7 +3136,7 @@ Real Safari browser can only run under MacOS \ iOS. These Linux images are using
 </table>
 </div>
 <div class="sect2">
-<h3 id="_windows_browsers"><a class="anchor" href="#_windows_browsers"></a>1.10. Windows Browsers</h3>
+<h3 id="_windows_browsers"><a class="anchor" href="#_windows_browsers"></a>1.11. Windows Browsers</h3>
 <div class="paragraph">
 <p>We don&#8217;t build ready to use images for Internet Explorer and any other browser under Windows because of Windows license limitations. However we provide detailed instructions on building such images <a href="https://github.com/aerokube/windows-images">here</a>. The same approach can be used for preparing images with Microsoft Edge, Firefox, Chrome and Opera under Windows.</p>
 </div>
@@ -3015,7 +3371,7 @@ $ ./automate_android.sh</code></pre>
 <p>Apart from the default stable release channel, the following ones are also supported:</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 15. Available Browser Channels</caption>
+<caption class="title">Table 20. Available Browser Channels</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -3090,7 +3446,7 @@ $ ./automate_android.sh</code></pre>
 <div id="footer">
 <div id="footer-text">
 Version latest<br>
-Last updated 2021-06-16 11:19:18 UTC
+Last updated 2021-06-21 20:12:32 UTC
 </div>
 </div>
 <!-- Global site tag (gtag.js) - Google Analytics -->
