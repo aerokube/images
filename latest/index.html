@@ -545,24 +545,28 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <div class="details">
 <span id="author" class="author">Aerokube Software OÜ</span><br>
 <span id="revnumber">version latest,</span>
-<span id="revdate">2021-06-21</span>
+<span id="revdate">2021-06-22</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_browser_image_information">1. Browser Image Information</a>
 <ul class="sectlevel2">
-<li><a href="#_android">1.1. Android</a></li>
-<li><a href="#_chrome_developer_tools_protocol">1.2. Chrome Developer Tools Protocol</a></li>
-<li><a href="#_chrome">1.3. Chrome</a></li>
-<li><a href="#_chrome_mobile">1.4. Chrome Mobile</a></li>
-<li><a href="#_cypress">1.5. Cypress</a></li>
-<li><a href="#_firefox">1.6. Firefox</a></li>
-<li><a href="#_microsoft_edge">1.7. Microsoft Edge</a></li>
-<li><a href="#_opera">1.8. Opera</a></li>
-<li><a href="#_playwright">1.9. Playwright</a></li>
-<li><a href="#_safari">1.10. Safari</a></li>
-<li><a href="#_windows_browsers">1.11. Windows Browsers</a></li>
+<li><a href="#_chrome_developer_tools_protocol">1.1. Chrome Developer Tools Protocol</a></li>
+<li><a href="#_cypress">1.2. Cypress</a></li>
+<li><a href="#_playwright">1.3. Playwright</a></li>
+<li><a href="#_selenium">1.4. Selenium</a>
+<ul class="sectlevel3">
+<li><a href="#_android">1.4.1. Android</a></li>
+<li><a href="#_chrome">1.4.2. Chrome</a></li>
+<li><a href="#_chrome_mobile">1.4.3. Chrome Mobile</a></li>
+<li><a href="#_firefox">1.4.4. Firefox</a></li>
+<li><a href="#_microsoft_edge">1.4.5. Microsoft Edge</a></li>
+<li><a href="#_opera">1.4.6. Opera</a></li>
+<li><a href="#_safari">1.4.7. Safari</a></li>
+<li><a href="#_windows_browsers">1.4.8. Windows Browsers</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#_features">2. Features</a>
@@ -595,7 +599,883 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <h2 id="_browser_image_information"><a class="anchor" href="#_browser_image_information"></a>1. Browser Image Information</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_android"><a class="anchor" href="#_android"></a>1.1. Android</h3>
+<h3 id="_chrome_developer_tools_protocol"><a class="anchor" href="#_chrome_developer_tools_protocol"></a>1.1. Chrome Developer Tools Protocol</h3>
+<div class="paragraph">
+<p>These images should be used with tools and frameworks relying on <a href="https://chromedevtools.github.io/devtools-protocol/">Chrome Developer Tools Protocol</a> such as <a href="https://ppts.dev">Puppeteer</a>.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Chrome Developer Tools Protocol Images</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Image</th>
+<th class="tableblock halign-left valign-top">Chrome version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cdtp/chrome:85.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">85.0.4183.121</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cdtp/chrome:86.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">86.0.4240.111</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cdtp/chrome:87.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">87.0.4280.66</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cdtp/chrome:88.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">88.0.4324.182</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cdtp/chrome:89.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">89.0.4389.72</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cdtp/chrome:90.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">90.0.4430.85</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cdtp/chrome:91.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.77</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_cypress"><a class="anchor" href="#_cypress"></a>1.2. Cypress</h3>
+<div class="paragraph">
+<p>These images are used to run <a href="https://cypress.io/">Cypress</a> tests in parallel.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Chromium Images</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Image</th>
+<th class="tableblock halign-left valign-top">Aliases</th>
+<th class="tableblock halign-left valign-top">Cypress version</th>
+<th class="tableblock halign-left valign-top">Chromium version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chromium:cypress-6.8.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.8.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.101</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chromium:cypress-6.9.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.9.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.101</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chromium:cypress-7.0.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.0.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.101</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chromium:cypress-7.0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.101</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chromium:cypress-7.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.101</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chromium:cypress-7.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.101</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chromium:cypress-7.3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.101</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chromium:cypress-7.4.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.4.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.101</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chromium:cypress-7.5.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chromium:91.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.5.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.101</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 3. Chrome Images</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Image</th>
+<th class="tableblock halign-left valign-top">Aliases</th>
+<th class="tableblock halign-left valign-top">Cypress version</th>
+<th class="tableblock halign-left valign-top">Chrome version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chrome:cypress-6.8.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.8.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.114</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chrome:cypress-6.9.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.9.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.114</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chrome:cypress-7.0.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.0.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.114</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chrome:cypress-7.0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.114</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chrome:cypress-7.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.114</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chrome:cypress-7.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.114</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chrome:cypress-7.3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.114</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chrome:cypress-7.4.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.4.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.114</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chrome:cypress-7.5.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chrome:91.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.5.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.114</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 4. Electron Images</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Image</th>
+<th class="tableblock halign-left valign-top">Cypress version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-electron:cypress-6.8.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.8.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-electron:cypress-6.9.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.9.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-electron:cypress-7.0.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.0.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-electron:cypress-7.0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.0.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-electron:cypress-7.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.1.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-electron:cypress-7.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.2.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-electron:cypress-7.3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.3.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-electron:cypress-7.4.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.4.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-electron:cypress-7.5.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.5.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 5. Microsoft Edge Images</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Image</th>
+<th class="tableblock halign-left valign-top">Aliases</th>
+<th class="tableblock halign-left valign-top">Cypress version</th>
+<th class="tableblock halign-left valign-top">Edge version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-edge:cypress-6.8.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.8.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.902.15</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-edge:cypress-6.9.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.9.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.902.15</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-edge:cypress-6.9.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.9.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.902.15</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-edge:cypress-7.0.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.0.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.902.15</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-edge:cypress-7.0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.902.15</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-edge:cypress-7.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.902.15</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-edge:cypress-7.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.902.15</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-edge:cypress-7.3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.902.15</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-edge:cypress-7.4.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.4.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.902.15</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-edge:cypress-7.5.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-edge:92.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.5.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.902.15</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 6. Firefox Images</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Image</th>
+<th class="tableblock halign-left valign-top">Aliases</th>
+<th class="tableblock halign-left valign-top">Cypress version</th>
+<th class="tableblock halign-left valign-top">Edge version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-firefox:cypress-6.8.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.8.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">89.0.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-firefox:cypress-6.9.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6.9.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">89.0.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-firefox:cypress-7.0.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.0.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">89.0.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-firefox:cypress-7.0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.0.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">89.0.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-firefox:cypress-7.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">89.0.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-firefox:cypress-7.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">89.0.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-firefox:cypress-7.3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">89.0.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-firefox:cypress-7.4.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.4.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">89.0.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-firefox:cypress-7.5.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-firefox:89.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7.5.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">89.0.1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_playwright"><a class="anchor" href="#_playwright"></a>1.3. Playwright</h3>
+<div class="paragraph">
+<p>These images are used to run <a href="https://github.com/microsoft/playwright">Playwright</a> tests in parallel.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 7. Chromium Images</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Image</th>
+<th class="tableblock halign-left valign-top">Aliases</th>
+<th class="tableblock halign-left valign-top">Playwright version</th>
+<th class="tableblock halign-left valign-top">Chromium version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:playwright-1.1.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.1.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">85.0.4165.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:playwright-1.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:85.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">85.0.4182.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:playwright-1.3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">86.0.4217.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:playwright-1.4.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:86.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.4.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">86.0.4238.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:playwright-1.5.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.5.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">88.0.4287.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:playwright-1.6.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:88.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.6.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">88.0.4316.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:playwright-1.7.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:89.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.7.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">89.0.4344.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:playwright-1.8.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.8.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">90.0.4392.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:playwright-1.8.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.8.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">90.0.4392.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:playwright-1.9.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.9.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">90.0.4421.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:playwright-1.9.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.9.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">90.0.4421.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:playwright-1.9.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.9.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">90.0.4421.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:playwright-1.10.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:90.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.10.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">90.0.4430.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:playwright-1.11.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.11.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.4498.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:playwright-1.11.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:92.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.11.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.4498.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:playwright-1.12.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.12.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">93.0.4530.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:playwright-1.12.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.12.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">93.0.4530.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:playwright-1.12.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:93.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.12.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">93.0.4530.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 8. Chrome Images</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Image</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Aliases</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Playwright version</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Chrome version</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chrome:playwright-1.7.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chrome:89.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.7.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">89.0.4389.58</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chrome:playwright-1.8.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.8.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">90.0.4421.5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chrome:playwright-1.9.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.9.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">90.0.4421.5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chrome:playwright-1.9.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.9.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">90.0.4427.5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chrome:playwright-1.9.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chrome:90.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.9.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">90.0.4430.19</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chrome:playwright-1.10.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.10.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4455.2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chrome:playwright-1.11.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.11.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.4503.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chrome:playwright-1.11.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chrome:92.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.11.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.4503.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chrome:playwright-1.12.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.12.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.101</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chrome:playwright-1.12.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.12.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.101</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chrome:playwright-1.12.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chrome:91.0 (switched to stable releases)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.12.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.101</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 9. Firefox Images</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Image</th>
+<th class="tableblock halign-left valign-top">Aliases</th>
+<th class="tableblock halign-left valign-top">Playwright version</th>
+<th class="tableblock halign-left valign-top">Firefox version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:playwright-1.1.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:77.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.1.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">77.0b3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:playwright-1.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:78.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">78.0b5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:playwright-1.3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">78.0b5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:playwright-1.4.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:80.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.4.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">80.0b8</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:playwright-1.5.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:82.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.5.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">82.0b9</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:playwright-1.6.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:83.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.6.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">83.0b8</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:playwright-1.7.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:84.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.7.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">84.0b9</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:playwright-1.8.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.8.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">85.0b5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:playwright-1.8.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:85.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.8.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">85.0b5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:playwright-1.9.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.9.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">86.0b10</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:playwright-1.9.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.9.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">86.0b10</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:playwright-1.9.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:86.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.9.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">86.0b10</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:playwright-1.10.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:87.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.10.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">87.0b10</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:playwright-1.11.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.11.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">89.0b6</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:playwright-1.11.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.11.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">89.0b6</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:playwright-1.12.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.12.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">89.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:playwright-1.12.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.12.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">89.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:playwright-1.12.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:89.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.12.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">89.0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 10. Webkit (Safari Desktop) Images</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Image</th>
+<th class="tableblock halign-left valign-top">Aliases</th>
+<th class="tableblock halign-left valign-top">Playwright version</th>
+<th class="tableblock halign-left valign-top">Safari version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:playwright-1.1.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.1.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13.2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:playwright-1.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:13.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:playwright-1.3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:playwright-1.4.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.4.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:playwright-1.5.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.5.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:playwright-1.6.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:14.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.6.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:playwright-1.7.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.7.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:playwright-1.8.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.8.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:playwright-1.8.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.8.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:playwright-1.9.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.9.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:playwright-1.9.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.9.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:playwright-1.9.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:14.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.9.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:playwright-1.10.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.10.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14.2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:playwright-1.11.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.11.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14.2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:playwright-1.11.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.11.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14.2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:playwright-1.12.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.12.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14.2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:playwright-1.12.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.12.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14.2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:playwright-1.12.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:14.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.12.2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14.2</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_selenium"><a class="anchor" href="#_selenium"></a>1.4. Selenium</h3>
+<div class="sect3">
+<h4 id="_android"><a class="anchor" href="#_android"></a>1.4.1. Android</h4>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -609,7 +1489,7 @@ Hardware server or virtual machine with nested virtualization support is require
 </table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. Android Images</caption>
+<caption class="title">Table 11. Android Images</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -719,59 +1599,10 @@ Hardware server or virtual machine with nested virtualization support is require
 <p>An example Java test can be found <a href="https://github.com/aerokube/demo-tests/blob/master/src/test/java/com/aerokube/selenoid/AndroidRemoteApkTest.java">here</a>.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_chrome_developer_tools_protocol"><a class="anchor" href="#_chrome_developer_tools_protocol"></a>1.2. Chrome Developer Tools Protocol</h3>
-<div class="paragraph">
-<p>These images should be used with tools and frameworks relying on <a href="https://chromedevtools.github.io/devtools-protocol/">Chrome Developer Tools Protocol</a> such as <a href="https://ppts.dev">Puppeteer</a>.</p>
-</div>
+<div class="sect3">
+<h4 id="_chrome"><a class="anchor" href="#_chrome"></a>1.4.2. Chrome</h4>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 2. Chrome Developer Tools Protocol Images</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Image</th>
-<th class="tableblock halign-left valign-top">Chrome version</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cdtp/chrome:85.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">85.0.4183.121</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cdtp/chrome:86.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">86.0.4240.111</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cdtp/chrome:87.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">87.0.4280.66</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cdtp/chrome:88.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">88.0.4324.182</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cdtp/chrome:89.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">89.0.4389.72</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cdtp/chrome:90.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">90.0.4430.85</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cdtp/chrome:91.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.77</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
-<h3 id="_chrome"><a class="anchor" href="#_chrome"></a>1.3. Chrome</h3>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. Chrome Images</caption>
+<caption class="title">Table 12. Chrome Images</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -1075,8 +1906,8 @@ Hardware server or virtual machine with nested virtualization support is require
 </table>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_chrome_mobile"><a class="anchor" href="#_chrome_mobile"></a>1.4. Chrome Mobile</h3>
+<div class="sect3">
+<h4 id="_chrome_mobile"><a class="anchor" href="#_chrome_mobile"></a>1.4.3. Chrome Mobile</h4>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -1090,7 +1921,7 @@ Hardware server or virtual machine with nested virtualization support is require
 </table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 4. Chrome Mobile Images</caption>
+<caption class="title">Table 13. Chrome Mobile Images</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1228,365 +2059,10 @@ Hardware server or virtual machine with nested virtualization support is require
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_cypress"><a class="anchor" href="#_cypress"></a>1.5. Cypress</h3>
-<div class="paragraph">
-<p>These images are used to run <a href="https://cypress.io/">Cypress</a> tests in parallel.</p>
-</div>
+<div class="sect3">
+<h4 id="_firefox"><a class="anchor" href="#_firefox"></a>1.4.4. Firefox</h4>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. Chromium Images</caption>
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Image</th>
-<th class="tableblock halign-left valign-top">Aliases</th>
-<th class="tableblock halign-left valign-top">Cypress version</th>
-<th class="tableblock halign-left valign-top">Chromium version</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chromium:cypress-6.8.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6.8.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.101</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chromium:cypress-6.9.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6.9.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.101</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chromium:cypress-7.0.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.0.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.101</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chromium:cypress-7.0.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.0.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.101</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chromium:cypress-7.1.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.1.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.101</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chromium:cypress-7.2.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.2.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.101</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chromium:cypress-7.3.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.3.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.101</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chromium:cypress-7.4.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.4.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.101</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chromium:cypress-7.5.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chromium:91.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.5.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.101</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 6. Chrome Images</caption>
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Image</th>
-<th class="tableblock halign-left valign-top">Aliases</th>
-<th class="tableblock halign-left valign-top">Cypress version</th>
-<th class="tableblock halign-left valign-top">Chrome version</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chrome:cypress-6.8.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6.8.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.114</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chrome:cypress-6.9.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6.9.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.114</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chrome:cypress-7.0.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.0.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.114</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chrome:cypress-7.0.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.0.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.114</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chrome:cypress-7.1.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.1.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.114</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chrome:cypress-7.2.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.2.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.114</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chrome:cypress-7.3.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.3.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.114</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chrome:cypress-7.4.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.4.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.114</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chrome:cypress-7.5.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-chrome:91.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.5.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.114</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 7. Electron Images</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Image</th>
-<th class="tableblock halign-left valign-top">Cypress version</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-electron:cypress-6.8.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6.8.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-electron:cypress-6.9.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6.9.1</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-electron:cypress-7.0.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.0.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-electron:cypress-7.0.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.0.1</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-electron:cypress-7.1.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.1.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-electron:cypress-7.2.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.2.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-electron:cypress-7.3.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.3.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-electron:cypress-7.4.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.4.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-electron:cypress-7.5.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.5.0</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 8. Microsoft Edge Images</caption>
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Image</th>
-<th class="tableblock halign-left valign-top">Aliases</th>
-<th class="tableblock halign-left valign-top">Cypress version</th>
-<th class="tableblock halign-left valign-top">Edge version</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-edge:cypress-6.8.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6.8.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.902.15</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-edge:cypress-6.9.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6.9.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.902.15</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-edge:cypress-6.9.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6.9.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.902.15</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-edge:cypress-7.0.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.0.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.902.15</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-edge:cypress-7.0.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.0.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.902.15</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-edge:cypress-7.1.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.1.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.902.15</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-edge:cypress-7.2.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.2.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.902.15</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-edge:cypress-7.3.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.3.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.902.15</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-edge:cypress-7.4.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.4.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.902.15</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-edge:cypress-7.5.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-edge:92.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.5.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.902.15</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 9. Firefox Images</caption>
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Image</th>
-<th class="tableblock halign-left valign-top">Aliases</th>
-<th class="tableblock halign-left valign-top">Cypress version</th>
-<th class="tableblock halign-left valign-top">Edge version</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-firefox:cypress-6.8.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6.8.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">89.0.1</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-firefox:cypress-6.9.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6.9.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">89.0.1</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-firefox:cypress-7.0.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.0.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">89.0.1</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-firefox:cypress-7.0.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.0.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">89.0.1</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-firefox:cypress-7.1.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.1.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">89.0.1</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-firefox:cypress-7.2.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.2.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">89.0.1</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-firefox:cypress-7.3.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.3.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">89.0.1</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-firefox:cypress-7.4.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.4.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">89.0.1</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-firefox:cypress-7.5.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">browsers/cypress-firefox:89.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7.5.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">89.0.1</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
-<h3 id="_firefox"><a class="anchor" href="#_firefox"></a>1.6. Firefox</h3>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 10. Firefox Images with Selenium Server</caption>
+<caption class="title">Table 14. Firefox Images with Selenium Server</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1896,7 +2372,7 @@ Firefox 53.0+ images require Selenium client 3.4.0 or newer for Java and Node.js
 </table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 11. Firefox Images with Selenoid</caption>
+<caption class="title">Table 15. Firefox Images with Selenoid</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -2211,8 +2687,8 @@ Firefox 53.0+ images require Selenium client 3.4.0 or newer for Java and Node.js
 </tbody>
 </table>
 </div>
-<div class="sect2">
-<h3 id="_microsoft_edge"><a class="anchor" href="#_microsoft_edge"></a>1.7. Microsoft Edge</h3>
+<div class="sect3">
+<h4 id="_microsoft_edge"><a class="anchor" href="#_microsoft_edge"></a>1.4.5. Microsoft Edge</h4>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -2226,7 +2702,7 @@ When adding Microsoft Edge to browsers.json - you have to use MicrosoftEdge as b
 </table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 12. Microsoft Edge Images</caption>
+<caption class="title">Table 16. Microsoft Edge Images</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -2273,10 +2749,10 @@ When adding Microsoft Edge to browsers.json - you have to use MicrosoftEdge as b
 </tbody>
 </table>
 </div>
-<div class="sect2">
-<h3 id="_opera"><a class="anchor" href="#_opera"></a>1.8. Opera</h3>
+<div class="sect3">
+<h4 id="_opera"><a class="anchor" href="#_opera"></a>1.4.6. Opera</h4>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 13. Opera Presto Images</caption>
+<caption class="title">Table 17. Opera Presto Images</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2323,7 +2799,7 @@ When adding Microsoft Edge to browsers.json - you have to use MicrosoftEdge as b
 </table>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 14. Opera Blink Images</caption>
+<caption class="title">Table 18. Opera Blink Images</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -2627,478 +3103,8 @@ When adding Microsoft Edge to browsers.json - you have to use MicrosoftEdge as b
 </table>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_playwright"><a class="anchor" href="#_playwright"></a>1.9. Playwright</h3>
-<div class="paragraph">
-<p>These images are used to run <a href="https://github.com/microsoft/playwright">Playwright</a> tests in parallel.</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 15. Chromium Images</caption>
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Image</th>
-<th class="tableblock halign-left valign-top">Aliases</th>
-<th class="tableblock halign-left valign-top">Playwright version</th>
-<th class="tableblock halign-left valign-top">Chromium version</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:playwright-1.1.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.1.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">85.0.4165.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:playwright-1.2.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:85.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.2.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">85.0.4182.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:playwright-1.3.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.3.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">86.0.4217.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:playwright-1.4.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:86.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.4.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">86.0.4238.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:playwright-1.5.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.5.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">88.0.4287.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:playwright-1.6.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:88.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.6.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">88.0.4316.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:playwright-1.7.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:89.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.7.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">89.0.4344.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:playwright-1.8.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.8.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">90.0.4392.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:playwright-1.8.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.8.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">90.0.4392.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:playwright-1.9.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.9.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">90.0.4421.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:playwright-1.9.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.9.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">90.0.4421.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:playwright-1.9.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.9.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">90.0.4421.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:playwright-1.10.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:90.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.10.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">90.0.4430.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:playwright-1.11.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.11.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.4498.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:playwright-1.11.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:92.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.11.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.4498.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:playwright-1.12.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.12.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">93.0.4530.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:playwright-1.12.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.12.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">93.0.4530.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:playwright-1.12.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chromium:93.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.12.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">93.0.4530.0</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 16. Chrome Images</caption>
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Image</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Aliases</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Playwright version</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Chrome version</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chrome:playwright-1.7.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chrome:89.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.7.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">89.0.4389.58</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chrome:playwright-1.8.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.8.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">90.0.4421.5</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chrome:playwright-1.9.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.9.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">90.0.4421.5</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chrome:playwright-1.9.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.9.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">90.0.4427.5</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chrome:playwright-1.9.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chrome:90.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.9.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">90.0.4430.19</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chrome:playwright-1.10.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.10.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4455.2</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chrome:playwright-1.11.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.11.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.4503.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chrome:playwright-1.11.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chrome:92.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.11.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">92.0.4503.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chrome:playwright-1.12.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.12.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.101</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chrome:playwright-1.12.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.12.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.101</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chrome:playwright-1.12.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/chrome:91.0 (switched to stable releases)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.12.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">91.0.4472.101</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 17. Firefox Images</caption>
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Image</th>
-<th class="tableblock halign-left valign-top">Aliases</th>
-<th class="tableblock halign-left valign-top">Playwright version</th>
-<th class="tableblock halign-left valign-top">Firefox version</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:playwright-1.1.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:77.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.1.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">77.0b3</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:playwright-1.2.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:78.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.2.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">78.0b5</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:playwright-1.3.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.3.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">78.0b5</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:playwright-1.4.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:80.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.4.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">80.0b8</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:playwright-1.5.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:82.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.5.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">82.0b9</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:playwright-1.6.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:83.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.6.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">83.0b8</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:playwright-1.7.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:84.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.7.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">84.0b9</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:playwright-1.8.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.8.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">85.0b5</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:playwright-1.8.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:85.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.8.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">85.0b5</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:playwright-1.9.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.9.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">86.0b10</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:playwright-1.9.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.9.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">86.0b10</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:playwright-1.9.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:86.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.9.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">86.0b10</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:playwright-1.10.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:87.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.10.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">87.0b10</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:playwright-1.11.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.11.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">89.0b6</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:playwright-1.11.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.11.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">89.0b6</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:playwright-1.12.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.12.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">89.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:playwright-1.12.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.12.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">89.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:playwright-1.12.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/firefox:89.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.12.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">89.0</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 18. Webkit (Safari Desktop) Images</caption>
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Image</th>
-<th class="tableblock halign-left valign-top">Aliases</th>
-<th class="tableblock halign-left valign-top">Playwright version</th>
-<th class="tableblock halign-left valign-top">Safari version</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:playwright-1.1.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.1.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">13.2</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:playwright-1.2.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:13.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.2.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">14.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:playwright-1.3.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.3.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">14.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:playwright-1.4.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.4.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">14.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:playwright-1.5.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.5.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">14.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:playwright-1.6.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:14.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.6.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">14.0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:playwright-1.7.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.7.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">14.1</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:playwright-1.8.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.8.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">14.1</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:playwright-1.8.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.8.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">14.1</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:playwright-1.9.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.9.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">14.1</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:playwright-1.9.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.9.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">14.1</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:playwright-1.9.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:14.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.9.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">14.1</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:playwright-1.10.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.10.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">14.2</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:playwright-1.11.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.11.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">14.2</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:playwright-1.11.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.11.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">14.2</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:playwright-1.12.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.12.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">14.2</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:playwright-1.12.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.12.1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">14.2</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:playwright-1.12.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">playwright/webkit:14.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.12.2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">14.2</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
-<h3 id="_safari"><a class="anchor" href="#_safari"></a>1.10. Safari</h3>
+<div class="sect3">
+<h4 id="_safari"><a class="anchor" href="#_safari"></a>1.4.7. Safari</h4>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -3135,10 +3141,11 @@ Real Safari browser can only run under MacOS \ iOS. These Linux images are using
 </tbody>
 </table>
 </div>
-<div class="sect2">
-<h3 id="_windows_browsers"><a class="anchor" href="#_windows_browsers"></a>1.11. Windows Browsers</h3>
+<div class="sect3">
+<h4 id="_windows_browsers"><a class="anchor" href="#_windows_browsers"></a>1.4.8. Windows Browsers</h4>
 <div class="paragraph">
 <p>We don&#8217;t build ready to use images for Internet Explorer and any other browser under Windows because of Windows license limitations. However we provide detailed instructions on building such images <a href="https://github.com/aerokube/windows-images">here</a>. The same approach can be used for preparing images with Microsoft Edge, Firefox, Chrome and Opera under Windows.</p>
+</div>
 </div>
 </div>
 </div>
@@ -3446,7 +3453,7 @@ $ ./automate_android.sh</code></pre>
 <div id="footer">
 <div id="footer-text">
 Version latest<br>
-Last updated 2021-06-21 20:12:32 UTC
+Last updated 2021-06-22 04:11:01 UTC
 </div>
 </div>
 <!-- Global site tag (gtag.js) - Google Analytics -->
