@@ -18,17 +18,19 @@ This reference covers version: _{revnumber}_
 This section contains information about browser images available for using with https://aerokube.com/selenoid/[Selenoid] and https://aerokube.com/moon/[Moon]. Please refer to https://github.com/aerokube/images[GitHub repository] if you need source code.
 
 == Browser Image Information
-include::android.adoc[leveloffset=+1]
 include::cdtp.adoc[leveloffset=+1]
-include::chrome.adoc[leveloffset=+1]
-include::chrome-mobile.adoc[leveloffset=+1]
 include::cypress.adoc[leveloffset=+1]
-include::firefox.adoc[leveloffset=+1]
-include::msedge.adoc[leveloffset=+1]
-include::opera.adoc[leveloffset=+1]
 include::playwright.adoc[leveloffset=+1]
-include::safari.adoc[leveloffset=+1]
-include::windows.adoc[leveloffset=+1]
+
+=== Selenium
+include::android.adoc[leveloffset=+2]
+include::chrome.adoc[leveloffset=+2]
+include::chrome-mobile.adoc[leveloffset=+2]
+include::firefox.adoc[leveloffset=+2]
+include::msedge.adoc[leveloffset=+2]
+include::opera.adoc[leveloffset=+2]
+include::safari.adoc[leveloffset=+2]
+include::windows.adoc[leveloffset=+2]
 
 include::features.adoc[]
 
