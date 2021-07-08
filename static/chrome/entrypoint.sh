@@ -87,7 +87,7 @@ if [ "$ENABLE_VNC" == "true" ]; then
     X11VNC_PID=$!
 fi
 
-DISPLAY="$DISPLAY" /usr/bin/chromedriver --port=4444 --whitelisted-ips='' ${DRIVER_ARGS} &
+DISPLAY="$DISPLAY" /usr/bin/chromedriver --port=4444 --allowed-ips='' ${DRIVER_ARGS} &
 DRIVER_PID=$!
 
 wait
