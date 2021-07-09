@@ -13,7 +13,9 @@ STOP=""
 VERBOSE=${VERBOSE:-""}
 
 if [ -z "$VERBOSE" ]; then
-    APPIUM_ARGS="$APPIUM_ARGS --log-level error"
+    if [ -z "$APPIUM_ARGS" ]; then
+        APPIUM_ARGS="--log-level error"
+    fi
 else
     EMULATOR_ARGS="$EMULATOR_ARGS -verbose"
 fi
