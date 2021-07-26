@@ -143,29 +143,31 @@ func (c *Chrome) getLatestChromeDriver(baseUrl string, pkgVersion string) (strin
 		return string(data), nil
 	}
 
-	switch c.BrowserChannel {
-	case "dev":
-		chromeMajorVersion, err := strconv.Atoi(majorVersion(pkgVersion))
-		if err != nil {
-			return "", fmt.Errorf("chrome major version: %v", err)
+	if c.BrowserChannel != "dev" {
+		chromeBuildVersion := buildVersion(pkgVersion)
+		u := baseUrl + fmt.Sprintf("LATEST_RELEASE_%s", chromeBuildVersion)
+		v, err := fetchVersion(u)
+		if err == nil {
+			return v, nil
 		}
-		u := baseUrl + fmt.Sprintf("LATEST_RELEASE_%d", chromeMajorVersion)
+	}
+
+	chromeMajorVersion, err := strconv.Atoi(majorVersion(pkgVersion))
+	if err != nil {
+		return "", fmt.Errorf("chrome major version: %v", err)
+	}
+	u := baseUrl + fmt.Sprintf("LATEST_RELEASE_%d", chromeMajorVersion)
+	v, err := fetchVersion(u)
+	if err == nil {
+		return v, nil
+	} else {
+		previousChromeMajorVersion := chromeMajorVersion - 1
+		u = baseUrl + fmt.Sprintf("LATEST_RELEASE_%d", previousChromeMajorVersion)
 		v, err := fetchVersion(u)
 		if err == nil {
 			return v, nil
 		} else {
-			previousChromeMajorVersion := chromeMajorVersion - 1
-			u = baseUrl + fmt.Sprintf("LATEST_RELEASE_%d", previousChromeMajorVersion)
-			v, err := fetchVersion(u)
-			if err == nil {
-				return v, nil
-			} else {
-				return "", errors.New("could not find compatible chromedriver")
-			}
+			return "", errors.New("could not find compatible chromedriver")
 		}
-	default:
-		chromeBuildVersion := buildVersion(pkgVersion)
-		u := baseUrl + fmt.Sprintf("LATEST_RELEASE_%s", chromeBuildVersion)
-		return fetchVersion(u)
 	}
 }
