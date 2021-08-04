@@ -31,7 +31,11 @@ func (yb *YandexBrowser) Build() error {
 
 	if pkgSrcPath != "" {
 		srcDir = "yandex/local"
-		pkgDestPath := filepath.Join(devDestDir, "yandex-browser.deb")
+		err := os.MkdirAll(devDestDir+"/"+srcDir, 0755)
+		if err != nil {
+			return fmt.Errorf("create %v temporary dir: %v", srcDir, err)
+		}
+		pkgDestPath := filepath.Join(devDestDir, srcDir, "yandex-browser.deb")
 		err = os.Rename(pkgSrcPath, pkgDestPath)
 		if err != nil {
 			return fmt.Errorf("move package: %v", err)
