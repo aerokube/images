@@ -53,6 +53,7 @@ RUN \
          curl -O http://host.docker.internal:8080/google-chrome.deb && \
          apt-get -y purge curl && \
          dpkg -i google-chrome.deb && \
+         sed -i -e 's@exec -a "$0" "$HERE/chrome"@& --no-sandbox --disable-gpu@' /opt/google/$INSTALL_DIR/google-chrome && \
          rm google-chrome.deb && \
          chown root:root /opt/google/$INSTALL_DIR/chrome-sandbox && \
          chmod 4755 /opt/google/$INSTALL_DIR/chrome-sandbox && \

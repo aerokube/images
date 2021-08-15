@@ -11,6 +11,7 @@ RUN \
         echo 'deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main' > /etc/apt/sources.list.d/microsoft-edge.list && \
         apt-get update && \
         apt-get -y --no-install-recommends install $PACKAGE=$VERSION && \
+        sed -i -e 's@exec -a "$0" "$HERE/msedge"@& --no-sandbox --disable-gpu@' /opt/microsoft/$INSTALL_DIR/$PACKAGE && \
         chown root:root /opt/microsoft/$INSTALL_DIR/msedge-sandbox && \
         chmod 4755 /opt/microsoft/$INSTALL_DIR/msedge-sandbox && \
         microsoft-edge --version && \
