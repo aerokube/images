@@ -11,6 +11,7 @@ RUN \
         echo 'deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main' > /etc/apt/sources.list.d/google.list && \
         apt-get update && \
         apt-get -y --no-install-recommends install iproute2 $PACKAGE=$VERSION && \
+        sed -i -e 's@exec -a "$0" "$HERE/chrome"@& --no-sandbox --disable-gpu@' /opt/google/chrome/google-chrome && \
         chown root:root /opt/google/$INSTALL_DIR/chrome-sandbox && \
         chmod 4755 /opt/google/$INSTALL_DIR/chrome-sandbox && \
         google-chrome --version && \

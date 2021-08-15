@@ -36,6 +36,7 @@ RUN \
          curl -O http://host.docker.internal:8080/microsoft-edge.deb && \
          apt-get -y purge curl && \
          dpkg -i microsoft-edge.deb && \
+         sed -i -e 's@exec -a "$0" "$HERE/msedge"@& --no-sandbox --disable-gpu@' /opt/microsoft/$INSTALL_DIR/$PACKAGE && \
          rm microsoft-edge.deb && \
          chown root:root /opt/microsoft/$INSTALL_DIR/msedge-sandbox && \
          chmod 4755 /opt/microsoft/$INSTALL_DIR/msedge-sandbox && \
