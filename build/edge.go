@@ -33,7 +33,12 @@ func (c *Edge) Build() error {
 
 	if pkgSrcPath != "" {
 		srcDir = "edge/local"
-		pkgDestPath := filepath.Join(devDestDir, "microsoft-edge.deb")
+		pkgDestDir := filepath.Join(devDestDir, srcDir)
+		err := os.MkdirAll(pkgDestDir, 0755)
+		if err != nil {
+			return fmt.Errorf("create %v temporary dir: %v", pkgDestDir, err)
+		}
+		pkgDestPath := filepath.Join(pkgDestDir, "microsoft-edge.deb")
 		err = os.Rename(pkgSrcPath, pkgDestPath)
 		if err != nil {
 			return fmt.Errorf("move package: %v", err)
