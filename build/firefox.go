@@ -40,11 +40,12 @@ func (c *Firefox) Build() error {
 
 	if pkgSrcPath != "" {
 		devSrcDir = "firefox/local"
-		err := os.MkdirAll(devDestDir+"/"+devSrcDir, 0755)
+		pkgDestDir := filepath.Join(devDestDir, devSrcDir)
+		err := os.MkdirAll(pkgDestDir, 0755)
 		if err != nil {
-			return fmt.Errorf("create %v temporary dir: %v", devSrcDir, err)
+			return fmt.Errorf("create %v temporary dir: %v", pkgDestDir, err)
 		}
-		pkgDestPath := filepath.Join(devDestDir, devSrcDir, "firefox.deb")
+		pkgDestPath := filepath.Join(pkgDestDir, "firefox.deb")
 		err = os.Rename(pkgSrcPath, pkgDestPath)
 		if err != nil {
 			return fmt.Errorf("move package: %v", err)

@@ -31,11 +31,12 @@ func (o *Opera) Build() error {
 
 	if pkgSrcPath != "" {
 		srcDir = "opera/local"
-		err := os.MkdirAll(devDestDir+"/"+srcDir, 0755)
+		pkgDestDir := filepath.Join(devDestDir, srcDir)
+		err := os.MkdirAll(pkgDestDir, 0755)
 		if err != nil {
-			return fmt.Errorf("create %v temporary dir: %v", srcDir, err)
+			return fmt.Errorf("create %v temporary dir: %v", pkgDestDir, err)
 		}
-		pkgDestPath := filepath.Join(devDestDir, srcDir, "opera.deb")
+		pkgDestPath := filepath.Join(pkgDestDir, "opera.deb")
 		err = os.Rename(pkgSrcPath, pkgDestPath)
 		if err != nil {
 			return fmt.Errorf("move package: %v", err)
