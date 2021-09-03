@@ -1,5 +1,5 @@
 ARG VERSION
-FROM golang:1.15 as go
+FROM golang:1.17 as go
 
 COPY devtools /devtools
 
