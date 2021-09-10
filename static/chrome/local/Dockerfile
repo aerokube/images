@@ -1,4 +1,4 @@
-FROM browsers/base:7.2
+FROM browsers/base:7.3
 
 ARG VERSION=noop
 ARG PACKAGE=google-chrome-stable
