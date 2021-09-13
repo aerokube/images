@@ -49,7 +49,7 @@ These images are used to run https://github.com/microsoft/playwright[Playwright]
 | playwright/chrome:playwright-1.13.0 | - | 1.13.0 | 92.0.4515.107
 | playwright/chrome:playwright-1.13.1 | - | 1.13.1 | 92.0.4515.107
 | playwright/chrome:playwright-1.14.0 | - | 1.14.0 | 92.0.4515.131
-| playwright/chrome:playwright-1.14.1 | playwright/chrome:92.0 | 1.14.1 | 92.0.4515.159
+| playwright/chrome:playwright-1.14.1 | playwright/chrome:93.0 | 1.14.1 | 93.0.4577.63
 |===
 
 .Firefox Images
