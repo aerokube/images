@@ -107,5 +107,5 @@ These images are used to run https://github.com/microsoft/playwright[Playwright]
 | playwright/webkit:playwright-1.13.0 | - | 1.13.0 | 14.2
 | playwright/webkit:playwright-1.13.1 | playwright/webkit:14.2 | 1.13.1 | 14.2
 | playwright/webkit:playwright-1.14.0 | - | 1.14.0 | 15.0
-| playwright/webkit:playwright-1.14.0 | playwright/webkit:15.0 | 1.14.1 | 15.0
+| playwright/webkit:playwright-1.14.1 | playwright/webkit:15.0 | 1.14.1 | 15.0
 |===
