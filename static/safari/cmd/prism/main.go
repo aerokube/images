@@ -24,7 +24,7 @@ var (
 	waitTimeout    = 30 * time.Second
 	gracePeriod    = 30 * time.Second
 	browserName    = "safari"
-	browserVersion = "14.0"
+	browserVersion = "15.0"
 )
 
 func wait(ctx context.Context, target string) (*url.URL, error) {
