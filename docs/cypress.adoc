@@ -25,7 +25,8 @@ These images are used to run https://cypress.io/[Cypress] tests in parallel.
 | browsers/cypress-chromium:cypress-8.4.0 | - | 8.4.0 | 92.0.4515.159
 | browsers/cypress-chromium:cypress-8.4.1 | browsers/cypress-chromium:92.0 | 8.4.1 | 92.0.4515.159
 | browsers/cypress-chromium:cypress-8.5.0 | browsers/cypress-chromium:93.0 | 8.5.0 | 93.0.4577.63
-| browsers/cypress-chromium:cypress-8.6.0 | browsers/cypress-chromium:94.0 | 8.6.0 | 94.0.4606.71
+| browsers/cypress-chromium:cypress-8.6.0 | - | 8.6.0 | 94.0.4606.71
+| browsers/cypress-chromium:cypress-8.7.0 | browsers/cypress-chromium:94.0 | 8.7.0 | 94.0.4606.81
 |===
 
 .Chrome Images
@@ -52,6 +53,7 @@ These images are used to run https://cypress.io/[Cypress] tests in parallel.
 | browsers/cypress-chrome:cypress-8.4.1 | browsers/cypress-chrome:93.0 | 8.4.1 | 93.0.4577.82
 | browsers/cypress-chrome:cypress-8.5.0 | - | 8.5.0 | 94.0.4606.61
 | browsers/cypress-chrome:cypress-8.6.0 | browsers/cypress-chrome:94.0 | 8.6.0 | 94.0.4606.81
+| browsers/cypress-chrome:cypress-8.7.0 | browsers/cypress-chrome:95.0 | 8.7.0 | 95.0.4638.54
 |===
 
 .Electron Images
@@ -78,6 +80,7 @@ These images are used to run https://cypress.io/[Cypress] tests in parallel.
 | browsers/cypress-electron:cypress-8.4.1 | 8.4.1
 | browsers/cypress-electron:cypress-8.5.0 | 8.5.0
 | browsers/cypress-electron:cypress-8.6.0 | 8.6.0
+| browsers/cypress-electron:cypress-8.7.0 | 8.7.0
 |===
 
 .Microsoft Edge Images
@@ -104,7 +107,8 @@ These images are used to run https://cypress.io/[Cypress] tests in parallel.
 | browsers/cypress-edge:cypress-8.4.0 | - | 8.4.0 | 94.0.992.19
 | browsers/cypress-edge:cypress-8.4.1 | browsers/cypress-edge:94.0 | 8.4.1 | 94.0.992.23
 | browsers/cypress-edge:cypress-8.5.0 | - | 8.5.0 | 95.0.1020.9
-| browsers/cypress-edge:cypress-8.6.0 | browsers/cypress-edge:95.0 | 8.6.0 | 95.0.1020.20
+| browsers/cypress-edge:cypress-8.6.0 | - | 8.6.0 | 95.0.1020.20
+| browsers/cypress-edge:cypress-8.7.0 | browsers/cypress-edge:95.0 | 8.7.0 | 95.0.1020.30
 |===
 
 .Firefox Images
@@ -130,5 +134,6 @@ These images are used to run https://cypress.io/[Cypress] tests in parallel.
 | browsers/cypress-firefox:cypress-8.4.0 | - | 8.4.0 | 92.0
 | browsers/cypress-firefox:cypress-8.4.1 | - | 8.4.1 | 92.0
 | browsers/cypress-firefox:cypress-8.5.0 | browsers/cypress-firefox:92.0 | 8.5.0 | 92.0
-| browsers/cypress-firefox:cypress-8.6.0 | browsers/cypress-firefox:93.0 | 8.6.0 | 93.0
+| browsers/cypress-firefox:cypress-8.6.0 | - | 8.6.0 | 93.0
+| browsers/cypress-firefox:cypress-8.7.0 | browsers/cypress-firefox:93.0 | 8.7.0 | 93.0
 |===
