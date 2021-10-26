@@ -26,7 +26,7 @@ RUN \
     upx /prism/prism && \
     rm -Rf /var/lib/apt/lists/*
 
-FROM browsers/base:7.3
+FROM browsers/base:7.3.1
 
 COPY --from=build /opt/webkit /opt/webkit
 COPY --from=go /prism/prism /usr/bin/
