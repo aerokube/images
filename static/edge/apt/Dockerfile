@@ -1,4 +1,4 @@
-FROM browsers/base:7.3
+FROM browsers/base:7.3.1
 
 ARG VERSION
 ARG PACKAGE=microsoft-edge-beta
