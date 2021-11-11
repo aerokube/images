@@ -1,8 +1,8 @@
 FROM browsers/base:7.3.1
 
 ARG VERSION
-ARG PACKAGE=microsoft-edge-beta
-ARG INSTALL_DIR=msedge-beta
+ARG PACKAGE=microsoft-edge
+ARG INSTALL_DIR=msedge
 
 LABEL browser=$PACKAGE:$VERSION
 
