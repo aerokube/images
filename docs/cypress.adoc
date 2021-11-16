@@ -55,7 +55,7 @@ These images are used to run https://cypress.io/[Cypress] tests in parallel.
 | browsers/cypress-chrome:cypress-8.5.0 | - | 8.5.0 | 94.0.4606.61
 | browsers/cypress-chrome:cypress-8.6.0 | browsers/cypress-chrome:94.0 | 8.6.0 | 94.0.4606.81
 | browsers/cypress-chrome:cypress-8.7.0 | - | 8.7.0 | 95.0.4638.54
-| browsers/cypress-chrome:cypress-9.0.0 | browsers/cypress-chrome:95.0 | 9.0.0 | 95.0.4638.69
+| browsers/cypress-chrome:cypress-9.0.0 | browsers/cypress-chrome:96.0 | 9.0.0 | 96.0.4664.45
 |===
 
 .Electron Images
@@ -112,7 +112,7 @@ These images are used to run https://cypress.io/[Cypress] tests in parallel.
 | browsers/cypress-edge:cypress-8.5.0 | - | 8.5.0 | 95.0.1020.9
 | browsers/cypress-edge:cypress-8.6.0 | - | 8.6.0 | 95.0.1020.20
 | browsers/cypress-edge:cypress-8.7.0 | - | 8.7.0 | 95.0.1020.30
-| browsers/cypress-edge:cypress-9.0.0 | browsers/cypress-edge:95.0 | 8.7.0 | 95.0.1020.44
+| browsers/cypress-edge:cypress-9.0.0 | browsers/cypress-edge:95.0 | 9.0.0 | 95.0.1020.53
 |===
 
 .Firefox Images
