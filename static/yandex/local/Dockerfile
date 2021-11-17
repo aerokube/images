@@ -1,4 +1,4 @@
-FROM browsers/base:7.3.1
+FROM browsers/base:7.3.2
 
 ARG VERSION=noop
 
