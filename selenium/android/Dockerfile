@@ -34,7 +34,8 @@ RUN \
         x11vnc \
         feh \
         wmctrl \
-	    libglib2.0-0 && \
+	    libglib2.0-0  \
+        lib32stdc++6 && \
     apt-get clean && \
     rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/*
 
@@ -47,9 +48,9 @@ COPY fluxbox/aerokube.png /usr/share/images/fluxbox/
 COPY --from=go /devtools/devtools /usr/bin/
 
 # Android SDK
-ENV ANDROID_HOME /opt/android-sdk-linux
-ENV PATH /opt/android-sdk-linux/platform-tools:/opt/android-sdk-linux/tools:/opt/android-sdk-linux/tools/bin:/opt/android-sdk-linux/emulator:$PATH
-ENV LD_LIBRARY_PATH ${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/gles_swiftshader:${ANDROID_HOME}/emulator/lib64/qt/lib:${ANDROID_HOME}/emulator/lib64/vulkan:${LD_LIBRARY_PATH}
+ENV ANDROID_SDK_ROOT /opt
+ENV PATH $ANDROID_SDK_ROOT/cmdline-tools:$ANDROID_SDK_ROOT/cmdline-tools/tools/bin:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH
+ENV LD_LIBRARY_PATH ${ANDROID_SDK_ROOT}/emulator/lib64:${ANDROID_SDK_ROOT}/emulator/lib64/gles_swiftshader:${ANDROID_SDK_ROOT}/emulator/lib64/qt/lib:${ANDROID_SDK_ROOT}/emulator/lib64/vulkan:${LD_LIBRARY_PATH}
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 
 ARG ANDROID_DEVICE=""
@@ -64,26 +65,27 @@ ARG SDCARD_SIZE="500"
 ARG USERDATA_SIZE="500"
 
 RUN \
-	curl -o sdk-tools.zip https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip && \
-	mkdir -p /opt/android-sdk-linux /root/.config/Android\ Open\ Source\ Project/ && \
-	unzip -q sdk-tools.zip -d /opt/android-sdk-linux && \
+	curl -o sdk-tools.zip https://dl.google.com/android/repository/commandlinetools-linux-7583922_latest.zip && \
+	mkdir -p /opt/cmdline-tools /root/.config/Android\ Open\ Source\ Project/ && \
+	unzip -q sdk-tools.zip -d /opt/cmdline-tools && \
+    mv /opt/cmdline-tools/cmdline-tools /opt/cmdline-tools/tools &&\
 	rm sdk-tools.zip && \
 	yes | sdkmanager --licenses
 
 RUN \
-	sdkmanager "emulator" "tools" "platform-tools" "$BUILD_TOOLS" "platforms;$PLATFORM" "$EMULATOR_IMAGE" && \
+	sdkmanager "tools" "platform-tools" "$BUILD_TOOLS" "platforms;$PLATFORM" "$EMULATOR_IMAGE" && \
 	mksdcard "$SDCARD_SIZE"M sdcard.img && \
 	echo "no" | ( \
-	    ([ -n "$ANDROID_DEVICE" ] && avdmanager create avd -n "$AVD_NAME" -k "$EMULATOR_IMAGE" --abi "$ANDROID_ABI" --device "$ANDROID_DEVICE" --sdcard /sdcard.img ) || \
-	    avdmanager create avd -n "$AVD_NAME" -k "$EMULATOR_IMAGE" --abi "$ANDROID_ABI" --sdcard /sdcard.img \
+	    ([ -n "$ANDROID_DEVICE" ] && avdmanager create avd -n "$AVD_NAME" -k "$EMULATOR_IMAGE" --abi "$ANDROID_ABI" --device "$ANDROID_DEVICE" --sdcard sdcard.img ) || \
+	    avdmanager create avd -n "$AVD_NAME" -k "$EMULATOR_IMAGE" --abi "$ANDROID_ABI" --sdcard sdcard.img \
     ) && \
 	ldconfig && \
 	( \
 	    resize2fs /root/.android/avd/$AVD_NAME.avd/userdata.img "$USERDATA_SIZE"M || \
-	    /opt/android-sdk-linux/emulator/qemu-img resize -f raw /root/.android/avd/$AVD_NAME.avd/userdata.img "$USERDATA_SIZE"M \
+	    /opt/emulator/qemu-img resize -f raw /root/.android/avd/$AVD_NAME.avd/userdata.img "$USERDATA_SIZE"M \
     ) && \
 	([ -z "$REPLACE_IMG" ] || mv /root/.android/avd/$AVD_NAME.avd/userdata.img /root/.android/avd/$AVD_NAME.avd/userdata-qemu.img ) && \
-	rm /opt/android-sdk-linux/system-images/$PLATFORM/$EMULATOR_IMAGE_TYPE/"$ANDROID_ABI"/userdata.img
+	rm /opt/system-images/$PLATFORM/$EMULATOR_IMAGE_TYPE/"$ANDROID_ABI"/userdata.img
 
 COPY ["Emulator.conf", "/root/.config/Android Open Source Project/Emulator.conf"]
 COPY emulator-snapshot.sh tmp/chromedriver* *.apk /usr/bin/
