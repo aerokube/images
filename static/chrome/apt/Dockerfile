@@ -1,4 +1,4 @@
-FROM browsers/base:7.3.2
+FROM browsers/base:7.3.4
 
 ARG VERSION
 ARG PACKAGE=google-chrome-stable
