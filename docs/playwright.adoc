@@ -39,6 +39,7 @@ These images are used to run https://github.com/microsoft/playwright[Playwright]
 | playwright/chromium:playwright-1.17.0 | - | 1.17.0 | 98.0.4695.0
 | playwright/chromium:playwright-1.17.1 | - | 1.17.1 | 98.0.4695.0
 | playwright/chromium:playwright-1.17.2 | playwright/chromium:98.0 | 1.17.2 | 98.0.4695.0
+| playwright/chromium:playwright-1.18.0 | playwright/chromium:99.0 | 1.18.0 | 99.0.4812.0
 |===
 
 .Chrome Images
@@ -69,7 +70,8 @@ These images are used to run https://github.com/microsoft/playwright[Playwright]
 | playwright/chrome:playwright-1.16.3 | playwright/chrome:95.0 | 1.16.2 | 95.0.4638.69
 | playwright/chrome:playwright-1.17.0 | - | 1.17.0 | 96.0.4664.45
 | playwright/chrome:playwright-1.17.1 | playwright/chrome:96.0 | 1.17.1 | 96.0.4664.45
-| playwright/chrome:playwright-1.17.2 | playwright/chrome:97.0 | 1.17.2 | 97.0.4692.71
+| playwright/chrome:playwright-1.17.2 | - | 1.17.2 | 97.0.4692.71
+| playwright/chrome:playwright-1.18.0 | playwright/chrome:97.0 | 1.18.0 | 97.0.4692.99
 |===
 
 .Firefox Images
@@ -109,6 +111,7 @@ These images are used to run https://github.com/microsoft/playwright[Playwright]
 | playwright/firefox:playwright-1.17.0 | - | 1.17.0 | 94.0.1
 | playwright/firefox:playwright-1.17.1 | - | 1.17.1 | 94.0.1
 | playwright/firefox:playwright-1.17.2 | playwright/firefox:94.0 | 1.17.2 | 94.0.1
+| playwright/firefox:playwright-1.18.0 | playwright/firefox:95.0 | 1.18.0 | 95.0
 |===
 
 .Webkit (Safari Desktop) Images
@@ -147,5 +150,6 @@ These images are used to run https://github.com/microsoft/playwright[Playwright]
 | playwright/webkit:playwright-1.16.3 | - | 1.16.3 | 15.4
 | playwright/webkit:playwright-1.17.0 | - | 1.17.0 | 15.4
 | playwright/webkit:playwright-1.17.1 | - | 1.17.1 | 15.4
-| playwright/webkit:playwright-1.17.2 | playwright/webkit:15.4 | 1.17.2 | 15.4
+| playwright/webkit:playwright-1.17.2 | - | 1.17.2 | 15.4
+| playwright/webkit:playwright-1.18.0 | playwright/webkit:15.4 | 1.18.0 | 15.4
 |===
