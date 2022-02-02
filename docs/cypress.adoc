@@ -33,7 +33,9 @@ These images are used to run https://cypress.io/[Cypress] tests in parallel.
 | browsers/cypress-chromium:cypress-9.2.0 | - | 9.2.0 | 95.0.4638.69
 | browsers/cypress-chromium:cypress-9.2.1 | browsers/cypress-chromium:95.0 | 9.2.1 | 95.0.4638.69
 | browsers/cypress-chromium:cypress-9.3.0 | - | 9.3.0 | 97.0.4692.71
-| browsers/cypress-chromium:cypress-9.3.1 | browsers/cypress-chromium:97.0 | 9.3.1 | 97.0.4692.71
+| browsers/cypress-chromium:cypress-9.3.1 | - | 9.3.1 | 97.0.4692.71
+| browsers/cypress-chromium:cypress-9.4.0 | - | 9.4.0 | 97.0.4692.71
+| browsers/cypress-chromium:cypress-9.4.1 | browsers/cypress-chromium:97.0 | 9.4.1 | 97.0.4692.71
 |===
 
 .Chrome Images
@@ -68,6 +70,8 @@ These images are used to run https://cypress.io/[Cypress] tests in parallel.
 | browsers/cypress-chrome:cypress-9.2.1 | - | 9.2.1 | 97.0.4692.71
 | browsers/cypress-chrome:cypress-9.3.0 | - | 9.3.0 | 97.0.4692.71
 | browsers/cypress-chrome:cypress-9.3.1 | browsers/cypress-chrome:97.0 | 9.3.1 | 97.0.4692.71
+| browsers/cypress-chrome:cypress-9.4.0 | - | 9.4.0 | 98.0.4758.80
+| browsers/cypress-chrome:cypress-9.4.1 | browsers/cypress-chrome:98.0 | 9.4.1 | 98.0.4758.80
 |===
 
 .Electron Images
@@ -102,6 +106,8 @@ These images are used to run https://cypress.io/[Cypress] tests in parallel.
 | browsers/cypress-electron:cypress-9.2.1 | 9.2.1
 | browsers/cypress-electron:cypress-9.3.0 | 9.3.0
 | browsers/cypress-electron:cypress-9.3.1 | 9.3.1
+| browsers/cypress-electron:cypress-9.4.0 | 9.4.0
+| browsers/cypress-electron:cypress-9.4.1 | 9.4.1
 |===
 
 .Microsoft Edge Images
@@ -136,7 +142,9 @@ These images are used to run https://cypress.io/[Cypress] tests in parallel.
 | browsers/cypress-edge:cypress-9.2.0 | browsers/cypress-edge:96.0 | 9.2.0 | 96.0.1054.62
 | browsers/cypress-edge:cypress-9.2.1 | - | 9.2.1 | 97.0.1072.55
 | browsers/cypress-edge:cypress-9.3.0 | - | 9.3.0 | 97.0.1072.62
-| browsers/cypress-edge:cypress-9.3.1 | browsers/cypress-edge:97.0 | 9.3.1 | 97.0.1072.62
+| browsers/cypress-edge:cypress-9.3.1 | - | 9.3.1 | 97.0.1072.62
+| browsers/cypress-edge:cypress-9.4.0 | - | 9.4.0 | 97.0.1072.76
+| browsers/cypress-edge:cypress-9.4.1 | browsers/cypress-edge:97.0 | 9.4.1 | 97.0.1072.76
 |===
 
 .Firefox Images
@@ -170,5 +178,7 @@ These images are used to run https://cypress.io/[Cypress] tests in parallel.
 | browsers/cypress-firefox:cypress-9.2.0 | - | 9.2.0 | 95.0.1
 | browsers/cypress-firefox:cypress-9.2.1 | browsers/cypress-firefox:95.0 | 9.2.1 | 95.0.1
 | browsers/cypress-firefox:cypress-9.3.0 | - | 9.3.0 | 96.0
-| browsers/cypress-firefox:cypress-9.3.1 | browsers/cypress-firefox:96.0 | 9.3.1 | 96.0
+| browsers/cypress-firefox:cypress-9.3.1 | - | 9.3.1 | 96.0
+| browsers/cypress-firefox:cypress-9.4.0 | - | 9.4.0 | 96.0
+| browsers/cypress-firefox:cypress-9.4.1 | browsers/cypress-firefox:96.0 | 9.4.1 | 96.0
 |===
