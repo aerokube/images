@@ -39,6 +39,7 @@ DISPLAY="$DISPLAY" /usr/bin/xseld &
 XSELD_PID=$!
 
 if env | grep -q ROOT_CA_; then
+  mkdir -p /tmp/ca-certificates
   for e in $(env | grep ROOT_CA_ | sed -e 's/=.*$//'); do
     certname=$(echo -n $e | sed -e 's/ROOT_CA_//')
     echo ${!e} | base64 -d >/tmp/ca-certificates/${certname}.crt
