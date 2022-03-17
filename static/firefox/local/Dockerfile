@@ -1,4 +1,4 @@
-FROM browsers/base:7.3.4
+FROM browsers/base:7.3.5
 
 ARG VERSION=noop
 ARG PACKAGE=firefox
