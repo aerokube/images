@@ -38,6 +38,7 @@ These images are used to run https://cypress.io/[Cypress] tests in parallel.
 | browsers/cypress-chromium:cypress-9.4.1 | - | 9.4.1 | 97.0.4692.71
 | browsers/cypress-chromium:cypress-9.5.0 | - | 9.5.0 | 97.0.4692.71
 | browsers/cypress-chromium:cypress-9.5.1 | browsers/cypress-chromium:97.0 | 9.5.1 | 97.0.4692.71
+| browsers/cypress-chromium:cypress-9.5.2 | browsers/cypress-chromium:99.0 | 9.5.2 | 99.0.4844.51
 |===
 
 .Chrome Images
@@ -75,7 +76,8 @@ These images are used to run https://cypress.io/[Cypress] tests in parallel.
 | browsers/cypress-chrome:cypress-9.4.0 | - | 9.4.0 | 98.0.4758.80
 | browsers/cypress-chrome:cypress-9.4.1 | - | 9.4.1 | 98.0.4758.80
 | browsers/cypress-chrome:cypress-9.5.0 | browsers/cypress-chrome:98.0 | 9.5.0 | 98.0.4758.102
-| browsers/cypress-chrome:cypress-9.5.1 | browsers/cypress-chrome:99.0 | 9.5.1 | 99.0.4844.51
+| browsers/cypress-chrome:cypress-9.5.1 | - | 9.5.1 | 99.0.4844.51
+| browsers/cypress-chrome:cypress-9.5.2 | browsers/cypress-chrome:99.0 | 9.5.2 | 99.0.4844.74
 |===
 
 .Electron Images
@@ -114,6 +116,7 @@ These images are used to run https://cypress.io/[Cypress] tests in parallel.
 | browsers/cypress-electron:cypress-9.4.1 | 9.4.1
 | browsers/cypress-electron:cypress-9.5.0 | 9.5.0
 | browsers/cypress-electron:cypress-9.5.1 | 9.5.1
+| browsers/cypress-electron:cypress-9.5.2 | 9.5.2
 |===
 
 .Microsoft Edge Images
@@ -153,6 +156,7 @@ These images are used to run https://cypress.io/[Cypress] tests in parallel.
 | browsers/cypress-edge:cypress-9.4.1 | browsers/cypress-edge:97.0 | 9.4.1 | 97.0.1072.76
 | browsers/cypress-edge:cypress-9.5.0 | - | 9.5.0 | 98.0.1108.56
 | browsers/cypress-edge:cypress-9.5.1 | browsers/cypress-edge:98.0 | 9.5.1 | 98.0.1108.62
+| browsers/cypress-edge:cypress-9.5.2 | browsers/cypress-edge:99.0 | 9.5.2 | 99.0.1150.38
 |===
 
 .Firefox Images
@@ -191,4 +195,5 @@ These images are used to run https://cypress.io/[Cypress] tests in parallel.
 | browsers/cypress-firefox:cypress-9.4.1 | browsers/cypress-firefox:96.0 | 9.4.1 | 96.0
 | browsers/cypress-firefox:cypress-9.5.0 | - | 9.5.0 | 97.0
 | browsers/cypress-firefox:cypress-9.5.1 | browsers/cypress-firefox:97.0 | 9.5.1 | 97.0
+| browsers/cypress-firefox:cypress-9.5.2 | browsers/cypress-firefox:98.0 | 9.5.2 | 98.0
 |===
