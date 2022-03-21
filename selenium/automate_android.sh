@@ -31,7 +31,7 @@ validate_android_version(){
     type=${2:-"default"}
     abi=${3:-"x86"}
     avd_name="android$version-1"
-    build_tools="build-tools;29.0.2"
+    build_tools="build-tools;31.0.0"
     replace_img="y"
     case "$version" in
 	4.4)
@@ -79,6 +79,11 @@ validate_android_version(){
 	11.0)
         platform="android-30"
         emulator_image="system-images;android-30;$type;$abi"
+        replace_img=""
+		;;
+ 12.0)
+        platform="android-31"
+        emulator_image="system-images;android-31;$type;$abi"
         replace_img=""
 		;;
 	*)
@@ -151,7 +156,7 @@ mkdir -p "$TMP_DIR"
 cp android/entrypoint.sh "$TMP_DIR/entrypoint.sh"
 cp -r ../static/chrome/devtools "$TMP_DIR/devtools"
 
-appium_version=$(request_answer "Specify Appium version:" "1.18.1")
+appium_version=$(request_answer "Specify Appium version:" "1.22.0")
 
 until [ "$?" -ne 0 ]; do
     android_image_type=$(request_answer "Specify Android image type (possible values: \"default\", \"google_apis\", \"google_apis_playstore\", \"android-tv\", \"android-wear\"):" "default")

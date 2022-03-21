@@ -59,7 +59,7 @@ if [ -n "$STOP" ]; then exit 0; fi
 if [ "$ENABLE_VNC" != "true" ] && [ "$ENABLE_VIDEO" != "true" ]; then
     EMULATOR_ARGS="$EMULATOR_ARGS -no-window"
 fi
-ANDROID_AVD_HOME=/root/.android/avd DISPLAY="$DISPLAY" /opt/android-sdk-linux/emulator/emulator ${EMULATOR_ARGS} -writable-system -no-boot-anim -no-audio -no-jni -avd @AVD_NAME@ -sdcard /sdcard.img -skin "$SKIN" -skindir /opt/android-sdk-linux/platforms/@PLATFORM@/skins/ -gpu swiftshader_indirect -ranchu -qemu -enable-kvm &
+ANDROID_AVD_HOME=/root/.android/avd DISPLAY="$DISPLAY" /opt/emulator/emulator ${EMULATOR_ARGS} -writable-system -no-boot-anim -no-audio -no-jni -avd @AVD_NAME@ -sdcard sdcard.img -skin "$SKIN" -skindir /opt/platforms/@PLATFORM@/skins/ -gpu swiftshader_indirect -ranchu -qemu -enable-kvm &
 EMULATOR_PID=$!
 
 if [ "$ENABLE_VNC" == "true" ]; then
