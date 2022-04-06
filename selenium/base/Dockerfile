@@ -67,6 +67,7 @@ RUN \
     mkdir -p /home/selenium/.fluxbox && \
     chgrp -R 0 /home/selenium && \
     chmod -R g=u /home/selenium && \
+    ln -sf /bin/true /usr/bin/xdg-open && \
     apt-get clean && \
     rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/*
 
