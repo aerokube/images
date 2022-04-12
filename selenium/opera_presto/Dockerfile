@@ -1,4 +1,4 @@
-FROM browsers/base:7.3.5
+FROM browsers/base:7.3.6
 
 RUN  \
         curl -s https://deb.opera.com/archive.key | apt-key add - && \
