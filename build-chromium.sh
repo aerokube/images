@@ -10,7 +10,7 @@ docker rmi -f selenoid/vnc:$TAG browsers/base:$BASE_TAG $(docker images -q selen
 rm -rf ../selenoid-container-tests
 
 # Prepare for building images
-go get github.com/markbates/pkger/cmd/pkger
+go install github.com/markbates/pkger/cmd/pkger@latest
 go generate github.com/aerokube/images
 go build
 
