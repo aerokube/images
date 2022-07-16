@@ -55,7 +55,8 @@ These images are used to run https://github.com/microsoft/playwright[Playwright]
 | playwright/chromium:playwright-1.23.0 | - | 1.23.0 | 104.0.5112.20
 | playwright/chromium:playwright-1.23.1 | - | 1.23.1 | 104.0.5112.20
 | playwright/chromium:playwright-1.23.2 | - | 1.23.2 | 104.0.5112.20
-| playwright/chromium:playwright-1.23.3 | playwright/chromium:104.0 | 1.23.3 | 104.0.5112.20
+| playwright/chromium:playwright-1.23.3 | - | 1.23.3 | 104.0.5112.20
+| playwright/chromium:playwright-1.23.4 | playwright/chromium:104.0 | 1.23.4 | 104.0.5112.20
 |===
 
 .Chrome Images
@@ -103,7 +104,8 @@ These images are used to run https://github.com/microsoft/playwright[Playwright]
 | playwright/chrome:playwright-1.23.0 | - | 1.23.0 | 103.0.5060.53
 | playwright/chrome:playwright-1.23.1 | - | 1.23.1 | 103.0.5060.53
 | playwright/chrome:playwright-1.23.2 | - | 1.23.2 | 103.0.5060.53
-| playwright/chrome:playwright-1.23.3 | playwright/chrome:103.0 | 1.23.3 | 103.0.5060.53
+| playwright/chrome:playwright-1.23.3 | - | 1.23.3 | 103.0.5060.53
+| playwright/chrome:playwright-1.23.4 | playwright/chrome:103.0 | 1.23.4 | 103.0.5060.53
 |===
 
 .Firefox Images
@@ -159,7 +161,8 @@ These images are used to run https://github.com/microsoft/playwright[Playwright]
 | playwright/firefox:playwright-1.23.0 | - | 1.23.0 | 100.0.2
 | playwright/firefox:playwright-1.23.1 | - | 1.23.1 | 100.0.2
 | playwright/firefox:playwright-1.23.2 | - | 1.23.2 | 100.0.2
-| playwright/firefox:playwright-1.23.3 | playwright/firefox:100.0.2 | 1.23.3 | 100.0.2
+| playwright/firefox:playwright-1.23.3 | - | 1.23.3 | 100.0.2
+| playwright/firefox:playwright-1.23.4 | playwright/firefox:100.0.2 | 1.23.4 | 100.0.2
 |===
 
 .Webkit (Safari Desktop) Images
@@ -215,5 +218,6 @@ These images are used to run https://github.com/microsoft/playwright[Playwright]
 | playwright/webkit:playwright-1.23.0 | - | 1.23.0 | 15.4
 | playwright/webkit:playwright-1.23.1 | - | 1.23.1 | 15.4
 | playwright/webkit:playwright-1.23.2 | - | 1.23.2 | 15.4
-| playwright/webkit:playwright-1.23.3 | playwright/webkit:15.4 | 1.23.3 | 15.4
+| playwright/webkit:playwright-1.23.3 | - | 1.23.3 | 15.4
+| playwright/webkit:playwright-1.23.4 | playwright/webkit:15.4 | 1.23.4 | 15.4
 |===
