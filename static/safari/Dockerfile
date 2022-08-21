@@ -1,4 +1,4 @@
-FROM ubuntu:22.04 as build
+FROM ubuntu:20.04 as build
 
 ARG WEBKIT_VERSION="613.1.17"
 
