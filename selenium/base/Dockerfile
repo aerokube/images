@@ -1,6 +1,6 @@
-ARG UBUNTU_VERSION=20.04
+ARG UBUNTU_VERSION=22.04
 
-FROM golang:1.17 as go
+FROM golang:1.18 as go
 
 COPY xseld /xseld
 

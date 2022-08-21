@@ -1,3 +1,3 @@
-module github.com/aerokube/webkit-images/prism
+module github.com/aerokube/images/prism
 
-go 1.17
+go 1.18

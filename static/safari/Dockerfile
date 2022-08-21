@@ -1,6 +1,6 @@
 FROM ubuntu:20.04 as build
 
-ARG WEBKIT_VERSION="610.4.3.1.7"
+ARG WEBKIT_VERSION="613.1.17"
 
 RUN \
     apt-get update && \
@@ -9,12 +9,12 @@ RUN \
     mkdir -p /opt/webkit && \
     cd webkit && \
     yes | DEBIAN_FRONTEND=noninteractive Tools/gtk/install-dependencies && \
-    cmake -DPORT=GTK -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/webkit -DUSE_WPE_RENDERER=OFF -DENABLE_MINIBROWSER=ON -DENABLE_BUBBLEWRAP_SANDBOX=OFF -DENABLE_GAMEPAD=OFF -DENABLE_SPELLCHECK=OFF -DENABLE_WAYLAND_TARGET=OFF -DUSE_OPENJPEG=OFF -DUSE_SOUP2=ON -GNinja && \
+    cmake -DPORT=GTK -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/webkit -DUSE_WPE_RENDERER=OFF -DENABLE_MINIBROWSER=ON -DENABLE_BUBBLEWRAP_SANDBOX=OFF -DENABLE_GAMEPAD=OFF -DENABLE_SPELLCHECK=OFF -DENABLE_WAYLAND_TARGET=OFF -DUSE_OPENJPEG=OFF -DUSE_SOUP3=ON -GNinja && \
     ninja && \
     ninja install && \
     rm -Rf /var/lib/apt/lists/*
 
-FROM golang:1.17 as go
+FROM golang:1.18 as go
 
 COPY cmd/prism /prism
 
@@ -36,7 +36,7 @@ ENV LD_LIBRARY_PATH /opt/webkit/lib/:${LD_LIBRARY_PATH}
 RUN \
     apt-get update && \
     apt-get -y install --no-install-recommends \
-        libsoup2.4-1 \
+        libsoup-3.0-0 \
         libgtk-3-0 \
         libwebp6 \
         libwebpdemux2 \
