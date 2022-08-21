@@ -1,4 +1,4 @@
-FROM ubuntu:20.04 as build
+FROM ubuntu:22.04 as build
 
 ARG WEBKIT_VERSION="613.1.17"
 
@@ -26,7 +26,7 @@ RUN \
     upx /prism/prism && \
     rm -Rf /var/lib/apt/lists/*
 
-FROM browsers/base:7.3.6
+FROM browsers/base:7.4.0
 
 COPY --from=build /opt/webkit /opt/webkit
 COPY --from=go /prism/prism /usr/bin/
