@@ -31,13 +31,13 @@ RUN \
     dpkg-reconfigure -f noninteractive tzdata && \
     echo "gtk-cursor-blink=0" > /root/.gtkrc-2.0 && \
     apt update && \
+    apt install -y ttf-dejavu-core || true && \
+    apt install -y fonts-ubuntu-font-family-console || apt install -y fonts-ubuntu-console && \
     apt install -y ttf-mscorefonts-installer \
-    ttf-dejavu-core \
     fontconfig \
     fontconfig-config \
     fonts-dejavu-core \
     fonts-liberation \
-    fonts-ubuntu-font-family-console \
     fonts-wqy-zenhei \
     fonts-thai-tlwg-ttf \
     fonts-ipafont-mincho \
