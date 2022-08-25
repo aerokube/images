@@ -1,11 +1,11 @@
-FROM ubuntu:20.04 as build
+FROM ubuntu:22.04 as build
 
-ARG WEBKIT_VERSION="613.1.17"
+ARG WEBKIT_TAG="main"
 
 RUN \
     apt-get update && \
-    apt-get -y install --no-install-recommends ca-certificates subversion && \
-    svn checkout https://svn.webkit.org/repository/webkit/tags/Safari-$WEBKIT_VERSION webkit && \
+    apt-get -y install --no-install-recommends ca-certificates git libsoup-3.0-dev && \
+    git clone --depth 1 --single-branch --branch "$WEBKIT_TAG" https://github.com/WebKit/WebKit.git webkit && \
     mkdir -p /opt/webkit && \
     cd webkit && \
     yes | DEBIAN_FRONTEND=noninteractive Tools/gtk/install-dependencies && \
