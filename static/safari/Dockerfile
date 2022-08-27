@@ -4,7 +4,7 @@ ARG WEBKIT_TAG="main"
 
 RUN \
     apt-get update && \
-    apt-get -y install --no-install-recommends ca-certificates git libsoup-3.0-dev && \
+    apt-get -y install --no-install-recommends ca-certificates git && \
     git clone --depth 1 --single-branch --branch "$WEBKIT_TAG" https://github.com/WebKit/WebKit.git webkit && \
     mkdir -p /opt/webkit && \
     cd webkit && \
