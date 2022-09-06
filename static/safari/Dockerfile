@@ -1,6 +1,6 @@
 FROM ubuntu:22.04 as build
 
-ARG WEBKIT_TAG="main"
+ARG WEBKIT_TAG="WebKit-7615.1.4.3 "
 
 RUN \
     apt-get update && \
@@ -9,7 +9,7 @@ RUN \
     mkdir -p /opt/webkit && \
     cd webkit && \
     yes | DEBIAN_FRONTEND=noninteractive Tools/gtk/install-dependencies && \
-    cmake -DPORT=GTK -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/webkit -DUSE_WPE_RENDERER=OFF -DENABLE_MINIBROWSER=ON -DENABLE_BUBBLEWRAP_SANDBOX=OFF -DENABLE_GAMEPAD=OFF -DENABLE_SPELLCHECK=OFF -DENABLE_WAYLAND_TARGET=OFF -DUSE_OPENJPEG=OFF -DUSE_SOUP3=ON -GNinja && \
+    cmake -DPORT=GTK -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/webkit -DUSE_WPE_RENDERER=OFF -DENABLE_MINIBROWSER=ON -DENABLE_BUBBLEWRAP_SANDBOX=OFF -DENABLE_GAMEPAD=OFF -DENABLE_SPELLCHECK=OFF -DENABLE_WAYLAND_TARGET=OFF -DUSE_OPENJPEG=OFF -GNinja && \
     ninja && \
     ninja install && \
     rm -Rf /var/lib/apt/lists/*
@@ -38,7 +38,7 @@ RUN \
     apt-get -y install --no-install-recommends \
         libsoup-3.0-0 \
         libgtk-3-0 \
-        libwebp6 \
+        libwebp7 \
         libwebpdemux2 \
         libsecret-1-0 \
         libhyphen0 \
