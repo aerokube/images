@@ -1,6 +1,6 @@
 FROM ubuntu:22.04 as build
 
-ARG WEBKIT_TAG="WebKit-7615.1.4.3 "
+ARG WEBKIT_TAG="WebKit-7615.1.4.3"
 
 RUN \
     apt-get update && \
