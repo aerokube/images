@@ -1,6 +1,6 @@
 FROM ubuntu:22.04 as build
 
-ARG WEBKIT_TAG="WebKit-7615.1.4.3"
+ARG WEBKIT_TAG="main"
 
 RUN \
     apt-get update && \
@@ -48,7 +48,8 @@ RUN \
         libopenjp2-7 \
         libnotify4 \
         libxslt1.1 \
-        libegl1 && \
+        libegl1 \
+        libatomic1 && \
     ldconfig && \
     apt-get clean && \
     rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/* && \
