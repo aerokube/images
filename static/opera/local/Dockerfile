@@ -42,6 +42,7 @@ RUN \
          libxss1 \
          libxtst6 \
          debconf \
+         libgbm1 \
          gnupg \
          libudev1 \
          ca-certificates \

@@ -76,6 +76,8 @@ We do not consider these images really stable. Many of base operations like work
 | selenoid/opera:86.0 | selenoid/vnc_opera:86.0 | 100.0.4896.127 | 86.0.4363.50
 | - | - | - | 87.0.x.x (no published Operadriver exists)
 | selenoid/opera:88.0 | selenoid/vnc_opera:88.0 | 102.0.5005.61 | 88.0.4412.40
+| selenoid/opera:89.0 | selenoid/vnc_opera:89.0 | 103.0.5060.66 | 89.0.4447.97
+| selenoid/opera:90.0 | selenoid/vnc_opera:90.0 | 104.0.5112.81 | 90.0.4480.84
 |===
 
 [NOTE]
