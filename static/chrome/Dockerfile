@@ -15,7 +15,7 @@ FROM selenoid/dev_chrome:$VERSION
 
 ENV DBUS_SESSION_BUS_ADDRESS=/dev/null
 COPY --from=go /devtools/devtools /usr/bin/
-COPY component_update.json /etc/opt/chrome/policies/managed/
+COPY policies.json /etc/opt/chrome/policies/managed/
 COPY chromedriver /usr/bin/
 COPY entrypoint.sh /
 

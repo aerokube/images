@@ -44,6 +44,7 @@ RUN \
     fonts-sahadeva \
     fonts-noto-unhinted \
     fonts-noto-color-emoji \
+    jq \
     libfontconfig1 \
     libfontenc1 \
     libfreetype6 \
