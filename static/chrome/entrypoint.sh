@@ -52,6 +52,14 @@ if env | grep -q ROOT_CA_; then
   done
 fi
 
+if env | grep -q CH_POLICY_; then
+  for p in $(env | grep CH_POLICY_ | sed 's/CH_POLICY_//'); do
+    jsonkey=$(echo $p | sed 's/=.*//')
+    jsonvalue=$(echo $p | sed 's/^.*=//')
+    cat <<< $(jq --arg key $jsonkey --argjson value $jsonvalue '.[$key] = $value' /etc/opt/chrome/policies/managed/policies.json) > /etc/opt/chrome/policies/managed/policies.json
+  done
+fi
+
 /usr/bin/fileserver &
 FILESERVER_PID=$!
 
