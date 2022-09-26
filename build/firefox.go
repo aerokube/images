@@ -150,7 +150,7 @@ func (c *Firefox) channelToBuildArgs() []string {
 	case "esr":
 		return []string{"PACKAGE=firefox-esr", "PPA=ppa:mozillateam/ppa"}
 	default:
-		return []string{}
+		return []string{"PPA=ppa:mozillateam/ppa"}
 	}
 }
 
