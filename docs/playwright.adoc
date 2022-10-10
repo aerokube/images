@@ -65,6 +65,7 @@ These images are used to run https://github.com/microsoft/playwright[Playwright]
 | playwright/chromium:playwright-1.25.2 | playwright/chromium:105.0 | 1.25.2 | 105.0.5195.19
 | playwright/chromium:playwright-1.26.0 | - | 1.26.0 | 106.0.5249.30
 | playwright/chromium:playwright-1.26.1 | playwright/chromium:106.0 | 1.26.1 | 106.0.5249.30
+| playwright/chromium:playwright-1.27.0 | playwright/chromium:107.0 | 1.27.0 | 107.0.5304.18
 |===
 
 .Chrome Images
@@ -121,7 +122,8 @@ These images are used to run https://github.com/microsoft/playwright[Playwright]
 | playwright/chrome:playwright-1.25.1 | playwright/chrome:104.0 | 1.25.1 | 104.0.5112.101
 | playwright/chrome:playwright-1.25.2 | - | 1.25.2 | 105.0.5195.102
 | playwright/chrome:playwright-1.26.0 | playwright/chrome:105.0 | 1.26.0 | 105.0.5195.125
-| playwright/chrome:playwright-1.26.1 | playwright/chrome:106.0 | 1.26.1 | 106.0.5249.61
+| playwright/chrome:playwright-1.26.1 | - | 1.26.1 | 106.0.5249.61
+| playwright/chrome:playwright-1.27.0 | playwright/chrome:106.0 | 1.27.0 | 106.0.5249.103
 |===
 
 .Firefox Images
@@ -187,6 +189,7 @@ These images are used to run https://github.com/microsoft/playwright[Playwright]
 | playwright/firefox:playwright-1.25.2 | playwright/firefox:103.0 | 1.25.2 | 103.0
 | playwright/firefox:playwright-1.26.0 | - | 1.26.0 | 104.0
 | playwright/firefox:playwright-1.26.1 | playwright/firefox:104.0 | 1.26.1 | 104.0
+| playwright/firefox:playwright-1.27.0 | playwright/firefox:105.0 | 1.27.0 | 105.0.1
 |===
 
 .Webkit (Safari Desktop) Images
@@ -251,5 +254,6 @@ These images are used to run https://github.com/microsoft/playwright[Playwright]
 | playwright/webkit:playwright-1.25.1 | - | 1.25.1 | 16.0
 | playwright/webkit:playwright-1.25.2 | - | 1.25.2 | 16.0
 | playwright/webkit:playwright-1.26.0 | - | 1.26.0 | 16.0
-| playwright/webkit:playwright-1.26.1 | playwright/webkit:16.0 | 1.26.1 | 16.0
+| playwright/webkit:playwright-1.26.1 | - | 1.26.1 | 16.0
+| playwright/webkit:playwright-1.27.0 | playwright/webkit:16.0 | 1.27.0 | 16.0
 |===
