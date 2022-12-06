@@ -1,10 +1,10 @@
 ARG VERSION
 FROM selenoid/dev_yandex:$VERSION
 
-COPY yandexdriver /usr/bin/
+COPY chromedriver /usr/bin/
 COPY entrypoint.sh /
 
-RUN chmod +x /usr/bin/yandexdriver
+RUN chmod +x /usr/bin/chromedriver
 USER selenium
 
 EXPOSE 4444

@@ -96,15 +96,27 @@ func (yb *YandexBrowser) Build() error {
 	return nil
 }
 
+// Old function:
+// func (yb *YandexBrowser) downloadYandexDriver(dir string) (string, error) {
+// 	version := yb.DriverVersion
+// 	u, err := githubLinuxAssetURL("yandex/YandexDriver", version)
+// 	if err != nil {
+// 		return "", fmt.Errorf("yandexdriver url: %v", err)
+// 	}
+
+// 	_, err = downloadDriver(u, yandexDriverBinary, dir)
+// 	if err != nil {
+// 		return "", fmt.Errorf("download Yandexdriver: %v", err)
+// 	}
+// 	return version, nil
+// }
+
+// New function:
 func (yb *YandexBrowser) downloadYandexDriver(dir string) (string, error) {
 	version := yb.DriverVersion
-	u, err := githubLinuxAssetURL("yandex/YandexDriver", version)
-	if err != nil {
-		return "", fmt.Errorf("yandexdriver url: %v", err)
-	}
-
-	_, err = downloadDriver(u, yandexDriverBinary, dir)
-	if err != nil {
+	u := fmt.Sprintf("http://chromedriver.storage.googleapis.com/%s/chromedriver_linux64.zip", version)
+    _, err := downloadDriver(u, chromeDriverBinary, dir)
+    if err != nil {
 		return "", fmt.Errorf("download Yandexdriver: %v", err)
 	}
 	return version, nil
