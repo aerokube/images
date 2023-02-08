@@ -6,6 +6,7 @@ COPY devtools /devtools
 RUN \
     apt-get update && \
     apt-get install -y upx-ucl && \
+    apt-get install -y xdotool && \
     cd /devtools && \
     go test -race && \
     GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" && \
