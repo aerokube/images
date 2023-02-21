@@ -74,6 +74,7 @@ These images are used to run https://cypress.io/[Cypress] tests in parallel.
 | browsers/cypress-chromium:cypress-12.4.1 | - | 12.4.1 | 109.0.5414.74
 | browsers/cypress-chromium:cypress-12.5.0 | - | 12.5.0 | 109.0.5414.74
 | browsers/cypress-chromium:cypress-12.5.1 | browsers/cypress-chromium:109.0 | 12.5.1 | 109.0.5414.74
+| browsers/cypress-chromium:cypress-12.6.0 | browsers/cypress-chromium:110.0 | 12.6.0 | 110.0.5481.100
 |===
 
 .Chrome Images
@@ -147,7 +148,8 @@ These images are used to run https://cypress.io/[Cypress] tests in parallel.
 | browsers/cypress-chrome:cypress-12.4.0 | - | 12.4.0 | 109.0.5414.119
 | browsers/cypress-chrome:cypress-12.4.1 | browsers/cypress-chrome:109.0 | 12.4.1 | 109.0.5414.119
 | browsers/cypress-chrome:cypress-12.5.0 | - | 12.5.0 | 110.0.5481.77
-| browsers/cypress-chrome:cypress-12.5.1 | browsers/cypress-chrome:110.0 | 12.5.1 | 110.0.5481.77
+| browsers/cypress-chrome:cypress-12.5.1 | - | 12.5.1 | 110.0.5481.77
+| browsers/cypress-chrome:cypress-12.6.0 | browsers/cypress-chrome:110.0 | 12.6.0 | 110.0.5481.100
 |===
 
 .Electron Images
@@ -222,6 +224,7 @@ These images are used to run https://cypress.io/[Cypress] tests in parallel.
 | browsers/cypress-electron:cypress-12.4.1 | 12.4.1
 | browsers/cypress-electron:cypress-12.5.0 | 12.5.0
 | browsers/cypress-electron:cypress-12.5.1 | 12.5.1
+| browsers/cypress-electron:cypress-12.6.0 | 12.6.0
 |===
 
 .Microsoft Edge Images
@@ -297,6 +300,7 @@ These images are used to run https://cypress.io/[Cypress] tests in parallel.
 | browsers/cypress-edge:cypress-12.4.1 | - | 12.4.1 | 109.0.1518.61
 | browsers/cypress-edge:cypress-12.5.0 | - | 12.5.0 | 109.0.1518.78
 | browsers/cypress-edge:cypress-12.5.1 | browsers/cypress-edge:109.0 | 12.5.1 | 109.0.1518.78
+| browsers/cypress-edge:cypress-12.6.0 | browsers/cypress-edge:110.0 | 12.6.0 | 110.0.1587.50
 |===
 
 .Firefox Images
@@ -370,5 +374,6 @@ These images are used to run https://cypress.io/[Cypress] tests in parallel.
 | browsers/cypress-firefox:cypress-12.4.0 | - | 12.4.0 | 109.0
 | browsers/cypress-firefox:cypress-12.4.1 | browsers/cypress-firefox:109.0 | 12.4.1 | 109.0.1
 | browsers/cypress-firefox:cypress-12.5.0 | - | 12.5.0 | 110.0
-| browsers/cypress-firefox:cypress-12.5.1 | browsers/cypress-firefox:110.0 | 12.5.1 | 110.0
+| browsers/cypress-firefox:cypress-12.5.1 | - | 12.5.1 | 110.0
+| browsers/cypress-firefox:cypress-12.6.0 | browsers/cypress-firefox:110.0 | 12.6.0 | 110.0
 |===
