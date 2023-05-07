@@ -1,4 +1,4 @@
-FROM golang:1.18 as go
+FROM golang:1.20 as go
 
 COPY tmp/devtools /devtools
 
@@ -9,7 +9,7 @@ RUN \
     GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" && \
     upx /devtools/devtools
 
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 ARG APPIUM_VERSION="1.8.1"
 
@@ -17,7 +17,7 @@ RUN \
     apt update && \
     apt remove -y libcurl4 && \
     apt install -y apt-transport-https ca-certificates tzdata locales libcurl4 curl gnupg && \
-	curl --silent --location https://deb.nodesource.com/setup_12.x | bash - && \
+	curl --silent --location https://deb.nodesource.com/setup_16.x | bash - && \
 	apt install -y --no-install-recommends \
 	    curl \
 	    iproute2 \
