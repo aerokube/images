@@ -1,8 +1,8 @@
-FROM browsers/base:7.2
+FROM browsers/base:7.4.0
 
 ARG VERSION
-ARG PACKAGE=microsoft-edge-beta
-ARG INSTALL_DIR=msedge-beta
+ARG PACKAGE=microsoft-edge-stable
+ARG INSTALL_DIR=msedge
 
 LABEL browser=$PACKAGE:$VERSION
 
@@ -11,6 +11,10 @@ RUN \
         echo 'deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main' > /etc/apt/sources.list.d/microsoft-edge.list && \
         apt-get update && \
         apt-get -y --no-install-recommends install $PACKAGE=$VERSION && \
+        (  \
+          sed -i -e 's@exec -a "$0" "$HERE/msedge"@& --no-sandbox --disable-gpu@' /opt/microsoft/$INSTALL_DIR/$PACKAGE || \
+          sed -i -e 's@exec -a "$0" "$HERE/msedge"@& --no-sandbox --disable-gpu@' /opt/microsoft/$INSTALL_DIR/microsoft-edge \
+        ) && \
         chown root:root /opt/microsoft/$INSTALL_DIR/msedge-sandbox && \
         chmod 4755 /opt/microsoft/$INSTALL_DIR/msedge-sandbox && \
         microsoft-edge --version && \

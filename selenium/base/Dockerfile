@@ -1,21 +1,25 @@
-FROM golang:1.15 as go
+ARG UBUNTU_VERSION=22.04
+
+FROM golang:1.18 as go
 
 COPY xseld /xseld
 
 COPY fileserver /fileserver
 
 RUN \
+    if [ `uname -m` = "aarch64" ]; then ARCH="arm64"; else ARCH="amd64"; fi && \
     apt-get update && \
     apt-get install -y upx-ucl libx11-dev && \
     cd /xseld && \
-    GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" && \
+    GOOS=linux GOARCH=$ARCH go build -ldflags="-s -w" && \
     upx /xseld/xseld && \
     cd /fileserver && \
     go test -race && \
-    GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" && \
+    GOOS=linux GOARCH=$ARCH go build -ldflags="-s -w" && \
     upx /fileserver/fileserver
 
-FROM ubuntu:20.04
+# For M1 Chromium images it's required to override a version to 18.04 as latest Ubuntu distributions don't ship updates
+FROM ubuntu:$UBUNTU_VERSION
 
 RUN \
     apt update && \
@@ -27,19 +31,20 @@ RUN \
     dpkg-reconfigure -f noninteractive tzdata && \
     echo "gtk-cursor-blink=0" > /root/.gtkrc-2.0 && \
     apt update && \
+    apt install -y ttf-dejavu-core || true && \
+    apt install -y fonts-ubuntu-font-family-console || apt install -y fonts-ubuntu-console && \
     apt install -y ttf-mscorefonts-installer \
-    ttf-dejavu-core \
     fontconfig \
     fontconfig-config \
     fonts-dejavu-core \
     fonts-liberation \
-    fonts-ubuntu-font-family-console \
     fonts-wqy-zenhei \
     fonts-thai-tlwg-ttf \
     fonts-ipafont-mincho \
     fonts-sahadeva \
     fonts-noto-unhinted \
     fonts-noto-color-emoji \
+    jq \
     libfontconfig1 \
     libfontenc1 \
     libfreetype6 \
@@ -49,7 +54,6 @@ RUN \
     xfonts-base \
     xfonts-encodings \
     xfonts-utils \
-    flashplugin-installer \
     xvfb \
     pulseaudio \
     fluxbox \
@@ -58,6 +62,7 @@ RUN \
     wmctrl \
     libnss-wrapper \
     xsel && \
+    if [ `uname -m` = "amd64" ]; then apt install -y flashplugin-installer; fi && \
     mkdir -p /var/lib/locales/supported.d/ && grep UTF-8 /usr/share/i18n/SUPPORTED > /var/lib/locales/supported.d/all && \
     locale-gen && update-locale && \
     fc-cache -f -v && \
@@ -67,6 +72,7 @@ RUN \
     mkdir -p /home/selenium/.fluxbox && \
     chgrp -R 0 /home/selenium && \
     chmod -R g=u /home/selenium && \
+    ln -sf /bin/true /usr/bin/xdg-open && \
     apt-get clean && \
     rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/*
 

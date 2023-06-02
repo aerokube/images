@@ -48,7 +48,28 @@
 | selenoid/chrome:89.0 | selenoid/vnc_chrome:89.0 | 89.0.4389.23 | 89.0.4389.72
 | selenoid/chrome:90.0 | selenoid/vnc_chrome:90.0 | 90.0.4430.24 | 90.0.4430.72
 | selenoid/chrome:91.0 | selenoid/vnc_chrome:91.0 | 91.0.4472.101 | 91.0.4472.106
-| selenoid/chrome:92.0 | selenoid/vnc_chrome:92.0 | 92.0.4515.43 | 92.0.4515.107
+| selenoid/chrome:92.0 | selenoid/vnc_chrome:92.0 | 92.0.4515.107 | 92.0.4515.131
+| selenoid/chrome:93.0 | selenoid/vnc_chrome:93.0 | 93.0.4577.63 | 93.0.4577.63
+| selenoid/chrome:94.0 | selenoid/vnc_chrome:94.0 | 94.0.4606.61 | 94.0.4606.61
+| selenoid/chrome:95.0 | selenoid/vnc_chrome:95.0 | 95.0.4638.17 | 95.0.4638.54
+| selenoid/chrome:96.0 | selenoid/vnc_chrome:96.0 | 96.0.4664.45 | 96.0.4664.45
+| selenoid/chrome:97.0 | selenoid/vnc_chrome:97.0 | 97.0.4692.71 | 97.0.4692.71
+| selenoid/chrome:98.0 | selenoid/vnc_chrome:97.0 | 98.0.4758.48 | 98.0.4758.80
+| selenoid/chrome:99.0 | selenoid/vnc_chrome:99.0 | 99.0.4844.51 | 99.0.4844.51
+| selenoid/chrome:100.0 | selenoid/vnc_chrome:100.0 | 100.0.4896.20 | 100.0.4896.60
+| selenoid/chrome:101.0 | selenoid/vnc_chrome:101.0 | 101.0.4951.41 | 101.0.4951.54
+| selenoid/chrome:102.0 | selenoid/vnc_chrome:102.0 | 102.0.5005.61 | 102.0.5005.61
+| selenoid/chrome:103.0 | selenoid/vnc_chrome:103.0 | 103.0.5060.53 | 103.0.5060.114
+| selenoid/chrome:104.0 | selenoid/vnc_chrome:104.0 | 104.0.5112.79 | 104.0.5112.79
+| selenoid/chrome:105.0 | selenoid/vnc_chrome:105.0 | 105.0.5195.19 | 105.0.5195.102
+| selenoid/chrome:106.0 | selenoid/vnc_chrome:106.0 | 106.0.5249.61 | 106.0.5249.61
+| selenoid/chrome:107.0 | selenoid/vnc_chrome:107.0 | 107.0.5304.62 | 107.0.5304.87
+| selenoid/chrome:108.0 | selenoid/vnc_chrome:108.0 | 108.0.5359.71 | 108.0.5359.94
+| selenoid/chrome:109.0 | selenoid/vnc_chrome:109.0 | 109.0.5414.74 | 109.0.5414.74
+| selenoid/chrome:110.0 | selenoid/vnc_chrome:110.0 | 110.0.5481.77 | 110.0.5481.77
+| selenoid/chrome:111.0 | selenoid/vnc_chrome:111.0 | 111.0.5563.64 | 111.0.5563.64
+| selenoid/chrome:112.0 | selenoid/vnc_chrome:112.0 | 112.0.5615.49 | 112.0.5615.49
+| selenoid/chrome:113.0 | selenoid/vnc_chrome:113.0 | 113.0.5672.63 | 113.0.5672.126
 |===
 
 [NOTE]

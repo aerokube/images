@@ -1,4 +1,4 @@
-FROM browsers/base:7.2
+FROM browsers/base:7.4.0
 
 ARG VERSION=noop
 ARG PACKAGE=opera-stable
@@ -42,6 +42,7 @@ RUN \
          libxss1 \
          libxtst6 \
          debconf \
+         libgbm1 \
          gnupg \
          libudev1 \
          ca-certificates \

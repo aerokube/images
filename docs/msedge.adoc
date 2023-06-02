@@ -10,6 +10,26 @@ IMPORTANT: When adding Microsoft Edge to browsers.json - you have to use Microso
 | browsers/edge:89.0 | 89.0.731.0 | 89.0.731.0 (dev)
 | browsers/edge:90.0 | 90.0.789.1 | 90.0.789.1 (dev)
 | browsers/edge:91.0 | 91.0.831.1 | 91.0.831.1 (dev)
-| browsers/edge:92.0 | 92.0.902.9 | 92.0.902.8 (dev)
-| browsers/edge:93.0 | 93.0.910.5 | 93.0.910.5 (dev)
+| browsers/edge:92.0 | 92.0.902.9 | 92.0.902.62 (dev)
+| browsers/edge:93.0 | 93.0.961.2 | 93.0.961.18 (dev)
+| browsers/edge:94.0 | 94.0.992.19 | 94.0.992.19 (beta)
+| browsers/edge:95.0 | 95.0.1020.5 | 95.0.1020.9 (beta)
+| browsers/edge:96.0 | 96.0.1054.34 | 96.0.1054.34
+| browsers/edge:97.0 | 97.0.1072.8 | 97.0.1072.55
+| browsers/edge:98.0 | 98.0.1108.55 | 98.0.1108.56
+| browsers/edge:99.0 | 99.0.1150.7 | 99.0.1150.30
+| browsers/edge:100.0 | 100.0.1185.23 | 100.0.1185.39
+| browsers/edge:101.0 | 101.0.1210.32 | 101.0.1210.39
+| browsers/edge:102.0 | 102.0.1245.30 | 102.0.1245.30
+| browsers/edge:103.0 | 103.0.1264.45 | 103.0.1264.51
+| browsers/edge:104.0 | 104.0.1293.47 | 104.0.1293.47
+| browsers/edge:105.0 | 105.0.1343.27 | 105.0.1343.33
+| browsers/edge:106.0 | 106.0.1370.34 | 106.0.1370.37
+| browsers/edge:107.0 | 107.0.1418.62 | 107.0.1418.62
+| browsers/edge:108.0 | 108.0.1462.54 | 108.0.1462.54
+| browsers/edge:109.0 | 109.0.1518.61 | 109.0.1518.61
+| browsers/edge:110.0 | 110.0.1587.49 | 110.0.1587.50
+| browsers/edge:111.0 | 111.0.1661.41 | 111.0.1661.44
+| browsers/edge:112.0 | 112.0.1722.39 | 112.0.1722.39
+| browsers/edge:113.0 | 113.0.1774.42 | 113.0.1774.42
 |===

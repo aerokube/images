@@ -247,7 +247,7 @@ func latestGithubRelease(repo string) (string, error) {
 	return i.TagName, nil
 }
 
-func latestGithubLinuxAsset(repo string) (string, error) {
+func githubLinuxAssetURL(repo string, version string) (string, error) {
 	token := os.Getenv("GITHUB_TOKEN")
 	url := fmt.Sprintf("https://api.github.com/repos/%s/releases", repo)
 	data, err := sendGetWithAuth(url, token)
@@ -255,7 +255,7 @@ func latestGithubLinuxAsset(repo string) (string, error) {
 		return "", fmt.Errorf("get github releases data: %v", err)
 	}
 	type AssetInfo struct {
-		Name string `json:"name"`
+		BrowserDownloadURL string `json:"browser_download_url"`
 	}
 	type Release struct {
 		Assets []AssetInfo `json:"assets"`
@@ -268,8 +268,11 @@ func latestGithubLinuxAsset(repo string) (string, error) {
 	}
 	for _, release := range releases {
 		for _, asset := range release.Assets {
-			if strings.Contains(asset.Name, "linux") {
-				return asset.Name, nil
+			if version != LatestVersion && !strings.Contains(asset.BrowserDownloadURL, version) {
+				continue
+			}
+			if strings.Contains(asset.BrowserDownloadURL, "linux") {
+				return asset.BrowserDownloadURL, nil
 			}
 		}
 	}

@@ -25,9 +25,6 @@ clean() {
   if [ -n "$X11VNC_PID" ]; then
     kill -TERM "$X11VNC_PID"
   fi
-  if [ -n "$DEVTOOLS_PID" ]; then
-    kill -TERM "$DEVTOOLS_PID"
-  fi
   if [ -n "$PULSE_PID" ]; then
     kill -TERM "$PULSE_PID"
   fi
@@ -52,19 +49,8 @@ if env | grep -q ROOT_CA_; then
   done
 fi
 
-if env | grep -q CH_POLICY_; then
-  for p in $(env | grep CH_POLICY_ | sed 's/CH_POLICY_//'); do
-    jsonkey=$(echo $p | sed 's/=.*//')
-    jsonvalue=$(echo $p | sed 's/^.*=//')
-    cat <<< $(jq --arg key $jsonkey --argjson value $jsonvalue '.[$key] = $value' /etc/opt/chrome/policies/managed/policies.json) > /etc/opt/chrome/policies/managed/policies.json
-  done
-fi
-
 /usr/bin/fileserver &
 FILESERVER_PID=$!
-
-/usr/bin/devtools &
-DEVTOOLS_PID=$!
 
 DISPLAY="$DISPLAY" /usr/bin/xseld &
 XSELD_PID=$!

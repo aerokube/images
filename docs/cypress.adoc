@@ -17,7 +17,64 @@ These images are used to run https://cypress.io/[Cypress] tests in parallel.
 | browsers/cypress-chromium:cypress-7.5.0 | - | 7.5.0 | 91.0.4472.101
 | browsers/cypress-chromium:cypress-7.6.0 | - | 7.6.0 | 91.0.4472.101
 | browsers/cypress-chromium:cypress-7.7.0 | - | 7.7.0 | 91.0.4472.101
-| browsers/cypress-chromium:cypress-8.0.0 | browsers/cypress-chromium:91.0 | 8.0.0 | 91.0.4472.101
+| browsers/cypress-chromium:cypress-8.0.0 | - | 8.0.0 | 91.0.4472.101
+| browsers/cypress-chromium:cypress-8.1.0 | - | 8.1.0 | 91.0.4472.101
+| browsers/cypress-chromium:cypress-8.2.0 | - | 8.2.0 | 91.0.4472.101
+| browsers/cypress-chromium:cypress-8.3.0 | browsers/cypress-chromium:91.0 | 8.3.0 | 91.0.4472.101
+| browsers/cypress-chromium:cypress-8.3.1 | - | 8.3.1 | 92.0.4515.159
+| browsers/cypress-chromium:cypress-8.4.0 | - | 8.4.0 | 92.0.4515.159
+| browsers/cypress-chromium:cypress-8.4.1 | browsers/cypress-chromium:92.0 | 8.4.1 | 92.0.4515.159
+| browsers/cypress-chromium:cypress-8.5.0 | browsers/cypress-chromium:93.0 | 8.5.0 | 93.0.4577.63
+| browsers/cypress-chromium:cypress-8.6.0 | - | 8.6.0 | 94.0.4606.71
+| browsers/cypress-chromium:cypress-8.7.0 | browsers/cypress-chromium:94.0 | 8.7.0 | 94.0.4606.81
+| browsers/cypress-chromium:cypress-9.0.0 | - | 9.0.0 | 95.0.4638.69
+| browsers/cypress-chromium:cypress-9.1.0 | - | 9.1.0 | 95.0.4638.69
+| browsers/cypress-chromium:cypress-9.1.1 | - | 9.1.1 | 95.0.4638.69
+| browsers/cypress-chromium:cypress-9.2.0 | - | 9.2.0 | 95.0.4638.69
+| browsers/cypress-chromium:cypress-9.2.1 | browsers/cypress-chromium:95.0 | 9.2.1 | 95.0.4638.69
+| browsers/cypress-chromium:cypress-9.3.0 | - | 9.3.0 | 97.0.4692.71
+| browsers/cypress-chromium:cypress-9.3.1 | - | 9.3.1 | 97.0.4692.71
+| browsers/cypress-chromium:cypress-9.4.0 | - | 9.4.0 | 97.0.4692.71
+| browsers/cypress-chromium:cypress-9.4.1 | - | 9.4.1 | 97.0.4692.71
+| browsers/cypress-chromium:cypress-9.5.0 | - | 9.5.0 | 97.0.4692.71
+| browsers/cypress-chromium:cypress-9.5.1 | browsers/cypress-chromium:97.0 | 9.5.1 | 97.0.4692.71
+| browsers/cypress-chromium:cypress-9.5.2 | - | 9.5.2 | 99.0.4844.51
+| browsers/cypress-chromium:cypress-9.5.3 | - | 9.5.3 | 99.0.4844.84
+| browsers/cypress-chromium:cypress-9.5.4 | browsers/cypress-chromium:99.0 | 9.5.4 | 99.0.4844.84
+| browsers/cypress-chromium:cypress-9.6.0 | - | 9.6.0 | 100.0.4896.127
+| browsers/cypress-chromium:cypress-9.6.1 | browsers/cypress-chromium:100.0 | 9.6.1 | 100.0.4896.127
+| browsers/cypress-chromium:cypress-9.7.0 | - | 9.7.0 | 101.0.4951.64
+| browsers/cypress-chromium:cypress-10.0.0 | - | 10.0.0 | 101.0.4951.64
+| browsers/cypress-chromium:cypress-10.0.1 | - | 10.0.1 | 101.0.4951.64
+| browsers/cypress-chromium:cypress-10.0.2 | - | 10.0.2 | 101.0.4951.64
+| browsers/cypress-chromium:cypress-10.0.3 | - | 10.0.3 | 101.0.4951.64
+| browsers/cypress-chromium:cypress-10.1.0 | - | 10.1.0 | 101.0.4951.64
+| browsers/cypress-chromium:cypress-10.2.0 | - | 10.2.0 | 101.0.4951.64
+| browsers/cypress-chromium:cypress-10.3.0 | - | 10.3.0 | 101.0.4951.64
+| browsers/cypress-chromium:cypress-10.3.1 | browsers/cypress-chromium:101.0 | 10.3.1 | 101.0.4951.64
+| browsers/cypress-chromium:cypress-10.4.0 | - | 10.4.0 | 103.0.5060.134
+| browsers/cypress-chromium:cypress-10.5.0 | - | 10.5.0 | 103.0.5060.134
+| browsers/cypress-chromium:cypress-10.6.0 | browsers/cypress-chromium:103.0 | 10.6.0 | 103.0.5060.134
+| browsers/cypress-chromium:cypress-10.7.0 | - | 10.7.0 | 104.0.5112.101
+| browsers/cypress-chromium:cypress-10.8.0 | browsers/cypress-chromium:104.0 | 10.8.0 | 104.0.5112.101
+| browsers/cypress-chromium:cypress-10.9.0 | - | 10.9.0 | 105.0.5195.102
+| browsers/cypress-chromium:cypress-10.10.0 | - | 10.10.0 | 105.0.5195.102
+| browsers/cypress-chromium:cypress-10.11.0 | - | 10.11.0 | 105.0.5195.102
+| browsers/cypress-chromium:cypress-11.0.0 | - | 11.0.0 | 105.0.5195.102
+| browsers/cypress-chromium:cypress-11.0.1 | browsers/cypress-chromium:105.0 | 11.0.1 | 105.0.5195.102
+| browsers/cypress-chromium:cypress-11.1.0 | - | 11.1.0 | 107.0.5304.87
+| browsers/cypress-chromium:cypress-11.2.0 | browsers/cypress-chromium:107.0 | 11.2.0 | 107.0.5304.87
+| browsers/cypress-chromium:cypress-12.0.0 | - | 12.0.0 | 108.0.5359.71
+| browsers/cypress-chromium:cypress-12.0.1 | - | 12.0.1 | 108.0.5359.71
+| browsers/cypress-chromium:cypress-12.0.2 | - | 12.0.2 | 108.0.5359.71
+| browsers/cypress-chromium:cypress-12.1.0 | - | 12.1.0 | 108.0.5359.71
+| browsers/cypress-chromium:cypress-12.2.0 | - | 12.2.0 | 108.0.5359.71
+| browsers/cypress-chromium:cypress-12.3.0 | browsers/cypress-chromium:108.0 | 12.3.0 | 108.0.5359.71
+| browsers/cypress-chromium:cypress-12.4.0 | - | 12.4.0 | 109.0.5414.74
+| browsers/cypress-chromium:cypress-12.4.1 | - | 12.4.1 | 109.0.5414.74
+| browsers/cypress-chromium:cypress-12.5.0 | - | 12.5.0 | 109.0.5414.74
+| browsers/cypress-chromium:cypress-12.5.1 | browsers/cypress-chromium:109.0 | 12.5.1 | 109.0.5414.74
+| browsers/cypress-chromium:cypress-12.6.0 | browsers/cypress-chromium:110.0 | 12.6.0 | 110.0.5481.100
 |===
 
 .Chrome Images
@@ -36,6 +93,63 @@ These images are used to run https://cypress.io/[Cypress] tests in parallel.
 | browsers/cypress-chrome:cypress-7.6.0 | - | 7.6.0 | 91.0.4472.114
 | browsers/cypress-chrome:cypress-7.7.0 | - | 7.7.0 | 91.0.4472.114
 | browsers/cypress-chrome:cypress-8.0.0 | browsers/cypress-chrome:91.0 | 8.0.0 | 91.0.4472.164
+| browsers/cypress-chrome:cypress-8.1.0 | - | 8.1.0 | 92.0.4515.107
+| browsers/cypress-chrome:cypress-8.2.0 | - | 8.2.0 | 92.0.4515.131
+| browsers/cypress-chrome:cypress-8.3.0 | - | 8.3.0 | 92.0.4515.159
+| browsers/cypress-chrome:cypress-8.3.1 | browsers/cypress-chrome:92.0 | 8.3.1 | 92.0.4515.159
+| browsers/cypress-chrome:cypress-8.4.0 | - | 8.4.0 | 93.0.4577.82
+| browsers/cypress-chrome:cypress-8.4.1 | browsers/cypress-chrome:93.0 | 8.4.1 | 93.0.4577.82
+| browsers/cypress-chrome:cypress-8.5.0 | - | 8.5.0 | 94.0.4606.61
+| browsers/cypress-chrome:cypress-8.6.0 | browsers/cypress-chrome:94.0 | 8.6.0 | 94.0.4606.81
+| browsers/cypress-chrome:cypress-8.7.0 | - | 8.7.0 | 95.0.4638.54
+| browsers/cypress-chrome:cypress-9.0.0 | - | 9.0.0 | 96.0.4664.45
+| browsers/cypress-chrome:cypress-9.1.0 | - | 9.1.0 | 96.0.4664.45
+| browsers/cypress-chrome:cypress-9.1.1 | - | 9.1.1 | 96.0.4664.45
+| browsers/cypress-chrome:cypress-9.2.0 | browsers/cypress-chrome:96.0 | 9.2.0 | 96.0.4664.110
+| browsers/cypress-chrome:cypress-9.2.1 | - | 9.2.1 | 97.0.4692.71
+| browsers/cypress-chrome:cypress-9.3.0 | - | 9.3.0 | 97.0.4692.71
+| browsers/cypress-chrome:cypress-9.3.1 | browsers/cypress-chrome:97.0 | 9.3.1 | 97.0.4692.71
+| browsers/cypress-chrome:cypress-9.4.0 | - | 9.4.0 | 98.0.4758.80
+| browsers/cypress-chrome:cypress-9.4.1 | - | 9.4.1 | 98.0.4758.80
+| browsers/cypress-chrome:cypress-9.5.0 | browsers/cypress-chrome:98.0 | 9.5.0 | 98.0.4758.102
+| browsers/cypress-chrome:cypress-9.5.1 | - | 9.5.1 | 99.0.4844.51
+| browsers/cypress-chrome:cypress-9.5.2 | browsers/cypress-chrome:99.0 | 9.5.2 | 99.0.4844.74
+| browsers/cypress-chrome:cypress-9.5.3 | - | 9.5.3 | 100.0.4896.60
+| browsers/cypress-chrome:cypress-9.5.4 | - | 9.5.4 | 100.0.4896.88
+| browsers/cypress-chrome:cypress-9.6.0 | browsers/cypress-chrome:100.0 | 9.6.0 | 100.0.4896.127
+| browsers/cypress-chrome:cypress-9.6.1 | - | 9.6.1 | 101.0.4951.64
+| browsers/cypress-chrome:cypress-9.7.0 | browsers/cypress-chrome:101.0 | 9.7.0 | 101.0.4951.64
+| browsers/cypress-chrome:cypress-10.0.0 | - | 10.0.0 | 102.0.5005.115
+| browsers/cypress-chrome:cypress-10.0.1 | - | 10.0.1 | 102.0.5005.115
+| browsers/cypress-chrome:cypress-10.0.2 | - | 10.0.2 | 102.0.5005.115
+| browsers/cypress-chrome:cypress-10.0.3 | - | 10.0.3 | 102.0.5005.115
+| browsers/cypress-chrome:cypress-10.1.0 | browsers/cypress-chrome:102.0 | 10.1.0 | 102.0.5005.115
+| browsers/cypress-chrome:cypress-10.2.0 | - | 10.2.0 | 103.0.5060.53
+| browsers/cypress-chrome:cypress-10.3.0 | - | 10.3.0 | 103.0.5060.53
+| browsers/cypress-chrome:cypress-10.3.1 | browsers/cypress-chrome:103.0 | 10.3.1 | 103.0.5060.134
+| browsers/cypress-chrome:cypress-10.4.0 | - | 10.4.0 | 104.0.5112.79
+| browsers/cypress-chrome:cypress-10.5.0 | - | 10.5.0 | 104.0.5112.101
+| browsers/cypress-chrome:cypress-10.6.0 | browsers/cypress-chrome:104.0 | 10.6.0 | 104.0.5112.101
+| browsers/cypress-chrome:cypress-10.7.0 | - | 10.7.0 | 105.0.5195.52
+| browsers/cypress-chrome:cypress-10.8.0 | browsers/cypress-chrome:105.0 | 10.8.0 | 105.0.5195.125
+| browsers/cypress-chrome:cypress-10.9.0 | - | 10.9.0 | 106.0.5249.61
+| browsers/cypress-chrome:cypress-10.10.0 | browsers/cypress-chrome:106.0 | 10.10.0 | 106.0.5249.119
+| browsers/cypress-chrome:cypress-10.11.0 | - | 10.11.0 | 107.0.5304.87
+| browsers/cypress-chrome:cypress-11.0.0 | - | 11.0.0 | 107.0.5304.110
+| browsers/cypress-chrome:cypress-11.0.1 | - | 11.0.1 | 107.0.5304.110
+| browsers/cypress-chrome:cypress-11.1.0 | - | 11.1.0 | 107.0.5304.110
+| browsers/cypress-chrome:cypress-11.2.0 | browsers/cypress-chrome:107.0 | 11.2.0 | 107.0.5304.110
+| browsers/cypress-chrome:cypress-12.0.0 | - | 12.0.0 | 108.0.5359.98
+| browsers/cypress-chrome:cypress-12.0.1 | - | 12.0.1 | 108.0.5359.98
+| browsers/cypress-chrome:cypress-12.0.2 | - | 12.0.2 | 108.0.5359.98
+| browsers/cypress-chrome:cypress-12.1.0 | - | 12.1.0 | 108.0.5359.98
+| browsers/cypress-chrome:cypress-12.2.0 | - | 12.2.0 | 108.0.5359.124
+| browsers/cypress-chrome:cypress-12.3.0 | browsers/cypress-chrome:108.0 | 12.3.0 | 108.0.5359.124
+| browsers/cypress-chrome:cypress-12.4.0 | - | 12.4.0 | 109.0.5414.119
+| browsers/cypress-chrome:cypress-12.4.1 | browsers/cypress-chrome:109.0 | 12.4.1 | 109.0.5414.119
+| browsers/cypress-chrome:cypress-12.5.0 | - | 12.5.0 | 110.0.5481.77
+| browsers/cypress-chrome:cypress-12.5.1 | - | 12.5.1 | 110.0.5481.77
+| browsers/cypress-chrome:cypress-12.6.0 | browsers/cypress-chrome:110.0 | 12.6.0 | 110.0.5481.100
 |===
 
 .Electron Images
@@ -54,6 +168,63 @@ These images are used to run https://cypress.io/[Cypress] tests in parallel.
 | browsers/cypress-electron:cypress-7.6.0 | 7.6.0
 | browsers/cypress-electron:cypress-7.7.0 | 7.7.0
 | browsers/cypress-electron:cypress-8.0.0 | 8.0.0
+| browsers/cypress-electron:cypress-8.1.0 | 8.1.0
+| browsers/cypress-electron:cypress-8.2.0 | 8.2.0
+| browsers/cypress-electron:cypress-8.3.0 | 8.3.0
+| browsers/cypress-electron:cypress-8.3.1 | 8.3.1
+| browsers/cypress-electron:cypress-8.4.0 | 8.4.0
+| browsers/cypress-electron:cypress-8.4.1 | 8.4.1
+| browsers/cypress-electron:cypress-8.5.0 | 8.5.0
+| browsers/cypress-electron:cypress-8.6.0 | 8.6.0
+| browsers/cypress-electron:cypress-8.7.0 | 8.7.0
+| browsers/cypress-electron:cypress-9.0.0 | 9.0.0
+| browsers/cypress-electron:cypress-9.1.0 | 9.1.0
+| browsers/cypress-electron:cypress-9.1.1 | 9.1.1
+| browsers/cypress-electron:cypress-9.2.0 | 9.2.0
+| browsers/cypress-electron:cypress-9.2.1 | 9.2.1
+| browsers/cypress-electron:cypress-9.3.0 | 9.3.0
+| browsers/cypress-electron:cypress-9.3.1 | 9.3.1
+| browsers/cypress-electron:cypress-9.4.0 | 9.4.0
+| browsers/cypress-electron:cypress-9.4.1 | 9.4.1
+| browsers/cypress-electron:cypress-9.5.0 | 9.5.0
+| browsers/cypress-electron:cypress-9.5.1 | 9.5.1
+| browsers/cypress-electron:cypress-9.5.2 | 9.5.2
+| browsers/cypress-electron:cypress-9.5.3 | 9.5.3
+| browsers/cypress-electron:cypress-9.5.4 | 9.5.4
+| browsers/cypress-electron:cypress-9.6.0 | 9.6.0
+| browsers/cypress-electron:cypress-9.6.1 | 9.6.1
+| browsers/cypress-electron:cypress-9.7.0 | 9.7.0
+| browsers/cypress-electron:cypress-10.0.0 | 10.0.0
+| browsers/cypress-electron:cypress-10.0.1 | 10.0.1
+| browsers/cypress-electron:cypress-10.0.2 | 10.0.2
+| browsers/cypress-electron:cypress-10.0.3 | 10.0.3
+| browsers/cypress-electron:cypress-10.1.0 | 10.1.0
+| browsers/cypress-electron:cypress-10.2.0 | 10.2.0
+| browsers/cypress-electron:cypress-10.3.0 | 10.3.0
+| browsers/cypress-electron:cypress-10.3.1 | 10.3.1
+| browsers/cypress-electron:cypress-10.4.0 | 10.4.0
+| browsers/cypress-electron:cypress-10.5.0 | 10.5.0
+| browsers/cypress-electron:cypress-10.6.0 | 10.6.0
+| browsers/cypress-electron:cypress-10.7.0 | 10.7.0
+| browsers/cypress-electron:cypress-10.8.0 | 10.8.0
+| browsers/cypress-electron:cypress-10.9.0 | 10.9.0
+| browsers/cypress-electron:cypress-10.10.0 | 10.10.0
+| browsers/cypress-electron:cypress-10.11.0 | 10.11.0
+| browsers/cypress-electron:cypress-11.0.0 | 11.0.0
+| browsers/cypress-electron:cypress-11.0.1 | 11.0.1
+| browsers/cypress-electron:cypress-11.1.0 | 11.1.0
+| browsers/cypress-electron:cypress-11.2.0 | 11.2.0
+| browsers/cypress-electron:cypress-12.0.0 | 12.0.0
+| browsers/cypress-electron:cypress-12.0.1 | 12.0.1
+| browsers/cypress-electron:cypress-12.0.2 | 12.0.2
+| browsers/cypress-electron:cypress-12.1.0 | 12.1.0
+| browsers/cypress-electron:cypress-12.2.0 | 12.2.0
+| browsers/cypress-electron:cypress-12.3.0 | 12.3.0
+| browsers/cypress-electron:cypress-12.4.0 | 12.4.0
+| browsers/cypress-electron:cypress-12.4.1 | 12.4.1
+| browsers/cypress-electron:cypress-12.5.0 | 12.5.0
+| browsers/cypress-electron:cypress-12.5.1 | 12.5.1
+| browsers/cypress-electron:cypress-12.6.0 | 12.6.0
 |===
 
 .Microsoft Edge Images
@@ -72,7 +243,64 @@ These images are used to run https://cypress.io/[Cypress] tests in parallel.
 | browsers/cypress-edge:cypress-7.5.0 | - | 7.5.0 | 92.0.902.15
 | browsers/cypress-edge:cypress-7.6.0 | - | 7.6.0 | 92.0.902.15
 | browsers/cypress-edge:cypress-7.7.0 | - | 7.7.0 | 92.0.902.40
-| browsers/cypress-edge:cypress-8.0.0 | browsers/cypress-edge:92.0 | 8.0.0 | 92.0.902.49
+| browsers/cypress-edge:cypress-8.0.0 | - | 8.0.0 | 92.0.902.49
+| browsers/cypress-edge:cypress-8.1.0 | browsers/cypress-edge:92.0 | 8.1.0 | 92.0.902.62
+| browsers/cypress-edge:cypress-8.2.0 | - | 8.2.0 | 93.0.961.11
+| browsers/cypress-edge:cypress-8.3.0 | - | 8.3.0 | 93.0.961.18
+| browsers/cypress-edge:cypress-8.3.1 | browsers/cypress-edge:93.0 | 8.3.1 | 93.0.961.33
+| browsers/cypress-edge:cypress-8.4.0 | - | 8.4.0 | 94.0.992.19
+| browsers/cypress-edge:cypress-8.4.1 | browsers/cypress-edge:94.0 | 8.4.1 | 94.0.992.23
+| browsers/cypress-edge:cypress-8.5.0 | - | 8.5.0 | 95.0.1020.9
+| browsers/cypress-edge:cypress-8.6.0 | - | 8.6.0 | 95.0.1020.20
+| browsers/cypress-edge:cypress-8.7.0 | - | 8.7.0 | 95.0.1020.30
+| browsers/cypress-edge:cypress-9.0.0 | browsers/cypress-edge:95.0 | 9.0.0 | 95.0.1020.53
+| browsers/cypress-edge:cypress-9.1.0 | - | 9.1.0 | 96.0.4664.45
+| browsers/cypress-edge:cypress-9.1.1 | - | 9.1.1 | 96.0.1054.43
+| browsers/cypress-edge:cypress-9.2.0 | browsers/cypress-edge:96.0 | 9.2.0 | 96.0.1054.62
+| browsers/cypress-edge:cypress-9.2.1 | - | 9.2.1 | 97.0.1072.55
+| browsers/cypress-edge:cypress-9.3.0 | - | 9.3.0 | 97.0.1072.62
+| browsers/cypress-edge:cypress-9.3.1 | - | 9.3.1 | 97.0.1072.62
+| browsers/cypress-edge:cypress-9.4.0 | - | 9.4.0 | 97.0.1072.76
+| browsers/cypress-edge:cypress-9.4.1 | browsers/cypress-edge:97.0 | 9.4.1 | 97.0.1072.76
+| browsers/cypress-edge:cypress-9.5.0 | - | 9.5.0 | 98.0.1108.56
+| browsers/cypress-edge:cypress-9.5.1 | browsers/cypress-edge:98.0 | 9.5.1 | 98.0.1108.62
+| browsers/cypress-edge:cypress-9.5.2 | - | 9.5.2 | 99.0.1150.38
+| browsers/cypress-edge:cypress-9.5.3 | browsers/cypress-edge:99.0 | 9.5.3 | 99.0.1150.55
+| browsers/cypress-edge:cypress-9.5.4 | - | 9.5.4 | 100.0.1185.39
+| browsers/cypress-edge:cypress-9.6.0 | browsers/cypress-edge:100.0 | 9.6.0 | 100.0.1185.50
+| browsers/cypress-edge:cypress-9.6.1 | - | 9.6.1 | 101.0.1210.39
+| browsers/cypress-edge:cypress-9.7.0 | browsers/cypress-edge:101.0 | 9.7.0 | 101.0.1210.53
+| browsers/cypress-edge:cypress-10.0.0 | - | 10.0.0 | 102.0.1245.39
+| browsers/cypress-edge:cypress-10.0.1 | - | 10.0.1 | 102.0.1245.39
+| browsers/cypress-edge:cypress-10.0.2 | - | 10.0.2 | 102.0.1245.39
+| browsers/cypress-edge:cypress-10.0.3 | - | 10.0.3 | 102.0.1245.39
+| browsers/cypress-edge:cypress-10.1.0 | - | 10.1.0 | 102.0.1245.39
+| browsers/cypress-edge:cypress-10.2.0 | browsers/cypress-edge:102.0 | 10.2.0 | 102.0.1245.44
+| browsers/cypress-edge:cypress-10.3.0 | - | 10.3.0 | 103.0.1264.37
+| browsers/cypress-edge:cypress-10.3.1 | browsers/cypress-edge:103.0 | 10.3.1 | 103.0.1264.71
+| browsers/cypress-edge:cypress-10.4.0 | - | 10.4.0 | 104.0.1293.47
+| browsers/cypress-edge:cypress-10.5.0 | - | 10.5.0 | 104.0.1293.63
+| browsers/cypress-edge:cypress-10.6.0 | - | 10.6.0 | 104.0.1293.63
+| browsers/cypress-edge:cypress-10.7.0 | browsers/cypress-edge:104.0 | 10.7.0 | 104.0.1293.70
+| browsers/cypress-edge:cypress-10.8.0 | - | 10.8.0 | 105.0.1343.33
+| browsers/cypress-edge:cypress-10.9.0 | browsers/cypress-edge:105.0 | 10.9.0 | 105.0.1343.53
+| browsers/cypress-edge:cypress-10.10.0 | - | 10.10.0 | 106.0.1370.42
+| browsers/cypress-edge:cypress-10.11.0 | browsers/cypress-edge:106.0 | 10.11.0 | 106.0.1370.52
+| browsers/cypress-edge:cypress-11.0.0 | - | 11.0.0 | 107.0.1418.35
+| browsers/cypress-edge:cypress-11.0.1 | - | 11.0.1 | 107.0.1418.35
+| browsers/cypress-edge:cypress-11.1.0 | - | 11.1.0 | 107.0.1418.42
+| browsers/cypress-edge:cypress-11.2.0 | browsers/cypress-edge:107.0 | 11.2.0 | 107.0.1418.56
+| browsers/cypress-edge:cypress-12.0.0 | - | 12.0.0 | 108.0.1462.46
+| browsers/cypress-edge:cypress-12.0.1 | - | 12.0.1 | 108.0.1462.46
+| browsers/cypress-edge:cypress-12.0.2 | - | 12.0.2 | 108.0.1462.46
+| browsers/cypress-edge:cypress-12.1.0 | - | 12.1.0 | 108.0.1462.46
+| browsers/cypress-edge:cypress-12.2.0 | - | 12.2.0 | 108.0.1462.54
+| browsers/cypress-edge:cypress-12.3.0 | browsers/cypress-edge:108.0 | 12.3.0 | 108.0.1462.76
+| browsers/cypress-edge:cypress-12.4.0 | - | 12.4.0 | 109.0.1518.61
+| browsers/cypress-edge:cypress-12.4.1 | - | 12.4.1 | 109.0.1518.61
+| browsers/cypress-edge:cypress-12.5.0 | - | 12.5.0 | 109.0.1518.78
+| browsers/cypress-edge:cypress-12.5.1 | browsers/cypress-edge:109.0 | 12.5.1 | 109.0.1518.78
+| browsers/cypress-edge:cypress-12.6.0 | browsers/cypress-edge:110.0 | 12.6.0 | 110.0.1587.50
 |===
 
 .Firefox Images
@@ -90,5 +318,62 @@ These images are used to run https://cypress.io/[Cypress] tests in parallel.
 | browsers/cypress-firefox:cypress-7.5.0 | - | 7.5.0 | 89.0.1
 | browsers/cypress-firefox:cypress-7.6.0 | - | 7.6.0 | 89.0.1
 | browsers/cypress-firefox:cypress-7.7.0 | browsers/cypress-firefox:89.0 | 7.7.0 | 89.0.2
-| browsers/cypress-firefox:cypress-8.0.0 | browsers/cypress-firefox:90.0 | 8.0.0 | 90.0
+| browsers/cypress-firefox:cypress-8.0.0 | - | 8.0.0 | 90.0
+| browsers/cypress-firefox:cypress-8.1.0 | - | 8.1.0 | 90.0
+| browsers/cypress-firefox:cypress-8.2.0 | browsers/cypress-firefox:90.0 | 8.2.0 | 90.0.2
+| browsers/cypress-firefox:cypress-8.3.0 | - | 8.3.0 | 91.0
+| browsers/cypress-firefox:cypress-8.3.1 | browsers/cypress-firefox:91.0 | 8.3.1 | 91.0.2
+| browsers/cypress-firefox:cypress-8.4.0 | - | 8.4.0 | 92.0
+| browsers/cypress-firefox:cypress-8.4.1 | - | 8.4.1 | 92.0
+| browsers/cypress-firefox:cypress-8.5.0 | browsers/cypress-firefox:92.0 | 8.5.0 | 92.0
+| browsers/cypress-firefox:cypress-8.6.0 | - | 8.6.0 | 93.0
+| browsers/cypress-firefox:cypress-8.7.0 | browsers/cypress-firefox:93.0 | 8.7.0 | 93.0
+| browsers/cypress-firefox:cypress-9.0.0 | - | 9.0.0 | 94.0
+| browsers/cypress-firefox:cypress-9.1.0 | - | 9.1.0 | 94.0
+| browsers/cypress-firefox:cypress-9.1.1 | browsers/cypress-firefox:94.0 | 9.1.1 | 94.0
+| browsers/cypress-firefox:cypress-9.2.0 | - | 9.2.0 | 95.0.1
+| browsers/cypress-firefox:cypress-9.2.1 | browsers/cypress-firefox:95.0 | 9.2.1 | 95.0.1
+| browsers/cypress-firefox:cypress-9.3.0 | - | 9.3.0 | 96.0
+| browsers/cypress-firefox:cypress-9.3.1 | - | 9.3.1 | 96.0
+| browsers/cypress-firefox:cypress-9.4.0 | - | 9.4.0 | 96.0
+| browsers/cypress-firefox:cypress-9.4.1 | browsers/cypress-firefox:96.0 | 9.4.1 | 96.0
+| browsers/cypress-firefox:cypress-9.5.0 | - | 9.5.0 | 97.0
+| browsers/cypress-firefox:cypress-9.5.1 | browsers/cypress-firefox:97.0 | 9.5.1 | 97.0
+| browsers/cypress-firefox:cypress-9.5.2 | - | 9.5.2 | 98.0
+| browsers/cypress-firefox:cypress-9.5.3 | browsers/cypress-firefox:98.0 | 9.5.3 | 98.0.2
+| browsers/cypress-firefox:cypress-9.5.4 | - | 9.5.4 | 99.0
+| browsers/cypress-firefox:cypress-9.6.0 | browsers/cypress-firefox:99.0 | 9.6.0 | 99.0
+| browsers/cypress-firefox:cypress-9.6.1 | - | 9.6.1 | 100.0
+| browsers/cypress-firefox:cypress-9.7.0 | - | 9.7.0 | 100.0.2
+| browsers/cypress-firefox:cypress-10.0.0 | - | 10.0.0 | 100.0.2
+| browsers/cypress-firefox:cypress-10.0.1 | - | 10.0.1 | 100.0.2
+| browsers/cypress-firefox:cypress-10.0.2 | - | 10.0.2 | 100.0.2
+| browsers/cypress-firefox:cypress-10.0.3 | - | 10.0.3 | 100.0.2
+| browsers/cypress-firefox:cypress-10.1.0 | browsers/cypress-firefox:100.0 | 10.1.0 | 100.0.2
+| browsers/cypress-firefox:cypress-10.2.0 | - | 10.2.0 | 101.0.1
+| browsers/cypress-firefox:cypress-10.3.0 | browsers/cypress-firefox:101.0 | 10.3.0 | 101.0.1
+| browsers/cypress-firefox:cypress-10.3.1 | browsers/cypress-firefox:102.0 | 10.3.1 | 102.0
+| browsers/cypress-firefox:cypress-10.4.0 | - | 10.4.0 | 103.0
+| browsers/cypress-firefox:cypress-10.5.0 | - | 10.5.0 | 103.0
+| browsers/cypress-firefox:cypress-10.6.0 | browsers/cypress-firefox:103.0 | 10.6.0 | 103.0
+| browsers/cypress-firefox:cypress-10.7.0 | - | 10.7.0 | 104.0
+| browsers/cypress-firefox:cypress-10.8.0 | browsers/cypress-firefox:104.0 | 10.8.0 | 104.0
+| browsers/cypress-firefox:cypress-10.9.0 | browsers/cypress-firefox:105.0 | 10.9.0 | 105.0.1
+| browsers/cypress-firefox:cypress-10.10.0 | - | 10.10.0 | 106.0
+| browsers/cypress-firefox:cypress-10.11.0 | - | 10.11.0 | 106.0.2
+| browsers/cypress-firefox:cypress-11.0.0 | browsers/cypress-firefox:106.0 | 11.0.0 | 106.0.5
+| browsers/cypress-firefox:cypress-11.0.1 | - | 11.0.1 | 107.0
+| browsers/cypress-firefox:cypress-11.1.0 | - | 11.1.0 | 107.0
+| browsers/cypress-firefox:cypress-11.2.0 | browsers/cypress-firefox:107.0 | 11.2.0 | 107.0
+| browsers/cypress-firefox:cypress-12.0.0 | - | 12.0.0 | 108.0
+| browsers/cypress-firefox:cypress-12.0.1 | - | 12.0.1 | 108.0
+| browsers/cypress-firefox:cypress-12.0.2 | - | 12.0.2 | 108.0
+| browsers/cypress-firefox:cypress-12.1.0 | - | 12.1.0 | 108.0
+| browsers/cypress-firefox:cypress-12.2.0 | - | 12.2.0 | 108.0.1
+| browsers/cypress-firefox:cypress-12.3.0 | browsers/cypress-firefox:108.0 | 12.3.0 | 108.0.2
+| browsers/cypress-firefox:cypress-12.4.0 | - | 12.4.0 | 109.0
+| browsers/cypress-firefox:cypress-12.4.1 | browsers/cypress-firefox:109.0 | 12.4.1 | 109.0.1
+| browsers/cypress-firefox:cypress-12.5.0 | - | 12.5.0 | 110.0
+| browsers/cypress-firefox:cypress-12.5.1 | - | 12.5.1 | 110.0
+| browsers/cypress-firefox:cypress-12.6.0 | browsers/cypress-firefox:110.0 | 12.6.0 | 110.0
 |===

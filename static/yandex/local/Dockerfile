@@ -1,8 +1,8 @@
-FROM browsers/base:7.2
+FROM browsers/base:7.4.0
 
 ARG VERSION=noop
 
-LABEL browser=yandex-browser-beta:$VERSION
+LABEL browser=yandex-browser-stable:$VERSION
 
 RUN \
         apt-get update && \
@@ -49,12 +49,16 @@ RUN \
          libnss3 \
          lsb-base \
          xdg-utils \
+         binutils \
+         jq \
+         libgbm1 \
+         wget \
          libcurl4 \
          curl && \
-         curl -O http://apt-repo:8080/yandex-browser.deb && \
+         curl -O http://host.docker.internal:8080/yandex-browser.deb && \
          apt-get -y purge curl && \
          dpkg -i yandex-browser.deb && \
          rm yandex-browser.deb && \
-         yandex-browser-beta --version && \
+         yandex-browser --version && \
          rm -Rf /tmp/* && \
          rm -Rf /var/lib/apt/lists/*

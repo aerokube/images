@@ -14,7 +14,7 @@ Building procedure is automated with a Go binary. All Docker build files are emb
 
 [source,bash]
 ----
-$ go get github.com/markbates/pkger/cmd/pkger
+$ go install github.com/markbates/pkger/cmd/pkger@latest
 $ go generate github.com/aerokube/images
 $ go build
 ----

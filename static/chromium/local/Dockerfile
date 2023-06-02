@@ -1,8 +1,7 @@
 FROM browsers/base:7.4.0
 
 ARG VERSION=noop
-ARG PACKAGE=google-chrome-stable
-ARG INSTALL_DIR=chrome
+ARG PACKAGE=chromium-browser
 
 LABEL browser=$PACKAGE:$VERSION
 
@@ -49,14 +48,11 @@ RUN \
          xdg-utils \
          libcurl4 \
          iproute2 \
-         curl && \
-         curl -O http://host.docker.internal:8080/google-chrome.deb && \
+         curl \
+         chromium-chromedriver && \
+         curl -O http://host.docker.internal:8080/chromium-browser.deb && \
          apt-get -y purge curl && \
-         dpkg -i google-chrome.deb && \
-         sed -i -e 's@exec -a "$0" "$HERE/chrome"@& --no-sandbox --disable-gpu@' /opt/google/$INSTALL_DIR/$PACKAGE && \
-         rm google-chrome.deb && \
-         chown root:root /opt/google/$INSTALL_DIR/chrome-sandbox && \
-         chmod 4755 /opt/google/$INSTALL_DIR/chrome-sandbox && \
-         google-chrome --version && \
+         dpkg -i chromium-browser.deb && \
+         chromium-browser --version && \
          rm -Rf /tmp/* && \
          rm -Rf /var/lib/apt/lists/*

@@ -1,4 +1,4 @@
-FROM browsers/base:7.2
+FROM browsers/base:7.4.0
 
 ARG VERSION=noop
 ARG PACKAGE=firefox
@@ -9,16 +9,16 @@ LABEL browser=$PACKAGE:$VERSION
 RUN \
         ( \
             ( \
-                curl -o firefox.deb http://host.docker.internal:8080/firefox_amd64.deb && \
+                curl -O http://host.docker.internal:8080/firefox.deb && \
                 apt-get update && \
-                apt-get -y --no-install-recommends install iproute2 libavcodec57 && \
+                apt-get -y --no-install-recommends install iproute2 libavcodec58 && \
                 apt-get -y install libgtk-3-0 libstartup-notification0 libdbus-glib-1-2 \
             ) || \
             ( \
-                curl -0 firefox.deb http://host.docker.internal:8080/firefox_i386.deb && \
+                curl -O http://host.docker.internal:8080/firefox.deb && \
                 dpkg --add-architecture i386 && \
                 apt-get update && \
-                apt-get -y --no-install-recommends install iproute2 libavcodec57 && \
+                apt-get -y --no-install-recommends install iproute2 libavcodec58 && \
                 apt-get -y install libc6:i386 libncurses5:i386 libstdc++6:i386 libgtk-3-0:i386 libasound2:i386 libdbus-glib-1-2:i386 libxt6:i386 libatomic1:i386 libcairo-gobject2:i386 libstartup-notification0:i386 libx11-xcb1:i386 && \
                 mkdir flashplayer && \
                 cd flashplayer && \

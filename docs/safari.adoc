@@ -8,4 +8,5 @@ IMPORTANT: Real Safari browser can only run under MacOS \ iOS. These Linux image
 
 | browsers/safari:13.0 | 605.x
 | browsers/safari:14.0 | 610.4.3.1.7
+| browsers/safari:15.0 | 613.1.6.1
 |===

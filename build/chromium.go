@@ -6,15 +6,22 @@ import (
 	"path/filepath"
 )
 
-const (
-	yandexDriverBinary = "yandexdriver"
-)
-
-type YandexBrowser struct {
+type Chromium struct {
 	Requirements
 }
 
-func (yb *YandexBrowser) Build() error {
+func (c *Chromium) Build() error {
+
+	pkgSrcPath, pkgVersion, err := c.BrowserSource.Prepare()
+	if err != nil {
+		return fmt.Errorf("invalid browser source: %v", err)
+	}
+
+	pkgTagVersion := extractVersion(pkgVersion)
+
+	if err != nil {
+		return fmt.Errorf("parse chromiumdriver version: %v", err)
+	}
 
 	// Build dev image
 	devDestDir, err := tmpDir()
@@ -22,29 +29,24 @@ func (yb *YandexBrowser) Build() error {
 		return fmt.Errorf("create dev temporary dir: %v", err)
 	}
 
-	srcDir := "yandex/apt"
-	pkgSrcPath, pkgVersion, err := yb.BrowserSource.Prepare()
-	if err != nil {
-		return fmt.Errorf("invalid browser source: %v", err)
-	}
+	srcDir := "chromium/apt"
 
 	if pkgSrcPath != "" {
-		srcDir = "yandex/local"
+		srcDir = "chromium/local"
 		pkgDestDir := filepath.Join(devDestDir, srcDir)
 		err := os.MkdirAll(pkgDestDir, 0755)
 		if err != nil {
 			return fmt.Errorf("create %v temporary dir: %v", pkgDestDir, err)
 		}
-		pkgDestPath := filepath.Join(pkgDestDir, "yandex-browser.deb")
+		pkgDestPath := filepath.Join(pkgDestDir, "chromium.deb")
 		err = os.Rename(pkgSrcPath, pkgDestPath)
 		if err != nil {
 			return fmt.Errorf("move package: %v", err)
 		}
 	}
 
-	pkgTagVersion := extractVersion(pkgVersion)
-	devImageTag := fmt.Sprintf("selenoid/dev_yandex:%s", pkgTagVersion)
-	devImageRequirements := Requirements{NoCache: yb.NoCache, Tags: []string{devImageTag}}
+	devImageTag := fmt.Sprintf("selenoid/dev_chromium:%s", pkgTagVersion)
+	devImageRequirements := Requirements{NoCache: c.NoCache, Tags: []string{devImageTag}}
 	devImage, err := NewImage(srcDir, devDestDir, devImageRequirements)
 	if err != nil {
 		return fmt.Errorf("init dev image: %v", err)
@@ -66,24 +68,19 @@ func (yb *YandexBrowser) Build() error {
 		return fmt.Errorf("create temporary dir: %v", err)
 	}
 
-	image, err := NewImage("yandex", destDir, yb.Requirements)
+	image, err := NewImage("chromium", destDir, c.Requirements)
 	if err != nil {
 		return fmt.Errorf("init image: %v", err)
 	}
 	image.BuildArgs = append(image.BuildArgs, fmt.Sprintf("VERSION=%s", pkgTagVersion))
-
-	driverVersion, err := yb.downloadYandexDriver(image.Dir)
-	if err != nil {
-		return fmt.Errorf("failed to download yandexdriver: %v", err)
-	}
-	image.Labels = []string{fmt.Sprintf("driver=yandexdriver:%s", driverVersion)}
 
 	err = image.Build()
 	if err != nil {
 		return fmt.Errorf("build image: %v", err)
 	}
 
-	err = image.Test(yb.TestsDir, "yandex", pkgTagVersion)
+	// Must be Chrome even it's Chromium-based container
+	err = image.Test(c.TestsDir, "chrome", pkgTagVersion)
 	if err != nil {
 		return fmt.Errorf("test image: %v", err)
 	}
@@ -94,18 +91,4 @@ func (yb *YandexBrowser) Build() error {
 	}
 
 	return nil
-}
-
-func (yb *YandexBrowser) downloadYandexDriver(dir string) (string, error) {
-	version := yb.DriverVersion
-	u, err := githubLinuxAssetURL("yandex/YandexDriver", version)
-	if err != nil {
-		return "", fmt.Errorf("yandexdriver url: %v", err)
-	}
-
-	_, err = downloadDriver(u, yandexDriverBinary, dir)
-	if err != nil {
-		return "", fmt.Errorf("download Yandexdriver: %v", err)
-	}
-	return version, nil
 }

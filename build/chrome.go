@@ -40,7 +40,12 @@ func (c *Chrome) Build() error {
 
 	if pkgSrcPath != "" {
 		srcDir = "chrome/local"
-		pkgDestPath := filepath.Join(devDestDir, "google-chrome.deb")
+		pkgDestDir := filepath.Join(devDestDir, srcDir)
+		err := os.MkdirAll(pkgDestDir, 0755)
+		if err != nil {
+			return fmt.Errorf("create %v temporary dir: %v", pkgDestDir, err)
+		}
+		pkgDestPath := filepath.Join(pkgDestDir, "google-chrome.deb")
 		err = os.Rename(pkgSrcPath, pkgDestPath)
 		if err != nil {
 			return fmt.Errorf("move package: %v", err)

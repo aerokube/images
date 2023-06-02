@@ -1,4 +1,4 @@
-FROM browsers/base:7.2
+FROM browsers/base:7.4.0
 
 ARG VERSION
 ARG PACKAGE=firefox
