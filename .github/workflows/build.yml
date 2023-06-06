@@ -28,6 +28,8 @@ jobs:
 
       - name: Build
         run: ci/build.sh
+        env:
+          CGO_ENABLED: 0
 
       - name: Latest docs
         env:
