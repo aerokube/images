@@ -37,8 +37,3 @@ jobs:
         with:
           files: 'dist/*'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Release docs
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ci/docs.sh $RELEASE_VERSION ${{ secrets.GITHUB_TOKEN }}
