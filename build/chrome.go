@@ -1,11 +1,11 @@
 package build
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
 	"os"
 	"path/filepath"
-	"strconv"
 )
 
 const (
@@ -14,6 +14,24 @@ const (
 
 type Chrome struct {
 	Requirements
+}
+
+type ChromeVersions struct {
+    Timestamp string `json:"timestamp"`
+    Channels  map[string]struct {
+        Channel   string `json:"channel"`
+        Version   string `json:"version"`
+        Downloads struct {
+            Chrome       []struct {
+                Platform string `json:"platform"`
+                URL      string `json:"url"`
+            } `json:"chrome"`
+            ChromeDriver []struct {
+                Platform string `json:"platform"`
+                URL      string `json:"url"`
+            } `json:"chromedriver"`
+        } `json:"downloads"`
+    } `json:"channels"`
 }
 
 func (c *Chrome) Build() error {
@@ -120,7 +138,7 @@ func (c *Chrome) channelToBuildArgs() []string {
 func (c *Chrome) parseChromeDriverVersion(pkgVersion string) (string, error) {
 	version := c.DriverVersion
 	if version == LatestVersion {
-		const baseUrl = "https://chromedriver.storage.googleapis.com/"
+		const baseUrl = "https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions-with-downloads.json"
 		v, err := c.getLatestChromeDriver(baseUrl, pkgVersion)
 		if err != nil {
 			return "", err
@@ -131,7 +149,11 @@ func (c *Chrome) parseChromeDriverVersion(pkgVersion string) (string, error) {
 }
 
 func (c *Chrome) downloadChromeDriver(dir string, version string) error {
-	u := fmt.Sprintf("http://chromedriver.storage.googleapis.com/%s/chromedriver_linux64.zip", version)
+	fmt.Println("VERSION", version)
+	u := fmt.Sprintf("https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/%s/linux64/chromedriver-linux64.zip", version)
+    if version == LatestVersion {
+        u = fmt.Sprintf("http://chromedriver.storage.googleapis.com/%s/chromedriver_linux64.zip", version)
+    }
 	_, err := downloadDriver(u, chromeDriverBinary, dir)
 	if err != nil {
 		return fmt.Errorf("download chromedriver: %v", err)
@@ -140,7 +162,20 @@ func (c *Chrome) downloadChromeDriver(dir string, version string) error {
 }
 
 func (c *Chrome) getLatestChromeDriver(baseUrl string, pkgVersion string) (string, error) {
-	fetchVersion := func(url string) (string, error) {
+	fetchVersion := func(url string) (ChromeVersions, error) {
+		data, err := sendGet(url)
+		if err != nil {
+			return ChromeVersions{}, fmt.Errorf("read chromedriver version: %v", err)
+		}
+		var versions ChromeVersions
+		err = json.Unmarshal([]byte(string(data)), &versions)
+		if err != nil {
+			return ChromeVersions{}, fmt.Errorf("unable to parse JSON: %v", err)
+		}
+		return versions, nil
+	}
+
+	fetchVersionStable := func(url string) (string, error) {
 		data, err := sendGet(url)
 		if err != nil {
 			return "", fmt.Errorf("read chromedriver version: %v", err)
@@ -148,31 +183,29 @@ func (c *Chrome) getLatestChromeDriver(baseUrl string, pkgVersion string) (strin
 		return string(data), nil
 	}
 
-	if c.BrowserChannel != "dev" {
-		chromeBuildVersion := buildVersion(pkgVersion)
-		u := baseUrl + fmt.Sprintf("LATEST_RELEASE_%s", chromeBuildVersion)
-		v, err := fetchVersion(u)
-		if err == nil {
-			return v, nil
-		}
+	// Make channels suitable for the response
+	channel := "Stable"
+	if c.BrowserChannel == "dev" {
+		channel = "Dev"
+	} else if c.BrowserChannel == "beta" {
+		channel = "Beta"
 	}
 
-	chromeMajorVersion, err := strconv.Atoi(majorVersion(pkgVersion))
-	if err != nil {
-		return "", fmt.Errorf("chrome major version: %v", err)
+    // Browser channel stable
+    if channel == "Stable" {
+        chromeBuildVersion := buildVersion(pkgVersion)
+        u := "https://chromedriver.storage.googleapis.com/" + fmt.Sprintf("LATEST_RELEASE_%s", chromeBuildVersion)
+        v, err := fetchVersionStable(u)
+        if err == nil {
+            return v, nil
+        }
+    }
+
+    v, err := fetchVersion(baseUrl)
+	// Access the Version value
+	googleChromeVersion := v.Channels[channel].Version
+    if err == nil {
+		return googleChromeVersion, nil
 	}
-	u := baseUrl + fmt.Sprintf("LATEST_RELEASE_%d", chromeMajorVersion)
-	v, err := fetchVersion(u)
-	if err == nil {
-		return v, nil
-	} else {
-		previousChromeMajorVersion := chromeMajorVersion - 1
-		u = baseUrl + fmt.Sprintf("LATEST_RELEASE_%d", previousChromeMajorVersion)
-		v, err := fetchVersion(u)
-		if err == nil {
-			return v, nil
-		} else {
-			return "", errors.New("could not find compatible chromedriver")
-		}
-	}
+	return "", errors.New("could not find compatible chromedriver")
 }
