@@ -138,8 +138,11 @@ func (c *Chrome) channelToBuildArgs() []string {
 func (c *Chrome) parseChromeDriverVersion(pkgVersion string) (string, error) {
 	version := c.DriverVersion
 	if version == LatestVersion {
-		const baseUrl = "https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions-with-downloads.json"
-		v, err := c.getLatestChromeDriver(baseUrl, pkgVersion)
+		baseURL := "https://chromedriver.storage.googleapis.com/"
+		if c.BrowserChannel == "beta" || c.BrowserChannel == "stage" {
+			baseURL = "https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions-with-downloads.json"
+		}
+		v, err := c.getLatestChromeDriver(baseURL, pkgVersion)
 		if err != nil {
 			return "", err
 		}
@@ -147,6 +150,7 @@ func (c *Chrome) parseChromeDriverVersion(pkgVersion string) (string, error) {
 	}
 	return version, nil
 }
+
 
 func (c *Chrome) downloadChromeDriver(dir string, version string) error {
 	fmt.Println("VERSION", version)
@@ -194,7 +198,7 @@ func (c *Chrome) getLatestChromeDriver(baseUrl string, pkgVersion string) (strin
     // Browser channel stable
     if channel == "Stable" {
         chromeBuildVersion := buildVersion(pkgVersion)
-        u := "https://chromedriver.storage.googleapis.com/" + fmt.Sprintf("LATEST_RELEASE_%s", chromeBuildVersion)
+        u := baseUrl + fmt.Sprintf("LATEST_RELEASE_%s", chromeBuildVersion)
         v, err := fetchVersionStable(u)
         if err == nil {
             return v, nil
