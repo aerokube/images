@@ -24,3 +24,25 @@ In that case `<cert-name>` will be used as certificate name in the browser certi
 
     ROOT_CA_MY_CERT="LS0tL....=="
 
+=== Using Custom Browser Profile with Chrome
+
+If launching Chrome with a custom profile directory, Devtools will not work unless you
+also set the `BROWSER_PROFILE_DIR` environment variable. _E.g._ when requesting the session:
+
+[source,json]
+----
+{
+  "capabilities": {
+    "alwaysMatch": {
+      "browserName": "chrome",
+      "browserVersion": "114.0",
+      "goog:chromeOptions": {
+        "args": [ "user-data-dir=/profiles/custom.XYZ" ]
+      },
+      "selenoid:options": {
+        "env": [ "BROWSER_PROFILE_DIR=/profiles/custom.XYZ" ]
+      }
+    }
+  }
+}
+----
