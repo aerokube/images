@@ -153,13 +153,19 @@ func androidDevtoolsHost() (string, error) {
 
 func detectDevtoolsHost(baseDir string) string {
 	var candidates []string
-	for _, glob := range []string{".com.google.Chrome*", ".org.chromium.Chromium*"} {
-		cds, err := filepath.Glob(filepath.Join(baseDir, glob))
-		if err == nil {
-			candidates = append(candidates, cds...)
-		}
 
+	pd, found := os.LookupEnv("BROWSER_PROFILE_DIR")
+	if found {
+		candidates = append(candidates, pd)
+	} else {
+		for _, glob := range []string{".com.google.Chrome*", ".org.chromium.Chromium*"} {
+			cds, err := filepath.Glob(filepath.Join(baseDir, glob))
+			if err == nil {
+				candidates = append(candidates, cds...)
+			}
+		}
 	}
+
 	for _, c := range candidates {
 		f, err := os.Stat(c)
 		if err != nil {
