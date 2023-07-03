@@ -543,7 +543,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <div class="details">
 <span id="author" class="author">Aerokube Software OÜ</span><br>
 <span id="revnumber">version latest,</span>
-<span id="revdate">2023-07-02</span>
+<span id="revdate">2023-07-03</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
@@ -570,6 +570,7 @@ table.CodeRay td.code{padding:0 0 0 .75em}
 <li><a href="#_features">2. Features</a>
 <ul class="sectlevel2">
 <li><a href="#_adding_custom_root_certification_authority">2.1. Adding Custom Root Certification Authority</a></li>
+<li><a href="#_using_custom_browser_profile_with_chrome">2.2. Using Custom Browser Profile with Chrome</a></li>
 </ul>
 </li>
 <li><a href="#_building_images">3. Building Images</a>
@@ -6535,6 +6536,31 @@ Real Safari browser can only run under MacOS \ iOS. These Linux images are using
 </ol>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_using_custom_browser_profile_with_chrome"><a class="anchor" href="#_using_custom_browser_profile_with_chrome"></a>2.2. Using Custom Browser Profile with Chrome</h3>
+<div class="paragraph">
+<p>If launching Chrome with a custom profile directory, Devtools will not work unless you
+also set the <code>BROWSER_PROFILE_DIR</code> environment variable. <em>E.g.</em> when requesting the session:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json">{
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">capabilities</span><span class="delimiter">&quot;</span></span>: {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">alwaysMatch</span><span class="delimiter">&quot;</span></span>: {
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">browserName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">chrome</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">browserVersion</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">114.0</span><span class="delimiter">&quot;</span></span>,
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">goog:chromeOptions</span><span class="delimiter">&quot;</span></span>: {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">args</span><span class="delimiter">&quot;</span></span>: [ <span class="string"><span class="delimiter">&quot;</span><span class="content">user-data-dir=/profiles/custom.XYZ</span><span class="delimiter">&quot;</span></span> ]
+      },
+      <span class="key"><span class="delimiter">&quot;</span><span class="content">selenoid:options</span><span class="delimiter">&quot;</span></span>: {
+        <span class="key"><span class="delimiter">&quot;</span><span class="content">env</span><span class="delimiter">&quot;</span></span>: [ <span class="string"><span class="delimiter">&quot;</span><span class="content">BROWSER_PROFILE_DIR=/profiles/custom.XYZ</span><span class="delimiter">&quot;</span></span> ]
+      }
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -6790,7 +6816,7 @@ $ ./automate_android.sh</code></pre>
 <div id="footer">
 <div id="footer-text">
 Version latest<br>
-Last updated 2023-07-02 13:32:36 UTC
+Last updated 2023-07-03 14:54:40 UTC
 </div>
 </div>
 <!-- Global site tag (gtag.js) - Google Analytics -->
