@@ -12,6 +12,8 @@ require (
 	gopkg.in/cheggaaa/pb.v1 v1.0.28
 )
 
+require github.com/hashicorp/go-version v1.6.0
+
 require (
 	github.com/gobuffalo/here v0.6.0 // indirect
 	github.com/inconshreveable/mousetrap v1.0.0 // indirect
