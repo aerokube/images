@@ -1,15 +1,21 @@
 package build
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
+	hv "github.com/hashicorp/go-version"
+	"net/http"
 	"os"
 	"path/filepath"
+	"sort"
 	"strconv"
+	"strings"
 )
 
 const (
-	chromeDriverBinary = "chromedriver"
+	chromeDriverBinary    = "chromedriver"
+	newChromeDriverBinary = "chromedriver-linux64/chromedriver"
 )
 
 type Chrome struct {
@@ -25,7 +31,12 @@ func (c *Chrome) Build() error {
 
 	pkgTagVersion := extractVersion(pkgVersion)
 
-	driverVersion, err := c.parseChromeDriverVersion(pkgTagVersion)
+	chromeDriverVersions, err := fetchChromeDriverVersions()
+	if err != nil {
+		return fmt.Errorf("fetch chromedriver versions: %v", err)
+	}
+
+	driverVersion, err := c.parseChromeDriverVersion(pkgTagVersion, chromeDriverVersions)
 	if err != nil {
 		return fmt.Errorf("parse chromedriver version: %v", err)
 	}
@@ -82,7 +93,7 @@ func (c *Chrome) Build() error {
 	}
 	image.BuildArgs = append(image.BuildArgs, fmt.Sprintf("VERSION=%s", pkgTagVersion))
 
-	err = c.downloadChromeDriver(image.Dir, driverVersion)
+	err = c.downloadChromeDriver(image.Dir, driverVersion, chromeDriverVersions)
 	if err != nil {
 		return fmt.Errorf("failed to download chromedriver: %v", err)
 	}
@@ -117,24 +128,59 @@ func (c *Chrome) channelToBuildArgs() []string {
 	}
 }
 
-func (c *Chrome) parseChromeDriverVersion(pkgVersion string) (string, error) {
+func (c *Chrome) parseChromeDriverVersion(pkgVersion string, chromeDriverVersions map[string]string) (string, error) {
 	version := c.DriverVersion
 	if version == LatestVersion {
+
+		var matchingVersions []string
+		for mv := range chromeDriverVersions {
+			if strings.Contains(mv, pkgVersion) {
+				matchingVersions = append(matchingVersions, mv)
+			}
+		}
+		if len(matchingVersions) > 0 {
+			sort.SliceStable(matchingVersions, func(i, j int) bool {
+				l := matchingVersions[i]
+				r := matchingVersions[j]
+				lv, err := hv.NewVersion(l)
+				if err != nil {
+					return false
+				}
+				rv, err := hv.NewVersion(r)
+				if err != nil {
+					return false
+				}
+				return lv.LessThan(rv)
+			})
+			return matchingVersions[0], nil
+		}
+
 		const baseUrl = "https://chromedriver.storage.googleapis.com/"
 		v, err := c.getLatestChromeDriver(baseUrl, pkgVersion)
 		if err != nil {
 			return "", err
 		}
-		version = v
+		return v, nil
 	}
 	return version, nil
 }
 
-func (c *Chrome) downloadChromeDriver(dir string, version string) error {
-	u := fmt.Sprintf("http://chromedriver.storage.googleapis.com/%s/chromedriver_linux64.zip", version)
-	_, err := downloadDriver(u, chromeDriverBinary, dir)
+func (c *Chrome) downloadChromeDriver(dir string, version string, chromeDriverVersions map[string]string) error {
+	u := fmt.Sprintf("https://chromedriver.storage.googleapis.com/%s/chromedriver_linux64.zip", version)
+	fn := chromeDriverBinary
+	if cdu, ok := chromeDriverVersions[version]; ok {
+		u = cdu
+		fn = newChromeDriverBinary
+	}
+	outputPath, err := downloadDriver(u, fn, dir)
 	if err != nil {
 		return fmt.Errorf("download chromedriver: %v", err)
+	}
+	if fn == newChromeDriverBinary {
+		err = os.Rename(outputPath, filepath.Join(dir, chromeDriverBinary))
+		if err != nil {
+			return fmt.Errorf("rename chromedriver: %v", err)
+		}
 	}
 	return nil
 }
@@ -175,4 +221,47 @@ func (c *Chrome) getLatestChromeDriver(baseUrl string, pkgVersion string) (strin
 			return "", errors.New("could not find compatible chromedriver")
 		}
 	}
+}
+
+func fetchChromeDriverVersions() (map[string]string, error) {
+	const versionsURL = "https://googlechromelabs.github.io/chrome-for-testing/known-good-versions-with-downloads.json"
+	resp, err := http.Get(versionsURL)
+	if err != nil {
+		return nil, fmt.Errorf("fetch chrome versions: %v", err)
+	}
+	defer resp.Body.Close()
+	var cv ChromeVersions
+	err = json.NewDecoder(resp.Body).Decode(&cv)
+	if err != nil {
+		return nil, fmt.Errorf("decode json: %v", err)
+	}
+	ret := make(map[string]string)
+	const platformLinux64 = "linux64"
+	const chromeDriver = "chromedriver"
+	for _, v := range cv.Versions {
+		version := v.Version
+		if cd, ok := v.Downloads[chromeDriver]; ok {
+			for _, d := range cd {
+				u := d.URL
+				if u != "" && d.Platform == platformLinux64 {
+					ret[version] = u
+				}
+			}
+		}
+	}
+	return ret, nil
+}
+
+type ChromeVersions struct {
+	Versions []ChromeVersion `json:"versions"`
+}
+
+type ChromeVersion struct {
+	Version   string                      `json:"version"`
+	Downloads map[string][]ChromeDownload `json:"downloads"`
+}
+
+type ChromeDownload struct {
+	Platform string `json:"platform"`
+	URL      string `json:"url"`
 }
