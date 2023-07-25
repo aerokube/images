@@ -10,7 +10,6 @@ import (
 	"github.com/mafredri/cdp"
 	"github.com/mafredri/cdp/protocol/target"
 	"github.com/mafredri/cdp/rpcc"
-	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
 	"os"
@@ -165,12 +164,12 @@ func TestDevtools(t *testing.T) {
 }
 
 func TestDetectDevtoolsHost(t *testing.T) {
-	name, _ := ioutil.TempDir("", "devtools")
+	name, _ := os.MkdirTemp("", "devtools")
 	defer os.RemoveAll(name)
 	profilePath := filepath.Join(name, ".org.chromium.Chromium.deadbee")
-	os.MkdirAll(profilePath, os.ModePerm)
+	_ = os.MkdirAll(profilePath, os.ModePerm)
 	portFile := filepath.Join(profilePath, "DevToolsActivePort")
-	ioutil.WriteFile(portFile, []byte("12345\n/devtools/browser/6f37c7fe-a0a6-4346-a6e2-80c5da0687f0"), 0644)
+	_ = os.WriteFile(portFile, []byte("12345\n/devtools/browser/6f37c7fe-a0a6-4346-a6e2-80c5da0687f0"), 0644)
 
 	AssertThat(t, detectDevtoolsHost(name), EqualTo{"127.0.0.1:12345"})
 }

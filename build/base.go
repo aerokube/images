@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"github.com/markbates/pkger"
 	"io"
-	"io/ioutil"
 	"log"
 	"net"
 	"net/http"
@@ -54,12 +53,12 @@ func (bs *BrowserSource) Prepare() (string, string, error) {
 		if err != nil {
 			return "", "", fmt.Errorf("download file: %v", err)
 		}
-		f, err := ioutil.TempFile("", "images")
+		f, err := os.CreateTemp("", "images")
 		if err != nil {
 			return "", "", fmt.Errorf("temporary file: %v", err)
 		}
 		outputFileName := f.Name()
-		err = ioutil.WriteFile(outputFileName, data, 0644)
+		err = os.WriteFile(outputFileName, data, 0644)
 		if err != nil {
 			return "", "", fmt.Errorf("save downloaded file: %v", err)
 		}
@@ -131,7 +130,7 @@ func requireCommand(cmd string) bool {
 }
 
 func tmpDir() (string, error) {
-	dir, err := ioutil.TempDir("", "images")
+	dir, err := os.MkdirTemp("", "images")
 	if err != nil {
 		return "", fmt.Errorf("create temporary dir: %v", err)
 	}
