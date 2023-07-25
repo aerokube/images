@@ -5,7 +5,6 @@ import (
 	"errors"
 	"fmt"
 	"github.com/mafredri/cdp/devtool"
-	"io/ioutil"
 	"log"
 	"net/http"
 	"net/http/httputil"
@@ -19,7 +18,7 @@ import (
 
 const (
 	devtoolsBaseDir = "/tmp"
-	slash = "/"
+	slash           = "/"
 )
 
 var (
@@ -79,9 +78,9 @@ func protocol(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	u := &url.URL{
-		Host: h,
+		Host:   h,
 		Scheme: "http",
-		Path: "/json/protocol",
+		Path:   "/json/protocol",
 	}
 	log.Printf("[PROTOCOL] [%s]", u.String())
 	(&httputil.ReverseProxy{
@@ -143,7 +142,7 @@ func devtoolsHost() (string, error) {
 
 func androidDevtoolsHost() (string, error) {
 	const androidDevtoolsPort = 9333
-	cmd := exec.Command("adb", "forward",  fmt.Sprintf("tcp:%d", androidDevtoolsPort), "localabstract:chrome_devtools_remote")
+	cmd := exec.Command("adb", "forward", fmt.Sprintf("tcp:%d", androidDevtoolsPort), "localabstract:chrome_devtools_remote")
 	err := cmd.Run()
 	if err != nil {
 		return "", fmt.Errorf("failed to forward devtools port: %v", err)
@@ -175,7 +174,7 @@ func detectDevtoolsHost(baseDir string) string {
 			continue
 		}
 		portFile := filepath.Join(c, "DevToolsActivePort")
-		data, err := ioutil.ReadFile(portFile)
+		data, err := os.ReadFile(portFile)
 		if err != nil {
 			continue
 		}

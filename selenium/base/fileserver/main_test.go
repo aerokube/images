@@ -3,7 +3,6 @@ package main
 import (
 	. "github.com/aandryashin/matchers"
 	. "github.com/aandryashin/matchers/httpresp"
-	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
 	"os"
@@ -17,7 +16,7 @@ var (
 )
 
 func init() {
-	dir, _ = ioutil.TempDir("", "fileserver")
+	dir, _ = os.MkdirTemp("", "fileserver")
 	srv = httptest.NewServer(mux(dir))
 }
 
@@ -26,8 +25,8 @@ func withUrl(path string) string {
 }
 
 func TestDownloadAndRemoveFile(t *testing.T) {
-	tempFile, _ := ioutil.TempFile(dir, "fileserver")
-	ioutil.WriteFile(tempFile.Name(), []byte("test-data"), 0644)
+	tempFile, _ := os.CreateTemp(dir, "fileserver")
+	_ = os.WriteFile(tempFile.Name(), []byte("test-data"), 0644)
 	tempFileName := filepath.Base(tempFile.Name())
 	resp, err := http.Get(withUrl("/" + tempFileName))
 	AssertThat(t, err, Is{nil})
@@ -42,7 +41,7 @@ func TestDownloadAndRemoveFile(t *testing.T) {
 	AssertThat(t, rsp, IsJson{&files})
 	AssertThat(t, files, EqualTo{[]string{tempFileName}})
 
-	req, _ := http.NewRequest(http.MethodDelete, withUrl("/" + tempFileName), nil)
+	req, _ := http.NewRequest(http.MethodDelete, withUrl("/"+tempFileName), nil)
 	resp, err = http.DefaultClient.Do(req)
 	AssertThat(t, err, Is{nil})
 	AssertThat(t, resp, Code{200})

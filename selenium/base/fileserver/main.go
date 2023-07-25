@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io/fs"
 	"log"
 	"net/http"
 	"os"
@@ -52,7 +52,21 @@ func mux(dir string) http.Handler {
 }
 
 func listFilesAsJson(w http.ResponseWriter, dir string) {
-	files, err := ioutil.ReadDir(dir)
+
+	entries, err := os.ReadDir(dir)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	files := make([]fs.FileInfo, 0, len(entries))
+	for _, entry := range entries {
+		info, err := entry.Info()
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+		files = append(files, info)
+	}
 	sort.Slice(files, func(i, j int) bool {
 		return files[i].ModTime().After(files[j].ModTime())
 	})
@@ -65,7 +79,7 @@ func listFilesAsJson(w http.ResponseWriter, dir string) {
 		ret = append(ret, f.Name())
 	}
 	w.Header().Add("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(ret)
+	_ = json.NewEncoder(w).Encode(ret)
 }
 
 func deleteFileIfExists(w http.ResponseWriter, r *http.Request, dir string) {

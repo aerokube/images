@@ -6,7 +6,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"log"
 	"net/http"
 	"net/http/httputil"
@@ -97,7 +96,7 @@ func main() {
 					http.Error(w, err.Error(), http.StatusInternalServerError)
 					return
 				}
-				r.Body = ioutil.NopCloser(bytes.NewReader(body))
+				r.Body = io.NopCloser(bytes.NewReader(body))
 				r.ContentLength = int64(len(body))
 			}
 			(&httputil.ReverseProxy{
@@ -132,7 +131,7 @@ func main() {
 					resp.Header.Del("Server")
 					resp.Header.Del("Content-Length")
 					resp.ContentLength = int64(len(buf))
-					resp.Body = ioutil.NopCloser(bytes.NewReader(buf))
+					resp.Body = io.NopCloser(bytes.NewReader(buf))
 					return nil
 				},
 			}).ServeHTTP(w, r)
