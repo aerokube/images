@@ -175,12 +175,12 @@ func TestDetectDevtoolsHost(t *testing.T) {
 }
 
 func TestDetectDevtoolsHostProfileDir(t *testing.T) {
-	name, _ := ioutil.TempDir("", "devtools")
+	name, _ := os.MkdirTemp("", "devtools")
 	defer os.RemoveAll(name)
 	profilePath := filepath.Join(name, "can_be_anything")
-	os.MkdirAll(profilePath, os.ModePerm)
+	_ = os.MkdirAll(profilePath, os.ModePerm)
 	portFile := filepath.Join(profilePath, "DevToolsActivePort")
-	ioutil.WriteFile(portFile, []byte("12345\n/devtools/browser/6f37c7fe-a0a6-4346-a6e2-80c5da0687f0"), 0644)
+	_ = os.WriteFile(portFile, []byte("12345\n/devtools/browser/6f37c7fe-a0a6-4346-a6e2-80c5da0687f0"), 0644)
 
 	t.Setenv("BROWSER_PROFILE_DIR", profilePath)
 	AssertThat(t, detectDevtoolsHost(name), EqualTo{"127.0.0.1:12345"})
