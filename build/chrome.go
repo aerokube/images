@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	chromeDriverBinary = "chromedriver"
+	chromeDriverBinary = "chromedriver-linux64/chromedriver"
 )
 
 type Chrome struct {
