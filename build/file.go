@@ -11,7 +11,6 @@ import (
 	"fmt"
 	"gopkg.in/cheggaaa/pb.v1"
 	"io"
-	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
@@ -95,7 +94,7 @@ func extractFile(data []byte, filename string, outputDir string) (string, error)
 		return untar(data, filename, outputDir)
 	} else {
 		outputPath := filepath.Join(outputDir, filename)
-		err := ioutil.WriteFile(outputPath, data, os.ModePerm)
+		err := os.WriteFile(outputPath, data, os.ModePerm)
 		if err != nil {
 			return "", fmt.Errorf("failed to save file %s: %v", outputPath, err)
 		}
@@ -214,7 +213,7 @@ func doSendGet(url string, token string) ([]byte, error) {
 	if resp.StatusCode != http.StatusOK {
 		return nil, fmt.Errorf("unsuccessful response: %d %s", resp.StatusCode, resp.Status)
 	}
-	data, err := ioutil.ReadAll(resp.Body)
+	data, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return nil, fmt.Errorf("read response body: %v", err)
 	}

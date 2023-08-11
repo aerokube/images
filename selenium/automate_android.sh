@@ -161,7 +161,7 @@ mkdir -p "$TMP_DIR"
 cp android/entrypoint.sh "$TMP_DIR/entrypoint.sh"
 cp -r ../static/chrome/devtools "$TMP_DIR/devtools"
 
-appium_version=$(request_answer "Specify Appium version:" "1.18.1")
+appium_version=$(request_answer "Specify Appium version:" "2.0.1")
 
 until [ "$?" -ne 0 ]; do
     android_image_type=$(request_answer "Specify Android image type (possible values: \"default\", \"google_apis\", \"google_apis_playstore\", \"android-tv\", \"android-wear\"):" "default")

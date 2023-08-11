@@ -1,6 +1,6 @@
 module github.com/aerokube/images
 
-go 1.19
+go 1.20
 
 require (
 	github.com/aandryashin/matchers v0.0.0-20161126170413-435295ea180e
@@ -11,6 +11,8 @@ require (
 	github.com/spf13/cobra v1.1.1
 	gopkg.in/cheggaaa/pb.v1 v1.0.28
 )
+
+require github.com/hashicorp/go-version v1.6.0
 
 require (
 	github.com/gobuffalo/here v0.6.0 // indirect

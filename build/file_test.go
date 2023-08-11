@@ -2,7 +2,6 @@ package build
 
 import (
 	. "github.com/aandryashin/matchers"
-	"io/ioutil"
 	"os"
 	"testing"
 )
@@ -26,7 +25,7 @@ func TestUntar(t *testing.T) {
 }
 
 func withTmpDir(t *testing.T, prefix string, fn func(*testing.T, string)) {
-	dir, err := ioutil.TempDir("", prefix)
+	dir, err := os.MkdirTemp("", prefix)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -56,10 +55,9 @@ func testUnpack(t *testing.T, data []byte, fileName string, fn func([]byte, stri
 }
 
 func readFile(t *testing.T, fileName string) []byte {
-	data, err := ioutil.ReadFile(fileName)
+	data, err := os.ReadFile(fileName)
 	if err != nil {
 		t.Fatal(err)
 	}
 	return data
 }
-

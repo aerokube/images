@@ -3,7 +3,6 @@ package build
 import (
 	"errors"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -106,12 +105,12 @@ func (c *Firefox) Build() error {
 		image.Labels = labels
 
 		browsersJsonFile := filepath.Join(image.Dir, "browsers.json")
-		data, err := ioutil.ReadFile(browsersJsonFile)
+		data, err := os.ReadFile(browsersJsonFile)
 		if err != nil {
 			return fmt.Errorf("failed to read browsers.json: %v", err)
 		}
 		newContents := strings.Replace(string(data), "@@VERSION@@", firefoxMajorMinorVersion, -1)
-		err = ioutil.WriteFile(browsersJsonFile, []byte(newContents), 0)
+		err = os.WriteFile(browsersJsonFile, []byte(newContents), 0)
 		if err != nil {
 			return fmt.Errorf("failed to update browsers.json: %v", err)
 		}
@@ -188,7 +187,7 @@ func (c *Firefox) downloadSelenoid(dir string) (string, error) {
 		return "", fmt.Errorf("download Selenoid: %v", err)
 	}
 	outputPath := filepath.Join(dir, "selenoid")
-	err = ioutil.WriteFile(outputPath, data, 0755)
+	err = os.WriteFile(outputPath, data, 0755)
 	if err != nil {
 		return "", fmt.Errorf("save Selenoid: %v", err)
 	}
@@ -219,7 +218,7 @@ func (c *Firefox) downloadSeleniumJAR(dir string) (string, error) {
 		return "", fmt.Errorf("download Selenium JAR: %v", err)
 	}
 	outputPath := filepath.Join(dir, "selenium-server-standalone.jar")
-	err = ioutil.WriteFile(outputPath, data, 0644)
+	err = os.WriteFile(outputPath, data, 0644)
 	if err != nil {
 		return "", fmt.Errorf("save Selenium JAR: %v", err)
 	}
