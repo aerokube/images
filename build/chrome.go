@@ -3,18 +3,13 @@ package build
 import (
 	"errors"
 	"fmt"
-	"io"
 	"os"
 	"path/filepath"
 	"strconv"
 )
 
 const (
-	chromeDriverBinary = "chromedriver"
-)
-
-const (
-	chromeDriverPath = "chromedriver-linux64/"
+	chromeDriverBinary = "chromedriver-linux64/chromedriver"
 )
 
 type Chrome struct {
@@ -135,39 +130,13 @@ func (c *Chrome) parseChromeDriverVersion(pkgVersion string) (string, error) {
 	return version, nil
 }
 
-func moveFile(srcPath, dstPath string) error {
-    inputFile, err := os.Open(srcPath)
-    if err != nil {
-        return fmt.Errorf("Couldn't open source file: %s", err)
-    }
-    // Создаём нужный файл
-    outputFile, err := os.Create(dstPath)
-    if err != nil {
-        inputFile.Close()
-        return fmt.Errorf("Couldn't open dest file: %s", err)
-    }
-    defer outputFile.Close()
-    // Копируем содержимое
-    _, err = io.Copy(outputFile, inputFile)
-    inputFile.Close()
-    if err != nil {
-        return fmt.Errorf("Writing to output file failed: %s", err)
-    }
-    // Удаляем исходный файл, если не было ошибок
-    err = os.Remove(srcPath)
-    if err != nil {
-        return fmt.Errorf("Failed removing original file: %s", err)
-    }
-    return nil
-}
-
 func (c *Chrome) downloadChromeDriver(dir string, version string) error {
 	u := fmt.Sprintf("https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/%s/linux64/chromedriver-linux64.zip", version)
-	_, err := downloadDriver(u, chromeDriverPath + chromeDriverBinary, dir)
+	_, err := downloadDriver(u, chromeDriverBinary, dir)
 	if err != nil {
 		return fmt.Errorf("download chromedriver: %v", err)
 	}
-	return moveFile(dir + "/" + chromeDriverPath + chromeDriverBinary, dir + "/" + chromeDriverBinary)
+	return nil
 }
 
 func (c *Chrome) getLatestChromeDriver(baseUrl string, pkgVersion string) (string, error) {
