@@ -4,7 +4,9 @@ COPY tmp/devtools /devtools
 
 RUN \
     apt-get update && \
-    apt-get install -y upx-ucl libx11-dev && \
+    wget -c http://ftp.us.debian.org/debian/pool/main/u/upx-ucl/upx-ucl_3.95-1_amd64.deb && \
+    apt-get install -y ./upx-ucl_3.95-1_amd64.deb && \
+    apt-get install -y libx11-dev && \
     cd /devtools && \
     GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" && \
     upx /devtools/devtools
@@ -38,7 +40,10 @@ RUN \
     apt-get clean && \
     rm -Rf /tmp/* && rm -Rf /var/lib/apt/lists/*
 
-RUN cd / && npm install --prefix ./opt/ appium@$APPIUM_VERSION
+RUN \
+    cd / && \
+    npm install --prefix ./opt/ appium@$APPIUM_VERSION && \
+    /opt/node_modules/.bin/appium driver install uiautomator2
 
 COPY android.conf /etc/ld.so.conf.d/
 COPY fluxbox/aerokube /usr/share/fluxbox/styles/
