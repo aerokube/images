@@ -91,6 +91,11 @@ validate_android_version(){
         emulator_image="system-images;android-33;$type;$abi"
         replace_img=""
         ;;
+    14.0)
+        platform="android-34"
+        emulator_image="system-images;android-34;$type;$abi"
+        replace_img=""
+        ;;
 	*)
 		echo "Unsupported Android version"
 		false
