@@ -22,6 +22,8 @@ COPY entrypoint.sh /
 RUN \
     chmod +x /usr/bin/chromedriver && \
     chown -R selenium:nogroup /etc/opt/chrome/policies/managed/
+
+RUN echo "cookie-file = ~/.config/pulse/cookie" >> /etc/pulse/client.conf
 USER selenium
 
 EXPOSE 4444
