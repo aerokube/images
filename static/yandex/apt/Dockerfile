@@ -1,4 +1,4 @@
-FROM browsers/base:7.4.0
+FROM browsers/base:7.4.1
 
 ARG VERSION=19.4.2.698-1
 

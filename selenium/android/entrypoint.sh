@@ -70,7 +70,8 @@ fi
 while [ "$(adb shell getprop sys.boot_completed | tr -d '\r')" != "1" ] && [ -z "$STOP" ] ; do sleep 1; done
 if [ -n "$STOP" ]; then exit 0; fi
 
-DEFAULT_CAPABILITIES='"androidNaturalOrientation": true, "deviceName": "android", "platformName": "Android", "noReset": true, "udid":"'$EMULATOR'"'
+DEFAULT_CAPABILITIES='"appium:androidNaturalOrientation": true, "appium:deviceName": "android", "platformName": "Android", "appium:automationName": "UiAutomator2", "appium:noReset": true, "appium:udid": "'$EMULATOR'", "appium:systemPort": '$BOOTSTRAP_PORT', "appium:newCommandTimeout": 90'
+
 if [ -n "@CHROME_MOBILE@" ]; then
     while ip addr | grep inet | grep -q tentative > /dev/null; do sleep 0.1; done
     DEFAULT_CAPABILITIES=$DEFAULT_CAPABILITIES', "chromedriverPort": '$CHROMEDRIVER_PORT
@@ -82,7 +83,7 @@ if [ -x "/usr/bin/chromedriver" ]; then
     DEFAULT_CAPABILITIES=$DEFAULT_CAPABILITIES',"chromedriverExecutable": "/usr/bin/chromedriver"'
 fi
 
-/opt/node_modules/.bin/appium -a 0.0.0.0 -p "$PORT" -bp "$BOOTSTRAP_PORT" --log-timestamp --log-no-colors --command-timeout 90 --no-reset ${APPIUM_ARGS} --default-capabilities "{$DEFAULT_CAPABILITIES}" &
+/opt/node_modules/.bin/appium -a 0.0.0.0 -p "$PORT" --log-timestamp --log-no-colors ${APPIUM_ARGS} --base-path "/wd/hub" --default-capabilities "{$DEFAULT_CAPABILITIES}" &
 APPIUM_PID=$!
 
 wait

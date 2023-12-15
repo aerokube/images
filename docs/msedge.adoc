@@ -33,4 +33,9 @@ IMPORTANT: When adding Microsoft Edge to browsers.json - you have to use Microso
 | browsers/edge:112.0 | 112.0.1722.39 | 112.0.1722.39
 | browsers/edge:113.0 | 113.0.1774.42 | 113.0.1774.42
 | browsers/edge:114.0 | 114.0.1823.43 | 114.0.1823.43
+| browsers/edge:115.0 | - | Webdriver was broken
+| browsers/edge:116.0 | - | Webdriver was broken
+| browsers/edge:117.0 | - | Webdriver was broken
+| browsers/edge:118.0 | - | Webdriver was broken
+| browsers/edge:119.0 | 119.0.2151.44 | 119.0.2151.58
 |===

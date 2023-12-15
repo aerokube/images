@@ -89,6 +89,11 @@ We do not consider these images really stable. Many of base operations like work
 | selenoid/opera:98.0 | selenoid/vnc_opera:98.0 | 112.0.5615.87 | 98.0.4759.39
 | selenoid/opera:99.0 | selenoid/vnc_opera:99.0 | 113.0.5672.127 | 99.0.4788.77
 | selenoid/opera:100.0 | selenoid/vnc_opera:100.0 | 114.0.5735.110 | 99.0.4788.77
+| selenoid/opera:101.0 | selenoid/vnc_opera:101.0 | 115.0.5790.171 | 101.0.4843.58
+| selenoid/opera:102.0 | selenoid/vnc_opera:102.0 | 116.0.5845.97 | 102.0.4880.56
+| selenoid/opera:103.0 | selenoid/vnc_opera:103.0 | 117.0.5938.132 | 103.0.4928.16
+| selenoid/opera:104.0 | selenoid/vnc_opera:104.0 | 118.0.5993.89 | 104.0.4944.33
+| selenoid/opera:105.0 | selenoid/vnc_opera:105.0 | 119.0.6045.124 | 105.0.4970.16
 |===
 
 [NOTE]
