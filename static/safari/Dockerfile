@@ -14,7 +14,7 @@ RUN \
     ninja install && \
     rm -Rf /var/lib/apt/lists/*
 
-FROM golang:1.18 as go
+FROM golang:1.21 as go
 
 COPY cmd/prism /prism
 
