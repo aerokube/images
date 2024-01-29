@@ -1,4 +1,4 @@
-FROM golang:1.20 as go
+FROM golang:1.21 as go
 
 COPY tmp/devtools /devtools
 
