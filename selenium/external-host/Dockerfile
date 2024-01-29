@@ -1,4 +1,4 @@
-FROM golang:1.21 as go
+FROM golang:1.21-bullseye as go
 
 COPY choose /choose
 

@@ -1,12 +1,10 @@
-FROM golang:1.21 as go
+FROM golang:1.21-bullseye as go
 
 COPY tmp/devtools /devtools
 
 RUN \
     apt-get update && \
-    wget -c http://ftp.us.debian.org/debian/pool/main/u/upx-ucl/upx-ucl_3.95-1_amd64.deb && \
-    apt-get install -y ./upx-ucl_3.95-1_amd64.deb && \
-    apt-get install -y libx11-dev && \
+    apt-get install -y upx-ucl libx11-dev && \
     cd /devtools && \
     GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" && \
     upx /devtools/devtools
