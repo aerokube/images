@@ -1,4 +1,4 @@
-FROM browsers/base:7.4.1
+FROM browsers/base:7.4.2
 
 ARG VERSION
 ARG PACKAGE=microsoft-edge-stable
