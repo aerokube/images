@@ -94,6 +94,7 @@ We do not consider these images really stable. Many of base operations like work
 | selenoid/opera:103.0 | selenoid/vnc_opera:103.0 | 117.0.5938.132 | 103.0.4928.16
 | selenoid/opera:104.0 | selenoid/vnc_opera:104.0 | 118.0.5993.89 | 104.0.4944.33
 | selenoid/opera:105.0 | selenoid/vnc_opera:105.0 | 119.0.6045.124 | 105.0.4970.16
+| selenoid/opera:106.0 | selenoid/vnc_opera:106.0 | 120.0.6099.200 | 106.0.4998.66
 |===
 
 [NOTE]
