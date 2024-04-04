@@ -1,6 +1,6 @@
 module github.com/aerokube/devtools
 
-go 1.21
+go 1.22
 
 require (
 	github.com/aandryashin/matchers v0.0.0-20161126170413-435295ea180e
