@@ -1,6 +1,6 @@
 ARG UBUNTU_VERSION=22.04
 
-FROM golang:1.21-bullseye as go
+FROM golang:1.22-bullseye as go
 
 COPY xseld /xseld
 
