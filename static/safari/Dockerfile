@@ -14,7 +14,7 @@ RUN \
     ninja install && \
     rm -Rf /var/lib/apt/lists/*
 
-FROM golang:1.21-bullseye as go
+FROM golang:1.22-bullseye as go
 
 COPY cmd/prism /prism
 

@@ -42,4 +42,5 @@ IMPORTANT: When adding Microsoft Edge to browsers.json - you have to use Microso
 | browsers/edge:121.0 | 121.0.2277.106 | 121.0.2277.106
 | browsers/edge:122.0 | 122.0.2365.63 | 122.0.2365.63
 | browsers/edge:123.0 | 123.0.2420.41 | 123.0.2420.53
+| browsers/edge:124.0 | 124.0.2478.10 | 124.0.2478.51
 |===
