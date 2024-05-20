@@ -81,6 +81,7 @@
 | selenoid/chrome:122.0 | selenoid/vnc_chrome:122.0 | 122.0.6261.94 | 122.0.6261.94
 | selenoid/chrome:123.0 | selenoid/vnc_chrome:123.0 | 123.0.6312.58 | 123.0.6312.58
 | selenoid/chrome:124.0 | selenoid/vnc_chrome:124.0 | 124.0.6367.78 | 124.0.6367.78
+| selenoid/chrome:125.0 | selenoid/vnc_chrome:125.0 | 125.0.6422.60 | 125.0.6422.60
 |===
 
 [NOTE]
