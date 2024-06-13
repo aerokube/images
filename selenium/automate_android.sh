@@ -129,7 +129,7 @@ validate_android_abi(){
 
 download_chromedriver() {
     pushd "$TMP_DIR"
-    wget -O chromedriver.zip http://chromedriver.storage.googleapis.com/$1/chromedriver_linux64.zip
+    wget -O chromedriver.zip https://chromedriver.storage.googleapis.com/$1/chromedriver_linux64.zip
     unzip chromedriver.zip
     rm chromedriver.zip
     popd
