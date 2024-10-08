@@ -1,9 +1,13 @@
 package main
 
 import (
+	"crypto/md5"
+	"crypto/sha1"
+	"crypto/sha256"
 	"encoding/json"
 	"fmt"
-	"io/fs"
+	"hash"
+	"io"
 	"log"
 	"net/http"
 	"os"
@@ -33,7 +37,10 @@ func downloadsDir() (string, error) {
 	return dir, nil
 }
 
-const jsonParam = "json"
+const (
+	jsonParam = "json"
+	hashSum   = "hash"
+)
 
 func mux(dir string) http.Handler {
 	mux := http.NewServeMux()
@@ -43,7 +50,12 @@ func mux(dir string) http.Handler {
 			return
 		}
 		if _, ok := r.URL.Query()[jsonParam]; ok {
-			listFilesAsJson(w, dir)
+			hashSumQuery, ok := r.URL.Query()[hashSum]
+			if ok {
+				listFilesAsJson(w, dir, hashSumQuery[0])
+				return
+			}
+			listFilesAsJson(w, dir, "")
 			return
 		}
 		http.FileServer(http.Dir(dir)).ServeHTTP(w, r)
@@ -51,35 +63,82 @@ func mux(dir string) http.Handler {
 	return mux
 }
 
-func listFilesAsJson(w http.ResponseWriter, dir string) {
+type FileInfo struct {
+	Name         string `json:"name"`
+	Size         int64  `json:"size"`
+	LastModified int64  `json:"lastModified"`
+	HashSum      string `json:"hashSum,omitempty"`
+}
+
+func getHash(file string, algo string) (string, error) {
+	f, err := os.Open(file)
+	if err != nil {
+		return "", fmt.Errorf("failed to open file: %v", err)
+	}
+	defer f.Close()
+
+	h := NewHash(algo)
+	if h == nil {
+		return "", nil
+	}
+
+	if _, err := io.Copy(h, f); err != nil {
+		return "", fmt.Errorf("failed to copy: %v", err)
+	}
+
+	return fmt.Sprintf("%x", h.Sum(nil)), nil
+}
+
+func NewHash(algo string) hash.Hash {
+	switch strings.ToLower(algo) {
+
+	case "md5":
+		return md5.New()
+	case "sha1":
+		return sha1.New()
+
+	case "sha256":
+		return sha256.New()
+
+	default:
+		return nil
+	}
+}
+
+func listFilesAsJson(w http.ResponseWriter, dir string, algo string) {
 
 	entries, err := os.ReadDir(dir)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	files := make([]fs.FileInfo, 0, len(entries))
+	files := make([]FileInfo, 0, len(entries))
 	for _, entry := range entries {
 		info, err := entry.Info()
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
-		files = append(files, info)
+
+		hashFile, err := getHash(dir+"/"+entry.Name(), algo)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+		files = append(files, FileInfo{
+			Name:         info.Name(),
+			Size:         info.Size(),
+			LastModified: info.ModTime().Unix(),
+			HashSum:      hashFile,
+		})
 	}
+
 	sort.Slice(files, func(i, j int) bool {
-		return files[i].ModTime().After(files[j].ModTime())
+		return files[i].LastModified > files[j].LastModified
 	})
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-	ret := []string{}
-	for _, f := range files {
-		ret = append(ret, f.Name())
-	}
+
 	w.Header().Add("Content-Type", "application/json")
-	_ = json.NewEncoder(w).Encode(ret)
+	_ = json.NewEncoder(w).Encode(files)
 }
 
 func deleteFileIfExists(w http.ResponseWriter, r *http.Request, dir string) {
